@@ -1,0 +1,149 @@
+{
+  "institucion": "Instituto Superior SIR",
+  "descripcion": "Bot de guía institucional para consultas sobre carreras y sus contenidos",
+  "carreras": [
+    {
+      "id": "lic_sistemas",
+      "nombre": "Licenciatura en Sistemas",
+      "duracion": "4 años",
+      "modalidad": "Presencial",
+      "descripcion": "Formación integral en desarrollo de software, bases de datos, redes y gestión de tecnologías de la información.",
+      "perfil_egresado": "Profesional capaz de liderar proyectos tecnológicos, desarrollar soluciones de software y gestionar infraestructura informática.",
+      "campo_laboral": "Empresas de tecnología, áreas de sistemas, consultoría informática, emprendimientos digitales.",
+      "materias": [
+        {
+          "anio": 1,
+          "nombre": "Introducción a la Programación",
+          "contenidos": ["Algoritmos y estructuras de datos", "Lógica de programación", "Diagramas de flujo", "Pseudocódigo", "Introducción a un lenguaje de programación"]
+        },
+        {
+          "anio": 1,
+          "nombre": "Matemática Discreta",
+          "contenidos": ["Lógica proposicional", "Teoría de conjuntos", "Relaciones y funciones", "Grafos y árboles", "Álgebra booleana"]
+        },
+        {
+          "anio": 2,
+          "nombre": "Programación Orientada a Objetos",
+          "contenidos": ["Clases y objetos", "Herencia y polimorfismo", "Encapsulamiento", "Interfaces y clases abstractas", "Patrones de diseño básicos"]
+        },
+        {
+          "anio": 2,
+          "nombre": "Bases de Datos",
+          "contenidos": ["Modelo entidad-relación", "Álgebra relacional", "SQL avanzado", "Normalización", "Transacciones y concurrencia"]
+        },
+        {
+          "anio": 3,
+          "nombre": "Ingeniería de Software",
+          "contenidos": ["Ciclo de vida del software", "Metodologías ágiles (Scrum, Kanban)", "Requerimientos y especificación", "Pruebas de software", "Gestión de proyectos"]
+        },
+        {
+          "anio": 3,
+          "nombre": "Redes y Comunicaciones",
+          "contenidos": ["Modelo OSI y TCP/IP", "Topologías de red", "Protocolos de comunicación", "Seguridad en redes", "Administración de redes"]
+        },
+        {
+          "anio": 4,
+          "nombre": "Inteligencia Artificial",
+          "contenidos": ["Búsqueda y optimización", "Sistemas expertos", "Machine Learning básico", "Redes neuronales", "Procesamiento de lenguaje natural"]
+        },
+        {
+          "anio": 4,
+          "nombre": "Trabajo Final de Grado",
+          "contenidos": ["Metodología de investigación", "Desarrollo de proyecto integrador", "Documentación técnica", "Defensa oral"]
+        }
+      ]
+    },
+    {
+      "id": "contador",
+      "nombre": "Contador Público",
+      "duracion": "4 años",
+      "modalidad": "Presencial",
+      "descripcion": "Formación en contabilidad, administración, impuestos y finanzas para la gestión económica de organizaciones.",
+      "perfil_egresado": "Profesional capacitado para administrar recursos financieros, realizar auditorías, liquidar impuestos y asesorar en decisiones económicas.",
+      "campo_laboral": "Estudios contables, empresas privadas, organismos públicos, consultoría financiera, ejercicio independiente.",
+      "materias": [
+        {
+          "anio": 1,
+          "nombre": "Contabilidad Básica",
+          "contenidos": ["Principios contables", "Ecuación patrimonial", "Registro de operaciones", "Libros contables", "Estados financieros básicos"]
+        },
+        {
+          "anio": 1,
+          "nombre": "Economía General",
+          "contenidos": ["Microeconomía", "Macroeconomía", "Oferta y demanda", "Mercados y precios", "Política económica"]
+        },
+        {
+          "anio": 2,
+          "nombre": "Contabilidad Intermedia",
+          "contenidos": ["Rubros del activo y pasivo", "Patrimonio neto", "Resultados", "Estados financieros completos", "Ajustes contables"]
+        },
+        {
+          "anio": 2,
+          "nombre": "Derecho Comercial",
+          "contenidos": ["Acto de comercio", "Sociedades comerciales", "Contratos mercantiles", "Títulos de crédito", "Concursos y quiebras"]
+        },
+        {
+          "anio": 3,
+          "nombre": "Impuestos I",
+          "contenidos": ["Impuesto a las Ganancias", "IVA", "Impuesto a los Bienes Personales", "Mínimo Presunto", "Régimen general de facturación"]
+        },
+        {
+          "anio": 3,
+          "nombre": "Costos y Gestión",
+          "contenidos": ["Sistemas de costeo", "Costos por órdenes y procesos", "Costos estándar", "Punto de equilibrio", "Toma de decisiones basada en costos"]
+        },
+        {
+          "anio": 4,
+          "nombre": "Auditoría",
+          "contenidos": ["Tipos de auditoría", "Normas de auditoría", "Procedimientos y técnicas", "Informes de auditoría", "Control interno"]
+        },
+        {
+          "anio": 4,
+          "nombre": "Práctica Profesional",
+          "contenidos": ["Ejercicio profesional", "Ética profesional", "Responsabilidades legales", "Casos prácticos integradores"]
+        }
+      ]
+    },
+    {
+      "id": "disenio_grafico",
+      "nombre": "Diseño Gráfico",
+      "duracion": "3 años",
+      "modalidad": "Presencial",
+      "descripcion": "Formación en comunicación visual, diseño editorial, branding y herramientas digitales para la creación de contenido gráfico.",
+      "perfil_egresado": "Profesional creativo capaz de desarrollar piezas gráficas, identidad visual, contenido multimedia y campañas de comunicación visual.",
+      "campo_laboral": "Agencias de publicidad, estudios de diseño, departamentos de marketing, producción editorial, freelance.",
+      "materias": [
+        {
+          "anio": 1,
+          "nombre": "Fundamentos del Diseño",
+          "contenidos": ["Teoría del color", "Tipografía", "Composición y retícula", "Percepción visual", "Historia del diseño"]
+        },
+        {
+          "anio": 1,
+          "nombre": "Herramientas Digitales I",
+          "contenidos": ["Adobe Illustrator", "Photoshop básico", "Diseño vectorial", "Edición de imágenes", "Gestión de color"]
+        },
+        {
+          "anio": 2,
+          "nombre": "Branding y Marketing",
+          "contenidos": ["Identidad corporativa", "Manual de marca", "Brief creativo", "Estrategia de marca", "Packaging"]
+        },
+        {
+          "anio": 2,
+          "nombre": "Diseño Editorial",
+          "contenidos": ["Maquetación", "Diseño de revistas y libros", "Adobe InDesign", "Jerarquía visual", "Sistemas de retículas"]
+        },
+        {
+          "anio": 3,
+          "nombre": "Diseño UX/UI",
+          "contenidos": ["Investigación de usuario", "Arquitectura de información", "Prototipado (Figma)", "Pruebas de usabilidad", "Diseño responsive"]
+        },
+        {
+          "anio": 3,
+          "nombre": "Portfolio y Salida Laboral",
+          "contenidos": ["Desarrollo de portafolio", "Marca personal", "Presupuesto y honorarios", "Relación con clientes", "Emprendimiento creativo"]
+        }
+      ]
+    }
+  ]
+}
