@@ -172,10 +172,12 @@ body {
     box-shadow: none;
     backdrop-filter: none;
     border-radius: 0;
+    overflow: visible;
 }
 
 .message.bot .avatar img {
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    object-fit: contain;
 }
 
 .message.user .avatar {
@@ -202,6 +204,39 @@ body {
     background: var(--bot-bg);
     border: 1px solid rgba(79, 160, 216, 0.25);
     border-bottom-left-radius: 4px;
+}
+
+.chat-accordion {
+    margin: 8px 0;
+    background: rgba(0,0,0,0.15);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.chat-accordion summary {
+    padding: 12px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    background: rgba(79, 160, 216, 0.1);
+    transition: background 0.3s;
+    color: var(--primary-light);
+}
+
+.chat-accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.chat-accordion summary:hover {
+    background: rgba(79, 160, 216, 0.2);
+}
+
+.accordion-content {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 .message.user .bubble {
@@ -235,14 +270,25 @@ body {
 
 .quick-actions {
     display: flex;
-    gap: 10px;
     padding: 12px 0;
-    overflow-x: auto;
-    scrollbar-width: none;
+    overflow: hidden;
+    width: 100%;
 }
 
-.quick-actions::-webkit-scrollbar {
-    display: none;
+.quick-actions-track {
+    display: flex;
+    gap: 10px;
+    width: max-content;
+    animation: marqueeTrain 25s linear infinite;
+}
+
+.quick-actions-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes marqueeTrain {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 5px)); }
 }
 
 .quick-btn {

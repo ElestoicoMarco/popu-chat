@@ -21,44 +21,69 @@
         <main class="chat-container">
             <div class="chat-messages" id="chatMessages">
                 <div class="message bot">
+                    <div class="avatar"><img src="/img/mascot.png" alt="Bot"></div>
                     <div class="bubble">
-                        ¡Hola! Soy el asistente virtual de las carreras del <strong>IES N° 7 "Populorum Progressio" - INTELA</strong> (Sede Central, Turno Mañana).<br><br>
-                        Actualmente puedo ayudarte con información sobre:<br>
-                        📊 <strong>Ciencia de Datos e Inteligencia Artificial</strong> (3 años)<br>
-                        ⚖️ <strong>Gestión Jurídica</strong> (3 años)<br>
-                        🌿 <strong>Gestión Ambiental</strong> (3 años)<br>
-                        🧸 <strong>Niñez, Adolescencia y Familia</strong> (3 años)<br>
-                        🧪 <strong>Laboratorio de Análisis Clínicos</strong> (3 años)<br>
-                        🩸 <strong>Hemoterapia</strong> (3 años)<br>
-                        🧠 <strong>Acompañamiento Terapéutico</strong> (3 años)<br>
-                        💼 <strong>Administración de Empresas</strong> (3 años)<br>
-                        🏛️ <strong>Administración Pública</strong> (3 años)<br>
-                        🗳️ <strong>Profesorado en Ciencia Política</strong> (4 años)<br>
-                        🧩 <strong>Profesorado en Educación Especial</strong> (4 años)<br>
-                        ⛪ <strong>Profesorado en Ciencias Sagradas</strong> (4 años)<br><br>
-                        Podés consultarme sobre:<br>
-                        👋 Saludos y bienvenida<br>
-                        📘 Descripción y perfil de cada carrera<br>
-                        📚 Materias y planes de estudio año por año<br>
-                        💼 Salida laboral e inserción en Jujuy<br>
-                        ⏱ Horarios de cursado y atención presencial<br>
-                        📍 Ubicación de la Sede Central<br>
-                        📋 Requisitos de inscripción obligatorios<br><br>
-                        <em>¿En qué puedo ayudarte hoy?</em>
+                        ¡Hola! Soy el asistente virtual de las carreras del <strong>IES N° 7 "Populorum Progressio" - INTELA</strong> (Sede Central).<br><br>
+                        
+                        <details class="chat-accordion">
+                            <summary>👉 Ver las 12 carreras disponibles</summary>
+                            <div class="accordion-content">
+                                📊 <strong>Ciencia de Datos e Inteligencia Artificial</strong> (3 años)<br>
+                                ⚖️ <strong>Gestión Jurídica</strong> (3 años)<br>
+                                🌿 <strong>Gestión Ambiental</strong> (3 años)<br>
+                                🧸 <strong>Niñez, Adolescencia y Familia</strong> (3 años)<br>
+                                🧪 <strong>Laboratorio de Análisis Clínicos</strong> (3 años)<br>
+                                🩸 <strong>Hemoterapia</strong> (3 años)<br>
+                                🧠 <strong>Acompañamiento Terapéutico</strong> (3 años)<br>
+                                💼 <strong>Administración de Empresas</strong> (3 años)<br>
+                                🏛️ <strong>Administración Pública</strong> (3 años)<br>
+                                🗳️ <strong>Profesorado en Ciencia Política</strong> (4 años)<br>
+                                🧩 <strong>Profesorado en Educación Especial</strong> (4 años)<br>
+                                ⛪ <strong>Profesorado en Ciencias Sagradas</strong> (4 años)
+                            </div>
+                        </details>
+
+                        <details class="chat-accordion">
+                            <summary>👉 Ver qué más puedo consultar</summary>
+                            <div class="accordion-content">
+                                👋 Saludos y bienvenida<br>
+                                📘 Descripción y perfil de cada carrera<br>
+                                📚 Materias y planes de estudio año por año<br>
+                                💼 Salida laboral e inserción en Jujuy<br>
+                                ⏱ Horarios de cursado y atención presencial<br>
+                                📍 Ubicación de la Sede Central<br>
+                                📋 Requisitos de inscripción obligatorios
+                            </div>
+                        </details>
+                        
+                        <br><em>¿En qué te puedo ayudar hoy?</em>
                     </div>
                 </div>
             </div>
 
             <div class="quick-actions" id="quickActions">
-                <button class="quick-btn" data-msg="¿Qué tecnicaturas dictan?">📊 Tecnicaturas</button>
-                <button class="quick-btn" data-msg="¿Qué profesorados dictan?">🗳️ Profesorados</button>
-                <button class="quick-btn" data-msg="¿De qué trata Ciencia de Datos?">📊 Ciencia de Datos</button>
-                <button class="quick-btn" data-msg="¿Qué materias tiene Niñez, Adolescencia y Familia?">🧸 Niñez y Familia</button>
-                <button class="quick-btn" data-msg="¿Cuál es la salida laboral de Laboratorio de Análisis Clínicos?">🧪 Laboratorio</button>
-                <button class="quick-btn" data-msg="¿De qué trata Hemoterapia?">🩸 Hemoterapia</button>
-                <button class="quick-btn" data-msg="¿De qué trata Acompañamiento Terapéutico?">🧠 Acompañamiento Terapéutico</button>
-                <button class="quick-btn" data-msg="¿Qué materias tiene Administración de Empresas?">💼 Administración</button>
-                <button class="quick-btn" data-msg="¿De qué trata Administración Pública?">🏛️ Administración Pública</button>
+                <div class="quick-actions-track">
+                    <button class="quick-btn" data-msg="¿Qué tecnicaturas dictan?">📊 Tecnicaturas</button>
+                    <button class="quick-btn" data-msg="¿Qué profesorados dictan?">🗳️ Profesorados</button>
+                    <button class="quick-btn" data-msg="¿De qué trata Ciencia de Datos?">📊 Ciencia de Datos</button>
+                    <button class="quick-btn" data-msg="¿Qué materias tiene Niñez, Adolescencia y Familia?">🧸 Niñez y Familia</button>
+                    <button class="quick-btn" data-msg="¿Cuál es la salida laboral de Laboratorio de Análisis Clínicos?">🧪 Laboratorio</button>
+                    <button class="quick-btn" data-msg="¿De qué trata Hemoterapia?">🩸 Hemoterapia</button>
+                    <button class="quick-btn" data-msg="¿De qué trata Acompañamiento Terapéutico?">🧠 Acompañamiento Terapéutico</button>
+                    <button class="quick-btn" data-msg="¿Qué materias tiene Administración de Empresas?">💼 Administración</button>
+                    <button class="quick-btn" data-msg="¿De qué trata Administración Pública?">🏛️ Administración Pública</button>
+                    
+                    <!-- Duplicado para efecto Marquee / Tren infinito -->
+                    <button class="quick-btn" data-msg="¿Qué tecnicaturas dictan?">📊 Tecnicaturas</button>
+                    <button class="quick-btn" data-msg="¿Qué profesorados dictan?">🗳️ Profesorados</button>
+                    <button class="quick-btn" data-msg="¿De qué trata Ciencia de Datos?">📊 Ciencia de Datos</button>
+                    <button class="quick-btn" data-msg="¿Qué materias tiene Niñez, Adolescencia y Familia?">🧸 Niñez y Familia</button>
+                    <button class="quick-btn" data-msg="¿Cuál es la salida laboral de Laboratorio de Análisis Clínicos?">🧪 Laboratorio</button>
+                    <button class="quick-btn" data-msg="¿De qué trata Hemoterapia?">🩸 Hemoterapia</button>
+                    <button class="quick-btn" data-msg="¿De qué trata Acompañamiento Terapéutico?">🧠 Acompañamiento Terapéutico</button>
+                    <button class="quick-btn" data-msg="¿Qué materias tiene Administración de Empresas?">💼 Administración</button>
+                    <button class="quick-btn" data-msg="¿De qué trata Administración Pública?">🏛️ Administración Pública</button>
+                </div>
             </div>
 
             <div class="chat-input-area">
