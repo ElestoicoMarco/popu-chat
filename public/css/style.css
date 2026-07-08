@@ -5,31 +5,41 @@
 }
 
 :root {
-    --primary: #6c5ce7;
-    --primary-dark: #5a4bd1;
-    --primary-light: #a29bfe;
-    --secondary: #00cec9;
-    --bg: #0a0a1a;
-    --bg-card: #12122a;
-    --bg-input: #1a1a3e;
-    --text: #e8e8f0;
-    --text-dim: #8888aa;
-    --bot-bg: #1e1e42;
-    --user-bg: #6c5ce7;
-    --border: #2a2a5a;
-    --success: #00b894;
-    --radius: 16px;
-    --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    /* Paleta de colores solicitada */
+    --primary: #F5CE5B;
+    --primary-dark: #d4ab37;
+    --primary-light: #fbe6a2;
+    --secondary: #4FA0D8;
+    
+    /* Configuración para Glassmorphism */
+    --bg-base: #0a0f18; /* Fondo base muy oscuro para hacer contraste con el neón/glass */
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-bg-hover: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    
+    --text: #ffffff;
+    --text-dim: #a0aec0;
+    
+    /* Burbujas del chat con semi-transparencia basada en los colores exactos */
+    --bot-bg: rgba(79, 160, 216, 0.12); /* Secondary semi-transparente */
+    --user-bg: rgba(245, 206, 91, 0.15); /* Primary semi-transparente */
+    
+    --radius: 20px;
 }
 
 body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background: var(--bg);
+    background-color: var(--bg-base);
+    /* Efecto de luces/orbes de fondo para el glassmorphism usando los 2 colores exactos */
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(79, 160, 216, 0.12), transparent 45%),
+        radial-gradient(circle at 85% 30%, rgba(245, 206, 91, 0.12), transparent 45%),
+        radial-gradient(circle at 50% 100%, rgba(79, 160, 216, 0.08), transparent 50%);
     color: var(--text);
     height: 100vh;
     display: flex;
     justify-content: center;
-    background-image: radial-gradient(ellipse at 50% 0%, #1a1a3e 0%, #0a0a1a 70%);
+    overflow: hidden;
 }
 
 .container {
@@ -38,39 +48,50 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    padding: 0 16px;
+    padding: 0 20px;
+    /* Efecto principal de Glassmorphism */
+    background: rgba(10, 15, 24, 0.3);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-left: 1px solid var(--glass-border);
+    border-right: 1px solid var(--glass-border);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
 }
 
 .header {
-    padding: 20px 0 10px;
-    border-bottom: 1px solid var(--border);
+    padding: 24px 0 16px;
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
 }
 
 .logo-icon {
-    width: 42px;
-    height: 42px;
+    width: 48px;
+    height: 48px;
     object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
 }
 
 .logo h1 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 800;
-    background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+    /* Degradado en el título con los dos colores */
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    letter-spacing: -0.5px;
 }
 
 .subtitle {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--text-dim);
-    margin-top: 2px;
+    margin-top: 4px;
+    font-weight: 500;
 }
 
 .chat-container {
@@ -78,7 +99,7 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    padding: 10px 0;
+    padding: 15px 0;
 }
 
 .chat-messages {
@@ -86,13 +107,13 @@ body {
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
     padding: 10px 4px;
     scroll-behavior: smooth;
 }
 
 .chat-messages::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
 }
 
 .chat-messages::-webkit-scrollbar-track {
@@ -100,15 +121,20 @@ body {
 }
 
 .chat-messages::-webkit-scrollbar-thumb {
-    background: var(--primary);
+    background: rgba(255, 255, 255, 0.15);
     border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: rgba(245, 206, 91, 0.5);
 }
 
 .message {
     display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    animation: fadeIn 0.3s ease-out;
+    gap: 12px;
+    align-items: flex-end;
+    animation: fadeIn 0.4s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+    opacity: 0;
 }
 
 .message.bot {
@@ -120,17 +146,18 @@ body {
 }
 
 .avatar {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
     flex-shrink: 0;
-    background: var(--bot-bg);
-    border: 1px solid var(--border);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(4px);
     overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .avatar img {
@@ -142,61 +169,74 @@ body {
 .message.bot .avatar {
     background: transparent;
     border: none;
+    box-shadow: none;
+    backdrop-filter: none;
     border-radius: 0;
-    overflow: visible;
+}
+
+.message.bot .avatar img {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
 
 .message.user .avatar {
-    background: var(--primary);
-    border-color: var(--primary);
+    background: rgba(245, 206, 91, 0.15);
+    border-color: rgba(245, 206, 91, 0.3);
+    color: var(--primary);
 }
 
 .bubble {
-    padding: 12px 16px;
+    padding: 14px 18px;
     border-radius: var(--radius);
-    max-width: 85%;
-    line-height: 1.6;
-    font-size: 0.9rem;
+    max-width: 80%;
+    line-height: 1.5;
+    font-size: 0.95rem;
     white-space: pre-wrap;
+    /* Glassmorphism en burbujas */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    letter-spacing: 0.3px;
 }
 
 .message.bot .bubble {
     background: var(--bot-bg);
-    border: 1px solid var(--border);
-    border-top-left-radius: 4px;
+    border: 1px solid rgba(79, 160, 216, 0.25);
+    border-bottom-left-radius: 4px;
 }
 
 .message.user .bubble {
     background: var(--user-bg);
-    border-top-right-radius: 4px;
+    border: 1px solid rgba(245, 206, 91, 0.3);
+    border-bottom-right-radius: 4px;
 }
 
 .typing-indicator {
     display: flex;
-    gap: 4px;
-    padding: 8px 0;
+    gap: 5px;
+    padding: 10px 0;
 }
 
 .typing-indicator span {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--text-dim);
+    background: var(--secondary);
     animation: typing 1.4s infinite;
+    box-shadow: 0 0 8px rgba(79, 160, 216, 0.6);
 }
 
 .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
 .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
 
 @keyframes typing {
-    0%, 100% { opacity: 0.3; transform: translateY(0); }
-    50% { opacity: 1; transform: translateY(-4px); }
+    0%, 100% { opacity: 0.4; transform: translateY(0) scale(1); }
+    50% { opacity: 1; transform: translateY(-4px) scale(1.1); }
 }
 
 .quick-actions {
     display: flex;
-    gap: 8px;
-    padding: 10px 0;
+    gap: 10px;
+    padding: 12px 0;
     overflow-x: auto;
     scrollbar-width: none;
 }
@@ -206,47 +246,55 @@ body {
 }
 
 .quick-btn {
-    padding: 8px 16px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    background: var(--bg-card);
+    padding: 10px 18px;
+    border-radius: 25px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
     color: var(--text);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     cursor: pointer;
     white-space: nowrap;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     font-family: inherit;
+    /* Botones Glassmorphism */
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .quick-btn:hover {
-    border-color: var(--primary);
-    background: rgba(108, 92, 231, 0.15);
-    color: var(--primary-light);
+    border-color: rgba(245, 206, 91, 0.6);
+    background: rgba(245, 206, 91, 0.15);
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .chat-input-area {
     display: flex;
-    gap: 10px;
-    padding: 12px 0;
-    border-top: 1px solid var(--border);
+    gap: 12px;
+    padding: 16px 0;
+    border-top: 1px solid var(--glass-border);
 }
 
 .chat-input {
     flex: 1;
-    padding: 14px 18px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: var(--bg-input);
+    padding: 16px 20px;
+    border-radius: 25px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
     color: var(--text);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-family: inherit;
     outline: none;
-    transition: border-color 0.3s;
+    transition: all 0.3s;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .chat-input:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.2);
+    border-color: rgba(245, 206, 91, 0.6);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 0 3px rgba(245, 206, 91, 0.15), inset 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .chat-input::placeholder {
@@ -254,24 +302,25 @@ body {
 }
 
 .send-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
     border: none;
-    background: var(--primary);
-    color: #fff;
-    font-size: 1.2rem;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #111; /* Texto/Icono oscuro para buen contraste con el dorado */
+    font-size: 1.3rem;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 4px 15px rgba(245, 206, 91, 0.3);
 }
 
 .send-btn:hover {
-    background: var(--primary-dark);
-    transform: scale(1.05);
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 206, 91, 0.4);
 }
 
 .send-btn:active {
@@ -281,35 +330,36 @@ body {
 .footer {
     text-align: center;
     padding: 12px 0 20px;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--text-dim);
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--glass-border);
+    letter-spacing: 0.5px;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes floatAndPulse {
-    0% {
-        transform: translateY(0) scale(1);
-    }
-    50% {
-        transform: translateY(-6px) scale(1.05);
-    }
-    100% {
-        transform: translateY(0) scale(1);
-    }
+    0% { transform: translateY(0) scale(1); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
+    50% { transform: translateY(-6px) scale(1.05); filter: drop-shadow(0 8px 15px rgba(79, 160, 216, 0.4)); }
+    100% { transform: translateY(0) scale(1); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
 }
 
 .thinking-bot {
-    animation: floatAndPulse 1.5s ease-in-out infinite;
+    animation: floatAndPulse 2s ease-in-out infinite;
 }
 
 @media (max-width: 480px) {
-    .container { padding: 0 12px; }
-    .logo h1 { font-size: 1.2rem; }
-    .bubble { font-size: 0.85rem; max-width: 90%; }
-    .quick-btn { font-size: 0.75rem; padding: 6px 12px; }
+    .container { 
+        padding: 0 12px; 
+        border: none;
+        background: transparent;
+        box-shadow: none;
+        backdrop-filter: none;
+    }
+    .logo h1 { font-size: 1.3rem; }
+    .bubble { font-size: 0.9rem; max-width: 90%; }
+    .quick-btn { font-size: 0.8rem; padding: 8px 14px; }
 }
