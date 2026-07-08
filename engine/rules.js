@@ -15,9 +15,14 @@ function obtenerSesion(sessionId) {
     return sesiones.get(sessionId);
 }
 
-// Orden lógico oficial de las respuestas
 const ORDEN_LOGICO_INTENCIONES = [
     'saludo',
+    'valor_cuota_2027',
+    'valor_cuota',
+    'valor_inscripcion',
+    'tramites_tesoreria',
+    'distribucion_aulas',
+    'requisitos_duplicado',
     'carreras',
     'tecnicaturas',
     'profesorados',
@@ -532,9 +537,14 @@ function detectarCarrera(texto) {
     return null;
 }
 
-// Palabras clave por intención general
 const PALABRAS_CLAVE = {
     saludo: ['hola', 'buenas', 'dia', 'tarde', 'noche', 'que tal', 'como va'],
+    valor_cuota_2027: ['cuota 2027', 'arancel 2027', 'precio 2027', 'costo 2027', 'año que viene', 'proximo año', 'cuotas 2027'],
+    valor_cuota: ['cuota', 'cuanto se paga', 'precio cuota', 'valor cuota', 'vencimiento cuota', 'arancel', 'mensualidad', 'cuanto cuesta la cuota', 'recargo', 'mora'],
+    valor_inscripcion: ['valor inscripcion', 'precio inscripcion', 'cuanto cuesta la inscripcion', 'costo inscripcion', 'precio matricula', 'costo matricula', 'pagar inscripcion'],
+    tramites_tesoreria: ['constancia', 'autenticacion', 'libreta', 'analitico', 'documentacion junta', 'duplicado titulo', 'biblioteca', 'tramite', 'precios tesoreria', 'aranceles tesoreria', 'tesoreria'],
+    distribucion_aulas: ['aula', 'aulas', 'espacios', 'donde curso', 'que aula', 'turno mañana', 'turno tarde', 'turno noche', 'donde nos toca'],
+    requisitos_duplicado: ['requisitos duplicado', 'otro ejemplar', 'extravio titulo', 'perdi el titulo', 'duplicado de titulo', 'perdi mi titulo', 'deterioro titulo'],
     carreras: ['carrera', 'carreras', 'oferta academica', 'estudiar', 'que tienen', 'que puedo cursar', 'que se dicta', 'dictan', 'oferta', 'ofertas', 'oferta educativa'],
     tecnicaturas: ['tecnicatura', 'tecnicaturas', 'tecnica', 'tecnicas', 'carreras tecnicas', 'carrera tecnica'],
     profesorados: ['profesorado', 'profesorados', 'profesor', 'profesores', 'docente', 'docentes', 'carreras docentes'],
@@ -569,6 +579,72 @@ for (const [intencion, keywords] of Object.entries(PALABRAS_CLAVE)) {
 
 // Respuestas generales (no dependen de una carrera específica)
 const RESPUESTAS_GENERALES = {
+    valor_cuota_2027: {
+        formal: [
+            "Le informamos que los valores arancelarios correspondientes al Ciclo Lectivo 2027 aún no se encuentran disponibles. Le sugerimos consultar nuevamente a partir de fines de diciembre del corriente año para obtener la información oficial y actualizada."
+        ],
+        informal: [
+            "Te cuento que los valores de las cuotas para el 2027 todavía no están definidos. Porfa, volvé a consultarnos a fines de diciembre que ya vamos a tener la info actualizada."
+        ],
+        molesto: [
+            "Lamentamos no poder brindarle esa información ahora. Los aranceles para 2027 no están disponibles en este momento. Le pedimos por favor consultar a fin de diciembre."
+        ]
+    },
+    valor_cuota: {
+        formal: [
+            "Tesorería Informa - Valores de Cuota 2026:\nEl valor de la cuota mensual para todas las carreras es de $55.000.-, a excepción de las Carreras Especiales cuyo valor es de $60.000.-\n\nVencimientos: Las cuotas de todas las carreras vencen el último día de cada mes. Transcurrido ese plazo, se aplicará un recargo por cada mes de mora."
+        ],
+        informal: [
+            "Para el año 2026, el valor de la cuota para casi todas las carreras es de $55.000 (las Carreras Especiales están en $60.000).\nAcordate que las cuotas vencen el último día de cada mes; si te pasás de esa fecha, se cobra un recargo por cada mes de atraso."
+        ],
+        molesto: [
+            "Le informamos los valores vigentes para 2026: la cuota es de $55.000 para todas las carreras y $60.000 para las especiales. Vencen el último día de cada mes, sin excepción, y el atraso genera recargos."
+        ]
+    },
+    valor_inscripcion: {
+        formal: [
+            "Tesorería Informa: El valor de inscripción para el Ciclo Lectivo 2026 es de $60.000.-"
+        ],
+        informal: [
+            "Te comento que el valor de la inscripción para el ciclo 2026 está fijado en $60.000."
+        ],
+        molesto: [
+            "Le informamos que el arancel de inscripción correspondiente al ciclo 2026 es de $60.000."
+        ]
+    },
+    tramites_tesoreria: {
+        formal: [
+            "Tesorería Informa - Aranceles Ciclo Lectivo 2026:\n- Constancias y Autenticaciones: $3.800.-\n- Libretas: $11.000.-\n- Analítico: $7.500.-\n- Documentación p/ Junta: $12.500.-\n- Duplicado de Título: $27.000.-\n- Biblioteca: $8.000.-"
+        ],
+        informal: [
+            "Te paso los precios de tesorería para el 2026:\nConstancias y Autenticaciones: $3.800\nLibretas: $11.000\nAnalítico: $7.500\nDocumentación p/ Junta: $12.500\nDuplicado de Título: $27.000\nBiblioteca: $8.000"
+        ],
+        molesto: [
+            "Los aranceles de trámites para 2026 son: Constancias $3.800, Libretas $11.000, Analítico $7.500, Doc. p/ Junta $12.500, Duplicado de Título $27.000, Biblioteca $8.000."
+        ]
+    },
+    distribucion_aulas: {
+        formal: [
+            "Distribución de espacios 2026:\n\nTurno Mañana:\n- Cs. Datos e IA: 1° Aula 23 | 2° Aula 22 | 3° Aula 10\n- Cs. Políticas: 1° Aula 35 | 2° Aula 31 | 3° Aula 30 | 4° Aula 33\n- Educ. Especial: 1° Aula 13 | 2° Aula 21 | 3° Aula 20 | 4° Aula 12\n- Trabajo Social: 2° Aula 24 | 3° Aula 26 | 4° Aula 25\n\nTurno Tarde:\n- Gestión Jurídica: 1° Aula 1 | 2° Aula 35 | 3° Aula 37\n- Adm. Empresas: 1° Aula 34 | 2° Aula 36 | 3° Aula 30\n- Laboratorio: 1° Aula 13 | 2° Aula 20 | 3° Aula 21\n- Hemoterapia: 1° Aula 23 | 2° Aula 12 | 3° Aula 10\n- Trabajo Social: 3° Aula 26 | 4° Aula 31\n- Niñez: 1° Aula 2 | 2° Aula 24\n- Acomp. Terapéutico: 1° Aula 25 | 2° Aula 22 | 3° Aula 33\n\nTurno Noche:\n- Educ. Especial: 1° Aula 13 | 2° Aula 25 | 3° Aula 10 | 4° Aula 35\n- Gestión Ambiental: 1° Aula 30 | 2° Aula 31\n- Cs. Sagradas: 1° Aula 22 | 2° Aula 21 | 3° Aula 20 | 4° Aula 33\n- Adm. Empresas: 1° Aula 34 | 2° Aula 36 | 3° Aula 37\n- Adm. Pública: 1° Aula 23 | 2° Aula 24 | 3° Aula 26"
+        ],
+        informal: [
+            "Te paso la distribución de aulas para 2026. ¡Buscá tu carrera y año!\n\n☀️ MAÑANA:\nDatos e IA: 1°(A23), 2°(A22), 3°(A10)\nPolíticas: 1°(A35), 2°(A31), 3°(A30), 4°(A33)\nEspecial: 1°(A13), 2°(A21), 3°(A20), 4°(A12)\nTrabajo Social: 2°(A24), 3°(A26), 4°(A25)\n\n🌤️ TARDE:\nJurídica: 1°(A1), 2°(A35), 3°(A37)\nEmpresas: 1°(A34), 2°(A36), 3°(A30)\nLaboratorio: 1°(A13), 2°(A20), 3°(A21)\nHemoterapia: 1°(A23), 2°(A12), 3°(A10)\nTrabajo Social: 3°(A26), 4°(A31)\nNiñez: 1°(A2), 2°(A24)\nAcomp. Terap: 1°(A25), 2°(A22), 3°(A33)\n\n🌙 NOCHE:\nEspecial: 1°(A13), 2°(A25), 3°(A10), 4°(A35)\nAmbiental: 1°(A30), 2°(A31)\nSagradas: 1°(A22), 2°(A21), 3°(A20), 4°(A33)\nEmpresas: 1°(A34), 2°(A36), 3°(A37)\nPública: 1°(A23), 2°(A24), 3°(A26)"
+        ],
+        molesto: [
+            "La distribución de espacios asignados para 2026 es la siguiente. Por favor verifique su turno y año:\nMañana: Datos IA (23,22,10), Políticas (35,31,30,33), Especial (13,21,20,12), Trabajo Social (24,26,25).\nTarde: Jurídica (1,35,37), Empresas (34,36,30), Laboratorio (13,20,21), Hemoterapia (23,12,10), Trabajo Social (26,31), Niñez (2,24), Acomp.Terap (25,22,33).\nNoche: Especial (13,25,10,35), Ambiental (30,31), Sagradas (22,21,20,33), Empresas (34,36,37), Pública (23,24,26)."
+        ]
+    },
+    requisitos_duplicado: {
+        formal: [
+            "Requisitos para tramitar otros ejemplares de títulos (duplicados):\n1. Fotocopia Título Secundario autenticado por el Dpto. Títulos del Min. de Educación.\n2. Fotocopia del DNI actualizado.\n3. Certificado o Partida de Nacimiento actualizado.\n4. Título Terciario emitido por esta institución (si el motivo es desgaste o errores).\n5. Constancia Policial (en caso de extravío).\n6. Recibo de pago en Tesorería.\n7. Nota dirigida a la rectora solicitando el duplicado y adjuntando la documentación precedente."
+        ],
+        informal: [
+            "Para pedir un duplicado de tu título necesitás traer:\n1. Fotocopia del Título Secundario autenticado.\n2. Fotocopia del DNI actualizado.\n3. Partida de Nacimiento actualizada.\n4. El Título Terciario viejo (si es por desgaste o error).\n5. Constancia policial (si lo perdiste).\n6. El recibo de pago del trámite en Tesorería.\n7. Una notita dirigida a la Rectora pidiendo el duplicado y adjuntando todo esto."
+        ],
+        molesto: [
+            "Le informamos los requisitos obligatorios para tramitar duplicado de título: 1) Fotocopia Título Secundario autenticada, 2) Fotocopia DNI actualizado, 3) Partida de nacimiento actualizada, 4) Título original si está deteriorado, 5) Constancia policial por extravío, 6) Recibo de pago en tesorería, 7) Nota formal a la rectora."
+        ]
+    },
     carreras: {
         formal: [
             "La oferta académica del IES N° 7 'Populorum Progressio' - INTELA consta de las siguientes carreras presenciales:\n\nTecnicaturas Superiores (3 años):\n1) Ciencia de Datos e Inteligencia Artificial\n2) Gestión Jurídica\n3) Gestión Ambiental\n4) Niñez, Adolescencia y Familia\n5) Laboratorio de Análisis Clínicos\n6) Hemoterapia\n7) Acompañamiento Terapéutico\n8) Administración de Empresas\n9) Administración Pública\n\nProfesorados (4 años):\n1) Profesorado en Ciencia Política\n2) Profesorado en Educación Especial\n3) Profesorado en Ciencias Sagradas\n\n¿De cuál de ellas le gustaría recibir información?",
