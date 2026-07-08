@@ -22,44 +22,62 @@
             <div class="chat-messages" id="chatMessages">
                 <div class="message bot">
                     <div class="avatar"><img src="/img/mascot.png" alt="Bot"></div>
-                    <div class="bubble">
-                        ¡Hola! Soy el asistente virtual del <strong>IES N° 7 "Populorum Progressio"</strong>.<br><br>
+                    <div class="bubble initial-message">
+                        <p>¡Hola! Soy el asistente virtual del <strong>IES N° 7 "Populorum Progressio"</strong>.</p>
                         
                         <details class="chat-accordion">
-                            <summary>🎯 Ver Oferta Académica</summary>
+                            <summary>
+                                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                                Oferta Académica
+                            </summary>
                             <div class="accordion-content">
-                                <strong>▪️ Salud y Cuidado</strong><br>
-                                Laboratorio de Análisis Clínicos (3 años)<br>
-                                Hemoterapia (3 años)<br>
-                                Acompañamiento Terapéutico (3 años)<br>
-                                Niñez, Adolescencia y Familia (3 años)<br><br>
+                                <div class="career-category">
+                                    <h4><svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg> Salud y Cuidado</h4>
+                                    <ul>
+                                        <li>Laboratorio de Análisis Clínicos (3 años)</li>
+                                        <li>Hemoterapia (3 años)</li>
+                                        <li>Acompañamiento Terapéutico (3 años)</li>
+                                        <li>Niñez, Adolescencia y Familia (3 años)</li>
+                                    </ul>
+                                </div>
                                 
-                                <strong>▪️ Tecnología y Gestión</strong><br>
-                                Ciencia de Datos e Inteligencia Artificial (3 años)<br>
-                                Administración de Empresas (3 años)<br>
-                                Administración Pública (3 años)<br>
-                                Gestión Jurídica (3 años)<br>
-                                Gestión Ambiental (3 años)<br><br>
+                                <div class="career-category">
+                                    <h4><svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><line x1="3" x2="21" y1="9" y2="9"></line><line x1="9" x2="9" y1="21" y2="9"></line></svg> Tecnología y Gestión</h4>
+                                    <ul>
+                                        <li>Ciencia de Datos e Inteligencia Artificial (3 años)</li>
+                                        <li>Administración de Empresas (3 años)</li>
+                                        <li>Administración Pública (3 años)</li>
+                                        <li>Gestión Jurídica (3 años)</li>
+                                        <li>Gestión Ambiental (3 años)</li>
+                                    </ul>
+                                </div>
                                 
-                                <strong>▪️ Educación (4 años)</strong><br>
-                                Prof. en Ciencia Política<br>
-                                Prof. en Educación Especial<br>
-                                Prof. en Ciencias Sagradas
+                                <div class="career-category">
+                                    <h4><svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg> Educación (4 años)</h4>
+                                    <ul>
+                                        <li>Prof. en Ciencia Política</li>
+                                        <li>Prof. en Educación Especial</li>
+                                        <li>Prof. en Ciencias Sagradas</li>
+                                    </ul>
+                                </div>
                             </div>
                         </details>
 
                         <details class="chat-accordion">
-                            <summary>ℹ️ Consultas Frecuentes</summary>
-                            <div class="accordion-content">
-                                ▪️ Perfil profesional de carreras<br>
-                                ▪️ Materias y planes de estudio<br>
-                                ▪️ Salida laboral en Jujuy<br>
-                                ▪️ Horarios y ubicación de la Sede<br>
-                                ▪️ Requisitos de inscripción
+                            <summary>
+                                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+                                Consultas Frecuentes
+                            </summary>
+                            <div class="accordion-content btn-list">
+                                <button class="quick-btn inline-quick-btn" data-msg="¿De qué trata cada carrera?">Perfil profesional de carreras</button>
+                                <button class="quick-btn inline-quick-btn" data-msg="¿Qué materias tienen?">Materias y planes de estudio</button>
+                                <button class="quick-btn inline-quick-btn" data-msg="¿Cuál es la salida laboral en Jujuy?">Salida laboral en Jujuy</button>
+                                <button class="quick-btn inline-quick-btn" data-msg="¿Cuáles son los horarios de atención y dónde quedan?">Horarios y ubicación de la Sede</button>
+                                <button class="quick-btn inline-quick-btn" data-msg="Requisitos de inscripción">Requisitos de inscripción</button>
                             </div>
                         </details>
                         
-                        <br><em>¿En qué te puedo asesorar hoy?</em>
+                        <p class="bot-prompt">¿En qué te puedo asesorar hoy?</p>
                     </div>
                 </div>
             </div>
