@@ -2115,6 +2115,12 @@ export function procesarMensaje(texto, sessionId = 'default_session') {
     const tono = detectarTono(texto);
     const intenciones = detectarIntenciones(texto);
 
+    // Limpiar contexto si hay términos genéricos/plurales
+    const tL = texto.toLowerCase();
+    if (tL.includes('cada carrera') || tL.includes('las carreras') || tL.includes('todas las')) {
+        sesion.carreraContexto = null;
+    }
+
     // Detectar si el texto menciona alguna carrera específica en la consulta actual
     const carreraDetectada = detectarCarrera(texto);
     if (carreraDetectada) {
@@ -2130,6 +2136,14 @@ export function procesarMensaje(texto, sessionId = 'default_session') {
                 intenciones.splice(idx, 1);
             }
         });
+    }
+
+    // Si se pregunta específicamente por tecnicaturas o profesorados, eliminar la intención general de carreras
+    if (intenciones.includes('tecnicaturas') || intenciones.includes('profesorados')) {
+        const idx = intenciones.indexOf('carreras');
+        if (idx !== -1) {
+            intenciones.splice(idx, 1);
+        }
     }
 
     // Si se detectó una carrera pero no hay intenciones de información específicas,
