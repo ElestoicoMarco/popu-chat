@@ -702,6 +702,150 @@ const RESPUESTAS_GENERALES = {
             "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos sinceramente la demora. El horario oficial y estricto de cursado y atención administrativa es de lunes a viernes de 08:00 a 12:30 horas. Agradecemos su comprensión."
         ]
     },
+    
+    distribucion_aulas: {
+        formal: [
+            `Le presentamos la distribución general de aulas asignadas para el ciclo lectivo 2026:<br><div style='margin-top: 10px;'>
+    <h4 style='color: var(--primary); margin-bottom: 5px;'>☀️ Turno Mañana</h4>
+    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
+        <li><b>Ciencia de Datos e IA:</b> 1° Aula 23 | 2° Aula 22 | 3° Aula 10</li>
+        <li><b>Ciencia Política:</b> 1° Aula 35 | 2° Aula 31 | 3° Aula 30 | 4° Aula 33</li>
+        <li><b>Educación Especial:</b> 1° Aula 13 | 2° Aula 21 | 3° Aula 20 | 4° Aula 12</li>
+    </ul>
+
+    <h4 style='color: var(--primary); margin-bottom: 5px;'>⛅ Turno Tarde</h4>
+    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
+        <li><b>Gestión Jurídica:</b> 1° Aula 1 | 2° Aula 35 | 3° Aula 37</li>
+        <li><b>Niñez y Familia:</b> 1° Aula 2 | 2° Aula 24</li>
+        <li><b>Laboratorio Clínico:</b> 1° Aula 13 | 2° Aula 20 | 3° Aula 21</li>
+        <li><b>Hemoterapia:</b> 1° Aula 23 | 2° Aula 12 | 3° Aula 10</li>
+        <li><b>Acomp. Terapéutico:</b> 1° Aula 25 | 2° Aula 22 | 3° Aula 33</li>
+        <li><b>Adm. de Empresas:</b> 1° Aula 34 | 2° Aula 36 | 3° Aula 30</li>
+    </ul>
+
+    <h4 style='color: var(--primary); margin-bottom: 5px;'>🌙 Turno Noche</h4>
+    <ul style='list-style: none; padding-left: 10px;'>
+        <li><b>Educación Especial:</b> 1° Aula 13 | 2° Aula 25 | 3° Aula 10 | 4° Aula 35</li>
+        <li><b>Ciencias Sagradas:</b> 1° Aula 22 | 2° Aula 21 | 3° Aula 20 | 4° Aula 33</li>
+        <li><b>Gestión Ambiental:</b> 1° Aula 30 | 2° Aula 31</li>
+        <li><b>Adm. de Empresas:</b> 1° Aula 34 | 2° Aula 36 | 3° Aula 37</li>
+        <li><b>Adm. Pública:</b> 1° Aula 23 | 2° Aula 24 | 3° Aula 26</li>
+    </ul>
+</div>`,
+            `La distribución de aulas para todas las carreras se organiza de la siguiente manera:<br><div style='margin-top: 10px;'>
+    <h4 style='color: var(--primary); margin-bottom: 5px;'>☀️ Turno Mañana</h4>
+    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
+        <li><b>Ciencia de Datos e IA:</b> 1° Aula 23 | 2° Aula 22 | 3° Aula 10</li>
+        <li><b>Ciencia Política:</b> 1° Aula 35 | 2° Aula 31 | 3° Aula 30 | 4° Aula 33</li>
+        <li><b>Educación Especial:</b> 1° Aula 13 | 2° Aula 21 | 3° Aula 20 | 4° Aula 12</li>
+    </ul>
+
+    <h4 style='color: var(--primary); margin-bottom: 5px;'>⛅ Turno Tarde</h4>
+    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
+        <li><b>Gestión Jurídica:</b> 1° Aula 1 | 2° Aula 35 | 3° Aula 37</li>
+        <li><b>Niñez y Familia:</b> 1° Aula 2 | 2° Aula 24</li>
+        <li><b>Laboratorio Clínico:</b> 1° Aula 13 | 2° Aula 20 | 3° Aula 21</li>
+        <li><b>Hemoterapia:</b> 1° Aula 23 | 2° Aula 12 | 3° Aula 10</li>
+        <li><b>Acomp. Terapéutico:</b> 1° Aula 25 | 2° Aula 22 | 3° Aula 33</li>
+        <li><b>Adm. de Empresas:</b> 1° Aula 34 | 2° Aula 36 | 3° Aula 30</li>
+    </ul>
+
+    <h4 style='color: var(--primary); margin-bottom: 5px;'>🌙 Turno Noche</h4>
+    <ul style='list-style: none; padding-left: 10px;'>
+        <li><b>Educación Especial:</b> 1° Aula 13 | 2° Aula 25 | 3° Aula 10 | 4° Aula 35</li>
+        <li><b>Ciencias Sagradas:</b> 1° Aula 22 | 2° Aula 21 | 3° Aula 20 | 4° Aula 33</li>
+        <li><b>Gestión Ambiental:</b> 1° Aula 30 | 2° Aula 31</li>
+        <li><b>Adm. de Empresas:</b> 1° Aula 34 | 2° Aula 36 | 3° Aula 37</li>
+        <li><b>Adm. Pública:</b> 1° Aula 23 | 2° Aula 24 | 3° Aula 26</li>
+    </ul>
+</div>`
+        ],
+        informal: [
+            `¡Acá tenés la distribución de aulas para todas las carreras! Buscá tu turno:<br><div style='margin-top: 10px;'>
+    <h4 style='color: var(--primary); margin-bottom: 5px;'>☀️ Turno Mañana</h4>
+    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
+        <li><b>Ciencia de Datos e IA:</b> 1° Aula 23 | 2° Aula 22 | 3° Aula 10</li>
+        <li><b>Ciencia Política:</b> 1° Aula 35 | 2° Aula 31 | 3° Aula 30 | 4° Aula 33</li>
+        <li><b>Educación Especial:</b> 1° Aula 13 | 2° Aula 21 | 3° Aula 20 | 4° Aula 12</li>
+    </ul>
+
+    <h4 style='color: var(--primary); margin-bottom: 5px;'>⛅ Turno Tarde</h4>
+    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
+        <li><b>Gestión Jurídica:</b> 1° Aula 1 | 2° Aula 35 | 3° Aula 37</li>
+        <li><b>Niñez y Familia:</b> 1° Aula 2 | 2° Aula 24</li>
+        <li><b>Laboratorio Clínico:</b> 1° Aula 13 | 2° Aula 20 | 3° Aula 21</li>
+        <li><b>Hemoterapia:</b> 1° Aula 23 | 2° Aula 12 | 3° Aula 10</li>
+        <li><b>Acomp. Terapéutico:</b> 1° Aula 25 | 2° Aula 22 | 3° Aula 33</li>
+        <li><b>Adm. de Empresas:</b> 1° Aula 34 | 2° Aula 36 | 3° Aula 30</li>
+    </ul>
+
+    <h4 style='color: var(--primary); margin-bottom: 5px;'>🌙 Turno Noche</h4>
+    <ul style='list-style: none; padding-left: 10px;'>
+        <li><b>Educación Especial:</b> 1° Aula 13 | 2° Aula 25 | 3° Aula 10 | 4° Aula 35</li>
+        <li><b>Ciencias Sagradas:</b> 1° Aula 22 | 2° Aula 21 | 3° Aula 20 | 4° Aula 33</li>
+        <li><b>Gestión Ambiental:</b> 1° Aula 30 | 2° Aula 31</li>
+        <li><b>Adm. de Empresas:</b> 1° Aula 34 | 2° Aula 36 | 3° Aula 37</li>
+        <li><b>Adm. Pública:</b> 1° Aula 23 | 2° Aula 24 | 3° Aula 26</li>
+    </ul>
+</div>`,
+            `Te paso el listado completo de aulas para este año:<br><div style='margin-top: 10px;'>
+    <h4 style='color: var(--primary); margin-bottom: 5px;'>☀️ Turno Mañana</h4>
+    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
+        <li><b>Ciencia de Datos e IA:</b> 1° Aula 23 | 2° Aula 22 | 3° Aula 10</li>
+        <li><b>Ciencia Política:</b> 1° Aula 35 | 2° Aula 31 | 3° Aula 30 | 4° Aula 33</li>
+        <li><b>Educación Especial:</b> 1° Aula 13 | 2° Aula 21 | 3° Aula 20 | 4° Aula 12</li>
+    </ul>
+
+    <h4 style='color: var(--primary); margin-bottom: 5px;'>⛅ Turno Tarde</h4>
+    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
+        <li><b>Gestión Jurídica:</b> 1° Aula 1 | 2° Aula 35 | 3° Aula 37</li>
+        <li><b>Niñez y Familia:</b> 1° Aula 2 | 2° Aula 24</li>
+        <li><b>Laboratorio Clínico:</b> 1° Aula 13 | 2° Aula 20 | 3° Aula 21</li>
+        <li><b>Hemoterapia:</b> 1° Aula 23 | 2° Aula 12 | 3° Aula 10</li>
+        <li><b>Acomp. Terapéutico:</b> 1° Aula 25 | 2° Aula 22 | 3° Aula 33</li>
+        <li><b>Adm. de Empresas:</b> 1° Aula 34 | 2° Aula 36 | 3° Aula 30</li>
+    </ul>
+
+    <h4 style='color: var(--primary); margin-bottom: 5px;'>🌙 Turno Noche</h4>
+    <ul style='list-style: none; padding-left: 10px;'>
+        <li><b>Educación Especial:</b> 1° Aula 13 | 2° Aula 25 | 3° Aula 10 | 4° Aula 35</li>
+        <li><b>Ciencias Sagradas:</b> 1° Aula 22 | 2° Aula 21 | 3° Aula 20 | 4° Aula 33</li>
+        <li><b>Gestión Ambiental:</b> 1° Aula 30 | 2° Aula 31</li>
+        <li><b>Adm. de Empresas:</b> 1° Aula 34 | 2° Aula 36 | 3° Aula 37</li>
+        <li><b>Adm. Pública:</b> 1° Aula 23 | 2° Aula 24 | 3° Aula 26</li>
+    </ul>
+</div>`
+        ],
+        molesto: [
+            `A continuación detallamos la distribución de aulas para toda la institución:<br><div style='margin-top: 10px;'>
+    <h4 style='color: var(--primary); margin-bottom: 5px;'>☀️ Turno Mañana</h4>
+    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
+        <li><b>Ciencia de Datos e IA:</b> 1° Aula 23 | 2° Aula 22 | 3° Aula 10</li>
+        <li><b>Ciencia Política:</b> 1° Aula 35 | 2° Aula 31 | 3° Aula 30 | 4° Aula 33</li>
+        <li><b>Educación Especial:</b> 1° Aula 13 | 2° Aula 21 | 3° Aula 20 | 4° Aula 12</li>
+    </ul>
+
+    <h4 style='color: var(--primary); margin-bottom: 5px;'>⛅ Turno Tarde</h4>
+    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
+        <li><b>Gestión Jurídica:</b> 1° Aula 1 | 2° Aula 35 | 3° Aula 37</li>
+        <li><b>Niñez y Familia:</b> 1° Aula 2 | 2° Aula 24</li>
+        <li><b>Laboratorio Clínico:</b> 1° Aula 13 | 2° Aula 20 | 3° Aula 21</li>
+        <li><b>Hemoterapia:</b> 1° Aula 23 | 2° Aula 12 | 3° Aula 10</li>
+        <li><b>Acomp. Terapéutico:</b> 1° Aula 25 | 2° Aula 22 | 3° Aula 33</li>
+        <li><b>Adm. de Empresas:</b> 1° Aula 34 | 2° Aula 36 | 3° Aula 30</li>
+    </ul>
+
+    <h4 style='color: var(--primary); margin-bottom: 5px;'>🌙 Turno Noche</h4>
+    <ul style='list-style: none; padding-left: 10px;'>
+        <li><b>Educación Especial:</b> 1° Aula 13 | 2° Aula 25 | 3° Aula 10 | 4° Aula 35</li>
+        <li><b>Ciencias Sagradas:</b> 1° Aula 22 | 2° Aula 21 | 3° Aula 20 | 4° Aula 33</li>
+        <li><b>Gestión Ambiental:</b> 1° Aula 30 | 2° Aula 31</li>
+        <li><b>Adm. de Empresas:</b> 1° Aula 34 | 2° Aula 36 | 3° Aula 37</li>
+        <li><b>Adm. Pública:</b> 1° Aula 23 | 2° Aula 24 | 3° Aula 26</li>
+    </ul>
+</div>`
+        ]
+    },
     ubicacion: {
         formal: [
             "El cursado presencial y la atención institucional se llevan a cabo en la Sede Central del IES N° 7 'Populorum Progressio' - INTELA, ubicada en Sarmiento 268, San Salvador de Jujuy.",
@@ -782,7 +926,6 @@ function generarAclaracionDinamica(intencion, tono) {
         'coordinador': 'el coordinador',
         'horario_atencion': 'los horarios',
         'requisitos_inscripcion': 'los requisitos',
-        'distribucion_aulas': 'la distribución de aulas',
         'ubicacion': 'la ubicación'
     };
     const etiqueta = mapaIntenciones[intencion] || 'información';
@@ -794,7 +937,6 @@ function generarAclaracionDinamica(intencion, tono) {
         'coordinador': 'Coordinador de',
         'horario_atencion': 'Horarios de',
         'requisitos_inscripcion': 'Requisitos de',
-        'distribucion_aulas': 'Aulas de',
         'ubicacion': 'Ubicación de'
     };
     const prefijo = prefijoBoton[intencion] || 'Información de';
