@@ -70,3 +70,11 @@ chatInput.addEventListener('keydown', (e) => {
 quickBtns.forEach(btn => {
     btn.addEventListener('click', () => enviarMensaje(btn.dataset.msg));
 });
+
+// Delegación de eventos para botones inyectados dinámicamente en el chat
+chatMessages.addEventListener('click', (e) => {
+    const btn = e.target.closest('.quick-btn');
+    if (btn && btn.dataset.msg) {
+        enviarMensaje(btn.dataset.msg);
+    }
+});
