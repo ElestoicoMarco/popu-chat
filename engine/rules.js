@@ -623,17 +623,7 @@ const RESPUESTAS_GENERALES = {
             "Los aranceles de trámites para 2026 son:<br><ul><li>Constancias: $3.800</li><li>Libretas: $11.000</li><li>Analítico: $7.500</li><li>Doc. p/ Junta: $12.500</li><li>Duplicado de Título: $27.000</li><li>Biblioteca: $8.000</li></ul>"
         ]
     },
-    distribucion_aulas: {
-        formal: [
-            "Distribución de espacios 2026:<br><br><b>Turno Mañana:</b><ul><li>Cs. Datos e IA: 1° Aula 23 | 2° Aula 22 | 3° Aula 10</li><li>Cs. Políticas: 1° Aula 35 | 2° Aula 31 | 3° Aula 30 | 4° Aula 33</li><li>Educ. Especial: 1° Aula 13 | 2° Aula 21 | 3° Aula 20 | 4° Aula 12</li><li>Trabajo Social: 2° Aula 24 | 3° Aula 26 | 4° Aula 25</li></ul><b>Turno Tarde:</b><ul><li>Gestión Jurídica: 1° Aula 1 | 2° Aula 35 | 3° Aula 37</li><li>Adm. Empresas: 1° Aula 34 | 2° Aula 36 | 3° Aula 30</li><li>Laboratorio: 1° Aula 13 | 2° Aula 20 | 3° Aula 21</li><li>Hemoterapia: 1° Aula 23 | 2° Aula 12 | 3° Aula 10</li><li>Trabajo Social: 3° Aula 26 | 4° Aula 31</li><li>Niñez: 1° Aula 2 | 2° Aula 24</li><li>Acomp. Terapéutico: 1° Aula 25 | 2° Aula 22 | 3° Aula 33</li></ul><b>Turno Noche:</b><ul><li>Educ. Especial: 1° Aula 13 | 2° Aula 25 | 3° Aula 10 | 4° Aula 35</li><li>Gestión Ambiental: 1° Aula 30 | 2° Aula 31</li><li>Cs. Sagradas: 1° Aula 22 | 2° Aula 21 | 3° Aula 20 | 4° Aula 33</li><li>Adm. Empresas: 1° Aula 34 | 2° Aula 36 | 3° Aula 37</li><li>Adm. Pública: 1° Aula 23 | 2° Aula 24 | 3° Aula 26</li></ul>"
-        ],
-        informal: [
-            "Te paso la distribución de aulas para 2026. ¡Buscá tu carrera y año!<br><br><b>Turno Mañana:</b><ul><li>Datos e IA: 1°(A23), 2°(A22), 3°(A10)</li><li>Políticas: 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li><li>Especial: 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li>Trabajo Social: 2°(A24), 3°(A26), 4°(A25)</li></ul><b>Turno Tarde:</b><ul><li>Jurídica: 1°(A1), 2°(A35), 3°(A37)</li><li>Empresas: 1°(A34), 2°(A36), 3°(A30)</li><li>Laboratorio: 1°(A13), 2°(A20), 3°(A21)</li><li>Hemoterapia: 1°(A23), 2°(A12), 3°(A10)</li><li>Trabajo Social: 3°(A26), 4°(A31)</li><li>Niñez: 1°(A2), 2°(A24)</li><li>Acomp. Terap: 1°(A25), 2°(A22), 3°(A33)</li></ul><b>Turno Noche:</b><ul><li>Especial: 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li><li>Ambiental: 1°(A30), 2°(A31)</li><li>Sagradas: 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li><li>Empresas: 1°(A34), 2°(A36), 3°(A37)</li><li>Pública: 1°(A23), 2°(A24), 3°(A26)</li></ul>"
-        ],
-        molesto: [
-            "La distribución de espacios asignados para 2026 es la siguiente:<br><b>Mañana:</b> Datos IA (23,22,10), Políticas (35,31,30,33), Especial (13,21,20,12), Trabajo Social (24,26,25).<br><b>Tarde:</b> Jurídica (1,35,37), Empresas (34,36,30), Laboratorio (13,20,21), Hemoterapia (23,12,10), Trabajo Social (26,31), Niñez (2,24), Acomp.Terap (25,22,33).<br><b>Noche:</b> Especial (13,25,10,35), Ambiental (30,31), Sagradas (22,21,20,33), Empresas (34,36,37), Pública (23,24,26)."
-        ]
-    },
+    
     requisitos_duplicado: {
         formal: [
             "Requisitos para tramitar otros ejemplares de títulos (duplicados):<br><ul><li>Fotocopia Título Secundario autenticado por el Dpto. Títulos del Min. de Educación.</li><li>Fotocopia del DNI actualizado.</li><li>Certificado o Partida de Nacimiento actualizado.</li><li>Título Terciario emitido por esta institución (si el motivo es desgaste o errores).</li><li>Constancia Policial (en caso de extravío).</li><li>Recibo de pago en Tesorería.</li><li>Nota dirigida a la rectora solicitando el duplicado y adjuntando la documentación precedente.</li></ul>"
@@ -792,6 +782,7 @@ function generarAclaracionDinamica(intencion, tono) {
         'coordinador': 'el coordinador',
         'horario_atencion': 'los horarios',
         'requisitos_inscripcion': 'los requisitos',
+        'distribucion_aulas': 'la distribución de aulas',
         'ubicacion': 'la ubicación'
     };
     const etiqueta = mapaIntenciones[intencion] || 'información';
@@ -803,6 +794,7 @@ function generarAclaracionDinamica(intencion, tono) {
         'coordinador': 'Coordinador de',
         'horario_atencion': 'Horarios de',
         'requisitos_inscripcion': 'Requisitos de',
+        'distribucion_aulas': 'Aulas de',
         'ubicacion': 'Ubicación de'
     };
     const prefijo = prefijoBoton[intencion] || 'Información de';
@@ -909,6 +901,23 @@ const RESPUESTAS_CARRERA = {
             "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos la demora. Confirmamos que el horario de cursado de Ciencia de Datos es en el Turno Mañana, de lunes a viernes de 08:00 a 12:30 horas. Agradecemos su comprensión."
         ]
         },
+        distribucion_aulas: {
+            formal: [
+            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Mañana:</b> 1°(A23), 2°(A22), 3°(A10)</li></ul>",
+            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Mañana:</b> 1°(A23), 2°(A22), 3°(A10)</li></ul>",
+            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Mañana:</b> 1°(A23), 2°(A22), 3°(A10)</li></ul> Quedamos a su disposición."
+        ],
+            informal: [
+            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Mañana:</b> 1°(A23), 2°(A22), 3°(A10)</li></ul>",
+            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Mañana:</b> 1°(A23), 2°(A22), 3°(A10)</li></ul>",
+            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Mañana:</b> 1°(A23), 2°(A22), 3°(A10)</li></ul>"
+        ],
+            molesto: [
+            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Mañana:</b> 1°(A23), 2°(A22), 3°(A10)</li></ul>",
+            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Mañana:</b> 1°(A23), 2°(A22), 3°(A10)</li></ul>",
+            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Mañana:</b> 1°(A23), 2°(A22), 3°(A10)</li></ul>"
+        ]
+        },
         coordinador: {
             formal: [
             "El coordinador de la Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial es el Ing. Pablo Vilte. Sus horarios de consulta presencial son los días Martes de 10:00 a 12:00 hs. y Jueves de 08:00 a 10:00 hs.",
@@ -994,6 +1003,23 @@ const RESPUESTAS_CARRERA = {
             "Lamentamos la demora. Le informamos que las clases de Gestión Jurídica se dictan durante el Turno Tarde.",
             "Pedimos disculpas. Confirmamos que la carrera de Gestión Jurídica se cursa en el Turno Tarde.",
             "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos la demora. Le informamos que las clases de Gestión Jurídica se dictan durante el Turno Tarde. Agradecemos su comprensión."
+        ]
+        },
+        distribucion_aulas: {
+            formal: [
+            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A1), 2°(A35), 3°(A37)</li></ul>",
+            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Tarde:</b> 1°(A1), 2°(A35), 3°(A37)</li></ul>",
+            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A1), 2°(A35), 3°(A37)</li></ul> Quedamos a su disposición."
+        ],
+            informal: [
+            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Tarde:</b> 1°(A1), 2°(A35), 3°(A37)</li></ul>",
+            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Tarde:</b> 1°(A1), 2°(A35), 3°(A37)</li></ul>",
+            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Tarde:</b> 1°(A1), 2°(A35), 3°(A37)</li></ul>"
+        ],
+            molesto: [
+            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Tarde:</b> 1°(A1), 2°(A35), 3°(A37)</li></ul>",
+            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Tarde:</b> 1°(A1), 2°(A35), 3°(A37)</li></ul>",
+            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A1), 2°(A35), 3°(A37)</li></ul>"
         ]
         },
         coordinador: {
@@ -1083,6 +1109,23 @@ const RESPUESTAS_CARRERA = {
             "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos la demora. Le informamos que las clases de Ciencia Política se dictan durante el Turno Mañana. Agradecemos su comprensión."
         ]
         },
+        distribucion_aulas: {
+            formal: [
+            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Mañana:</b> 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li></ul>",
+            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Mañana:</b> 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li></ul>",
+            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Mañana:</b> 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li></ul> Quedamos a su disposición."
+        ],
+            informal: [
+            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Mañana:</b> 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li></ul>",
+            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Mañana:</b> 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li></ul>",
+            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Mañana:</b> 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li></ul>"
+        ],
+            molesto: [
+            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Mañana:</b> 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li></ul>",
+            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Mañana:</b> 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li></ul>",
+            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Mañana:</b> 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li></ul>"
+        ]
+        },
         coordinador: {
             formal: [
             "La coordinadora del Profesorado de Educación Secundaria en Ciencia Política es la Prof. Silvia Cichello. Sus horarios de consulta presencial son los días Lunes de 16:00 a 18:40 hs., Miércoles de 09:20 a 12:00 hs., y Jueves de 08:00 a 12:00 hs. y de 15:40 a 18:20 hs.",
@@ -1168,6 +1211,23 @@ const RESPUESTAS_CARRERA = {
             "Lamentamos la demora. Le informamos que el cursado de Educación Especial se realiza en los Turnos Mañana y Noche.",
             "Pedimos disculpas por la tardanza. Confirmamos que la carrera de Educación Especial se dicta en los Turnos Mañana y Noche.",
             "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos la demora. Le informamos que el cursado de Educación Especial se realiza en los Turnos Mañana y Noche. Agradecemos su comprensión."
+        ]
+        },
+        distribucion_aulas: {
+            formal: [
+            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Mañana:</b> 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li><b>Turno Noche:</b> 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li></ul>",
+            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Mañana:</b> 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li><b>Turno Noche:</b> 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li></ul>",
+            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Mañana:</b> 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li><b>Turno Noche:</b> 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li></ul> Quedamos a su disposición."
+        ],
+            informal: [
+            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Mañana:</b> 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li><b>Turno Noche:</b> 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li></ul>",
+            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Mañana:</b> 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li><b>Turno Noche:</b> 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li></ul>",
+            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Mañana:</b> 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li><b>Turno Noche:</b> 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li></ul>"
+        ],
+            molesto: [
+            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Mañana:</b> 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li><b>Turno Noche:</b> 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li></ul>",
+            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Mañana:</b> 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li><b>Turno Noche:</b> 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li></ul>",
+            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Mañana:</b> 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li><b>Turno Noche:</b> 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li></ul>"
         ]
         },
         coordinador: {
@@ -1257,6 +1317,23 @@ const RESPUESTAS_CARRERA = {
             "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos la demora. Le informamos que las clases de Ciencias Sagradas se dictan durante el Turno Noche. Agradecemos su comprensión."
         ]
         },
+        distribucion_aulas: {
+            formal: [
+            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Noche:</b> 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li></ul>",
+            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Noche:</b> 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li></ul>",
+            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Noche:</b> 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li></ul> Quedamos a su disposición."
+        ],
+            informal: [
+            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Noche:</b> 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li></ul>",
+            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Noche:</b> 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li></ul>",
+            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Noche:</b> 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li></ul>"
+        ],
+            molesto: [
+            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Noche:</b> 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li></ul>",
+            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Noche:</b> 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li></ul>",
+            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Noche:</b> 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li></ul>"
+        ]
+        },
         coordinador: {
             formal: [
             "La coordinadora del Profesorado en Ciencias Sagradas es la Prof. Susana Villa. Sus horarios de consulta presencial son los días Martes de 17:00 a 20:00 hs., y Miércoles y Jueves de 18:00 a 20:30 hs.",
@@ -1342,6 +1419,23 @@ const RESPUESTAS_CARRERA = {
             "Lamentamos la demora. Le informamos que las clases de Gestión Ambiental se dictan durante el Turno Noche.",
             "Pedimos disculpas. Confirmamos que la carrera de Gestión Ambiental se cursa en el Turno Noche.",
             "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos la demora. Le informamos que las clases de Gestión Ambiental se dictan durante el Turno Noche. Agradecemos su comprensión."
+        ]
+        },
+        distribucion_aulas: {
+            formal: [
+            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Noche:</b> 1°(A30), 2°(A31)</li></ul>",
+            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Noche:</b> 1°(A30), 2°(A31)</li></ul>",
+            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Noche:</b> 1°(A30), 2°(A31)</li></ul> Quedamos a su disposición."
+        ],
+            informal: [
+            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Noche:</b> 1°(A30), 2°(A31)</li></ul>",
+            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Noche:</b> 1°(A30), 2°(A31)</li></ul>",
+            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Noche:</b> 1°(A30), 2°(A31)</li></ul>"
+        ],
+            molesto: [
+            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Noche:</b> 1°(A30), 2°(A31)</li></ul>",
+            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Noche:</b> 1°(A30), 2°(A31)</li></ul>",
+            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Noche:</b> 1°(A30), 2°(A31)</li></ul>"
         ]
         },
         coordinador: {
@@ -1605,6 +1699,23 @@ const RESPUESTAS_CARRERA = {
             "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos la demora. Le informamos que las clases de Hemoterapia se dictan durante el Turno Tarde (de 13:30 a 18:00 hs). Agradecemos su comprensión."
         ]
         },
+        distribucion_aulas: {
+            formal: [
+            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A23), 2°(A12), 3°(A10)</li></ul>",
+            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Tarde:</b> 1°(A23), 2°(A12), 3°(A10)</li></ul>",
+            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A23), 2°(A12), 3°(A10)</li></ul> Quedamos a su disposición."
+        ],
+            informal: [
+            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Tarde:</b> 1°(A23), 2°(A12), 3°(A10)</li></ul>",
+            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Tarde:</b> 1°(A23), 2°(A12), 3°(A10)</li></ul>",
+            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Tarde:</b> 1°(A23), 2°(A12), 3°(A10)</li></ul>"
+        ],
+            molesto: [
+            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Tarde:</b> 1°(A23), 2°(A12), 3°(A10)</li></ul>",
+            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Tarde:</b> 1°(A23), 2°(A12), 3°(A10)</li></ul>",
+            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A23), 2°(A12), 3°(A10)</li></ul>"
+        ]
+        },
         coordinador: {
             formal: [
             "El coordinador de la Tecnicatura Superior en Hemoterapia es el T.S. Hemot. Alvaro Galarza. Sus horarios de consulta presencial son los días Jueves de 16:40 a 18:00 hs. y Viernes de 14:40 a 17:20 hs.",
@@ -1690,6 +1801,23 @@ const RESPUESTAS_CARRERA = {
             "Lamentamos la demora. Le informamos que las clases de Acompañamiento Terapéutico se dictan durante el Turno Tarde.",
             "Pedimos disculpas. Confirmamos que la carrera de Acompañamiento Terapéutico se cursa en el Turno Tarde.",
             "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos la demora. Le informamos que las clases de Acompañamiento Terapéutico se dictan durante el Turno Tarde. Agradecemos su comprensión."
+        ]
+        },
+        distribucion_aulas: {
+            formal: [
+            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A25), 2°(A22), 3°(A33)</li></ul>",
+            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Tarde:</b> 1°(A25), 2°(A22), 3°(A33)</li></ul>",
+            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A25), 2°(A22), 3°(A33)</li></ul> Quedamos a su disposición."
+        ],
+            informal: [
+            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Tarde:</b> 1°(A25), 2°(A22), 3°(A33)</li></ul>",
+            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Tarde:</b> 1°(A25), 2°(A22), 3°(A33)</li></ul>",
+            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Tarde:</b> 1°(A25), 2°(A22), 3°(A33)</li></ul>"
+        ],
+            molesto: [
+            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Tarde:</b> 1°(A25), 2°(A22), 3°(A33)</li></ul>",
+            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Tarde:</b> 1°(A25), 2°(A22), 3°(A33)</li></ul>",
+            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A25), 2°(A22), 3°(A33)</li></ul>"
         ]
         },
         coordinador: {
@@ -1779,6 +1907,23 @@ const RESPUESTAS_CARRERA = {
             "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos la demora. Le informamos que las clases de Administración de Empresas se dictan durante los Turnos Tarde y Noche. Agradecemos su comprensión."
         ]
         },
+        distribucion_aulas: {
+            formal: [
+            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A34), 2°(A36), 3°(A30)</li><li><b>Turno Noche:</b> 1°(A34), 2°(A36), 3°(A37)</li></ul>",
+            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Tarde:</b> 1°(A34), 2°(A36), 3°(A30)</li><li><b>Turno Noche:</b> 1°(A34), 2°(A36), 3°(A37)</li></ul>",
+            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A34), 2°(A36), 3°(A30)</li><li><b>Turno Noche:</b> 1°(A34), 2°(A36), 3°(A37)</li></ul> Quedamos a su disposición."
+        ],
+            informal: [
+            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Tarde:</b> 1°(A34), 2°(A36), 3°(A30)</li><li><b>Turno Noche:</b> 1°(A34), 2°(A36), 3°(A37)</li></ul>",
+            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Tarde:</b> 1°(A34), 2°(A36), 3°(A30)</li><li><b>Turno Noche:</b> 1°(A34), 2°(A36), 3°(A37)</li></ul>",
+            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Tarde:</b> 1°(A34), 2°(A36), 3°(A30)</li><li><b>Turno Noche:</b> 1°(A34), 2°(A36), 3°(A37)</li></ul>"
+        ],
+            molesto: [
+            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Tarde:</b> 1°(A34), 2°(A36), 3°(A30)</li><li><b>Turno Noche:</b> 1°(A34), 2°(A36), 3°(A37)</li></ul>",
+            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Tarde:</b> 1°(A34), 2°(A36), 3°(A30)</li><li><b>Turno Noche:</b> 1°(A34), 2°(A36), 3°(A37)</li></ul>",
+            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A34), 2°(A36), 3°(A30)</li><li><b>Turno Noche:</b> 1°(A34), 2°(A36), 3°(A37)</li></ul>"
+        ]
+        },
         coordinador: {
             formal: [
             "El coordinador de la Tecnicatura Superior en Administración de Empresas es el Lic. Fernando Aranibar. Sus horarios de consulta presencial son los Lunes de 15:20 a 18:00 hs., Miércoles de 16:00 a 19:00 hs., y Viernes de 17:00 a 18:00 hs. y de 20:40 a 22:00 hs.",
@@ -1864,6 +2009,23 @@ const RESPUESTAS_CARRERA = {
             "Lamentamos la demora. Le informamos que las clases de Administración Pública se dictan durante el Turno Noche.",
             "Pedimos disculpas. Confirmamos que la carrera de Administración Pública se cursa en el Turno Noche.",
             "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos la demora. Le informamos que las clases de Administración Pública se dictan durante el Turno Noche. Agradecemos su comprensión."
+        ]
+        },
+        distribucion_aulas: {
+            formal: [
+            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Noche:</b> 1°(A23), 2°(A24), 3°(A26)</li></ul>",
+            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Noche:</b> 1°(A23), 2°(A24), 3°(A26)</li></ul>",
+            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Noche:</b> 1°(A23), 2°(A24), 3°(A26)</li></ul> Quedamos a su disposición."
+        ],
+            informal: [
+            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Noche:</b> 1°(A23), 2°(A24), 3°(A26)</li></ul>",
+            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Noche:</b> 1°(A23), 2°(A24), 3°(A26)</li></ul>",
+            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Noche:</b> 1°(A23), 2°(A24), 3°(A26)</li></ul>"
+        ],
+            molesto: [
+            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Noche:</b> 1°(A23), 2°(A24), 3°(A26)</li></ul>",
+            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Noche:</b> 1°(A23), 2°(A24), 3°(A26)</li></ul>",
+            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Noche:</b> 1°(A23), 2°(A24), 3°(A26)</li></ul>"
         ]
         },
         coordinador: {
