@@ -67,12 +67,8 @@ chatInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') enviarMensaje(chatInput.value);
 });
 
-quickBtns.forEach(btn => {
-    btn.addEventListener('click', () => enviarMensaje(btn.dataset.msg));
-});
-
-// Delegación de eventos para botones inyectados dinámicamente en el chat
-chatMessages.addEventListener('click', (e) => {
+// Delegación de eventos global para todos los botones inyectados y estáticos
+document.body.addEventListener('click', (e) => {
     const btn = e.target.closest('.quick-btn');
     if (btn && btn.dataset.msg) {
         enviarMensaje(btn.dataset.msg);
