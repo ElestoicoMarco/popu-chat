@@ -200,6 +200,17 @@ body {
     letter-spacing: 0.3px;
 }
 
+.bubble ul {
+    margin: 8px 0 8px 20px;
+    padding: 0;
+    list-style-type: disc;
+}
+
+.bubble li {
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
 .message.bot .bubble {
     background: var(--bot-bg);
     border: 1px solid rgba(79, 160, 216, 0.25);
