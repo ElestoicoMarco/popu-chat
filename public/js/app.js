@@ -36,8 +36,11 @@ function hideTyping() {
     if (el) el.remove();
 }
 
-async function enviarMensaje(texto) {
+async function enviarMensaje(texto, clickedBtn = null) {
     if (!texto.trim()) return;
+
+    if (clickedBtn) clickedBtn.classList.add('btn-loading');
+    else sendBtn.classList.add('btn-loading');
 
     addMessage(texto, 'user');
     chatInput.value = '';
@@ -58,19 +61,22 @@ async function enviarMensaje(texto) {
     } catch (err) {
         hideTyping();
         addMessage('Error de conexión con el servidor.', 'bot');
+    } finally {
+        if (clickedBtn) clickedBtn.classList.remove('btn-loading');
+        else sendBtn.classList.remove('btn-loading');
     }
 }
 
-sendBtn.addEventListener('click', () => enviarMensaje(chatInput.value));
+sendBtn.addEventListener('click', () => enviarMensaje(chatInput.value, sendBtn));
 
 chatInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') enviarMensaje(chatInput.value);
+    if (e.key === 'Enter') enviarMensaje(chatInput.value, sendBtn);
 });
 
 // Delegación de eventos global para todos los botones inyectados y estáticos
 document.body.addEventListener('click', (e) => {
     const btn = e.target.closest('.quick-btn');
     if (btn && btn.dataset.msg) {
-        enviarMensaje(btn.dataset.msg);
+        enviarMensaje(btn.dataset.msg, btn);
     }
 });

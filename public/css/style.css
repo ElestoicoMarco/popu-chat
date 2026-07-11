@@ -420,8 +420,13 @@ body {
     border-color: rgba(245, 206, 91, 0.6);
     background: rgba(245, 206, 91, 0.15);
     color: var(--primary);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.25), inset 0 0 0 rgba(255,255,255,0);
+}
+
+.quick-btn:active {
+    transform: scale(0.96) translateY(0);
+    box-shadow: inset 0px 4px 10px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .chat-input-area {
@@ -474,12 +479,13 @@ body {
 }
 
 .send-btn:hover {
-    transform: scale(1.08) translateY(-2px);
-    box-shadow: 0 6px 20px rgba(245, 206, 91, 0.4);
+    transform: scale(1.06) translateY(-2px);
+    box-shadow: 0 8px 25px rgba(245, 206, 91, 0.5);
 }
 
 .send-btn:active {
-    transform: scale(0.95);
+    transform: scale(0.96) translateY(0);
+    box-shadow: inset 0px 6px 15px rgba(0,0,0,0.5), 0 2px 5px rgba(245, 206, 91, 0.2);
 }
 
 .footer {
@@ -517,4 +523,43 @@ body {
     .logo h1 { font-size: 1.3rem; }
     .bubble { font-size: 0.9rem; max-width: 90%; }
     .quick-btn { font-size: 0.8rem; padding: 8px 14px; }
+}
+
+
+/* Estado de Carga para Botones */
+.btn-loading {
+    transform: scale(0.96) !important;
+    box-shadow: inset 0px 4px 10px rgba(0,0,0,0.4) !important;
+    color: transparent !important;
+    position: relative;
+    pointer-events: none;
+    animation: pulseDepth 1.5s infinite alternate !important;
+}
+
+.send-btn.btn-loading {
+    box-shadow: inset 0px 6px 15px rgba(0,0,0,0.5) !important;
+}
+
+.btn-loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-top: 3px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes pulseDepth {
+    0% { filter: brightness(1); }
+    100% { filter: brightness(0.85); }
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
