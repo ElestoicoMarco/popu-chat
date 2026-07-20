@@ -65,10 +65,23 @@ function normalizar(texto) {
     
     // 7. Tratar errores frecuentes y abreviaciones comunes de la temática
     const abreviaciones = {
-        // Correcciones de saludos con letras extra que no llegan a 3 (ej: "holaa")
+        // Correcciones de saludos modernos/adolescentes
+        '\\bhol[ais]*\\b': 'hola',
         '\\bhola+\\b': 'hola',
         '\\bbuenas+\\b': 'buenas',
+        '\\bbns\\b': 'buenas',
+        '\\bbuenis\\b': 'buenas',
         
+        // Abreviaciones adolescentes / chat
+        '\\bxfa\\b': 'por favor',
+        '\\bxf\\b': 'por favor',
+        '\\bplis\\b': 'por favor',
+        '\\bporfa\\b': 'por favor',
+        '\\bprofe\\b': 'profesor',
+        '\\bgcs\\b': 'gracias',
+        '\\bgx\\b': 'gracias',
+        '\\bgrx\\b': 'gracias',
+
         // Abreviaciones comunes
         '\\binfo\\b': 'informacion',
         '\\badm\\b': 'administracion',
@@ -125,7 +138,37 @@ function normalizar(texto) {
     // 8. Eliminar espacios innecesarios (dobles espacios a simples, y espacios en los extremos)
     t = t.replace(/\s+/g, ' ').trim();
     
-    return t;
+    // ============================================
+    // DICCCIONARIO DE SABIDURÍA (Lematización Extra)
+    // ============================================
+    const STOPWORDS_LOC = ['el', 'la', 'los', 'las', 'un', 'una', 'unos', 'unas', 'de', 'del', 'a', 'al', 'en', 'por', 'para', 'con', 'sin', 'quisiera', 'quiero', 'saber', 'sobre', 'que', 'como', 'cuando', 'donde', 'me', 'te', 'se', 'nos', 'lo', 'le', 'les'];
+    const LEMATIZACION = {
+        'abogacia': 'juridica',
+        'leyes': 'juridica',
+        'abogado': 'juridica',
+        'precio': 'cuota',
+        'precios': 'cuota',
+        'mensualidad': 'cuota',
+        'mensualidades': 'cuota',
+        'arancel': 'cuota',
+        'aranceles': 'cuota',
+        'pagar': 'cuota',
+        'pago': 'cuota'
+    };
+    
+    let palabras = t.split(/\s+/);
+    let palabrasLimpias = [];
+    
+    for (let palabra of palabras) {
+        if (!palabra || STOPWORDS_LOC.includes(palabra)) continue;
+        if (LEMATIZACION[palabra]) {
+            palabrasLimpias.push(LEMATIZACION[palabra]);
+        } else {
+            palabrasLimpias.push(palabra);
+        }
+    }
+    
+    return palabrasLimpias.join(' ').trim();
 }
 
 // ============================================================
