@@ -563,3 +563,91 @@ body {
     0% { transform: translate(-50%, -50%) rotate(0deg); }
     100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
+
+
+/* =========================================
+   SPLASH SCREEN (ACTIVANDO POPU-CHAT)
+   ========================================= */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 15, 24, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+}
+
+.splash-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.splash-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Levitación y Pulso de Energía */
+.splash-logo {
+    width: 120px;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(245, 206, 91, 0.2));
+    animation: levitatePulse 2.5s ease-in-out infinite;
+}
+
+@keyframes levitatePulse {
+    0% { 
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 0 10px rgba(79, 160, 216, 0.2));
+    }
+    50% { 
+        transform: translateY(-15px) scale(1.05);
+        filter: drop-shadow(0 0 35px rgba(245, 206, 91, 0.8));
+    }
+    100% { 
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 0 10px rgba(79, 160, 216, 0.2));
+    }
+}
+
+/* Texto Shimmer (Reflejo Metálico) */
+.splash-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 0;
+    /* Efecto Shimmer */
+    background: linear-gradient(90deg, #555 0%, #fff 50%, #555 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shimmerText 2s linear infinite;
+}
+
+@keyframes shimmerText {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.dots {
+    display: inline-block;
+    animation: blinkDots 1.5s infinite;
+}
+
+@keyframes blinkDots {
+    0% { opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { opacity: 0.2; }
+}

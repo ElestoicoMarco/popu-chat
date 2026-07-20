@@ -1,3 +1,17 @@
+import { procesarMensaje } from './rules.js';
+
+// Splash Screen Logic
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const splash = document.getElementById('splash-screen');
+        if (splash) {
+            splash.classList.add('hidden');
+            // Quitarlo del DOM después de la transición
+            setTimeout(() => splash.remove(), 800);
+        }
+    }, 1800);
+});
+
 const chatMessages = document.getElementById('chatMessages');
 const chatInput = document.getElementById('chatInput');
 const sendBtn = document.getElementById('sendBtn');
@@ -46,21 +60,20 @@ async function enviarMensaje(texto, clickedBtn = null) {
     chatInput.value = '';
     showTyping();
 
-    const fetchPromise = fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ mensaje: texto, sessionId })
-    }).then(res => res.json());
-
-    const delayPromise = new Promise(resolve => setTimeout(resolve, 3000));
-
+    // Latencia Cero: Ejecución local en el navegador
     try {
-        const [data] = await Promise.all([fetchPromise, delayPromise]);
+        const respuestaBot = procesarMensaje(texto, sessionId);
+        
+        // Pequeño delay artificial muy corto (400ms) para que la interfaz se sienta natural
+        // y se pueda ver la animación del botón de carga
+        await new Promise(resolve => setTimeout(resolve, 400));
+        
         hideTyping();
-        addMessage(data.respuesta, 'bot');
+        addMessage(respuestaBot, 'bot');
     } catch (err) {
         hideTyping();
-        addMessage('Error de conexión con el servidor.', 'bot');
+        addMessage('Error al procesar el mensaje internamente.', 'bot');
+        console.error(err);
     } finally {
         if (clickedBtn) clickedBtn.classList.remove('btn-loading');
         else sendBtn.classList.remove('btn-loading');
