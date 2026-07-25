@@ -37,7 +37,9 @@ if (window.speechSynthesis) {
 if (voiceToggle) {
     voiceToggle.addEventListener('click', () => {
         isVoiceEnabled = !isVoiceEnabled;
-        voiceIcon.textContent = isVoiceEnabled ? '🔊' : '🔇';
+        const muteSvg = \`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>\`;
+        const unmuteSvg = \`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>\`;
+        voiceIcon.innerHTML = isVoiceEnabled ? unmuteSvg : muteSvg;
         if (!isVoiceEnabled && window.speechSynthesis.speaking) {
             window.speechSynthesis.cancel();
             document.querySelectorAll('.message.bot .avatar').forEach(a => a.classList.remove('is-speaking'));
@@ -80,6 +82,68 @@ function speakText(text) {
 const chatMessages = document.getElementById('chatMessages');
 const chatInput = document.getElementById('chatInput');
 const sendBtn = document.getElementById('sendBtn');
+const micBtn = document.getElementById('micBtn');
+
+// =========================================
+// RECONOCIMIENTO DE VOZ (Speech-to-Text)
+// =========================================
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+let recognition = null;
+let isRecording = false;
+
+if (SpeechRecognition) {
+    recognition = new SpeechRecognition();
+    recognition.lang = 'es-AR'; // Español de Argentina
+    recognition.interimResults = false; // Solo resultados finales
+    recognition.maxAlternatives = 1;
+
+    recognition.onstart = () => {
+        isRecording = true;
+        micBtn.classList.add('listening');
+        chatInput.placeholder = 'Escuchando...';
+    };
+
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        chatInput.value = transcript;
+        // Auto-enviar el mensaje una vez reconocido
+        enviarMensaje(transcript);
+    };
+
+    recognition.onerror = (event) => {
+        console.error('Error en reconocimiento de voz:', event.error);
+        resetMic();
+    };
+
+    recognition.onend = () => {
+        resetMic();
+    };
+} else {
+    // Si no es soportado, ocultar botón
+    if(micBtn) micBtn.style.display = 'none';
+}
+
+function resetMic() {
+    isRecording = false;
+    micBtn.classList.remove('listening');
+    chatInput.placeholder = 'Escribí tu consulta...';
+}
+
+if (micBtn) {
+    micBtn.addEventListener('click', () => {
+        if (!recognition) return;
+        if (isRecording) {
+            recognition.stop();
+        } else {
+            // Detener Text-to-Speech si está hablando para no hacer eco
+            if (window.speechSynthesis && window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+            }
+            recognition.start();
+        }
+    });
+}
+
 const quickBtns = document.querySelectorAll('.quick-btn');
 
 // Generar un sessionId único para esta sesión de navegación
