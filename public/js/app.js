@@ -12,6 +12,71 @@ window.addEventListener('load', () => {
     }, 1800);
 });
 
+
+// Elementos del DOM para Voz
+const voiceToggle = document.getElementById('voiceToggle');
+const voiceIcon = voiceToggle?.querySelector('.icon');
+
+// Estado y configuración de Voz
+let isVoiceEnabled = false;
+let botVoice = null;
+
+// Inicializar voces
+function initVoices() {
+    const voces = window.speechSynthesis.getVoices();
+    // Preferencia: Español de Argentina, luego cualquier Español
+    botVoice = voces.find(v => v.lang === 'es-AR' || v.lang === 'es_AR') || 
+               voces.find(v => v.lang.startsWith('es')) || 
+               voces[0];
+}
+if (window.speechSynthesis) {
+    initVoices();
+    window.speechSynthesis.onvoiceschanged = initVoices;
+}
+
+if (voiceToggle) {
+    voiceToggle.addEventListener('click', () => {
+        isVoiceEnabled = !isVoiceEnabled;
+        voiceIcon.textContent = isVoiceEnabled ? '🔊' : '🔇';
+        if (!isVoiceEnabled && window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel();
+            document.querySelectorAll('.message.bot .avatar').forEach(a => a.classList.remove('is-speaking'));
+        }
+    });
+}
+
+function speakText(text) {
+    if (!isVoiceEnabled || !window.speechSynthesis) return;
+    
+    // Cancelar cualquier audio anterior
+    window.speechSynthesis.cancel();
+    
+    // Limpiar texto de emojis y etiquetas html si las hubiera
+    const cleanText = text.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '')
+                          .replace(/<[^>]*>?/gm, '');
+
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    if (botVoice) utterance.voice = botVoice;
+    utterance.rate = 1.05; // Un poco más rápido para sonar dinámico
+    utterance.pitch = 1.1;
+
+    // Efecto visual: buscar el último avatar del bot y ponerle animación
+    const avatars = document.querySelectorAll('.message.bot .avatar');
+    const lastAvatar = avatars[avatars.length - 1];
+
+    utterance.onstart = () => {
+        if (lastAvatar) lastAvatar.classList.add('is-speaking');
+    };
+    utterance.onend = () => {
+        if (lastAvatar) lastAvatar.classList.remove('is-speaking');
+    };
+    utterance.onerror = () => {
+        if (lastAvatar) lastAvatar.classList.remove('is-speaking');
+    };
+
+    window.speechSynthesis.speak(utterance);
+}
+
 const chatMessages = document.getElementById('chatMessages');
 const chatInput = document.getElementById('chatInput');
 const sendBtn = document.getElementById('sendBtn');
@@ -70,6 +135,7 @@ async function enviarMensaje(texto, clickedBtn = null) {
         
         hideTyping();
         addMessage(respuestaBot, 'bot');
+        speakText(respuestaBot);
     } catch (err) {
         hideTyping();
         addMessage('Error al procesar el mensaje internamente.', 'bot');
