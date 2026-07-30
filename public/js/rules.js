@@ -153,7 +153,10 @@ function normalizar(texto) {
         'arancel': 'cuota',
         'aranceles': 'cuota',
         'pagar': 'cuota',
-        'pago': 'cuota'
+        'pago': 'cuota',
+        'perico': 'sede_perico',
+        'san pedro': 'sede_san_pedro',
+        'libertador': 'sede_libertador'
     };
     
     let palabras = t.split(/\s+/);
@@ -577,6 +580,14 @@ function detectarCarrera(texto) {
         return 'administracion_empresas';
     }
 
+
+    if (textoNormalizado.includes('mecatronica')) return 'carrera_mecatronica';
+    if (textoNormalizado.includes('software') || textoNormalizado.includes('programacion') || textoNormalizado.includes('sistemas')) return 'carrera_software';
+    if (textoNormalizado.includes('automatizacion') || textoNormalizado.includes('robotica')) return 'carrera_automatizacion';
+    if (textoNormalizado.includes('lengua') || textoNormalizado.includes('literatura')) return 'carrera_lengua';
+    if (textoNormalizado.includes('historia')) return 'carrera_historia';
+    if (textoNormalizado.includes('psicologia')) return 'carrera_psicologia';
+
     return null;
 }
 
@@ -599,6 +610,15 @@ const PALABRAS_CLAVE = {
     ubicacion: ['ubicacion', 'donde queda', 'direccion', 'donde estan', 'como llego', 'sede', 'mapa', 'san salvador', 'sarmiento', 'sarmiento 268'],
     contacto: ['contacto', 'telefono', 'mail', 'correo', 'llamar', 'email', 'comunicarme', 'comunicar', 'numero', 'tel', 'fijo', 'llamada'],
     requisitos_inscripcion: ['inscribirme', 'anotarme', 'requisitos', 'papeles', 'que necesito', 'titulo secundario', 'inscripcion', 'matricula'],
+    sede_perico: ['sede_perico', 'perico', 'anexo perico'],
+    sede_san_pedro: ['sede_san_pedro', 'san pedro', 'san pedrito'],
+    sede_libertador: ['sede_libertador', 'libertador', 'ledesma', 'ledezma', 'gral san martin', 'general san martin'],
+    carrera_mecatronica: ['carrera_mecatronica'],
+    carrera_software: ['carrera_software'],
+    carrera_automatizacion: ['carrera_automatizacion'],
+    carrera_lengua: ['carrera_lengua'],
+    carrera_historia: ['carrera_historia'],
+    carrera_psicologia: ['carrera_psicologia'],
     agradecimiento: ['gracias', 'muchas gracias', 'genial', 'me sirvio', 'impecable', 'chau', 'adios']
 };
 
@@ -1019,6 +1039,18 @@ function generarAclaracionDinamica(intencion, tono) {
         { id: "Acompañamiento Terapéutico", label: "Acomp. Terapéutico" },
         { id: "Administración de Empresas", label: "Adm. de Empresas" },
         { id: "Administración Pública", label: "Adm. Pública" },
+        { id: "carrera_mecatronica", label: "Mecatrónica" },
+        { id: "carrera_software", label: "Des. de Software" },
+        { id: "carrera_automatizacion", label: "Aut. y Robótica" },
+        { id: "carrera_lengua", label: "Prof. Lengua" },
+        { id: "carrera_historia", label: "Prof. Historia" },
+        { id: "carrera_psicologia", label: "Prof. Psicología" },
+        { id: "carrera_mecatronica", label: "Mecatrónica" },
+        { id: "carrera_software", label: "Des. de Software" },
+        { id: "carrera_automatizacion", label: "Aut. y Robótica" },
+        { id: "carrera_lengua", label: "Prof. Lengua" },
+        { id: "carrera_historia", label: "Prof. Historia" },
+        { id: "carrera_psicologia", label: "Prof. Psicología" },
         { id: "Mecatrónica", label: "Mecatrónica" },
         { id: "Desarrollo de Software", label: "Des. de Software" },
         { id: "Automatización y Robótica", label: "Aut. y Robótica" },
@@ -1427,7 +1459,7 @@ const RESPUESTAS_CARRERA = {
             formal: [
             "El Profesorado de Educación Especial con Orientación en Discapacidad Intelectual es una carrera de educación superior de 4 años, orientada a formar profesionales capacitados para acompañar el proceso educativo de estudiantes con discapacidad intelectual a través del diseño de propuestas pedagógicas accesibles.",
             "Esta formación se fundamenta en el desarrollo de diseños universales de aprendizaje (DUA) bajo un enfoque inclusivo respetuoso de la diversidad y el Modelo social de discapacidad, articulando acciones entre la Modalidad de Educación Especial, niveles educativos comunes y centros de salud.",
-            "Le recordamos que el Profesorado de Educación Especial con Orientación en Discapacidad Intelectual es una carrera de educación superior de 4 años, orientada a formar profesionales capacitados para acompañar el proceso educativo de estudiantes con discapacidad intelectual a través del diseño de propuestas pedagógicas accesibles. Quedamos a su disposición para cualquier aclaración."
+            "💡 Tené en cuenta que esta carrera se dicta compartida en **Casa Central** y **Sede San Pedro**.<br><br>Le recordamos que el Profesorado de Educación Especial con Orientación en Discapacidad Intelectual es una carrera de educación superior de 4 años, orientada a formar profesionales capacitados para acompañar el proceso educativo de estudiantes con discapacidad intelectual a través del diseño de propuestas pedagógicas accesibles. Quedamos a su disposición para cualquier aclaración."
         ],
             informal: [
             "Es una carrera hermosa de 4 años que te forma para acompañar el aprendizaje de estudiantes con discapacidad intelectual, armando propuestas de enseñanza accesibles (DUA) y proyectos inclusivos basados en el modelo social de la discapacidad.",
@@ -2015,14 +2047,14 @@ const RESPUESTAS_CARRERA = {
     acompanamiento_terapeutico: {
         descripcion_carrera: {
             formal: [
-            "La Tecnicatura Superior en Acompañamiento Terapéutico es una carrera técnica de 3 años orientada a formar profesionales capacitados para realizar un trabajo integral con el ser humano y su rehabilitación psicofísica, psiquiátrica y psicológica, brindando seguimiento, sostén y apoyo en tratamientos de diferentes patologías.",
-            "Esta formación habilita para el acompañamiento y contención del paciente en su vida cotidiana, integrando equipos interdisciplinarios de salud mental y diseñando estrategias de abordaje familiar e institucional en todas las etapas vitales.",
-            "Le recordamos que la Tecnicatura Superior en Acompañamiento Terapéutico es una carrera técnica de 3 años orientada a formar profesionales capacitados para realizar un trabajo integral con el ser humano y su rehabilitación psicofísica, psiquiátrica y psicológica, brindando seguimiento, sostén y apoyo en tratamientos de diferentes patologías. Quedamos a su disposición para cualquier aclaración."
+            "💡 Tené en cuenta que esta carrera se dicta compartida en **Casa Central** y **Sede Libertador**.<br><br>La Tecnicatura Superior en Acompañamiento Terapéutico es una carrera técnica de 3 años orientada a formar profesionales capacitados para realizar un trabajo integral con el ser humano y su rehabilitación psicofísica, psiquiátrica y psicológica, brindando seguimiento, sostén y apoyo en tratamientos de diferentes patologías.",
+            "💡 Tené en cuenta que esta carrera se dicta compartida en **Casa Central** y **Sede Libertador**.<br><br>Esta formación habilita para el acompañamiento y contención del paciente en su vida cotidiana, integrando equipos interdisciplinarios de salud mental y diseñando estrategias de abordaje familiar e institucional en todas las etapas vitales.",
+            "💡 Tené en cuenta que esta carrera se dicta compartida en **Casa Central** y **Sede Libertador**.<br><br>Le recordamos que la Tecnicatura Superior en Acompañamiento Terapéutico es una carrera técnica de 3 años orientada a formar profesionales capacitados para realizar un trabajo integral con el ser humano y su rehabilitación psicofísica, psiquiátrica y psicológica, brindando seguimiento, sostén y apoyo en tratamientos de diferentes patologías. Quedamos a su disposición para cualquier aclaración."
         ],
             informal: [
-            "Es una carrera de 3 años súper humana y con mucha salida. Te prepara para dar apoyo y contención en el día a día a pacientes que pasan por tratamientos psicológicos, psiquiátricos o físicos, ayudándolos a rehabilitarse y a mejorar su calidad de vida.",
+            "💡 Tené en cuenta que esta carrera se dicta compartida en **Casa Central** y **Sede Libertador**.<br><br>Es una carrera de 3 años súper humana y con mucha salida. Te prepara para dar apoyo y contención en el día a día a pacientes que pasan por tratamientos psicológicos, psiquiátricos o físicos, ayudándolos a rehabilitarse y a mejorar su calidad de vida.",
             "En esta carrera vas a aprender a trabajar junto a médicos y psicólogos en equipos de salud. Vas a estar capacitado para hacer contención domiciliaria o institucional, y para intervenir en situaciones críticas de personas de todas las edades.",
-            "¡Te paso este dato! Es una carrera de 3 años súper humana y con mucha salida. Te prepara para dar apoyo y contención en el día a día a pacientes que pasan por tratamientos psicológicos, psiquiátricos o físicos, ayudándolos a rehabilitarse y a mejorar su calidad de vida. Escribime cualquier otra consulta que tengas."
+            "💡 Tené en cuenta que esta carrera se dicta compartida en **Casa Central** y **Sede Libertador**.<br><br>¡Te paso este dato! Es una carrera de 3 años súper humana y con mucha salida. Te prepara para dar apoyo y contención en el día a día a pacientes que pasan por tratamientos psicológicos, psiquiátricos o físicos, ayudándolos a rehabilitarse y a mejorar su calidad de vida. Escribime cualquier otra consulta que tengas."
         ],
             molesto: [
             "Lamentamos sinceramente la demora. Esta carrera de 3 años forma técnicos capacitados para brindar contención, seguimiento y apoyo terapéutico a pacientes con padecimientos mentales y físicos en su vida diaria, trabajando en equipos de salud.",
@@ -2384,7 +2416,12 @@ function detectarIntenciones(texto) {
             intencionesEncontradas.push(intencion);
         }
     }
-    return intencionesEncontradas;
+    const unicas = [...new Set(intencionesEncontradas)];
+    // Filter out 'carreras' if a specific sede intent is detected to avoid double answers
+    if (unicas.some(i => i.startsWith('sede_')) && unicas.includes('carreras')) {
+        return unicas.filter(i => i !== 'carreras');
+    }
+    return unicas;
 }
 
 // Función principal para procesar el mensaje
@@ -2469,7 +2506,15 @@ export function procesarMensaje(texto, sessionId = 'default_session') {
             opciones = RESPUESTAS_CARRERA[carreraAUsar][intencion][tono];
             keyHistorico = `${intencion}_${tono}_${carreraAUsar}`;
         } else if (RESPUESTAS_GENERALES[intencion]) {
-            opciones = RESPUESTAS_GENERALES[intencion][tono];
+            // Lógica de Fallback de Sedes
+            const carrerasAnexos = ['carrera_mecatronica', 'carrera_software', 'carrera_automatizacion', 'carrera_lengua', 'carrera_historia', 'carrera_psicologia'];
+            const requiereInfoCentral = ['distribucion_aulas', 'horarios', 'contacto', 'coordinador', 'requisitos', 'ubicacion', 'horario_atencion'];
+            
+            if ((carrerasAnexos.includes(carreraAUsar) || (intenciones.some(i => i.startsWith('sede_')))) && requiereInfoCentral.includes(intencion) && !tieneEspecifico) {
+                opciones = ["⚠️ Información no disponible en este momento. Por favor, comunícate con administración."];
+            } else {
+                opciones = RESPUESTAS_GENERALES[intencion][tono];
+            }
             keyHistorico = `${intencion}_${tono}_general`;
         } else {
             // Aclaración si la consulta requiere carrera pero no hay contexto
