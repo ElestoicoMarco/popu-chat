@@ -429,13 +429,19 @@ function detectarCarrera(texto) {
     }
 
     // 2. Educación Especial
+    if (textoNormalizado.includes('intelectual') || palabrasTexto.includes('retraso')) {
+        return 'carrera_especial_intelectual';
+    }
+    if (textoNormalizado.includes('sordo') || textoNormalizado.includes('hipoacusico') || textoNormalizado.includes('seña') || textoNormalizado.includes('auditiva')) {
+        return 'carrera_especial_sordos';
+    }
     if (textoNormalizado.includes('educacion especial') || 
         palabrasTexto.includes('discapacidad') || 
         palabrasTexto.includes('inclusiva') || 
         palabrasTexto.includes('inclusion') || 
         palabrasTexto.includes('especial') || 
         palabrasTexto.includes('especiales')) {
-        return 'educacion_especial';
+        return 'carrera_educacion_especial';
     }
 
     // 3. Ciencias Sagradas
@@ -581,7 +587,7 @@ function detectarCarrera(texto) {
     }
 
 
-    if (textoNormalizado.includes('mecatronica')) return 'carrera_mecatronica';
+    if (textoNormalizado.includes('mecatronica') || textoNormalizado.includes('mecanotronica')) return 'carrera_mecatronica';
     if (textoNormalizado.includes('software') || textoNormalizado.includes('programacion') || textoNormalizado.includes('sistemas')) return 'carrera_software';
     if (textoNormalizado.includes('automatizacion') || textoNormalizado.includes('robotica')) return 'carrera_automatizacion';
     if (textoNormalizado.includes('lengua') || textoNormalizado.includes('literatura')) return 'carrera_lengua';
@@ -613,7 +619,8 @@ const PALABRAS_CLAVE = {
     sede_perico: ['sede_perico', 'perico', 'anexo perico'],
     sede_san_pedro: ['sede_san_pedro', 'san pedro', 'san pedrito'],
     sede_libertador: ['sede_libertador', 'libertador', 'ledesma', 'ledezma', 'gral san martin', 'general san martin'],
-    carrera_mecatronica: ['carrera_mecatronica'],
+    informacion_sedes: ['anexo', 'anexos', 'sucursales', 'sucursal', 'otras sedes', 'sedes y anexos', 'que sedes y anexos', 'informacion de sedes'],
+    carrera_mecatronica: ['carrera_mecatronica', 'mecanotronica'],
     carrera_software: ['carrera_software'],
     carrera_automatizacion: ['carrera_automatizacion'],
     carrera_lengua: ['carrera_lengua'],
@@ -698,7 +705,13 @@ const RESPUESTAS_GENERALES = {
             "Le informamos los requisitos obligatorios para tramitar duplicado de título:<br><ul><li>Fotocopia Título Secundario autenticada</li><li>Fotocopia DNI actualizado</li><li>Partida de nacimiento actualizada</li><li>Título original si está deteriorado</li><li>Constancia policial por extravío</li><li>Recibo de pago en tesorería</li><li>Nota formal a la rectora</li></ul>"
         ]
     },
-    sede_perico: {
+        informacion_sedes: {
+        formal: ["El IES N° 7 'Populorum Progressio' - INTELA cuenta con su Sede Central en San Salvador de Jujuy (Sarmiento 268) y además dicta carreras en las siguientes sedes anexas:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Sede Perico\">Sede Perico</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Sede San Pedro\">Sede San Pedro</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Sede Libertador\">Sede Libertador</button></div>"],
+        informal: ["Además de la Sede Central en San Salvador de Jujuy, contamos con anexos en otras localidades. Elegí la sede que te interese para ver qué carreras se dictan ahí:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Sede Perico\">Sede Perico</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Sede San Pedro\">Sede San Pedro</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Sede Libertador\">Sede Libertador</button></div>"],
+        molesto: ["Contamos con la Sede Central y las siguientes sedes anexas en el interior de la provincia:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Sede Perico\">Sede Perico</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Sede San Pedro\">Sede San Pedro</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Sede Libertador\">Sede Libertador</button></div>"]
+    },
+    
+sede_perico: {
         formal: ["La Sede Perico ofrece las siguientes opciones académicas:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Profesorado en Lengua y Literatura\">Prof. Lengua y Lit.</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Administración de Empresas\">Adm. de Empresas (PyME)</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Mecatrónica\">Mecatrónica</button></div>"],
         informal: ["¡En la Sede Perico tenemos estas carreras disponibles! Elegí la que más te guste:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Profesorado en Lengua y Literatura\">Prof. Lengua y Lit.</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Administración de Empresas\">Adm. de Empresas (PyME)</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Mecatrónica\">Mecatrónica</button></div>"],
         molesto: ["La Sede Perico cuenta con las siguientes opciones:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Profesorado en Lengua y Literatura\">Prof. Lengua y Lit.</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Administración de Empresas\">Adm. de Empresas (PyME)</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Mecatrónica\">Mecatrónica</button></div>"]
@@ -1500,111 +1513,92 @@ const RESPUESTAS_CARRERA = {
             "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos la demora. La coordinadora responsable es la Prof. Silvia Cichello, quien atiende los Lunes de 16:00 a 18:40 hs., Miércoles de 09:20 a 12:00 hs., y Jueves de 08:00 a 12:00 hs. y 15:40 a 18:20 hs. Agradecemos su comprensión."
         ]
         }
-    },
-    educacion_especial: {
+    },    carrera_educacion_especial: {
         descripcion_carrera: {
-            formal: [
-            "El Profesorado de Educación Especial con Orientación en Discapacidad Intelectual es una carrera de educación superior de 4 años, orientada a formar profesionales capacitados para acompañar el proceso educativo de estudiantes con discapacidad intelectual a través del diseño de propuestas pedagógicas accesibles.",
-            "Esta formación se fundamenta en el desarrollo de diseños universales de aprendizaje (DUA) bajo un enfoque inclusivo respetuoso de la diversidad y el Modelo social de discapacidad, articulando acciones entre la Modalidad de Educación Especial, niveles educativos comunes y centros de salud.",
-            "💡 Tené en cuenta que esta carrera se dicta compartida en **Casa Central** y **Sede San Pedro**.<br><br>Le recordamos que el Profesorado de Educación Especial con Orientación en Discapacidad Intelectual es una carrera de educación superior de 4 años, orientada a formar profesionales capacitados para acompañar el proceso educativo de estudiantes con discapacidad intelectual a través del diseño de propuestas pedagógicas accesibles. Quedamos a su disposición para cualquier aclaración."
-        ],
-            informal: [
-            "Es una carrera hermosa de 4 años que te forma para acompañar el aprendizaje de estudiantes con discapacidad intelectual, armando propuestas de enseñanza accesibles (DUA) y proyectos inclusivos basados en el modelo social de la discapacidad.",
-            "Con este profesorado de 4 años vas a aprender a diseñar estrategias pedagógicas personalizadas, evaluar los ritmos de aprendizaje de cada alumno y trabajar en la inclusión de personas con discapacidad intelectual eliminando barreras sociales y escolares.",
-            "¡Te paso este dato! Es una carrera hermosa de 4 años que te forma para acompañar el aprendizaje de estudiantes con discapacidad intelectual, armando propuestas de enseñanza accesibles (DUA) y proyectos inclusivos basados en el modelo social de la discapacidad. Escribime cualquier otra consulta que tengas."
-        ],
-            molesto: [
-            "Lamentamos sinceramente la demora. Esta carrera de 4 años forma profesionales de manera rigurosa para diseñar propuestas pedagógicas accesibles y diseños universales de aprendizaje (DUA) dirigidos a estudiantes con discapacidad intelectual bajo la perspectiva de educación inclusiva.",
-            "Pedimos disculpas por los inconvenientes. El profesorado capacita directamente en evaluación pedagógica, estrategias diversificadas y el desarrollo de proyectos socio-comunitarios desde el Modelo social de discapacidad.",
-            "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos sinceramente la demora. Esta carrera de 4 años forma profesionales de manera rigurosa para diseñar propuestas pedagógicas accesibles y diseños universales de aprendizaje (DUA) dirigidos a estudiantes con discapacidad intelectual bajo la perspectiva de educación inclusiva. Agradecemos su comprensión."
-        ]
+            formal: ["Contamos con dos orientaciones distintas para el Profesorado de Educación Especial, dependiendo de la Sede. Por favor, seleccione la que desea consultar:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_intelectual\">Especial (Intelectual) - Central</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_sordos\">Especial (Sordos/Hipo) - San Pedro</button></div>"],
+            informal: ["¡Tenemos dos orientaciones de Educación Especial! Elegí la sede que te interese para ver los detalles:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_intelectual\">Especial (Intelectual) - Central</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_sordos\">Especial (Sordos/Hipo) - San Pedro</button></div>"],
+            molesto: ["La carrera se divide en dos orientaciones. Indique cuál le interesa:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_intelectual\">Especial (Intelectual) - Central</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_sordos\">Especial (Sordos/Hipo) - San Pedro</button></div>"]
         },
         plan_estudios_completo: {
-            formal: [
-            "El plan de estudios oficial para Educación Especial se estructura en 4 años de la siguiente manera:<br><ul><li><b>1° Año:</b>  Pedagogía, Psicología Educacional, Alfabetización Académica, Didáctica General, Neuropsicobiología del Desarrollo, Sujeto de la Educación, Educación Temprana, Abordaje Pedagógico I y Práctica I</li><li><b>2° Año:</b>  Filosofía, Historia de las Políticas Educativas, Didáctica de la Lengua y la Literatura, Didáctica de la Matemática, Comunicación, Lenguaje y sus alteraciones, Trastornos en el desarrollo, Abordaje Pedagógico II y Práctica II</li><li><b>3° Año:</b>  TIC y Discapacidad, Sociología de la Educación, Didáctica de Ciencias Sociales, Didáctica de Ciencias Naturales, Abordaje Pedagógico III, Abordajes Pedagógicos Complejos y Práctica III</li><li><b>4° Año:</b>  ESI y Discapacidad Intelectual, Ética Profesional Docente, Perspectiva del adulto con Discapacidad Intelectual, dos Unidades de opción institucional y Residencia Pedagógica</li></ul>",
-            "Le detallamos la distribución anual de materias de Educación Especial:<br><ul><li><b>1° Año:</b>  Pedagogía, Psicología Educacional, Alfabetización Académica, Didáctica General, Neuropsicobiología, Sujeto de la Educación, Educación Temprana, Abordaje Pedagógico I, Práctica I</li><li><b>2° Año:</b>  Filosofía, Historia de la Educación, Didáctica de la Lengua, Didáctica de la Matemática, Comunicación y Lenguaje, Trastornos en el desarrollo, Abordaje Pedagógico II, Práctica II</li><li><b>3° Año:</b>  TIC y Discapacidad, Sociología de la Educación, Didáctica de Sociales, Didáctica de Naturales, Abordaje Pedagógico III, Abordajes Complejos, Práctica III</li><li><b>4° Año:</b>  ESI y Discapacidad, Ética Docente, Perspectiva del Adulto con Discapacidad, dos Unidades Institucionales, Residencia</li></ul>",
-            "Le recordamos que el plan de estudios oficial para Educación Especial se estructura en 4 años de la siguiente manera:<br><ul><li><b>1° Año:</b>  Pedagogía, Psicología Educacional, Alfabetización Académica, Didáctica General, Neuropsicobiología del Desarrollo, Sujeto de la Educación, Educación Temprana, Abordaje Pedagógico I y Práctica I</li><li><b>2° Año:</b>  Filosofía, Historia de las Políticas Educativas, Didáctica de la Lengua y la Literatura, Didáctica de la Matemática, Comunicación, Lenguaje y sus alteraciones, Trastornos en el desarrollo, Abordaje Pedagógico II y Práctica II</li><li><b>3° Año:</b>  TIC y Discapacidad, Sociología de la Educación, Didáctica de Ciencias Sociales, Didáctica de Ciencias Naturales, Abordaje Pedagógico III, Abordajes Pedagógicos Complejos y Práctica III</li><li><b>4° Año:</b>  ESI y Discapacidad Intelectual, Ética Profesional Docente, Perspectiva del adulto con Discapacidad Intelectual, dos Unidades de opción institucional y Residencia Pedagógica. Quedamos a su disposición para cualquier aclaración</li></ul>"
-        ],
-            informal: [
-            "¡El plan de Educación Especial dura 4 años!:<br><ul><li><b>1° Año:</b>  cursás: Pedagogía, Psicología Educacional, Alfabetización Académica, Didáctica General, Neuropsicobiología del Desarrollo, Sujeto de la Educación, Educación Temprana, Abordaje Pedagógico I y Práctica I</li><li><b>2° Año:</b>  tenés: Filosofía, Historia de las Políticas Educativas, Didáctica de Lengua, Didáctica de Matemática, Comunicación y Lenguaje, Trastornos en el desarrollo, Abordaje Pedagógico II y Práctica II</li><li><b>3° Año:</b>  ves: TIC y Discapacidad, Sociología de la Educación, Didáctica de Sociales, Didáctica de Naturales, Abordaje Pedagógico III, Abordajes Complejos y Práctica III</li><li><b>4° Año:</b>  cerrás con: ESI y Discapacidad Intelectual, Ética Docente, Perspectiva del Adulto, dos materias de opción institucional y la Residencia</li></ul>",
-            "Te comento el plan de Educación Especial:<br><ul><li><b>1° Año:</b>  tiene Pedagogía, Psicología, Alfabetización, Didáctica, Neuropsicobiología, Sujeto, Educación Temprana, Abordaje I y Práctica I</li><li><b>2° Año:</b>  tiene Filosofía, Historia, Didáctica de Lengua, Didáctica de Matemática, Comunicación, Trastornos en el desarrollo, Abordaje II y Práctica II</li><li><b>3° Año:</b>  ves TIC, Sociología, Didáctica de Sociales/Naturales, Abordaje III, Abordajes Complejos y Práctica III. Cursás el último año con ESI, Ética Docente, Perspectiva del Adulto, dos materias institucionales y la Residencia Pedagógica</li></ul>",
-            "¡Te paso este dato! ¡El plan de Educación Especial dura 4 años!:<br><ul><li><b>1° Año:</b>  cursás: Pedagogía, Psicología Educacional, Alfabetización Académica, Didáctica General, Neuropsicobiología del Desarrollo, Sujeto de la Educación, Educación Temprana, Abordaje Pedagógico I y Práctica I</li><li><b>2° Año:</b>  tenés: Filosofía, Historia de las Políticas Educativas, Didáctica de Lengua, Didáctica de Matemática, Comunicación y Lenguaje, Trastornos en el desarrollo, Abordaje Pedagógico II y Práctica II</li><li><b>3° Año:</b>  ves: TIC y Discapacidad, Sociología de la Educación, Didáctica de Sociales, Didáctica de Naturales, Abordaje Pedagógico III, Abordajes Complejos y Práctica III</li><li><b>4° Año:</b>  cerrás con: ESI y Discapacidad Intelectual, Ética Docente, Perspectiva del Adulto, dos materias de opción institucional y la Residencia. Escribime cualquier otra consulta que tengas</li></ul>"
-        ],
-            molesto: [
-            "Lamentamos sinceramente la demora. El plan de estudios de Educación Especial consta de:<br><ul><li><b>1° Año:</b>  Pedagogía, Psicología, Alfabetización, Didáctica, Neuropsicobiología, Sujeto, Educación Temprana, Abordaje I, Práctica I</li><li><b>2° Año:</b>  Filosofía, Historia, Didáctica de Lengua y Matemática, Comunicación y Lenguaje, Trastornos en el desarrollo, Abordaje II, Práctica II</li><li><b>3° Año:</b>  TIC y Discapacidad, Sociología, Didáctica de Sociales/Naturales, Abordaje III, Abordajes Complejos, Práctica III</li><li><b>4° Año:</b>  ESI y Discapacidad, Docente, Perspectiva del Adulto con Discapacidad, dos Unidades Institucionales y Residencia Pedagógica</li></ul>",
-            "Pedimos disculpas por los inconvenientes. Las materias anuales obligatorias de la carrera son:<br><ul><li><b>1° Año:</b>  Pedagogía, Psicología, Alfabetización, Didáctica, Neuropsicobiología, Sujeto, Ed. Temprana, Abordaje I, Práctica I</li><li><b>2° Año:</b>  Filosofía, Historia, Didáctica de Lengua/Matemática, Comunicación, Trastornos en desarrollo, Abordaje II, Práctica II</li><li><b>3° Año:</b>  TIC, Sociología, Didáctica de Sociales/Naturales, Abordaje III, Abordajes Complejos, Práctica III</li><li><b>4° Año:</b>  ESI, Ética, Perspectiva del Adulto, dos materias de opción institucional, Residencia</li></ul>",
-            "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos sinceramente la demora. El plan de estudios de Educación Especial consta de:<br><ul><li><b>1° Año:</b>  Pedagogía, Psicología, Alfabetización, Didáctica, Neuropsicobiología, Sujeto, Educación Temprana, Abordaje I, Práctica I</li><li><b>2° Año:</b>  Filosofía, Historia, Didáctica de Lengua y Matemática, Comunicación y Lenguaje, Trastornos en el desarrollo, Abordaje II, Práctica II</li><li><b>3° Año:</b>  TIC y Discapacidad, Sociología, Didáctica de Sociales/Naturales, Abordaje III, Abordajes Complejos, Práctica III</li><li><b>4° Año:</b>  ESI y Discapacidad, Docente, Perspectiva del Adulto con Discapacidad, dos Unidades Institucionales y Residencia Pedagógica. Agradecemos su comprensión</li></ul>"
-        ]
+            formal: ["Por favor, seleccione la orientación para ver el plan de estudios:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_intelectual\">Especial (Intelectual) - Central</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_sordos\">Especial (Sordos/Hipo) - San Pedro</button></div>"],
+            informal: ["Por favor, seleccione la orientación para ver el plan de estudios:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_intelectual\">Especial (Intelectual) - Central</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_sordos\">Especial (Sordos/Hipo) - San Pedro</button></div>"],
+            molesto: ["Por favor, seleccione la orientación para ver el plan de estudios:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_intelectual\">Especial (Intelectual) - Central</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_sordos\">Especial (Sordos/Hipo) - San Pedro</button></div>"]
         },
         campo_laboral: {
-            formal: [
-            "El Profesor de Educación Especial posee un campo profesional diversificado.<br><ul><li>En el ámbito educativo, se desempeña en escuelas de todos los niveles acompañando trayectorias, realizando co-enseñanza con docentes comunes y configurando apoyos.</li><li>En el ámbito de la salud, realiza acompañamiento pedagógico independiente o integra equipos interdisciplinarios en centros educativos y de rehabilitación.</li><li>En el ámbito socio-comunitario, interviene en clubes, centros vecinales y ONGs promoviendo la inclusión y eliminando barreras de accesibilidad.</li></ul>",
-            "La inserción profesional faculta al egresado para el trabajo conjunto con psicólogos, fonoaudiólogos y trabajadores sociales; el abordaje institucional y eliminación de barreras en el sistema escolar obligatorio; y la articulación con centros terapéuticos privados y actividades socio-comunitarias de integración.",
-            "Le recordamos que el Profesor de Educación Especial posee un campo profesional diversificado.<br><ul><li>En el ámbito educativo, se desempeña en escuelas de todos los niveles acompañando trayectorias, realizando co-enseñanza con docentes comunes y configurando apoyos.</li><li>En el ámbito de la salud, realiza acompañamiento pedagógico independiente o integra equipos interdisciplinarios en centros educativos y de rehabilitación.</li><li>En el ámbito socio-comunitario, interviene en clubes, centros vecinales y ONGs promoviendo la inclusión y eliminando barreras de accesibilidad.</li><li>Quedamos a su disposición para cualquier aclaración.</li></ul>"
-        ],
-            informal: [
-            "Tenés salida en tres áreas principales.<br><ul><li>En el ámbito educativo podés trabajar en escuelas secundarias y primarias comunes acompañando trayectorias de alumnos e interactuando en co-enseñanza con otros profes.</li><li>En salud, podés hacer consultorio independiente o laburar en centros terapéuticos y de rehabilitación privados con psicólogos y fonoaudiólogos.</li><li>Y en lo socio-comunitario, podés intervenir en clubes, vecinales, ONGs y espacios recreativos ayudando a eliminar barreras para que las personas con discapacidad participen plenamente.</li></ul>",
-            "¡El campo laboral es enorme!<br><ul><li>Podés dar apoyo a la inclusión escolar en colegios comunes de gestión pública o privada, trabajar en equipos interdisciplinarios de salud, o ejercer la profesión de forma independiente en acompañamiento pedagógico.</li><li>También hay lugar en centros recreativos, deportivos y ONGs que buscan integrar a personas con discapacidad intelectual.</li></ul>",
-            "¡Te paso este dato!<br><ul><li>Tenés salida en tres áreas principales.</li><li>En el ámbito educativo podés trabajar en escuelas secundarias y primarias comunes acompañando trayectorias de alumnos e interactuando en co-enseñanza con otros profes.</li><li>En salud, podés hacer consultorio independiente o laburar en centros terapéuticos y de rehabilitación privados con psicólogos y fonoaudiólogos.</li><li>Y en lo socio-comunitario, podés intervenir en clubes, vecinales, ONGs y espacios recreativos ayudando a eliminar barreras para que las personas con discapacidad participen plenamente.</li><li>Escribime cualquier otra consulta que tengas.</li></ul>"
-        ],
-            molesto: [
-            "Lamentamos sinceramente la demora.<br><ul><li>La salida laboral abarca: escuelas comunes de todos los niveles obligatorios (configurando apoyos y co-enseñanza); ejercicio profesional independiente en acompañamiento pedagógico; centros de rehabilitación terapéutica privados; y áreas comunitarias como ONGs, clubes y centros vecinales.</li></ul>",
-            "Pedimos disculpas por los inconvenientes.<br><ul><li>El egresado está capacitado para incorporarse a escuelas públicas y privadas promoviendo la educación inclusiva, así como a centros asistenciales de salud e instituciones socio-comunitarias eliminando barreras de participación.</li></ul>",
-            "Lamentamos las dificultades iniciales.<br><ul><li>Le informamos de manera prioritaria: Lamentamos sinceramente la demora.</li><li>La salida laboral abarca: escuelas comunes de todos los niveles obligatorios (configurando apoyos y co-enseñanza); ejercicio profesional independiente en acompañamiento pedagógico; centros de rehabilitación terapéutica privados; y áreas comunitarias como ONGs, clubes y centros vecinales.</li><li>Agradecemos su comprensión.</li></ul>"
-        ]
+            formal: ["Por favor, seleccione la orientación para ver el campo laboral:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_intelectual\">Especial (Intelectual) - Central</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_sordos\">Especial (Sordos/Hipo) - San Pedro</button></div>"],
+            informal: ["Por favor, seleccione la orientación para ver el campo laboral:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_intelectual\">Especial (Intelectual) - Central</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_sordos\">Especial (Sordos/Hipo) - San Pedro</button></div>"],
+            molesto: ["Por favor, seleccione la orientación para ver el campo laboral:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_intelectual\">Especial (Intelectual) - Central</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_sordos\">Especial (Sordos/Hipo) - San Pedro</button></div>"]
         },
         horario_atencion: {
-            formal: [
-            "El cursado presencial del Profesorado de Educación Especial con Orientación en Discapacidad Intelectual se desarrolla en los Turnos Mañana y Noche.",
-            "Las clases del Profesorado de Educación Especial se dictan de lunes a viernes en los Turnos Mañana y Noche.",
-            "Le recordamos que el cursado presencial del Profesorado de Educación Especial con Orientación en Discapacidad Intelectual se desarrolla en los Turnos Mañana y Noche. Quedamos a su disposición para cualquier aclaración."
-        ],
-            informal: [
-            "Se cursa presencial a la mañana y a la noche.",
-            "Los horarios de cursado de Educación Especial corresponden a los Turnos Mañana y Noche.",
-            "¡Te paso este dato! Se cursa presencial a la mañana y a la noche. Escribime cualquier otra consulta que tengas."
-        ],
-            molesto: [
-            "Lamentamos la demora. Le informamos que el cursado de Educación Especial se realiza en los Turnos Mañana y Noche.",
-            "Pedimos disculpas por la tardanza. Confirmamos que la carrera de Educación Especial se dicta en los Turnos Mañana y Noche.",
-            "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos la demora. Le informamos que el cursado de Educación Especial se realiza en los Turnos Mañana y Noche. Agradecemos su comprensión."
-        ]
-        },
-        distribucion_aulas: {
-            formal: [
-            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Mañana:</b> 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li><b>Turno Noche:</b> 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li></ul>",
-            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Mañana:</b> 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li><b>Turno Noche:</b> 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li></ul>",
-            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Mañana:</b> 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li><b>Turno Noche:</b> 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li></ul> Quedamos a su disposición."
-        ],
-            informal: [
-            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Mañana:</b> 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li><b>Turno Noche:</b> 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li></ul>",
-            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Mañana:</b> 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li><b>Turno Noche:</b> 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li></ul>",
-            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Mañana:</b> 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li><b>Turno Noche:</b> 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li></ul>"
-        ],
-            molesto: [
-            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Mañana:</b> 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li><b>Turno Noche:</b> 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li></ul>",
-            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Mañana:</b> 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li><b>Turno Noche:</b> 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li></ul>",
-            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Mañana:</b> 1°(A13), 2°(A21), 3°(A20), 4°(A12)</li><li><b>Turno Noche:</b> 1°(A13), 2°(A25), 3°(A10), 4°(A35)</li></ul>"
-        ]
+            formal: ["Por favor, seleccione la orientación para ver los horarios:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_intelectual\">Especial (Intelectual) - Central</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_sordos\">Especial (Sordos/Hipo) - San Pedro</button></div>"],
+            informal: ["Por favor, seleccione la orientación para ver los horarios:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_intelectual\">Especial (Intelectual) - Central</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_sordos\">Especial (Sordos/Hipo) - San Pedro</button></div>"],
+            molesto: ["Por favor, seleccione la orientación para ver los horarios:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_intelectual\">Especial (Intelectual) - Central</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_sordos\">Especial (Sordos/Hipo) - San Pedro</button></div>"]
         },
         coordinador: {
-            formal: [
-            "La coordinadora del Profesorado de Educación Especial es la Prof. Jimena Cabrera. Sus horarios de consulta presencial son los días Lunes de 10:10 a 12:10 hs., Miércoles de 09:00 a 11:00 hs., y Jueves y Viernes de 18:00 a 20:00 hs.",
-            "Para comunicarse con la coordinación de Educación Especial, puede contactar a la Prof. Jimena Cabrera los Lunes de 10:10 a 12:10 hs., Miércoles de 09:00 a 11:00 hs., y Jueves y Viernes de 18:00 a 20:00 hs.",
-            "Le recordamos que la coordinadora del Profesorado de Educación Especial es la Prof. Jimena Cabrera. Sus horarios de consulta presencial son los días Lunes de 10:10 a 12:10 hs., Miércoles de 09:00 a 11:00 hs., y Jueves y Viernes de 18:00 a 20:00 hs. Quedamos a su disposición para cualquier aclaración."
-        ],
-            informal: [
-            "La coordinadora de Educación Especial es la Prof. Jimena Cabrera. La podés encontrar para consultas los Lunes de 10:10 a 12:10 hs., Miércoles de 09:00 a 11:00 hs., y Jueves y Viernes de 18:00 a 20:00 hs.",
-            "Si necesitás hablar con la coordinadora Jimena Cabrera, atiende consultas los Lunes de 10:10 a 12:10 hs., Miércoles de 09:00 a 11:00 hs., y Jueves y Viernes de 18:00 a 20:00 hs.",
-            "¡Te paso este dato! La coordinadora de Educación Especial es la Prof. Jimena Cabrera. La podés encontrar para consultas los Lunes de 10:10 a 12:10 hs., Miércoles de 09:00 a 11:00 hs., y Jueves y Viernes de 18:00 a 20:00 hs. Escribime cualquier otra consulta que tengas."
-        ],
-            molesto: [
-            "Lamentamos la demora. La coordinadora de la carrera es la Prof. Jimena Cabrera, atendiendo consultas los Lunes de 10:10 a 12:10 hs., Miércoles de 09:00 a 11:00 hs., y Jueves y Viernes de 18:00 a 20:00 hs.",
-            "Pedimos disculpas por los inconvenientes. Le recordamos que la Prof. Jimena Cabrera coordina la carrera y realiza consultas los Lunes de 10:10 a 12:10 hs., Miércoles de 09:00 a 11:00 hs., y Jueves y Viernes de 18:00 a 20:00 hs.",
-            "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos la demora. La coordinadora de la carrera es la Prof. Jimena Cabrera, atendiendo consultas los Lunes de 10:10 a 12:10 hs., Miércoles de 09:00 a 11:00 hs., y Jueves y Viernes de 18:00 a 20:00 hs. Agradecemos su comprensión."
-        ]
-        }
+            formal: ["Por favor, seleccione la orientación para ver al coordinador:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_intelectual\">Especial (Intelectual) - Central</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_sordos\">Especial (Sordos/Hipo) - San Pedro</button></div>"],
+            informal: ["Por favor, seleccione la orientación para ver al coordinador:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_intelectual\">Especial (Intelectual) - Central</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_sordos\">Especial (Sordos/Hipo) - San Pedro</button></div>"],
+            molesto: ["Por favor, seleccione la orientación para ver al coordinador:<br><br><div class=\"btn-list\"><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_intelectual\">Especial (Intelectual) - Central</button><button class=\"quick-btn inline-quick-btn\" data-msg=\"Información de carrera_especial_sordos\">Especial (Sordos/Hipo) - San Pedro</button></div>"]
+        },
+        nombre: "Profesorado de Educación Especial (Ambas Orientaciones)"
     },
+    carrera_especial_intelectual: {
+        descripcion_carrera: {
+            formal: ["El Profesorado de Educación Especial con Orientación en Discapacidad Intelectual forma profesionales capacitados para acompañar el proceso educativo de estudiantes con discapacidad intelectual a través del diseño de propuestas pedagógicas accesibles.<br><br><b>Perfil del Egresado:</b><br><ul><li>Acompañar el proceso educativo a través del diseño de propuestas pedagógicas accesibles.</li><li>Elaborar diseños universales de aprendizaje respetuoso de la diversidad.</li><li>Planificar las tareas de aprendizaje en Modalidad de Educación Especial, articulando con distintos niveles y centros de salud.</li><li>Evaluar pedagógicamente generando estrategias diversificadas.</li><li>Elaborar proyectos pedagógicos y socio comunitarios desde la perspectiva del Modelo social de discapacidad.</li></ul>"],
+            informal: ["Es un profesorado para acompañar el proceso educativo de estudiantes con discapacidad intelectual.<br><br><b>Perfil del Egresado:</b><br><ul><li>Acompañar el proceso educativo a través del diseño de propuestas pedagógicas accesibles.</li><li>Elaborar diseños universales de aprendizaje respetuoso de la diversidad.</li><li>Planificar las tareas de aprendizaje en Modalidad de Educación Especial, articulando con distintos niveles y centros de salud.</li><li>Evaluar pedagógicamente generando estrategias diversificadas.</li><li>Elaborar proyectos pedagógicos y socio comunitarios desde la perspectiva del Modelo social de discapacidad.</li></ul>"],
+            molesto: ["<b>Perfil del Egresado:</b><br><ul><li>Acompañar el proceso educativo a través del diseño de propuestas pedagógicas accesibles.</li><li>Elaborar diseños universales de aprendizaje respetuoso de la diversidad.</li><li>Planificar las tareas de aprendizaje en Modalidad de Educación Especial, articulando con distintos niveles y centros de salud.</li><li>Evaluar pedagógicamente generando estrategias diversificadas.</li><li>Elaborar proyectos pedagógicos y socio comunitarios desde la perspectiva del Modelo social de discapacidad.</li></ul>"]
+        },
+        plan_estudios_completo: {
+            formal: ["El plan de estudios (4 años) es el siguiente:<br><ul><li><b>1° Año:</b> Pedagogía, Psicología Educacional, Alfabetización Académica, Didáctica General, Neuropsicobiología del Desarrollo, Sujeto de la Educación, Educación Temprana, Abordaje Pedagógico I y Práctica I</li><li><b>2° Año:</b> Filosofía, Historia de las Políticas Educativas, Didáctica de la Lengua, Matemática, Comunicación, Lenguaje y sus alteraciones, Trastornos en el desarrollo, Abordaje Pedagógico II y Práctica II</li><li><b>3° Año:</b> TIC y Discapacidad, Sociología de la Educación, Didáctica de Sociales y Naturales, Abordaje Pedagógico III, Abordajes Complejos y Práctica III</li><li><b>4° Año:</b> ESI y Discapacidad Intelectual, Ética Profesional, Perspectiva del adulto con Discapacidad Intelectual, Unidad de opción institucional (x2) y Residencia Pedagógica</li></ul>"],
+            informal: ["El plan de estudios (4 años) es el siguiente:<br><ul><li><b>1° Año:</b> Pedagogía, Psicología Educacional, Alfabetización Académica, Didáctica General, Neuropsicobiología del Desarrollo, Sujeto de la Educación, Educación Temprana, Abordaje Pedagógico I y Práctica I</li><li><b>2° Año:</b> Filosofía, Historia de las Políticas Educativas, Didáctica de la Lengua, Matemática, Comunicación, Lenguaje y sus alteraciones, Trastornos en el desarrollo, Abordaje Pedagógico II y Práctica II</li><li><b>3° Año:</b> TIC y Discapacidad, Sociología de la Educación, Didáctica de Sociales y Naturales, Abordaje Pedagógico III, Abordajes Complejos y Práctica III</li><li><b>4° Año:</b> ESI y Discapacidad Intelectual, Ética Profesional, Perspectiva del adulto con Discapacidad Intelectual, Unidad de opción institucional (x2) y Residencia Pedagógica</li></ul>"],
+            molesto: ["El plan de estudios (4 años) es el siguiente:<br><ul><li><b>1° Año:</b> Pedagogía, Psicología Educacional, Alfabetización Académica, Didáctica General, Neuropsicobiología del Desarrollo, Sujeto de la Educación, Educación Temprana, Abordaje Pedagógico I y Práctica I</li><li><b>2° Año:</b> Filosofía, Historia de las Políticas Educativas, Didáctica de la Lengua, Matemática, Comunicación, Lenguaje y sus alteraciones, Trastornos en el desarrollo, Abordaje Pedagógico II y Práctica II</li><li><b>3° Año:</b> TIC y Discapacidad, Sociología de la Educación, Didáctica de Sociales y Naturales, Abordaje Pedagógico III, Abordajes Complejos y Práctica III</li><li><b>4° Año:</b> ESI y Discapacidad Intelectual, Ética Profesional, Perspectiva del adulto con Discapacidad Intelectual, Unidad de opción institucional (x2) y Residencia Pedagógica</li></ul>"]
+        },
+        campo_laboral: {
+            formal: ["<b>Campo Profesional y Laboral:</b><br><ul><li><b>Ámbito Educativo:</b> Escuelas de todos los niveles. Acompañamiento a trayectorias, co enseñanza, fortalecimiento de inclusión y abordaje interdisciplinario.</li><li><b>Ámbito de la Salud:</b> Trabajo independiente en acompañamiento pedagógico. Abordaje interdisciplinario. Centros educativos y de rehabilitación.</li><li><b>Ámbito Socio Comunitario:</b> Clubes deportivos, catequesis, centros comunitarios, ONG para eliminar barreras y promover la inclusión.</li></ul>"],
+            informal: ["<b>Campo Profesional y Laboral:</b><br><ul><li><b>Ámbito Educativo:</b> Escuelas de todos los niveles. Acompañamiento a trayectorias, co enseñanza, fortalecimiento de inclusión y abordaje interdisciplinario.</li><li><b>Ámbito de la Salud:</b> Trabajo independiente en acompañamiento pedagógico. Abordaje interdisciplinario. Centros educativos y de rehabilitación.</li><li><b>Ámbito Socio Comunitario:</b> Clubes deportivos, catequesis, centros comunitarios, ONG para eliminar barreras y promover la inclusión.</li></ul>"],
+            molesto: ["<b>Campo Profesional y Laboral:</b><br><ul><li><b>Ámbito Educativo:</b> Escuelas de todos los niveles. Acompañamiento a trayectorias, co enseñanza, fortalecimiento de inclusión y abordaje interdisciplinario.</li><li><b>Ámbito de la Salud:</b> Trabajo independiente en acompañamiento pedagógico. Abordaje interdisciplinario. Centros educativos y de rehabilitación.</li><li><b>Ámbito Socio Comunitario:</b> Clubes deportivos, catequesis, centros comunitarios, ONG para eliminar barreras y promover la inclusión.</li></ul>"]
+        },
+        horario_atencion: {
+            formal: ["El cursado presencial se desarrolla en los Turnos Mañana y Noche, en Casa Central."],
+            informal: ["Las clases se dictan en los Turnos Mañana y Noche, en Casa Central."],
+            molesto: ["Horarios correspondientes a Turnos Mañana y Noche (Central)."]
+        },
+        coordinador: {
+            formal: ["La coordinadora es la Prof. Jimena Cabrera. (Días Lunes de 10:10 a 12:10 hs., Miércoles de 09:00 a 11:00 hs., y Jueves y Viernes de 18:00 a 20:00 hs.)"],
+            informal: ["La coordinadora es la Prof. Jimena Cabrera. (Lunes de 10:10 a 12:10 hs., Miércoles de 09:00 a 11:00 hs., y Jueves y Viernes de 18:00 a 20:00 hs.)"],
+            molesto: ["La coordinación está a cargo de la Prof. Jimena Cabrera."]
+        },
+        nombre: "Profesorado de Educación Especial con Orientación en Discapacidad Intelectual"
+    },
+
+    carrera_especial_sordos: {
+        descripcion_carrera: {
+            formal: ["💡 Esta carrera se dicta exclusivamente en la **Sede San Pedro**.<br><br><b>Perfil del Egresado:</b><br><ul><li>Acompañar el proceso educativo de estudiantes con discapacidad sensorial auditiva a través del diseño de propuestas pedagógicas accesibles.</li><li>Elaborar propuestas pedagógicas inclusivas.</li><li>Planificar las tareas de aprendizaje en Modalidad Especial asegurando entornos de accesibilidad.</li><li>Evaluar pedagógicamente para generar estrategias diversificadas.</li><li>Elaborar proyectos pedagógicos y socio comunitarios.</li></ul>"],
+            informal: ["💡 Esta carrera se dicta exclusivamente en la **Sede San Pedro**.<br><br><b>Perfil del Egresado:</b><br><ul><li>Acompañar el proceso educativo de estudiantes con discapacidad sensorial auditiva a través del diseño de propuestas pedagógicas accesibles.</li><li>Elaborar propuestas pedagógicas inclusivas.</li><li>Planificar las tareas de aprendizaje en Modalidad Especial asegurando entornos de accesibilidad.</li><li>Evaluar pedagógicamente para generar estrategias diversificadas.</li><li>Elaborar proyectos pedagógicos y socio comunitarios.</li></ul>"],
+            molesto: ["💡 Esta carrera se dicta exclusivamente en la **Sede San Pedro**.<br><br><b>Perfil del Egresado:</b><br><ul><li>Acompañar el proceso educativo de estudiantes con discapacidad sensorial auditiva a través del diseño de propuestas pedagógicas accesibles.</li><li>Elaborar propuestas pedagógicas inclusivas.</li><li>Planificar las tareas de aprendizaje en Modalidad Especial asegurando entornos de accesibilidad.</li><li>Evaluar pedagógicamente para generar estrategias diversificadas.</li><li>Elaborar proyectos pedagógicos y socio comunitarios.</li></ul>"]
+        },
+        plan_estudios_completo: {
+            formal: ["El plan de estudios (4 años) es el siguiente:<br><ul><li><b>1° Año:</b> Pedagogía, Psicología Educacional, Alfabetización Académica, Didáctica General, Neuropsicobiología del Desarrollo, Sujeto de la Educación, Educación Temprana, Abordaje Pedagógico Bilingüe y Práctica I</li><li><b>2° Año:</b> Filosofía, Historia de las Políticas Educativas, Didáctica de Lengua y Matemática, Comunicación, Lenguaje, Lengua de Señas Argentinas I, Abordaje Pedagógico (Nivel Primario) y Práctica II</li><li><b>3° Año:</b> TIC y Discapacidad Auditiva, Sociología de la Educación, Didáctica de Sociales y Naturales, Lengua de Señas Argentinas II, Abordaje Pedagógico (Nivel Secundario) y Práctica III</li><li><b>4° Año:</b> ESI, Ética Profesional, Abordaje Pedagógico Complejo y Psicomotriz, Perspectiva Educativa, Social y Laboral, Unidad de opción institucional y Residencia Pedagógica</li></ul>"],
+            informal: ["El plan de estudios (4 años) es el siguiente:<br><ul><li><b>1° Año:</b> Pedagogía, Psicología Educacional, Alfabetización Académica, Didáctica General, Neuropsicobiología del Desarrollo, Sujeto de la Educación, Educación Temprana, Abordaje Pedagógico Bilingüe y Práctica I</li><li><b>2° Año:</b> Filosofía, Historia de las Políticas Educativas, Didáctica de Lengua y Matemática, Comunicación, Lenguaje, Lengua de Señas Argentinas I, Abordaje Pedagógico (Nivel Primario) y Práctica II</li><li><b>3° Año:</b> TIC y Discapacidad Auditiva, Sociología de la Educación, Didáctica de Sociales y Naturales, Lengua de Señas Argentinas II, Abordaje Pedagógico (Nivel Secundario) y Práctica III</li><li><b>4° Año:</b> ESI, Ética Profesional, Abordaje Pedagógico Complejo y Psicomotriz, Perspectiva Educativa, Social y Laboral, Unidad de opción institucional y Residencia Pedagógica</li></ul>"],
+            molesto: ["El plan de estudios (4 años) es el siguiente:<br><ul><li><b>1° Año:</b> Pedagogía, Psicología Educacional, Alfabetización Académica, Didáctica General, Neuropsicobiología del Desarrollo, Sujeto de la Educación, Educación Temprana, Abordaje Pedagógico Bilingüe y Práctica I</li><li><b>2° Año:</b> Filosofía, Historia de las Políticas Educativas, Didáctica de Lengua y Matemática, Comunicación, Lenguaje, Lengua de Señas Argentinas I, Abordaje Pedagógico (Nivel Primario) y Práctica II</li><li><b>3° Año:</b> TIC y Discapacidad Auditiva, Sociología de la Educación, Didáctica de Sociales y Naturales, Lengua de Señas Argentinas II, Abordaje Pedagógico (Nivel Secundario) y Práctica III</li><li><b>4° Año:</b> ESI, Ética Profesional, Abordaje Pedagógico Complejo y Psicomotriz, Perspectiva Educativa, Social y Laboral, Unidad de opción institucional y Residencia Pedagógica</li></ul>"]
+        },
+        campo_laboral: {
+            formal: ["<b>Campo Profesional y Laboral:</b><br>La Ley N° 26.206 define:<br><ul><li>Educación Especial</li><li>Educación Común (Nivel Inicial, Primario y Secundario)</li><li>Educación No Formal</li><li>Entidades de Desarrollo Social y Laboral</li><li>Ámbitos de la Salud y Seguridad</li><li>Instituciones No Gubernamentales</li></ul>"],
+            informal: ["<b>Campo Profesional y Laboral:</b><br>La Ley N° 26.206 define:<br><ul><li>Educación Especial</li><li>Educación Común (Nivel Inicial, Primario y Secundario)</li><li>Educación No Formal</li><li>Entidades de Desarrollo Social y Laboral</li><li>Ámbitos de la Salud y Seguridad</li><li>Instituciones No Gubernamentales</li></ul>"],
+            molesto: ["<b>Campo Profesional y Laboral:</b><br>La Ley N° 26.206 define:<br><ul><li>Educación Especial</li><li>Educación Común (Nivel Inicial, Primario y Secundario)</li><li>Educación No Formal</li><li>Entidades de Desarrollo Social y Laboral</li><li>Ámbitos de la Salud y Seguridad</li><li>Instituciones No Gubernamentales</li></ul>"]
+        },
+        horario_atencion: {
+            formal: ["El cursado se desarrolla en el Turno Noche, en la Sede San Pedro."],
+            informal: ["Las clases se dictan en el Turno Noche, en Sede San Pedro."],
+            molesto: ["Turno Noche (San Pedro)."]
+        },
+        coordinador: {
+            formal: ["La Coordinación de la Carrera en Sede San Pedro atiende en horarios específicos a confirmar en la sede administrativa."],
+            informal: ["Podés acercarte a la Sede San Pedro para consultar los horarios de coordinación."],
+            molesto: ["Atención en Sede San Pedro."]
+        },
+        nombre: "Profesorado de Educación Especial con Orientación en Sordos e Hipoacúsicos"
+    },
+
     ciencias_sagradas: {
         descripcion_carrera: {
             formal: [
@@ -2492,7 +2486,7 @@ export function procesarMensaje(texto, sessionId = 'default_session') {
 
     // Si se detectó una carrera en la consulta actual, removemos las intenciones generales de listado
     if (carreraDetectada) {
-        ['carreras', 'tecnicaturas', 'profesorados'].forEach(intencionGeneral => {
+        ['carreras', 'tecnicaturas', 'profesorados', carreraDetectada].forEach(intencionGeneral => {
             const idx = intenciones.indexOf(intencionGeneral);
             if (idx !== -1) {
                 intenciones.splice(idx, 1);
@@ -2554,7 +2548,7 @@ export function procesarMensaje(texto, sessionId = 'default_session') {
             keyHistorico = `${intencion}_${tono}_${carreraAUsar}`;
         } else if (RESPUESTAS_GENERALES[intencion]) {
             // Lógica de Fallback de Sedes
-            const carrerasAnexos = ['carrera_mecatronica', 'carrera_software', 'carrera_automatizacion', 'carrera_lengua', 'carrera_historia', 'carrera_psicologia'];
+            const carrerasAnexos = ['carrera_especial_sordos', 'carrera_mecatronica', 'carrera_software', 'carrera_automatizacion', 'carrera_lengua', 'carrera_historia', 'carrera_psicologia'];
             const requiereInfoCentral = ['distribucion_aulas', 'horarios', 'contacto', 'coordinador', 'requisitos', 'ubicacion', 'horario_atencion'];
             
             if ((carrerasAnexos.includes(carreraAUsar) || (intenciones.some(i => i.startsWith('sede_')))) && requiereInfoCentral.includes(intencion) && !tieneEspecifico) {
