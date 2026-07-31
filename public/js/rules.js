@@ -662,35 +662,35 @@ const RESPUESTAS_GENERALES = {
     },
     valor_cuota: {
         formal: [
-            "Tesorería Informa - Valores de Cuota 2026:\nEl valor de la cuota mensual para todas las carreras es de $55.000.-, a excepción de las Carreras Especiales cuyo valor es de $60.000.-\n\nVencimientos: Las cuotas de todas las carreras vencen el último día de cada mes. Transcurrido ese plazo, se aplicará un recargo por cada mes de mora."
+            "Tesorería Informa - Valores de Cuota 2026:\nEl valor de la cuota mensual para todas las carreras es de 55.000. pesos-, a excepción de las Carreras Especiales cuyo valor es de 60.000. pesos-\n\nVencimientos: Las cuotas de todas las carreras vencen el último día de cada mes. Transcurrido ese plazo, se aplicará un recargo por cada mes de mora."
         ],
         informal: [
-            "Para el año 2026, el valor de la cuota para casi todas las carreras es de $55.000 (las Carreras Especiales están en $60.000).\nAcordate que las cuotas vencen el último día de cada mes; si te pasás de esa fecha, se cobra un recargo por cada mes de atraso."
+            "Para el año 2026, el valor de la cuota para casi todas las carreras es de 55.000 pesos (las Carreras Especiales están en 60.000 pesos).\nAcordate que las cuotas vencen el último día de cada mes; si te pasás de esa fecha, se cobra un recargo por cada mes de atraso."
         ],
         molesto: [
-            "Le informamos los valores vigentes para 2026: la cuota es de $55.000 para todas las carreras y $60.000 para las especiales. Vencen el último día de cada mes, sin excepción, y el atraso genera recargos."
+            "Le informamos los valores vigentes para 2026: la cuota es de 55.000 pesos para todas las carreras y 60.000 pesos para las especiales. Vencen el último día de cada mes, sin excepción, y el atraso genera recargos."
         ]
     },
     valor_inscripcion: {
         formal: [
-            "Tesorería Informa: El valor de inscripción para el Ciclo Lectivo 2026 es de $60.000.-"
+            "Tesorería Informa: El valor de inscripción para el Ciclo Lectivo 2026 es de 60.000. pesos-"
         ],
         informal: [
-            "Te comento que el valor de la inscripción para el ciclo 2026 está fijado en $60.000."
+            "Te comento que el valor de la inscripción para el ciclo 2026 está fijado en 60.000. pesos"
         ],
         molesto: [
-            "Le informamos que el arancel de inscripción correspondiente al ciclo 2026 es de $60.000."
+            "Le informamos que el arancel de inscripción correspondiente al ciclo 2026 es de 60.000. pesos"
         ]
     },
     tramites_tesoreria: {
         formal: [
-            "Tesorería Informa - Aranceles Ciclo Lectivo 2026:<br><ul><li><b>Constancias y Autenticaciones:</b> $3.800.-</li><li><b>Libretas:</b> $11.000.-</li><li><b>Analítico:</b> $7.500.-</li><li><b>Documentación p/ Junta:</b> $12.500.-</li><li><b>Duplicado de Título:</b> $27.000.-</li><li><b>Biblioteca:</b> $8.000.-</li></ul>"
+            "Tesorería Informa - Aranceles Ciclo Lectivo 2026:<br><ul><li><b>Constancias y Autenticaciones:</b> 3.800. pesos-</li><li><b>Libretas:</b> 11.000. pesos-</li><li><b>Analítico:</b> 7.500. pesos-</li><li><b>Documentación p/ Junta:</b> 12.500. pesos-</li><li><b>Duplicado de Título:</b> 27.000. pesos-</li><li><b>Biblioteca:</b> 8.000. pesos-</li></ul>"
         ],
         informal: [
-            "Te paso los precios de tesorería para el 2026:<br><ul><li>Constancias y Autenticaciones: $3.800</li><li>Libretas: $11.000</li><li>Analítico: $7.500</li><li>Documentación p/ Junta: $12.500</li><li>Duplicado de Título: $27.000</li><li>Biblioteca: $8.000</li></ul>"
+            "Te paso los precios de tesorería para el 2026:<br><ul><li>Constancias y Autenticaciones: 3.800 pesos</li><li>Libretas: 11.000 pesos</li><li>Analítico: 7.500 pesos</li><li>Documentación p/ Junta: 12.500 pesos</li><li>Duplicado de Título: 27.000 pesos</li><li>Biblioteca: 8.000 pesos</li></ul>"
         ],
         molesto: [
-            "Los aranceles de trámites para 2026 son:<br><ul><li>Constancias: $3.800</li><li>Libretas: $11.000</li><li>Analítico: $7.500</li><li>Doc. p/ Junta: $12.500</li><li>Duplicado de Título: $27.000</li><li>Biblioteca: $8.000</li></ul>"
+            "Los aranceles de trámites para 2026 son:<br><ul><li>Constancias: 3.800 pesos</li><li>Libretas: 11.000 pesos</li><li>Analítico: 7.500 pesos</li><li>Doc. p/ Junta: 12.500 pesos</li><li>Duplicado de Título: 27.000 pesos</li><li>Biblioteca: 8.000 pesos</li></ul>"
         ]
     },
     
