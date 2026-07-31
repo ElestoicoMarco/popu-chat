@@ -1044,20 +1044,7 @@ function generarAclaracionDinamica(intencion, tono) {
         { id: "carrera_automatizacion", label: "Aut. y Robótica" },
         { id: "carrera_lengua", label: "Prof. Lengua" },
         { id: "carrera_historia", label: "Prof. Historia" },
-        { id: "carrera_psicologia", label: "Prof. Psicología" },
-        { id: "carrera_mecatronica", label: "Mecatrónica" },
-        { id: "carrera_software", label: "Des. de Software" },
-        { id: "carrera_automatizacion", label: "Aut. y Robótica" },
-        { id: "carrera_lengua", label: "Prof. Lengua" },
-        { id: "carrera_historia", label: "Prof. Historia" },
-        { id: "carrera_psicologia", label: "Prof. Psicología" },
-        { id: "Mecatrónica", label: "Mecatrónica" },
-        { id: "Desarrollo de Software", label: "Des. de Software" },
-        { id: "Automatización y Robótica", label: "Aut. y Robótica" },
-        { id: "Profesorado en Lengua y Literatura", label: "Prof. Lengua" },
-        { id: "Profesorado en Historia", label: "Prof. Historia" },
-        { id: "Profesorado en Psicología", label: "Prof. Psicología" }
-    ];
+        { id: "carrera_psicologia", label: "Prof. Psicología" }    ];
 
     let btnHtml = '<br><br><div class="btn-list">';
     carreras.forEach(c => {
@@ -1080,6 +1067,16 @@ const RESPUESTAS_CARRERA = {
             formal: ["<ul><li><b>1° Año:</b> Física Aplicada, Matemática Aplicada, Comunicación, Sistemas de Representación, Electrónica Industrial, Electromecánica, Mecatrónica I, Prácticas I</li><li><b>2° Año:</b> Ciencia, Tecnología y Sociedad, Procesos Productivos, Mecatrónica II, Automatización Industrial, Inglés Técnico, Mecánica, EDI I, Prácticas II</li><li><b>3° Año:</b> Gestión de Emprendimientos, Ética y Deontología, Tecnología de los Materiales, Gestión, Organización y Planificación, Mecatrónica III, Mantenimiento Industrial, EDI II, Metrología y Calidad, Prácticas III</li></ul>"],
             informal: ["<ul><li><b>1° Año:</b> Física, Matemática, Comunicación, Sistemas, Electrónica Industrial, Electromecánica, Mecatrónica I, Prácticas I</li><li><b>2° Año:</b> Ciencia, Procesos, Mecatrónica II, Automatización Industrial, Inglés, Mecánica, EDI I, Prácticas II</li><li><b>3° Año:</b> Emprendimientos, Ética, Materiales, Gestión, Mecatrónica III, Mantenimiento, EDI II, Metrología, Prácticas III</li></ul>"],
             molesto: ["Le detallamos el plan:<br><ul><li><b>1° Año:</b> Física, Matemática, Comunicación, Sistemas, Electrónica Industrial, Electromecánica, Mecatrónica I, Prácticas I</li><li><b>2° Año:</b> Ciencia, Procesos, Mecatrónica II, Automatización Industrial, Inglés, Mecánica, EDI I, Prácticas II</li><li><b>3° Año:</b> Emprendimientos, Ética, Materiales, Gestión, Mecatrónica III, Mantenimiento, EDI II, Metrología, Prácticas III</li></ul>"]
+        },
+        horario_atencion: {
+            formal: ["El cursado de la Tecnicatura Superior en Mecatrónica se desarrolla en el Turno Noche, en la Sede Perico."],
+            informal: ["Las clases de Mecatrónica se dictan a la noche en la Sede Perico."],
+            molesto: ["Le informamos que las clases de Mecatrónica son durante el Turno Noche en Perico."]
+        },
+        campo_laboral: {
+            formal: ["El Técnico Superior en Mecatrónica puede desempeñarse en industrias de pequeña, mediana o gran envergadura (mecánica, metalmecánica, producción industrial, automatización), organizaciones aeronáuticas, agropecuarias con instalaciones automatizadas y consultoras."],
+            informal: ["Vas a poder trabajar en industrias mecánicas, metalmecánicas, aeronáuticas, empresas agropecuarias automatizadas y consultorías."],
+            molesto: ["El campo laboral incluye la industria metalmecánica, aeronáutica, agropecuaria automatizada y consultoría técnica."]
         }
     },
     carrera_software: {
@@ -1092,6 +1089,16 @@ const RESPUESTAS_CARRERA = {
             formal: ["<ul><li><b>1° Año:</b> Álgebra, Inglés, EDI I, Metodología de la Inv., Informática, Programación I, Arquitectura de computadoras, Administración y organizaciones, Análisis matemático</li><li><b>2° Año:</b> Inglés técnico, Programación II, Base de datos, Sistemas operativos, Redes, Análisis y diseño, Estructura de datos, Seguridad informática, Prácticas I</li><li><b>3° Año:</b> Estadística, EDI II, Ética, Programación III, Legislación, Emprendedurismo, Diseño de interface, Ingeniería del software, Prácticas III</li></ul>"],
             informal: ["<ul><li><b>1° Año:</b> Álgebra, Inglés, EDI I, Metodología, Informática, Programación I, Arquitectura, Administración, Análisis matemático</li><li><b>2° Año:</b> Inglés técnico, Programación II, Base de datos, Sistemas operativos, Redes, Análisis, Estructuras, Seguridad informática, Prácticas I</li><li><b>3° Año:</b> Estadística, EDI II, Ética, Programación III, Legislación, Emprendedurismo, Interfaces, Ingeniería de software, Prácticas III</li></ul>"],
             molesto: ["El plan incluye:<br><ul><li><b>1° Año:</b> Álgebra, Inglés, EDI I, Metodología, Informática, Programación I, Arquitectura, Administración, Análisis matemático</li><li><b>2° Año:</b> Inglés técnico, Programación II, Base de datos, Sistemas operativos, Redes, Análisis, Estructuras, Seguridad informática, Prácticas I</li><li><b>3° Año:</b> Estadística, EDI II, Ética, Programación III, Legislación, Emprendedurismo, Interfaces, Ingeniería de software, Prácticas III</li></ul>"]
+        },
+        horario_atencion: {
+            formal: ["El cursado de la Tecnicatura Superior en Desarrollo de Software se desarrolla en el Turno Tarde, en la Sede San Pedro."],
+            informal: ["Las clases de Software se dictan a la tarde en la Sede San Pedro."],
+            molesto: ["Le informamos que las clases de Software son durante el Turno Tarde en San Pedro."]
+        },
+        campo_laboral: {
+            formal: ["El Técnico Superior en Desarrollo de Software podrá trabajar en empresas desarrolladoras de software, empresas que proveen servicios de consultoría técnica o de manera autónoma prestando servicios a terceros y creando sus propios emprendimientos."],
+            informal: ["Vas a poder trabajar en empresas de desarrollo, hacer consultorías IT, o trabajar de forma independiente armando tu propia empresa de software."],
+            molesto: ["El campo laboral incluye empresas desarrolladoras de software, consultoría y trabajo autónomo e independiente."]
         }
     },
     carrera_automatizacion: {
@@ -1104,6 +1111,16 @@ const RESPUESTAS_CARRERA = {
             formal: ["<ul><li><b>1° Año:</b> Física Aplicada, Matemática, Comunicación, Sistemas de Representación, Electrónica Industrial, Electromecánica, Mecatrónica I, Prácticas I</li><li><b>2° Año:</b> Ciencia y Sociedad, Procesos Productivos, Mecatrónica II, Automatización Industrial, Inglés, Mecánica, EDI I, Prácticas II</li><li><b>3° Año:</b> Emprendimientos, Ética, Materiales, Organización, Mecatrónica III, Mantenimiento, EDI II, Metrología, Prácticas III</li></ul>"],
             informal: ["<ul><li><b>1° Año:</b> Física, Matemática, Comunicación, Sistemas, Electrónica, Electromecánica, Mecatrónica I, Prácticas I</li><li><b>2° Año:</b> Ciencia y Sociedad, Procesos, Mecatrónica II, Automatización, Inglés, Mecánica, EDI I, Prácticas II</li><li><b>3° Año:</b> Emprendimientos, Ética, Materiales, Organización, Mecatrónica III, Mantenimiento, EDI II, Metrología, Prácticas III</li></ul>"],
             molesto: ["El plan de estudios es:<br><ul><li><b>1° Año:</b> Física Aplicada, Matemática, Comunicación, Sistemas, Electrónica Industrial, Electromecánica, Mecatrónica I, Prácticas I</li><li><b>2° Año:</b> Ciencia y Sociedad, Procesos, Mecatrónica II, Automatización, Inglés, Mecánica, EDI I, Prácticas II</li><li><b>3° Año:</b> Emprendimientos, Ética, Materiales, Organización, Mecatrónica III, Mantenimiento, EDI II, Metrología, Prácticas III</li></ul>"]
+        },
+        horario_atencion: {
+            formal: ["El cursado de la Tecnicatura Superior en Automatización y Robótica se desarrolla en el Turno Noche, en la Sede Libertador."],
+            informal: ["Las clases de Automatización y Robótica se dictan a la noche en la Sede Libertador."],
+            molesto: ["Le informamos que las clases son durante el Turno Noche en Sede Libertador."]
+        },
+        campo_laboral: {
+            formal: ["El Técnico en Automatización y Robótica puede desempeñarse en industrias de mecánica, metalmecánica y producción, organizaciones aeronáuticas, productoras de robótica aplicada a la medicina, e instalaciones agropecuarias robotizadas."],
+            informal: ["Podés trabajar en industrias mecánicas, organizaciones de robótica aplicada a medicina, aeronáutica y establecimientos agropecuarios robotizados."],
+            molesto: ["El campo laboral incluye industrias mecánicas, aeronáuticas, de robótica médica y agropecuarias."]
         }
     },
     carrera_lengua: {
@@ -1116,6 +1133,16 @@ const RESPUESTAS_CARRERA = {
             formal: ["<ul><li><b>1° Año:</b> Pedagogía, Psicología Educacional, Alfabetización Académica, Prácticas del Lenguaje, Gramática I, Teoría y Crítica Literaria, Culturas Literarias, Práctica I</li><li><b>2° Año:</b> Filosofía, Historia de las Políticas Educativas, Didáctica General, Sujeto de la Educación, Gramática II, Didáctica de las Ciencias del Lenguaje, Metodologías Lingüísticas, Literatura Latinoamericana, Práctica II</li><li><b>3° Año:</b> TIC, Sociología, ESI, Lingüística Aplicada, Literatura Argentina, Didáctica de la Literatura, Semiótica, Práctica III</li><li><b>4° Año:</b> Ética, Historia Crítica de la Lengua Española, Literatura del NOA, Literatura Juvenil, Unidad Curricular Institucional, Residencia Pedagógica</li></ul>"],
             informal: ["<ul><li><b>1° Año:</b> Pedagogía, Psicología, Alfabetización Acad., Prácticas del Lenguaje, Gramática I, Teoría Literaria, Culturas Literarias, Práctica I</li><li><b>2° Año:</b> Filosofía, Políticas Educ., Didáctica Gral, Sujeto Educ., Gramática II, Didáctica del Lenguaje, Metodologías, Lit. Latinoamericana, Práctica II</li><li><b>3° Año:</b> TIC, Sociología, ESI, Lingüística Aplicada, Lit. Argentina, Didáctica Lit., Semiótica, Práctica III</li><li><b>4° Año:</b> Ética, Historia de la Lengua, Lit. del NOA, Lit. Juvenil, Unidad Curricular, Residencia</li></ul>"],
             molesto: ["Le pasamos el plan:<br><ul><li><b>1° Año:</b> Pedagogía, Psicología Educacional, Alfabetización Académica, Prácticas del Lenguaje, Gramática I, Teoría y Crítica Literaria, Culturas Literarias, Práctica I</li><li><b>2° Año:</b> Filosofía, Historia de las Políticas Educativas, Didáctica General, Sujeto de la Educación, Gramática II, Didáctica de las Ciencias del Lenguaje, Metodologías Lingüísticas, Literatura Latinoamericana, Práctica II</li><li><b>3° Año:</b> TIC, Sociología, ESI, Lingüística Aplicada, Literatura Argentina, Didáctica de la Literatura, Semiótica, Práctica III</li><li><b>4° Año:</b> Ética, Historia Crítica de la Lengua Española, Literatura del NOA, Literatura Juvenil, Unidad Curricular Institucional, Residencia Pedagógica</li></ul>"]
+        },
+        horario_atencion: {
+            formal: ["El Profesorado de Educación Secundaria en Lengua y Literatura se dicta en el Turno Noche (de 18:00 a 22:00 hs), en la Sede Perico."],
+            informal: ["Las clases del profesorado de Lengua se dictan a la noche (de 18 a 22 hs) en la Sede Perico."],
+            molesto: ["Le informamos que las clases de Lengua son durante el Turno Noche en Perico."]
+        },
+        campo_laboral: {
+            formal: ["El Profesor en Lengua y Literatura podrá insertarse en instituciones educativas de nivel secundario (gestión pública, privada, cooperativa y social), en proyectos socioeducativos del Ministerio de Educación y en instituciones de investigación."],
+            informal: ["Podés trabajar como profesor en escuelas secundarias públicas y privadas, en proyectos del Ministerio de Educación o en investigación educativa."],
+            molesto: ["El campo laboral incluye docencia en nivel secundario e investigación educativa."]
         }
     },
     carrera_historia: {
@@ -1128,6 +1155,16 @@ const RESPUESTAS_CARRERA = {
             formal: ["<ul><li><b>1° Año:</b> Pedagogía, Psicología Educacional, Alfabetización Académica, Introducción a la Historia, Historia Mundial I, Historia de América I, Geografía, Práctica I</li><li><b>2° Año:</b> Didáctica General, Filosofía, Políticas Educativas, Sujeto de la Educación, Historia Argentina I, Historia Mundial II, Práctica II</li><li><b>3° Año:</b> ESI, TIC, Sociología de la Educación, Historia Argentina II, Historia Mundial III, Epistemología de la Historia, Didáctica de la Historia, Historia de Jujuy, Práctica III</li><li><b>4° Año:</b> Ética, Historia de América Contemporánea, Investigación de Historia Regional, Historia Mundial IV, Unidad Institucional, Residencia Pedagógica</li></ul>"],
             informal: ["<ul><li><b>1° Año:</b> Pedagogía, Psicología, Alfabetización Acad., Intro a la Historia, Historia Mundial I, Historia de América I, Geografía, Práctica I</li><li><b>2° Año:</b> Didáctica Gral, Filosofía, Políticas Educativas, Sujeto Educ., Historia Argentina I, Historia Mundial II, Práctica II</li><li><b>3° Año:</b> ESI, TIC, Sociología, Historia Argentina II, Historia Mundial III, Epistemología, Didáctica de la Historia, Historia de Jujuy, Práctica III</li><li><b>4° Año:</b> Ética, Historia América Contemp., Investigación Regional, Historia Mundial IV, Unidad Institucional, Residencia</li></ul>"],
             molesto: ["Plan de Historia:<br><ul><li><b>1° Año:</b> Pedagogía, Psicología Educacional, Alfabetización Académica, Introducción a la Historia, Historia Mundial I, Historia de América I, Geografía, Práctica I</li><li><b>2° Año:</b> Didáctica General, Filosofía, Políticas Educativas, Sujeto de la Educación, Historia Argentina I, Historia Mundial II, Práctica II</li><li><b>3° Año:</b> ESI, TIC, Sociología de la Educación, Historia Argentina II, Historia Mundial III, Epistemología de la Historia, Didáctica de la Historia, Historia de Jujuy, Práctica III</li><li><b>4° Año:</b> Ética, Historia de América Contemporánea, Investigación de Historia Regional, Historia Mundial IV, Unidad Institucional, Residencia Pedagógica</li></ul>"]
+        },
+        horario_atencion: {
+            formal: ["El Profesorado de Educación Secundaria en Historia se dicta en el Turno Mañana y Turno Tarde, en la Sede San Pedro."],
+            informal: ["Las clases del profesorado de Historia se dictan a la mañana y a la tarde en la Sede San Pedro."],
+            molesto: ["Le informamos que las clases de Historia se imparten en los Turnos Mañana y Tarde en San Pedro."]
+        },
+        campo_laboral: {
+            formal: ["El Profesor en Historia podrá insertarse en instituciones educativas de nivel secundario (gestión pública, privada y social), en proyectos socioeducativos del Ministerio de Educación y en instituciones abocadas a la investigación y la capacitación."],
+            informal: ["Podés dar clases en colegios secundarios públicos o privados, participar en proyectos del Ministerio de Educación o dedicarte a la investigación."],
+            molesto: ["El campo laboral abarca docencia en nivel secundario, proyectos socioeducativos e investigación."]
         }
     },
     carrera_psicologia: {
@@ -1140,6 +1177,16 @@ const RESPUESTAS_CARRERA = {
             formal: ["<ul><li><b>1° Año:</b> Pedagogía, Psicología Educacional, Alfabetización, Psicología General, Psicofisiología, Psicología Evolutiva I, Antropología Social, Práctica I</li><li><b>2° Año:</b> Didáctica General, Filosofía, Políticas Educativas, Sujeto de la Educación, Psicología Social, Psicología y Cultura, Historia de la Psicología, Psicología Evolutiva II, Práctica II</li><li><b>3° Año:</b> ESI, TIC, Sociología, Orientación Vocacional, Seminario Psicoanálisis, Didáctica de la Psicología, Teoría y Técnica de Grupo, Práctica III</li><li><b>4° Año:</b> Ética, Problemáticas Psicosociales, Psicología de las Instituciones, Asesoramiento Pedagógico, Unidad Institucional, Residencia</li></ul>"],
             informal: ["<ul><li><b>1° Año:</b> Pedagogía, Psicología Educ., Alfabetización, Psicología General, Psicofisiología, Psicología Evolutiva I, Antropología, Práctica I</li><li><b>2° Año:</b> Didáctica Gral, Filosofía, Políticas Educ., Sujeto Educ., Psicología Social, Psicología y Cultura, Hist. de la Psicología, Psi. Evolutiva II, Práctica II</li><li><b>3° Año:</b> ESI, TIC, Sociología, Orientación Vocacional, Psicoanálisis, Didáctica de la Psicología, Teoría de Grupo, Práctica III</li><li><b>4° Año:</b> Ética, Problemáticas Psicosociales, Psicología Institucional, Asesoramiento Pedagógico, Unidad Institucional, Residencia</li></ul>"],
             molesto: ["Plan de Psicología:<br><ul><li><b>1° Año:</b> Pedagogía, Psicología Educacional, Alfabetización, Psicología General, Psicofisiología, Psicología Evolutiva I, Antropología Social, Práctica I</li><li><b>2° Año:</b> Didáctica General, Filosofía, Políticas Educativas, Sujeto de la Educación, Psicología Social, Psicología y Cultura, Historia de la Psicología, Psicología Evolutiva II, Práctica II</li><li><b>3° Año:</b> ESI, TIC, Sociología, Orientación Vocacional, Seminario Psicoanálisis, Didáctica de la Psicología, Teoría y Técnica de Grupo, Práctica III</li><li><b>4° Año:</b> Ética, Problemáticas Psicosociales, Psicología de las Instituciones, Asesoramiento Pedagógico, Unidad Institucional, Residencia</li></ul>"]
+        },
+        horario_atencion: {
+            formal: ["El Profesorado de Educación Secundaria en Psicología se dicta en el Turno Noche, en la Sede Libertador."],
+            informal: ["Las clases del profesorado de Psicología se dictan a la noche en la Sede Libertador."],
+            molesto: ["Le informamos que las clases de Psicología son durante el Turno Noche en Libertador."]
+        },
+        campo_laboral: {
+            formal: ["El Profesor en Psicología podrá insertarse en instituciones educativas de nivel secundario ocupando roles como docente, docente tutor, preceptor o referente de ESI, además de participar en proyectos socioeducativos e investigación."],
+            informal: ["Podés trabajar en escuelas secundarias no solo como docente, sino también como tutor, preceptor o referente de ESI, además de hacer investigación."],
+            molesto: ["El campo laboral incluye docencia, tutoría, preceptoría y referentes de ESI en nivel secundario."]
         }
     },
     ciencia_datos: {
