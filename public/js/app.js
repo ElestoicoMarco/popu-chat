@@ -1,7 +1,35 @@
 import { procesarMensaje } from './rules.js';
 
+// Lógica de Bloqueo de Testing (Opción Híbrida)
+const testingParams = new URLSearchParams(window.location.search);
+const testingCode = testingParams.get('codigo');
+const testingExpireDate = new Date("2026-08-13T23:59:59");
+const isTestingExpired = new Date() > testingExpireDate;
+const isLocked = testingCode !== 'TEST2026' || isTestingExpired;
+
 // Splash Screen Logic
 window.addEventListener('load', () => {
+    if (isLocked) {
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const micBtn = document.getElementById('micBtn');
+        
+        if (chatInput) {
+            chatInput.disabled = true;
+            chatInput.placeholder = isTestingExpired 
+                ? "El período de testing ha finalizado. Pronto estaremos online."
+                : "El asistente se encuentra en fase de pruebas cerradas.";
+        }
+        if (sendBtn) sendBtn.disabled = true;
+        if (micBtn) micBtn.disabled = true;
+        
+        // Bloquear todos los botones rápidos existentes
+        document.querySelectorAll('.quick-btn, .chat-accordion summary').forEach(el => {
+            el.style.pointerEvents = 'none';
+            el.style.opacity = '0.6';
+        });
+    }
+
     setTimeout(() => {
         const splash = document.getElementById('splash-screen');
         if (splash) {
@@ -180,6 +208,7 @@ function hideTyping() {
 }
 
 async function enviarMensaje(texto, clickedBtn = null) {
+    if (isLocked) return;
     if (!texto.trim()) return;
 
     if (clickedBtn) clickedBtn.classList.add('btn-loading');
@@ -218,6 +247,7 @@ chatInput.addEventListener('keydown', (e) => {
 
 // Delegación de eventos global para todos los botones inyectados y estáticos
 document.body.addEventListener('click', (e) => {
+    if (isLocked) return;
     const btn = e.target.closest('.quick-btn');
     if (btn && btn.dataset.msg) {
         enviarMensaje(btn.dataset.msg, btn);
