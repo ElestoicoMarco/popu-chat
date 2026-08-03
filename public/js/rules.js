@@ -488,7 +488,6 @@ function detectarCarrera(texto) {
         palabrasTexto.includes('juridico') || 
         palabrasTexto.includes('gestion') || 
         palabrasTexto.includes('abogacia') || 
-        palabrasTexto.includes('tramites') || 
         palabrasTexto.includes('leyes') || 
         palabrasTexto.includes('notarial') || 
         palabrasTexto.includes('judicial') ||
@@ -687,13 +686,13 @@ const RESPUESTAS_GENERALES = {
     },
     tramites_tesoreria: {
         formal: [
-            "Tesorería informa los aranceles vigentes para el Ciclo Lectivo 2026:<br><ul><li>Constancias y Autenticaciones: 3.800 pesos</li><li>Libretas: 11.000 pesos</li><li>Analítico: 7.500 pesos</li><li>Documentación p/ Junta: 12.500 pesos</li><li>Duplicado de Título: 27.000 pesos</li><li>Biblioteca: 8.000 pesos</li></ul>"
+            "Tesorería informa los aranceles vigentes para el Ciclo Lectivo 2026:<br><ul><li>Constancia de Alumno Regular y Autenticaciones: 3.800 pesos</li><li>Libretas: 11.000 pesos</li><li>Analítico: 7.500 pesos</li><li>Documentación p/ Junta: 12.500 pesos</li><li>Duplicado de Título: 27.000 pesos</li><li>Biblioteca: 8.000 pesos</li></ul>"
         ],
         informal: [
-            "Te paso los precios de tesorería para el 2026:<br><ul><li>Constancias y Autenticaciones: 3.800 pesos</li><li>Libretas: 11.000 pesos</li><li>Analítico: 7.500 pesos</li><li>Documentación p/ Junta: 12.500 pesos</li><li>Duplicado de Título: 27.000 pesos</li><li>Biblioteca: 8.000 pesos</li></ul>"
+            "Te paso los precios de tesorería para el 2026:<br><ul><li>Constancia de Alumno Regular y Autenticaciones: 3.800 pesos</li><li>Libretas: 11.000 pesos</li><li>Analítico: 7.500 pesos</li><li>Documentación p/ Junta: 12.500 pesos</li><li>Duplicado de Título: 27.000 pesos</li><li>Biblioteca: 8.000 pesos</li></ul>"
         ],
         molesto: [
-            "Le recordamos los costos de trámites por tesorería para 2026:<br><ul><li>Constancias y Autenticaciones: 3.800 pesos</li><li>Libretas: 11.000 pesos</li><li>Analítico: 7.500 pesos</li><li>Documentación p/ Junta: 12.500 pesos</li><li>Duplicado de Título: 27.000 pesos</li><li>Biblioteca: 8.000 pesos</li></ul>"
+            "Le recordamos los costos de trámites por tesorería para 2026:<br><ul><li>Constancia de Alumno Regular y Autenticaciones: 3.800 pesos</li><li>Libretas: 11.000 pesos</li><li>Analítico: 7.500 pesos</li><li>Documentación p/ Junta: 12.500 pesos</li><li>Duplicado de Título: 27.000 pesos</li><li>Biblioteca: 8.000 pesos</li></ul>"
         ]
     },
     horario_tesoreria: {
