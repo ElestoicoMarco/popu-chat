@@ -17,6 +17,7 @@ function obtenerSesion(sessionId) {
 
 const ORDEN_LOGICO_INTENCIONES = [
     'saludo',
+    'experto_bot',
     'valor_cuota_2027',
     'valor_cuota',
     'valor_inscripcion',
@@ -597,7 +598,7 @@ function detectarCarrera(texto) {
 }
 
 const PALABRAS_CLAVE = {
-    saludo: ['hola', 'buenas', 'dia', 'tarde', 'noche', 'que tal', 'como va'],
+    saludo: ['hola', 'buenas', 'dia', 'tarde', 'noche', 'que tal', 'como va', 'hello', 'que haces', 'que contas amigo', 'que contas', 'ola'],
     valor_cuota_2027: ['cuota 2027', 'arancel 2027', 'precio 2027', 'costo 2027', 'año que viene', 'proximo año', 'cuotas 2027'],
     valor_cuota: ['cuota', 'cuanto se paga', 'precio cuota', 'valor cuota', 'vencimiento cuota', 'arancel', 'mensualidad', 'cuanto cuesta la cuota', 'recargo', 'mora'],
     valor_inscripcion: ['valor inscripcion', 'precio inscripcion', 'cuanto cuesta la inscripcion', 'costo inscripcion', 'precio matricula', 'costo matricula', 'pagar inscripcion'],
@@ -605,7 +606,7 @@ const PALABRAS_CLAVE = {
     horario_tesoreria: ['horario tesoreria', 'horarios tesoreria', 'horario de tesoreria', 'horarios de tesoreria', 'tesoreria'],
     distribucion_aulas: ['aula', 'aulas', 'espacios', 'donde curso', 'que aula', 'turno mañana', 'turno tarde', 'turno noche', 'donde nos toca'],
     requisitos_duplicado: ['requisitos duplicado', 'otro ejemplar', 'extravio titulo', 'perdi el titulo', 'duplicado de titulo', 'perdi mi titulo', 'deterioro titulo'],
-    carreras: ['carrera', 'carreras', 'oferta academica', 'estudiar', 'que tienen', 'que puedo cursar', 'que se dicta', 'dictan', 'oferta', 'ofertas', 'oferta educativa'],
+    carreras: ['carrera', 'carreras', 'oferta academica', 'estudiar', 'que tienen', 'que puedo cursar', 'que se dicta', 'dictan', 'oferta', 'ofertas', 'oferta educativa', 'me decis que carrera hay'],
     tecnicaturas: ['tecnicatura', 'tecnicaturas', 'tecnica', 'tecnicas', 'carreras tecnicas', 'carrera tecnica'],
     profesorados: ['profesorado', 'profesorados', 'profesor', 'profesores', 'docente', 'docentes', 'carreras docentes'],
     descripcion_carrera: ['de que trata', 'descripcion', 'que hace', 'para que sirve', 'perfil', 'que aprendo'],
@@ -628,7 +629,8 @@ const PALABRAS_CLAVE = {
     carrera_historia: ['carrera_historia'],
     carrera_psicologia: ['carrera_psicologia'],
     ayuda: ['ayuda', 'manual', 'guia', 'que hacer', 'que preguntar', 'ejemplos', 'opciones', 'que me podes decir', 'que podes hacer', 'que sabes'],
-    agradecimiento: ['gracias', 'muchas gracias', 'genial', 'me sirvio', 'impecable', 'chau', 'adios', 'hasta luego', 'hasta pronto', 'nos vemos', 'gracias por la informacion', 'muy amable', 'ahi te ves', 'ahi te vez', 'gracias che', 'que tengas buen viaje', 'perfecto adios']
+    agradecimiento: ['gracias', 'muchas gracias', 'genial', 'me sirvio', 'impecable', 'chau', 'adios', 'hasta luego', 'hasta pronto', 'nos vemos', 'gracias por la informacion', 'muy amable', 'ahi te ves', 'ahi te vez', 'gracias che', 'que tengas buen viaje', 'perfecto adios', 'chauchi'],
+    experto_bot: ['sos un bot experto', 'sos experto', 'bot experto', 'experto en que', 'de que sos experto', 'para que servis', 'cual es tu funcion', 'sos un bot inteligente']
 };
 
 // ============================================================
@@ -664,13 +666,24 @@ const RESPUESTAS_GENERALES = {
     },
     valor_cuota: {
         formal: [
-            "Tesorería Informa - Valores de Cuota 2026:\nEl valor de la cuota mensual para todas las carreras es de 55.000. pesos-, a excepción de las Carreras Especiales cuyo valor es de 60.000. pesos-\n\nVencimientos: Las cuotas de todas las carreras vencen el último día de cada mes. Transcurrido ese plazo, se aplicará un recargo por cada mes de mora.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
+            "Tesorería Informa - Valores de Cuota 2026:\nEl valor de la cuota mensual para todas las carreras es de 55.000. pesos-, a excepción de las Carreras Especiales (Laboratorio clínico, hemoterapia, acompañamiento terapéutico y ciencia de datos) cuyo valor es de 60.000. pesos-\n\nVencimientos: Las cuotas de todas las carreras vencen el último día de cada mes. Transcurrido ese plazo, se aplicará un recargo por cada mes de mora.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
         ],
         informal: [
-            "Para el año 2026, el valor de la cuota para casi todas las carreras es de 55.000 pesos (las Carreras Especiales están en 60.000 pesos).\nAcordate que las cuotas vencen el último día de cada mes; si te pasás de esa fecha, se cobra un recargo por cada mes de atraso.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
+            "Para el año 2026, el valor de la cuota para casi todas las carreras es de 55.000 pesos (las Carreras Especiales están en 60.000 pesos; las carreras especiales son: Laboratorio clínico, hemoterapia, acompañamiento terapéutico y ciencia de datos).\nAcordate que las cuotas vencen el último día de cada mes; si te pasás de esa fecha, se cobra un recargo por cada mes de atraso.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
         ],
         molesto: [
-            "Le informamos los valores vigentes para 2026: la cuota es de 55.000 pesos para todas las carreras y 60.000 pesos para las especiales. Vencen el último día de cada mes, sin excepción, y el atraso genera recargos.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
+            "Le informamos los valores vigentes para 2026: la cuota es de 55.000 pesos para todas las carreras y 60.000 pesos para las especiales (Laboratorio clínico, hemoterapia, acompañamiento terapéutico y ciencia de datos). Vencen el último día de cada mes, sin excepción, y el atraso genera recargos.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
+        ]
+    },
+    experto_bot: {
+        formal: [
+            "Efectivamente, soy un asistente virtual programado con información exclusiva del Instituto Populorum Progressio IES N° 7. Las preguntas o consultas que se encuentren fuera de este contexto institucional deberán ser canalizadas a través de otros medios de comunicación digital."
+        ],
+        informal: [
+            "Sí, soy un bot entrenado únicamente con información exclusiva del Instituto Populorum Progressio IES N° 7. Si tenés preguntas sobre otros temas fuera de la institución, vas a tener que buscarlas en otros medios digitales."
+        ],
+        molesto: [
+            "Le confirmo que mi base de conocimientos se limita con exclusividad al Instituto Populorum Progressio IES N° 7. Las preguntas ajenas a esta institución no serán respondidas y deberá buscarlas por otros medios."
         ]
     },
     valor_inscripcion: {
