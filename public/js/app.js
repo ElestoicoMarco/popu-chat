@@ -3,7 +3,7 @@ import { procesarMensaje } from './rules.js';
 // Lógica de Bloqueo de Testing (Opción Híbrida)
 const testingParams = new URLSearchParams(window.location.search);
 const testingCode = testingParams.get('codigo');
-const testingExpireDate = new Date("2026-08-13T23:59:59");
+const testingExpireDate = new Date("2026-08-20T23:59:59");
 const isTestingExpired = new Date() > testingExpireDate;
 const isLocked = testingCode !== 'TEST2026' || isTestingExpired;
 
