@@ -630,7 +630,7 @@ const PALABRAS_CLAVE = {
     carrera_psicologia: ['carrera_psicologia'],
     ayuda: ['ayuda', 'manual', 'guia', 'que hacer', 'que preguntar', 'ejemplos', 'opciones', 'que me podes decir', 'que podes hacer', 'que sabes'],
     agradecimiento: ['gracias', 'muchas gracias', 'genial', 'me sirvio', 'impecable', 'chau', 'adios', 'hasta luego', 'hasta pronto', 'nos vemos', 'gracias por la informacion', 'muy amable', 'ahi te ves', 'ahi te vez', 'gracias che', 'que tengas buen viaje', 'perfecto adios', 'chauchi'],
-    experto_bot: ['sos un bot experto', 'sos experto', 'bot experto', 'experto en que', 'de que sos experto', 'para que servis', 'cual es tu funcion', 'sos un bot inteligente']
+    experto_bot: ['sos un bot experto', 'sos experto', 'bot experto', 'experto en que', 'de que sos experto', 'para que servis', 'cual es tu funcion', 'sos un bot inteligente', 'que tipo de bot sos', 'como bot que haces', 'como bot que informacion brindas', 'como bot que informacion das', 'como bot que informacion provees', 'como bot que informacion entregas', 'como bot que informacion das', 'bot']
 };
 
 // ============================================================
