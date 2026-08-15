@@ -2327,7 +2327,41 @@ export function procesarMensaje(texto, sessionId = 'default_session') {
     }
 
     if (intenciones.length === 0) {
-        intenciones.push('experto_bot');
+        const textoNormalizado = normalizar(texto);
+        const tokensBase = tokenizar(textoNormalizado);
+        const tokensLematizados = tokensBase.map(t => lematizar(t));
+        const tokensStemizados = tokensLematizados.map(t => stemizar(t));
+
+        // Raíces y palabras clave asociadas al ámbito del IES N° 7
+        const raicesInstitucionales = [
+            'carrer', 'carer', 'estud', 'materi', 'inscr', 'cuot', 'arancel', 'preci', 'cost', 
+            'sed', 'horar', 'aul', 'coordin', 'requisit', 'contact', 'telefon', 'mail', 
+            'direc', 'ubic', 'jujuy', 'peric', 'pedr', 'libert', 'anex', 'titul', 
+            'duplic', 'analit', 'libret', 'tesorer', 'caj', 'pag', 'curs', 'turn', 'profe',
+            'especial', 'hemo', 'dato', 'softw', 'admin', 'ingres', 'papel'
+        ];
+
+        // Verificar si el mensaje del usuario tiene relación con el instituto
+        const tieneRelacionIES = tokensBase.some(token => 
+            raicesInstitucionales.some(raiz => token.includes(raiz))
+        ) || tokensLematizados.some(token => 
+            raicesInstitucionales.some(raiz => token.includes(raiz))
+        ) || tokensStemizados.some(token => 
+            raicesInstitucionales.some(raiz => token.includes(raiz))
+        );
+
+        if (tieneRelacionIES) {
+            // Caso A: Pregunta del instituto pero confusa / sin intención clara. Mostrar Fallback clásico.
+            const opciones = FALLBACKS[tono];
+            const keyHistorico = `fallback_${tono}`;
+            const lastIdx = sesion.historialVariaciones[keyHistorico];
+            const newIdx = (lastIdx === undefined ? 0 : (lastIdx + 1)) % opciones.length;
+            sesion.historialVariaciones[keyHistorico] = newIdx;
+            return opciones[newIdx];
+        } else {
+            // Caso B: Pregunta totalmente fuera de contexto (matemática, famosos, etc.). Responder como experto_bot.
+            intenciones.push('experto_bot');
+        }
     }
 
     // Usar la carrera detectada o la guardada en la sesión
