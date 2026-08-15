@@ -2327,12 +2327,7 @@ export function procesarMensaje(texto, sessionId = 'default_session') {
     }
 
     if (intenciones.length === 0) {
-        const opciones = FALLBACKS[tono];
-        const keyHistorico = `fallback_${tono}`;
-        const lastIdx = sesion.historialVariaciones[keyHistorico];
-        const newIdx = (lastIdx === undefined ? 0 : (lastIdx + 1)) % opciones.length;
-        sesion.historialVariaciones[keyHistorico] = newIdx;
-        return opciones[newIdx];
+        intenciones.push('experto_bot');
     }
 
     // Usar la carrera detectada o la guardada en la sesión
