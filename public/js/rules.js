@@ -35,6 +35,7 @@ const ORDEN_LOGICO_INTENCIONES = [
     'horario_atencion',
     'ubicacion',
     'contacto',
+    'idiomas_soporte',
     'agradecimiento'
 ];
 
@@ -539,6 +540,7 @@ function detectarCarrera(texto) {
 
     // 9. Hemoterapia
     if (textoNormalizado.includes('hemoterapia') || 
+        textoNormalizado.includes('hemo') || 
         textoNormalizado.includes('hemodonacion') || 
         textoNormalizado.includes('transfusion') || 
         palabrasTexto.includes('donante') || 
@@ -589,7 +591,7 @@ function detectarCarrera(texto) {
 
     if (textoNormalizado.includes('mecatronica') || textoNormalizado.includes('mecanotronica')) return 'carrera_mecatronica';
     if (textoNormalizado.includes('software') || textoNormalizado.includes('programacion') || textoNormalizado.includes('sistemas')) return 'carrera_software';
-    if (textoNormalizado.includes('automatizacion') || textoNormalizado.includes('robotica')) return 'carrera_automatizacion';
+    if (textoNormalizado.includes('automatizacion') || textoNormalizado.includes('robot')) return 'carrera_automatizacion';
     if (textoNormalizado.includes('lengua') || textoNormalizado.includes('literatura')) return 'carrera_lengua';
     if (textoNormalizado.includes('historia')) return 'carrera_historia';
     if (textoNormalizado.includes('psicologia')) return 'carrera_psicologia';
@@ -630,7 +632,8 @@ const PALABRAS_CLAVE = {
     carrera_psicologia: ['carrera_psicologia'],
     ayuda: ['ayuda', 'manual', 'guia', 'que hacer', 'que preguntar', 'ejemplos', 'opciones', 'que me podes decir', 'que podes hacer', 'que sabes'],
     agradecimiento: ['gracias', 'muchas gracias', 'genial', 'me sirvio', 'impecable', 'chau', 'adios', 'hasta luego', 'hasta pronto', 'nos vemos', 'gracias por la informacion', 'muy amable', 'ahi te ves', 'ahi te vez', 'gracias che', 'que tengas buen viaje', 'perfecto adios', 'chauchi'],
-    experto_bot: ['sos un bot experto', 'sos experto', 'bot experto', 'experto en que', 'de que sos experto', 'para que servis', 'cual es tu funcion', 'sos un bot inteligente', 'que tipo de bot sos', 'como bot que haces', 'como bot que informacion brindas', 'como bot que informacion das', 'como bot que informacion provees', 'como bot que informacion entregas', 'como bot que informacion das', 'bot']
+    experto_bot: ['sos un bot experto', 'sos experto', 'bot experto', 'experto en que', 'de que sos experto', 'para que servis', 'cual es tu funcion', 'sos un bot inteligente', 'que tipo de bot sos', 'como bot que haces', 'como bot que informacion brindas', 'como bot que informacion das', 'como bot que informacion provees', 'como bot que informacion entregas', 'como bot que informacion das', 'bot'],
+    idiomas_soporte: ['puedes contestar en', 'contestar en ingles', 'contestar en portugues', 'contestar en italiano', 'contestar en chino', 'contestar en frances', 'hablas ingles', 'hablas portugues', 'hablas italiano', 'hablas chino', 'hablas frances', 'idioma ingles', 'idioma portugues', 'idioma italiano', 'idioma chino', 'idioma frances', 'en ingles', 'en portugues', 'en italiano', 'en frances', 'en chino', 'hablar ingles', 'hablar portugues', 'hablar italiano', 'hablar frances', 'hablar chino']
 };
 
 // ============================================================
@@ -680,10 +683,21 @@ const RESPUESTAS_GENERALES = {
             "Efectivamente, soy un asistente virtual programado con información exclusiva del Instituto Populorum Progressio IES N° 7. Las preguntas o consultas que se encuentren fuera de este contexto institucional deberán ser canalizadas a través de otros medios de comunicación digital."
         ],
         informal: [
-            "Sí, soy un bot entrenado únicamente con información exclusiva del Instituto Populorum Progressio IES N° 7. Si tenés preguntas sobre otros temas fuera de la institución, vas a tener que buscarlas en otros medios digitales."
+            "Soy un bot entrenado únicamente con información exclusiva del Instituto Populorum Progressio IES N° 7. Si tenés preguntas sobre otros temas fuera de la institución, vas a tener que buscarlas en otros medios digitales."
         ],
         molesto: [
             "Le confirmo que mi base de conocimientos se limita con exclusividad al Instituto Populorum Progressio IES N° 7. Las preguntas ajenas a esta institución no serán respondidas y deberá buscarlas por otros medios."
+        ]
+    },
+    idiomas_soporte: {
+        formal: [
+            "Solo puedo contestar y reconocer preguntas en español, gracias por la consulta lo vamos a tener en cuenta para futuras mejoras."
+        ],
+        informal: [
+            "Solo puedo contestar y reconocer preguntas en español, gracias por la consulta lo vamos a tener en cuenta para futuras mejoras."
+        ],
+        molesto: [
+            "Solo puedo contestar y reconocer preguntas en español, gracias por la consulta lo vamos a tener en cuenta para futuras mejoras."
         ]
     },
     valor_inscripcion: {

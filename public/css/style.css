@@ -434,6 +434,7 @@ body {
 
 .chat-input-area {
     display: flex;
+    align-items: center;
     gap: 12px;
     padding: 16px 0;
     border-top: 1px solid var(--glass-border);
@@ -441,6 +442,7 @@ body {
 
 .chat-input {
     flex: 1;
+    min-width: 0;
     padding: 16px 20px;
     border-radius: 25px;
     border: 1px solid var(--glass-border);
@@ -749,7 +751,6 @@ body {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), 
                -2px -2px 5px rgba(255, 255, 255, 0.05);
     transition: all 0.3s ease;
-    margin-right: 10px;
     flex-shrink: 0;
 }
 
