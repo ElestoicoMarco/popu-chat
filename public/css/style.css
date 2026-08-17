@@ -37,6 +37,7 @@ body {
         radial-gradient(circle at 50% 100%, rgba(79, 160, 216, 0.25), transparent 60%);
     color: var(--text);
     height: 100vh;
+    height: 100dvh;
     display: flex;
     justify-content: center;
     overflow: hidden;
@@ -48,6 +49,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    height: 100dvh;
     padding: 0 20px;
     /* Efecto principal de Glassmorphism */
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(10, 15, 24, 0.4) 100%);
@@ -528,6 +530,11 @@ body {
     .logo h1 { font-size: 1.3rem; }
     .bubble { font-size: 0.9rem; max-width: 90%; }
     .quick-btn { font-size: 0.8rem; padding: 8px 14px; }
+    .footer {
+        padding: 8px 0 12px;
+        font-size: 0.65rem;
+        letter-spacing: 0.2px;
+    }
 }
 
 
