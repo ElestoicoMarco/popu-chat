@@ -782,3 +782,51 @@ body {
     0% { transform: scale(1); }
     100% { transform: scale(1.2); filter: drop-shadow(0 0 5px rgba(231, 76, 60, 0.8)); }
 }
+
+/* =========================================
+   TARJETAS DE DISTRIBUCIÓN DE AULAS
+   ========================================= */
+.aula-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 12px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.aula-card-title {
+    color: var(--primary); /* Amarillo principal #f5ce5b */
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 6px;
+}
+
+.aula-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.aula-row:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.aula-year {
+    color: var(--text);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.aula-badge {
+    background-color: var(--primary);
+    color: #0b0f19; /* Contraste oscuro */
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(245, 206, 91, 0.3);
+}

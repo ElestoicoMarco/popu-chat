@@ -848,142 +848,472 @@ sede_perico: {
         formal: [
             `Le presentamos la distribución general de aulas asignadas para el ciclo lectivo 2026:<br><div style='margin-top: 10px;'>
     <h4 style='color: var(--primary); margin-bottom: 5px;'>☀️ Turno Mañana</h4>
-    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
-        <li><b>Ciencia de Datos e IA:</b> 1° Año (Aula 23) • 2° Año (Aula 22) • 3° Año (Aula 10)</li>
-        <li><b>Ciencia Política:</b> 1° Año (Aula 35) • 2° Año (Aula 31) • 3° Año (Aula 30) • 4° Año (Aula 33)</li>
-        <li><b>Educación Especial:</b> 1° Año (Aula 13) • 2° Año (Aula 21) • 3° Año (Aula 20) • 4° Año (Aula 12)</li>
-    </ul>
+    <div class="aula-card">
+        <div class="aula-card-title">Ciencia de Datos e IA</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Ciencia Política</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 35</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Educación Especial</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 13</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 12</span></div>
+    </div>
 
-    <h4 style='color: var(--primary); margin-bottom: 5px;'>⛅ Turno Tarde</h4>
-    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
-        <li><b>Gestión Jurídica:</b> 1° Año (Aula 1) • 2° Año (Aula 35) • 3° Año (Aula 37)</li>
-        <li><b>Niñez y Familia:</b> 1° Año (Aula 2) • 2° Año (Aula 24)</li>
-        <li><b>Laboratorio Clínico:</b> 1° Año (Aula 13) • 2° Año (Aula 20) • 3° Año (Aula 21)</li>
-        <li><b>Hemoterapia:</b> 1° Año (Aula 23) • 2° Año (Aula 12) • 3° Año (Aula 10)</li>
-        <li><b>Acomp. Terapéutico:</b> 1° Año (Aula 25) • 2° Año (Aula 22) • 3° Año (Aula 33)</li>
-        <li><b>Adm. de Empresas:</b> 1° Año (Aula 34) • 2° Año (Aula 36) • 3° Año (Aula 30)</li>
-    </ul>
+    <h4 style='color: var(--primary); margin-top: 15px; margin-bottom: 5px;'>⛅ Turno Tarde</h4>
+    <div class="aula-card">
+        <div class="aula-card-title">Gestión Jurídica</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 1</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 35</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Niñez y Familia</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 2</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Laboratorio Clínico</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 13</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 20</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 21</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Hemoterapia</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 12</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Acomp. Terapéutico</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 25</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 33</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Adm. de Empresas</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div>
+    </div>
 
-    <h4 style='color: var(--primary); margin-bottom: 5px;'>🌙 Turno Noche</h4>
-    <ul style='list-style: none; padding-left: 10px;'>
-        <li><b>Educación Especial:</b> 1° Año (Aula 13) • 2° Año (Aula 25) • 3° Año (Aula 10) • 4° Año (Aula 35)</li>
-        <li><b>Ciencias Sagradas:</b> 1° Año (Aula 22) • 2° Año (Aula 21) • 3° Año (Aula 20) • 4° Año (Aula 33)</li>
-        <li><b>Gestión Ambiental:</b> 1° Año (Aula 30) • 2° Año (Aula 31)</li>
-        <li><b>Adm. de Empresas:</b> 1° Año (Aula 34) • 2° Año (Aula 36) • 3° Año (Aula 37)</li>
-        <li><b>Adm. Pública:</b> 1° Año (Aula 23) • 2° Año (Aula 24) • 3° Año (Aula 26)</li>
-    </ul>
+    <h4 style='color: var(--primary); margin-top: 15px; margin-bottom: 5px;'>🌙 Turno Noche</h4>
+    <div class="aula-card">
+        <div class="aula-card-title">Educación Especial</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 13</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 25</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 35</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Ciencias Sagradas</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 22</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Gestión Ambiental</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 30</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Adm. de Empresas</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Adm. Pública</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 26</span></div>
+    </div>
 </div>`,
             `La distribución de aulas para todas las carreras se organiza de la siguiente manera:<br><div style='margin-top: 10px;'>
     <h4 style='color: var(--primary); margin-bottom: 5px;'>☀️ Turno Mañana</h4>
-    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
-        <li><b>Ciencia de Datos e IA:</b> 1° Año (Aula 23) • 2° Año (Aula 22) • 3° Año (Aula 10)</li>
-        <li><b>Ciencia Política:</b> 1° Año (Aula 35) • 2° Año (Aula 31) • 3° Año (Aula 30) • 4° Año (Aula 33)</li>
-        <li><b>Educación Especial:</b> 1° Año (Aula 13) • 2° Año (Aula 21) • 3° Año (Aula 20) • 4° Año (Aula 12)</li>
-    </ul>
+    <div class="aula-card">
+        <div class="aula-card-title">Ciencia de Datos e IA</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Ciencia Política</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 35</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Educación Especial</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 13</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 12</span></div>
+    </div>
 
-    <h4 style='color: var(--primary); margin-bottom: 5px;'>⛅ Turno Tarde</h4>
-    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
-        <li><b>Gestión Jurídica:</b> 1° Año (Aula 1) • 2° Año (Aula 35) • 3° Año (Aula 37)</li>
-        <li><b>Niñez y Familia:</b> 1° Año (Aula 2) • 2° Año (Aula 24)</li>
-        <li><b>Laboratorio Clínico:</b> 1° Año (Aula 13) • 2° Año (Aula 20) • 3° Año (Aula 21)</li>
-        <li><b>Hemoterapia:</b> 1° Año (Aula 23) • 2° Año (Aula 12) • 3° Año (Aula 10)</li>
-        <li><b>Acomp. Terapéutico:</b> 1° Año (Aula 25) • 2° Año (Aula 22) • 3° Año (Aula 33)</li>
-        <li><b>Adm. de Empresas:</b> 1° Año (Aula 34) • 2° Año (Aula 36) • 3° Año (Aula 30)</li>
-    </ul>
+    <h4 style='color: var(--primary); margin-top: 15px; margin-bottom: 5px;'>⛅ Turno Tarde</h4>
+    <div class="aula-card">
+        <div class="aula-card-title">Gestión Jurídica</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 1</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 35</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Niñez y Familia</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 2</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Laboratorio Clínico</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 13</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 20</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 21</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Hemoterapia</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 12</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Acomp. Terapéutico</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 25</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 33</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Adm. de Empresas</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div>
+    </div>
 
-    <h4 style='color: var(--primary); margin-bottom: 5px;'>🌙 Turno Noche</h4>
-    <ul style='list-style: none; padding-left: 10px;'>
-        <li><b>Educación Especial:</b> 1° Año (Aula 13) • 2° Año (Aula 25) • 3° Año (Aula 10) • 4° Año (Aula 35)</li>
-        <li><b>Ciencias Sagradas:</b> 1° Año (Aula 22) • 2° Año (Aula 21) • 3° Año (Aula 20) • 4° Año (Aula 33)</li>
-        <li><b>Gestión Ambiental:</b> 1° Año (Aula 30) • 2° Año (Aula 31)</li>
-        <li><b>Adm. de Empresas:</b> 1° Año (Aula 34) • 2° Año (Aula 36) • 3° Año (Aula 37)</li>
-        <li><b>Adm. Pública:</b> 1° Año (Aula 23) • 2° Año (Aula 24) • 3° Año (Aula 26)</li>
-    </ul>
+    <h4 style='color: var(--primary); margin-top: 15px; margin-bottom: 5px;'>🌙 Turno Noche</h4>
+    <div class="aula-card">
+        <div class="aula-card-title">Educación Especial</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 13</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 25</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 35</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Ciencias Sagradas</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 22</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Gestión Ambiental</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 30</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Adm. de Empresas</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Adm. Pública</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 26</span></div>
+    </div>
 </div>`
         ],
         informal: [
             `¡Acá tenés la distribución de aulas para todas las carreras! Buscá tu turno:<br><div style='margin-top: 10px;'>
     <h4 style='color: var(--primary); margin-bottom: 5px;'>☀️ Turno Mañana</h4>
-    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
-        <li><b>Ciencia de Datos e IA:</b> 1° Año (Aula 23) • 2° Año (Aula 22) • 3° Año (Aula 10)</li>
-        <li><b>Ciencia Política:</b> 1° Año (Aula 35) • 2° Año (Aula 31) • 3° Año (Aula 30) • 4° Año (Aula 33)</li>
-        <li><b>Educación Especial:</b> 1° Año (Aula 13) • 2° Año (Aula 21) • 3° Año (Aula 20) • 4° Año (Aula 12)</li>
-    </ul>
+    <div class="aula-card">
+        <div class="aula-card-title">Ciencia de Datos e IA</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Ciencia Política</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 35</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Educación Especial</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 13</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 12</span></div>
+    </div>
 
-    <h4 style='color: var(--primary); margin-bottom: 5px;'>⛅ Turno Tarde</h4>
-    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
-        <li><b>Gestión Jurídica:</b> 1° Año (Aula 1) • 2° Año (Aula 35) • 3° Año (Aula 37)</li>
-        <li><b>Niñez y Familia:</b> 1° Año (Aula 2) • 2° Año (Aula 24)</li>
-        <li><b>Laboratorio Clínico:</b> 1° Año (Aula 13) • 2° Año (Aula 20) • 3° Año (Aula 21)</li>
-        <li><b>Hemoterapia:</b> 1° Año (Aula 23) • 2° Año (Aula 12) • 3° Año (Aula 10)</li>
-        <li><b>Acomp. Terapéutico:</b> 1° Año (Aula 25) • 2° Año (Aula 22) • 3° Año (Aula 33)</li>
-        <li><b>Adm. de Empresas:</b> 1° Año (Aula 34) • 2° Año (Aula 36) • 3° Año (Aula 30)</li>
-    </ul>
+    <h4 style='color: var(--primary); margin-top: 15px; margin-bottom: 5px;'>⛅ Turno Tarde</h4>
+    <div class="aula-card">
+        <div class="aula-card-title">Gestión Jurídica</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 1</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 35</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Niñez y Familia</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 2</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Laboratorio Clínico</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 13</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 20</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 21</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Hemoterapia</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 12</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Acomp. Terapéutico</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 25</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 33</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Adm. de Empresas</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div>
+    </div>
 
-    <h4 style='color: var(--primary); margin-bottom: 5px;'>🌙 Turno Noche</h4>
-    <ul style='list-style: none; padding-left: 10px;'>
-        <li><b>Educación Especial:</b> 1° Año (Aula 13) • 2° Año (Aula 25) • 3° Año (Aula 10) • 4° Año (Aula 35)</li>
-        <li><b>Ciencias Sagradas:</b> 1° Año (Aula 22) • 2° Año (Aula 21) • 3° Año (Aula 20) • 4° Año (Aula 33)</li>
-        <li><b>Gestión Ambiental:</b> 1° Año (Aula 30) • 2° Año (Aula 31)</li>
-        <li><b>Adm. de Empresas:</b> 1° Año (Aula 34) • 2° Año (Aula 36) • 3° Año (Aula 37)</li>
-        <li><b>Adm. Pública:</b> 1° Año (Aula 23) • 2° Año (Aula 24) • 3° Año (Aula 26)</li>
-    </ul>
+    <h4 style='color: var(--primary); margin-top: 15px; margin-bottom: 5px;'>🌙 Turno Noche</h4>
+    <div class="aula-card">
+        <div class="aula-card-title">Educación Especial</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 13</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 25</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 35</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Ciencias Sagradas</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 22</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Gestión Ambiental</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 30</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Adm. de Empresas</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Adm. Pública</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 26</span></div>
+    </div>
 </div>`,
             `Te paso el listado completo de aulas para este año:<br><div style='margin-top: 10px;'>
     <h4 style='color: var(--primary); margin-bottom: 5px;'>☀️ Turno Mañana</h4>
-    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
-        <li><b>Ciencia de Datos e IA:</b> 1° Año (Aula 23) • 2° Año (Aula 22) • 3° Año (Aula 10)</li>
-        <li><b>Ciencia Política:</b> 1° Año (Aula 35) • 2° Año (Aula 31) • 3° Año (Aula 30) • 4° Año (Aula 33)</li>
-        <li><b>Educación Especial:</b> 1° Año (Aula 13) • 2° Año (Aula 21) • 3° Año (Aula 20) • 4° Año (Aula 12)</li>
-    </ul>
+    <div class="aula-card">
+        <div class="aula-card-title">Ciencia de Datos e IA</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Ciencia Política</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 35</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Educación Especial</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 13</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 12</span></div>
+    </div>
 
-    <h4 style='color: var(--primary); margin-bottom: 5px;'>⛅ Turno Tarde</h4>
-    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
-        <li><b>Gestión Jurídica:</b> 1° Año (Aula 1) • 2° Año (Aula 35) • 3° Año (Aula 37)</li>
-        <li><b>Niñez y Familia:</b> 1° Año (Aula 2) • 2° Año (Aula 24)</li>
-        <li><b>Laboratorio Clínico:</b> 1° Año (Aula 13) • 2° Año (Aula 20) • 3° Año (Aula 21)</li>
-        <li><b>Hemoterapia:</b> 1° Año (Aula 23) • 2° Año (Aula 12) • 3° Año (Aula 10)</li>
-        <li><b>Acomp. Terapéutico:</b> 1° Año (Aula 25) • 2° Año (Aula 22) • 3° Año (Aula 33)</li>
-        <li><b>Adm. de Empresas:</b> 1° Año (Aula 34) • 2° Año (Aula 36) • 3° Año (Aula 30)</li>
-    </ul>
+    <h4 style='color: var(--primary); margin-top: 15px; margin-bottom: 5px;'>⛅ Turno Tarde</h4>
+    <div class="aula-card">
+        <div class="aula-card-title">Gestión Jurídica</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 1</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 35</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Niñez y Familia</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 2</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Laboratorio Clínico</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 13</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 20</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 21</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Hemoterapia</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 12</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Acomp. Terapéutico</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 25</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 33</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Adm. de Empresas</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div>
+    </div>
 
-    <h4 style='color: var(--primary); margin-bottom: 5px;'>🌙 Turno Noche</h4>
-    <ul style='list-style: none; padding-left: 10px;'>
-        <li><b>Educación Especial:</b> 1° Año (Aula 13) • 2° Año (Aula 25) • 3° Año (Aula 10) • 4° Año (Aula 35)</li>
-        <li><b>Ciencias Sagradas:</b> 1° Año (Aula 22) • 2° Año (Aula 21) • 3° Año (Aula 20) • 4° Año (Aula 33)</li>
-        <li><b>Gestión Ambiental:</b> 1° Año (Aula 30) • 2° Año (Aula 31)</li>
-        <li><b>Adm. de Empresas:</b> 1° Año (Aula 34) • 2° Año (Aula 36) • 3° Año (Aula 37)</li>
-        <li><b>Adm. Pública:</b> 1° Año (Aula 23) • 2° Año (Aula 24) • 3° Año (Aula 26)</li>
-    </ul>
+    <h4 style='color: var(--primary); margin-top: 15px; margin-bottom: 5px;'>🌙 Turno Noche</h4>
+    <div class="aula-card">
+        <div class="aula-card-title">Educación Especial</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 13</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 25</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 35</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Ciencias Sagradas</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 22</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Gestión Ambiental</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 30</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Adm. de Empresas</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Adm. Pública</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 26</span></div>
+    </div>
 </div>`
         ],
         molesto: [
             `A continuación detallamos la distribución de aulas para toda la institución:<br><div style='margin-top: 10px;'>
     <h4 style='color: var(--primary); margin-bottom: 5px;'>☀️ Turno Mañana</h4>
-    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
-        <li><b>Ciencia de Datos e IA:</b> 1° Año (Aula 23) • 2° Año (Aula 22) • 3° Año (Aula 10)</li>
-        <li><b>Ciencia Política:</b> 1° Año (Aula 35) • 2° Año (Aula 31) • 3° Año (Aula 30) • 4° Año (Aula 33)</li>
-        <li><b>Educación Especial:</b> 1° Año (Aula 13) • 2° Año (Aula 21) • 3° Año (Aula 20) • 4° Año (Aula 12)</li>
-    </ul>
+    <div class="aula-card">
+        <div class="aula-card-title">Ciencia de Datos e IA</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Ciencia Política</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 35</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Educación Especial</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 13</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 12</span></div>
+    </div>
 
-    <h4 style='color: var(--primary); margin-bottom: 5px;'>⛅ Turno Tarde</h4>
-    <ul style='list-style: none; padding-left: 10px; margin-bottom: 15px;'>
-        <li><b>Gestión Jurídica:</b> 1° Año (Aula 1) • 2° Año (Aula 35) • 3° Año (Aula 37)</li>
-        <li><b>Niñez y Familia:</b> 1° Año (Aula 2) • 2° Año (Aula 24)</li>
-        <li><b>Laboratorio Clínico:</b> 1° Año (Aula 13) • 2° Año (Aula 20) • 3° Año (Aula 21)</li>
-        <li><b>Hemoterapia:</b> 1° Año (Aula 23) • 2° Año (Aula 12) • 3° Año (Aula 10)</li>
-        <li><b>Acomp. Terapéutico:</b> 1° Año (Aula 25) • 2° Año (Aula 22) • 3° Año (Aula 33)</li>
-        <li><b>Adm. de Empresas:</b> 1° Año (Aula 34) • 2° Año (Aula 36) • 3° Año (Aula 30)</li>
-    </ul>
+    <h4 style='color: var(--primary); margin-top: 15px; margin-bottom: 5px;'>⛅ Turno Tarde</h4>
+    <div class="aula-card">
+        <div class="aula-card-title">Gestión Jurídica</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 1</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 35</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Niñez y Familia</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 2</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Laboratorio Clínico</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 13</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 20</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 21</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Hemoterapia</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 12</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Acomp. Terapéutico</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 25</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 33</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Adm. de Empresas</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div>
+    </div>
 
-    <h4 style='color: var(--primary); margin-bottom: 5px;'>🌙 Turno Noche</h4>
-    <ul style='list-style: none; padding-left: 10px;'>
-        <li><b>Educación Especial:</b> 1° Año (Aula 13) • 2° Año (Aula 25) • 3° Año (Aula 10) • 4° Año (Aula 35)</li>
-        <li><b>Ciencias Sagradas:</b> 1° Año (Aula 22) • 2° Año (Aula 21) • 3° Año (Aula 20) • 4° Año (Aula 33)</li>
-        <li><b>Gestión Ambiental:</b> 1° Año (Aula 30) • 2° Año (Aula 31)</li>
-        <li><b>Adm. de Empresas:</b> 1° Año (Aula 34) • 2° Año (Aula 36) • 3° Año (Aula 37)</li>
-        <li><b>Adm. Pública:</b> 1° Año (Aula 23) • 2° Año (Aula 24) • 3° Año (Aula 26)</li>
-    </ul>
+    <h4 style='color: var(--primary); margin-top: 15px; margin-bottom: 5px;'>🌙 Turno Noche</h4>
+    <div class="aula-card">
+        <div class="aula-card-title">Educación Especial</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 13</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 25</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 35</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Ciencias Sagradas</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 22</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div>
+        <div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Gestión Ambiental</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 30</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Adm. de Empresas</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div>
+    </div>
+    <div class="aula-card">
+        <div class="aula-card-title">Adm. Pública</div>
+        <div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div>
+        <div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div>
+        <div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 26</span></div>
+    </div>
 </div>`
         ]
     },
@@ -1301,19 +1631,19 @@ const RESPUESTAS_CARRERA = {
         },
         distribucion_aulas: {
             formal: [
-            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Mañana:</b> 1°(A23), 2°(A22), 3°(A10)</li></ul>",
-            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Mañana:</b> 1°(A23), 2°(A22), 3°(A10)</li></ul>",
-            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Mañana:</b> 1°(A23), 2°(A22), 3°(A10)</li></ul> Quedamos a su disposición."
+            `La distribución de aulas para esta carrera es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Ciencia de Datos e IA</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div></div>`,
+            `Le informamos que las clases presenciales de esta carrera se dictan en:<br><div class="aula-card"><div class="aula-card-title">Ciencia de Datos e IA</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div></div>`,
+            `Le recordamos que la distribución de aulas asignada es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Ciencia de Datos e IA</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div></div> Quedamos a su disposición.`
         ],
             informal: [
-            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Mañana:</b> 1°(A23), 2°(A22), 3°(A10)</li></ul>",
-            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Mañana:</b> 1°(A23), 2°(A22), 3°(A10)</li></ul>",
-            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Mañana:</b> 1°(A23), 2°(A22), 3°(A10)</li></ul>"
+            `¡Te paso las aulas! Buscá tu año:<br><div class="aula-card"><div class="aula-card-title">Ciencia de Datos e IA</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div></div>`,
+            `Mirá, acá tenés la distribución de aulas para esta carrera:<br><div class="aula-card"><div class="aula-card-title">Ciencia de Datos e IA</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div></div>`,
+            `¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><div class="aula-card"><div class="aula-card-title">Ciencia de Datos e IA</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div></div>`
         ],
             molesto: [
-            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Mañana:</b> 1°(A23), 2°(A22), 3°(A10)</li></ul>",
-            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Mañana:</b> 1°(A23), 2°(A22), 3°(A10)</li></ul>",
-            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Mañana:</b> 1°(A23), 2°(A22), 3°(A10)</li></ul>"
+            `Le informamos la distribución de aulas asignada:<br><div class="aula-card"><div class="aula-card-title">Ciencia de Datos e IA</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div></div>`,
+            `Confirmamos que las aulas para esta carrera son:<br><div class="aula-card"><div class="aula-card-title">Ciencia de Datos e IA</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div></div>`,
+            `Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Ciencia de Datos e IA</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div></div>`
         ]
         },
         coordinador: {
@@ -1381,19 +1711,19 @@ const RESPUESTAS_CARRERA = {
         },
         distribucion_aulas: {
             formal: [
-            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A1), 2°(A35), 3°(A37)</li></ul>",
-            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Tarde:</b> 1°(A1), 2°(A35), 3°(A37)</li></ul>",
-            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A1), 2°(A35), 3°(A37)</li></ul> Quedamos a su disposición."
+            `La distribución de aulas para esta carrera es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Gestión Jurídica</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 1</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 35</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div></div>`,
+            `Le informamos que las clases presenciales de esta carrera se dictan en:<br><div class="aula-card"><div class="aula-card-title">Gestión Jurídica</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 1</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 35</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div></div>`,
+            `Le recordamos que la distribución de aulas asignada es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Gestión Jurídica</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 1</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 35</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div></div> Quedamos a su disposición.`
         ],
             informal: [
-            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Tarde:</b> 1°(A1), 2°(A35), 3°(A37)</li></ul>",
-            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Tarde:</b> 1°(A1), 2°(A35), 3°(A37)</li></ul>",
-            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Tarde:</b> 1°(A1), 2°(A35), 3°(A37)</li></ul>"
+            `¡Te paso las aulas! Buscá tu año:<br><div class="aula-card"><div class="aula-card-title">Gestión Jurídica</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 1</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 35</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div></div>`,
+            `Mirá, acá tenés la distribución de aulas para esta carrera:<br><div class="aula-card"><div class="aula-card-title">Gestión Jurídica</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 1</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 35</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div></div>`,
+            `¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><div class="aula-card"><div class="aula-card-title">Gestión Jurídica</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 1</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 35</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div></div>`
         ],
             molesto: [
-            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Tarde:</b> 1°(A1), 2°(A35), 3°(A37)</li></ul>",
-            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Tarde:</b> 1°(A1), 2°(A35), 3°(A37)</li></ul>",
-            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A1), 2°(A35), 3°(A37)</li></ul>"
+            `Le informamos la distribución de aulas asignada:<br><div class="aula-card"><div class="aula-card-title">Gestión Jurídica</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 1</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 35</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div></div>`,
+            `Confirmamos que las aulas para esta carrera son:<br><div class="aula-card"><div class="aula-card-title">Gestión Jurídica</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 1</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 35</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div></div>`,
+            `Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Gestión Jurídica</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 1</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 35</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div></div>`
         ]
         },
         coordinador: {
@@ -1461,19 +1791,19 @@ const RESPUESTAS_CARRERA = {
         },
         distribucion_aulas: {
             formal: [
-            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Mañana:</b> 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li></ul>",
-            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Mañana:</b> 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li></ul>",
-            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Mañana:</b> 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li></ul> Quedamos a su disposición."
+            `La distribución de aulas para esta carrera es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Ciencia Política</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 35</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div><div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div></div>`,
+            `Le informamos que las clases presenciales de esta carrera se dictan en:<br><div class="aula-card"><div class="aula-card-title">Ciencia Política</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 35</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div><div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div></div>`,
+            `Le recordamos que la distribución de aulas asignada es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Ciencia Política</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 35</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div><div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div></div> Quedamos a su disposición.`
         ],
             informal: [
-            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Mañana:</b> 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li></ul>",
-            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Mañana:</b> 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li></ul>",
-            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Mañana:</b> 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li></ul>"
+            `¡Te paso las aulas! Buscá tu año:<br><div class="aula-card"><div class="aula-card-title">Ciencia Política</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 35</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div><div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div></div>`,
+            `Mirá, acá tenés la distribución de aulas para esta carrera:<br><div class="aula-card"><div class="aula-card-title">Ciencia Política</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 35</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div><div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div></div>`,
+            `¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><div class="aula-card"><div class="aula-card-title">Ciencia Política</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 35</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div><div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div></div>`
         ],
             molesto: [
-            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Mañana:</b> 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li></ul>",
-            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Mañana:</b> 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li></ul>",
-            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Mañana:</b> 1°(A35), 2°(A31), 3°(A30), 4°(A33)</li></ul>"
+            `Le informamos la distribución de aulas asignada:<br><div class="aula-card"><div class="aula-card-title">Ciencia Política</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 35</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div><div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div></div>`,
+            `Confirmamos que las aulas para esta carrera son:<br><div class="aula-card"><div class="aula-card-title">Ciencia Política</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 35</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div><div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div></div>`,
+            `Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Ciencia Política</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 35</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div><div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div></div>`
         ]
         },
         coordinador: {
@@ -1626,19 +1956,19 @@ const RESPUESTAS_CARRERA = {
         },
         distribucion_aulas: {
             formal: [
-            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Noche:</b> 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li></ul>",
-            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Noche:</b> 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li></ul>",
-            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Noche:</b> 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li></ul> Quedamos a su disposición."
+            `La distribución de aulas para esta carrera es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Ciencias Sagradas</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div><div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div></div>`,
+            `Le informamos que las clases presenciales de esta carrera se dictan en:<br><div class="aula-card"><div class="aula-card-title">Ciencias Sagradas</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div><div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div></div>`,
+            `Le recordamos que la distribución de aulas asignada es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Ciencias Sagradas</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div><div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div></div> Quedamos a su disposición.`
         ],
             informal: [
-            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Noche:</b> 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li></ul>",
-            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Noche:</b> 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li></ul>",
-            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Noche:</b> 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li></ul>"
+            `¡Te paso las aulas! Buscá tu año:<br><div class="aula-card"><div class="aula-card-title">Ciencias Sagradas</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div><div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div></div>`,
+            `Mirá, acá tenés la distribución de aulas para esta carrera:<br><div class="aula-card"><div class="aula-card-title">Ciencias Sagradas</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div><div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div></div>`,
+            `¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><div class="aula-card"><div class="aula-card-title">Ciencias Sagradas</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div><div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div></div>`
         ],
             molesto: [
-            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Noche:</b> 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li></ul>",
-            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Noche:</b> 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li></ul>",
-            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Noche:</b> 1°(A22), 2°(A21), 3°(A20), 4°(A33)</li></ul>"
+            `Le informamos la distribución de aulas asignada:<br><div class="aula-card"><div class="aula-card-title">Ciencias Sagradas</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div><div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div></div>`,
+            `Confirmamos que las aulas para esta carrera son:<br><div class="aula-card"><div class="aula-card-title">Ciencias Sagradas</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div><div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div></div>`,
+            `Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Ciencias Sagradas</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 21</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 20</span></div><div class="aula-row"><span class="aula-year">4° Año</span><span class="aula-badge">Aula 33</span></div></div>`
         ]
         },
         coordinador: {
@@ -1706,19 +2036,19 @@ const RESPUESTAS_CARRERA = {
         },
         distribucion_aulas: {
             formal: [
-            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Noche:</b> 1°(A30), 2°(A31)</li></ul>",
-            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Noche:</b> 1°(A30), 2°(A31)</li></ul>",
-            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Noche:</b> 1°(A30), 2°(A31)</li></ul> Quedamos a su disposición."
+            `La distribución de aulas para esta carrera es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Gestión Ambiental</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 30</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div></div>`,
+            `Le informamos que las clases presenciales de esta carrera se dictan en:<br><div class="aula-card"><div class="aula-card-title">Gestión Ambiental</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 30</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div></div>`,
+            `Le recordamos que la distribución de aulas asignada es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Gestión Ambiental</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 30</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div></div> Quedamos a su disposición.`
         ],
             informal: [
-            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Noche:</b> 1°(A30), 2°(A31)</li></ul>",
-            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Noche:</b> 1°(A30), 2°(A31)</li></ul>",
-            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Noche:</b> 1°(A30), 2°(A31)</li></ul>"
+            `¡Te paso las aulas! Buscá tu año:<br><div class="aula-card"><div class="aula-card-title">Gestión Ambiental</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 30</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div></div>`,
+            `Mirá, acá tenés la distribución de aulas para esta carrera:<br><div class="aula-card"><div class="aula-card-title">Gestión Ambiental</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 30</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div></div>`,
+            `¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><div class="aula-card"><div class="aula-card-title">Gestión Ambiental</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 30</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div></div>`
         ],
             molesto: [
-            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Noche:</b> 1°(A30), 2°(A31)</li></ul>",
-            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Noche:</b> 1°(A30), 2°(A31)</li></ul>",
-            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Noche:</b> 1°(A30), 2°(A31)</li></ul>"
+            `Le informamos la distribución de aulas asignada:<br><div class="aula-card"><div class="aula-card-title">Gestión Ambiental</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 30</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div></div>`,
+            `Confirmamos que las aulas para esta carrera son:<br><div class="aula-card"><div class="aula-card-title">Gestión Ambiental</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 30</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div></div>`,
+            `Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Gestión Ambiental</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 30</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 31</span></div></div>`
         ]
         },
         coordinador: {
@@ -1912,19 +2242,19 @@ const RESPUESTAS_CARRERA = {
         },
         distribucion_aulas: {
             formal: [
-            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A23), 2°(A12), 3°(A10)</li></ul>",
-            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Tarde:</b> 1°(A23), 2°(A12), 3°(A10)</li></ul>",
-            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A23), 2°(A12), 3°(A10)</li></ul> Quedamos a su disposición."
+            `La distribución de aulas para esta carrera es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Hemoterapia</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 12</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div></div>`,
+            `Le informamos que las clases presenciales de esta carrera se dictan en:<br><div class="aula-card"><div class="aula-card-title">Hemoterapia</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 12</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div></div>`,
+            `Le recordamos que la distribución de aulas asignada es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Hemoterapia</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 12</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div></div> Quedamos a su disposición.`
         ],
             informal: [
-            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Tarde:</b> 1°(A23), 2°(A12), 3°(A10)</li></ul>",
-            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Tarde:</b> 1°(A23), 2°(A12), 3°(A10)</li></ul>",
-            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Tarde:</b> 1°(A23), 2°(A12), 3°(A10)</li></ul>"
+            `¡Te paso las aulas! Buscá tu año:<br><div class="aula-card"><div class="aula-card-title">Hemoterapia</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 12</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div></div>`,
+            `Mirá, acá tenés la distribución de aulas para esta carrera:<br><div class="aula-card"><div class="aula-card-title">Hemoterapia</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 12</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div></div>`,
+            `¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><div class="aula-card"><div class="aula-card-title">Hemoterapia</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 12</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div></div>`
         ],
             molesto: [
-            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Tarde:</b> 1°(A23), 2°(A12), 3°(A10)</li></ul>",
-            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Tarde:</b> 1°(A23), 2°(A12), 3°(A10)</li></ul>",
-            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A23), 2°(A12), 3°(A10)</li></ul>"
+            `Le informamos la distribución de aulas asignada:<br><div class="aula-card"><div class="aula-card-title">Hemoterapia</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 12</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div></div>`,
+            `Confirmamos que las aulas para esta carrera son:<br><div class="aula-card"><div class="aula-card-title">Hemoterapia</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 12</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div></div>`,
+            `Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Hemoterapia</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 12</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 10</span></div></div>`
         ]
         },
         coordinador: {
@@ -1992,19 +2322,19 @@ const RESPUESTAS_CARRERA = {
         },
         distribucion_aulas: {
             formal: [
-            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A25), 2°(A22), 3°(A33)</li></ul>",
-            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Tarde:</b> 1°(A25), 2°(A22), 3°(A33)</li></ul>",
-            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A25), 2°(A22), 3°(A33)</li></ul> Quedamos a su disposición."
+            `La distribución de aulas para esta carrera es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Acomp. Terapéutico</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 25</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 33</span></div></div>`,
+            `Le informamos que las clases presenciales de esta carrera se dictan en:<br><div class="aula-card"><div class="aula-card-title">Acomp. Terapéutico</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 25</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 33</span></div></div>`,
+            `Le recordamos que la distribución de aulas asignada es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Acomp. Terapéutico</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 25</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 33</span></div></div> Quedamos a su disposición.`
         ],
             informal: [
-            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Tarde:</b> 1°(A25), 2°(A22), 3°(A33)</li></ul>",
-            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Tarde:</b> 1°(A25), 2°(A22), 3°(A33)</li></ul>",
-            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Tarde:</b> 1°(A25), 2°(A22), 3°(A33)</li></ul>"
+            `¡Te paso las aulas! Buscá tu año:<br><div class="aula-card"><div class="aula-card-title">Acomp. Terapéutico</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 25</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 33</span></div></div>`,
+            `Mirá, acá tenés la distribución de aulas para esta carrera:<br><div class="aula-card"><div class="aula-card-title">Acomp. Terapéutico</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 25</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 33</span></div></div>`,
+            `¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><div class="aula-card"><div class="aula-card-title">Acomp. Terapéutico</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 25</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 33</span></div></div>`
         ],
             molesto: [
-            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Tarde:</b> 1°(A25), 2°(A22), 3°(A33)</li></ul>",
-            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Tarde:</b> 1°(A25), 2°(A22), 3°(A33)</li></ul>",
-            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A25), 2°(A22), 3°(A33)</li></ul>"
+            `Le informamos la distribución de aulas asignada:<br><div class="aula-card"><div class="aula-card-title">Acomp. Terapéutico</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 25</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 33</span></div></div>`,
+            `Confirmamos que las aulas para esta carrera son:<br><div class="aula-card"><div class="aula-card-title">Acomp. Terapéutico</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 25</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 33</span></div></div>`,
+            `Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Acomp. Terapéutico</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 25</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 22</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 33</span></div></div>`
         ]
         },
         coordinador: {
@@ -2072,19 +2402,19 @@ const RESPUESTAS_CARRERA = {
         },
         distribucion_aulas: {
             formal: [
-            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A34), 2°(A36), 3°(A30)</li><li><b>Turno Noche:</b> 1°(A34), 2°(A36), 3°(A37)</li></ul>",
-            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Tarde:</b> 1°(A34), 2°(A36), 3°(A30)</li><li><b>Turno Noche:</b> 1°(A34), 2°(A36), 3°(A37)</li></ul>",
-            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A34), 2°(A36), 3°(A30)</li><li><b>Turno Noche:</b> 1°(A34), 2°(A36), 3°(A37)</li></ul> Quedamos a su disposición."
+            `La distribución de aulas para esta carrera es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Adm. de Empresas (Turno Tarde)</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div></div><div class="aula-card"><div class="aula-card-title">Adm. de Empresas (Turno Noche)</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div></div>`,
+            `Le informamos que las clases presenciales de esta carrera se dictan en:<br><div class="aula-card"><div class="aula-card-title">Adm. de Empresas (Turno Tarde)</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div></div><div class="aula-card"><div class="aula-card-title">Adm. de Empresas (Turno Noche)</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div></div>`,
+            `Le recordamos que la distribución de aulas asignada es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Adm. de Empresas (Turno Tarde)</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div></div><div class="aula-card"><div class="aula-card-title">Adm. de Empresas (Turno Noche)</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div></div> Quedamos a su disposición.`
         ],
             informal: [
-            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Tarde:</b> 1°(A34), 2°(A36), 3°(A30)</li><li><b>Turno Noche:</b> 1°(A34), 2°(A36), 3°(A37)</li></ul>",
-            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Tarde:</b> 1°(A34), 2°(A36), 3°(A30)</li><li><b>Turno Noche:</b> 1°(A34), 2°(A36), 3°(A37)</li></ul>",
-            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Tarde:</b> 1°(A34), 2°(A36), 3°(A30)</li><li><b>Turno Noche:</b> 1°(A34), 2°(A36), 3°(A37)</li></ul>"
+            `¡Te paso las aulas! Buscá tu año:<br><div class="aula-card"><div class="aula-card-title">Adm. de Empresas (Turno Tarde)</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div></div><div class="aula-card"><div class="aula-card-title">Adm. de Empresas (Turno Noche)</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div></div>`,
+            `Mirá, acá tenés la distribución de aulas para esta carrera:<br><div class="aula-card"><div class="aula-card-title">Adm. de Empresas (Turno Tarde)</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div></div><div class="aula-card"><div class="aula-card-title">Adm. de Empresas (Turno Noche)</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div></div>`,
+            `¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><div class="aula-card"><div class="aula-card-title">Adm. de Empresas (Turno Tarde)</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div></div><div class="aula-card"><div class="aula-card-title">Adm. de Empresas (Turno Noche)</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div></div>`
         ],
             molesto: [
-            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Tarde:</b> 1°(A34), 2°(A36), 3°(A30)</li><li><b>Turno Noche:</b> 1°(A34), 2°(A36), 3°(A37)</li></ul>",
-            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Tarde:</b> 1°(A34), 2°(A36), 3°(A30)</li><li><b>Turno Noche:</b> 1°(A34), 2°(A36), 3°(A37)</li></ul>",
-            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Tarde:</b> 1°(A34), 2°(A36), 3°(A30)</li><li><b>Turno Noche:</b> 1°(A34), 2°(A36), 3°(A37)</li></ul>"
+            `Le informamos la distribución de aulas asignada:<br><div class="aula-card"><div class="aula-card-title">Adm. de Empresas (Turno Tarde)</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div></div><div class="aula-card"><div class="aula-card-title">Adm. de Empresas (Turno Noche)</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div></div>`,
+            `Confirmamos que las aulas para esta carrera son:<br><div class="aula-card"><div class="aula-card-title">Adm. de Empresas (Turno Tarde)</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div></div><div class="aula-card"><div class="aula-card-title">Adm. de Empresas (Turno Noche)</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div></div>`,
+            `Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Adm. de Empresas (Turno Tarde)</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 30</span></div></div><div class="aula-card"><div class="aula-card-title">Adm. de Empresas (Turno Noche)</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 34</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 36</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 37</span></div></div>`
         ]
         },
         coordinador: {
@@ -2152,19 +2482,19 @@ const RESPUESTAS_CARRERA = {
         },
         distribucion_aulas: {
             formal: [
-            "La distribución de aulas para esta carrera es la siguiente:<br><ul><li><b>Turno Noche:</b> 1°(A23), 2°(A24), 3°(A26)</li></ul>",
-            "Le informamos que las clases presenciales de esta carrera se dictan en:<br><ul><li><b>Turno Noche:</b> 1°(A23), 2°(A24), 3°(A26)</li></ul>",
-            "Le recordamos que la distribución de aulas asignada es la siguiente:<br><ul><li><b>Turno Noche:</b> 1°(A23), 2°(A24), 3°(A26)</li></ul> Quedamos a su disposición."
+            `La distribución de aulas para esta carrera es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Adm. Pública</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 26</span></div></div>`,
+            `Le informamos que las clases presenciales de esta carrera se dictan en:<br><div class="aula-card"><div class="aula-card-title">Adm. Pública</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 26</span></div></div>`,
+            `Le recordamos que la distribución de aulas asignada es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Adm. Pública</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 26</span></div></div> Quedamos a su disposición.`
         ],
             informal: [
-            "¡Te paso las aulas! Buscá tu año:<br><ul><li><b>Turno Noche:</b> 1°(A23), 2°(A24), 3°(A26)</li></ul>",
-            "Mirá, acá tenés la distribución de aulas para esta carrera:<br><ul><li><b>Turno Noche:</b> 1°(A23), 2°(A24), 3°(A26)</li></ul>",
-            "¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><ul><li><b>Turno Noche:</b> 1°(A23), 2°(A24), 3°(A26)</li></ul>"
+            `¡Te paso las aulas! Buscá tu año:<br><div class="aula-card"><div class="aula-card-title">Adm. Pública</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 26</span></div></div>`,
+            `Mirá, acá tenés la distribución de aulas para esta carrera:<br><div class="aula-card"><div class="aula-card-title">Adm. Pública</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 26</span></div></div>`,
+            `¡Te paso este dato! Las clases de esta carrera se dictan en las siguientes aulas:<br><div class="aula-card"><div class="aula-card-title">Adm. Pública</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 26</span></div></div>`
         ],
             molesto: [
-            "Le informamos la distribución de aulas asignada:<br><ul><li><b>Turno Noche:</b> 1°(A23), 2°(A24), 3°(A26)</li></ul>",
-            "Confirmamos que las aulas para esta carrera son:<br><ul><li><b>Turno Noche:</b> 1°(A23), 2°(A24), 3°(A26)</li></ul>",
-            "Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><ul><li><b>Turno Noche:</b> 1°(A23), 2°(A24), 3°(A26)</li></ul>"
+            `Le informamos la distribución de aulas asignada:<br><div class="aula-card"><div class="aula-card-title">Adm. Pública</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 26</span></div></div>`,
+            `Confirmamos que las aulas para esta carrera son:<br><div class="aula-card"><div class="aula-card-title">Adm. Pública</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 26</span></div></div>`,
+            `Le informamos de manera prioritaria que la distribución de aulas es la siguiente:<br><div class="aula-card"><div class="aula-card-title">Adm. Pública</div><div class="aula-row"><span class="aula-year">1° Año</span><span class="aula-badge">Aula 23</span></div><div class="aula-row"><span class="aula-year">2° Año</span><span class="aula-badge">Aula 24</span></div><div class="aula-row"><span class="aula-year">3° Año</span><span class="aula-badge">Aula 26</span></div></div>`
         ]
         },
         coordinador: {
