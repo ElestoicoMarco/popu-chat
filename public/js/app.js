@@ -177,12 +177,49 @@ const quickBtns = document.querySelectorAll('.quick-btn');
 // Generar un sessionId único para esta sesión de navegación
 const sessionId = Math.random().toString(36).substring(2, 15) + '_' + Date.now();
 
+function procesarAulas(text) {
+    if (!text.includes('aula-card')) return text;
+    try {
+        const temp = document.createElement('div');
+        temp.innerHTML = text;
+        const cards = temp.querySelectorAll('.aula-card');
+        const shouldOpenFirst = cards.length === 1;
+        
+        cards.forEach(cardDiv => {
+            const details = document.createElement('details');
+            details.className = 'aula-card';
+            details.setAttribute('name', 'aulas-accordion');
+            if (shouldOpenFirst) {
+                details.setAttribute('open', '');
+            }
+            
+            const titleDiv = cardDiv.querySelector('.aula-card-title');
+            if (titleDiv) {
+                const summary = document.createElement('summary');
+                summary.textContent = titleDiv.textContent;
+                details.appendChild(summary);
+            }
+            
+            cardDiv.querySelectorAll('.aula-row').forEach(row => {
+                details.appendChild(row.cloneNode(true));
+            });
+            
+            cardDiv.parentNode.replaceChild(details, cardDiv);
+        });
+        return temp.innerHTML;
+    } catch (e) {
+        console.error("Error al procesar acordeón de aulas:", e);
+        return text;
+    }
+}
+
 function addMessage(text, role) {
+    const processedText = role === 'bot' ? procesarAulas(text) : text;
     const div = document.createElement('div');
     div.className = `message ${role}`;
     div.innerHTML = `
         ${role === 'user' ? '<div class="avatar">👤</div>' : ''}
-        <div class="bubble">${text}</div>
+        <div class="bubble">${processedText}</div>
     `;
     chatMessages.appendChild(div);
     chatMessages.scrollTop = chatMessages.scrollHeight;

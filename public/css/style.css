@@ -341,7 +341,7 @@ body {
     padding: 12px 16px;
 }
 
-.inline-quick-btn {
+.quick-btn.inline-quick-btn {
     width: 100%;
     text-align: left;
     padding: 10px 14px;
@@ -350,9 +350,10 @@ body {
     border: 1px solid rgba(255,255,255,0.1);
     white-space: normal;
     height: auto;
+    word-break: break-word;
 }
 
-.inline-quick-btn:hover {
+.quick-btn.inline-quick-btn:hover {
     background: rgba(79, 160, 216, 0.15);
     border-color: var(--secondary);
     color: var(--text);
@@ -829,4 +830,52 @@ body {
     font-size: 0.85rem;
     font-weight: 700;
     box-shadow: 0 2px 5px rgba(245, 206, 91, 0.3);
+}
+
+/* =========================================
+   ACORDEÓN DE AULAS (DETAILS/SUMMARY)
+   ========================================= */
+details.aula-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 12px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+details.aula-card summary {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1.05rem;
+    list-style: none; /* Oculta la flecha nativa */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    outline: none;
+    user-select: none;
+}
+
+details.aula-card summary::-webkit-details-marker {
+    display: none;
+}
+
+details.aula-card summary::after {
+    content: "▼";
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+    opacity: 0.7;
+    color: var(--primary);
+}
+
+details.aula-card[open] summary::after {
+    transform: rotate(180deg);
+}
+
+details.aula-card[open] summary {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 6px;
+    margin-bottom: 10px;
 }
