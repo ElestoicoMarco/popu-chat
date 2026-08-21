@@ -2353,6 +2353,23 @@ const RESPUESTAS_CARRERA = {
             "Pedimos disculpas por los inconvenientes. Le recordamos que la Lic. Lorena Santillan coordina la carrera y realiza consultas los Jueves de 15:20 a 18:00 hs. y Viernes de 14:00 a 15:20 hs.",
             "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos la demora. La coordinadora responsable es la Lic. Lorena Santillan, quien atiende consultas los Jueves de 15:20 a 18:00 hs. y Viernes de 14:00 a 15:20 hs. Agradecemos su comprensión."
         ]
+        },
+        valor_cuota: {
+            formal: [
+                "Le informamos que la Tecnicatura Superior en Acompañamiento Terapéutico es una Carrera Especial. Para el Ciclo Lectivo 2026, el valor de su cuota mensual está fijado en 60.000 pesos. Las cuotas vencen el último día de cada mes.",
+                "El arancel mensual establecido para Acompañamiento Terapéutico (considerada Carrera Especial) para el Ciclo 2026 es de 60.000 pesos. Recuerde que el vencimiento opera el último día de cada mes.",
+                "Le recordamos que Acompañamiento Terapéutico es una de las carreras especiales y posee un valor de cuota de 60.000 pesos mensuales para el ciclo 2026, con vencimiento el último día de cada mes. Quedamos a su disposición."
+            ],
+            informal: [
+                "Te comento que Acompañamiento Terapéutico es una carrera especial, por lo que el valor de la cuota mensual para el ciclo 2026 es de 60.000 pesos. Acordate que vencen el último día de cada mes.",
+                "Al ser una carrera especial, la cuota de Acompañamiento Terapéutico para el 2026 es de 60.000 pesos al mes. Tratá de pagar antes del último día de cada mes para evitar recargos.",
+                "¡Te paso el dato! Acompañamiento Terapéutico es una carrera especial y su cuota mensual para el 2026 es de 60.000 pesos. El vencimiento es el último día de cada mes."
+            ],
+            molesto: [
+                "Lamentamos la demora. Le informamos que Acompañamiento Terapéutico es una carrera especial y su cuota para 2026 es de 60.000 pesos al mes, venciendo el último día de cada mes.",
+                "Pedimos disculpas por los inconvenientes. Confirmamos que la cuota de Acompañamiento Terapéutico (carrera especial) es de 60.000 pesos al mes para el ciclo 2026 y vence el último día del mes.",
+                "Lamentamos las dificultades iniciales. Le informamos que por ser carrera especial, la cuota de Acompañamiento Terapéutico es de 60.000 pesos mensuales en el ciclo 2026. Agradecemos su comprensión."
+            ]
         }
     },
     administracion_empresas: {
