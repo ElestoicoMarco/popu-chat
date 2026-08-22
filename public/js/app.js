@@ -141,6 +141,18 @@ if (SpeechRecognition) {
     recognition.onerror = (event) => {
         console.error('Error en reconocimiento de voz:', event.error);
         resetMic();
+        
+        let mensajeError = 'No se pudo activar el reconocimiento de voz.';
+        if (event.error === 'not-allowed') {
+            mensajeError = 'Permiso denegado para usar el micrófono. Asegúrate de estar navegando mediante HTTPS y de haber otorgado los permisos en tu navegador.';
+        } else if (event.error === 'no-speech') {
+            mensajeError = 'No se detectó sonido. Intenta hablar de nuevo.';
+        } else if (event.error === 'network') {
+            mensajeError = 'Error de red. El reconocimiento de voz requiere una conexión a internet activa.';
+        } else if (event.error === 'service-not-allowed') {
+            mensajeError = 'Servicio de voz no permitido. Asegúrate de que el sitio use HTTPS y que tu navegador soporte reconocimiento de voz.';
+        }
+        alert(mensajeError);
     };
 
     recognition.onend = () => {
