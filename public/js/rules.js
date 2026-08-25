@@ -16,6 +16,7 @@ function obtenerSesion(sessionId) {
 }
 
 const ORDEN_LOGICO_INTENCIONES = [
+    'saludo_presentacion',
     'saludo',
     'experto_bot',
     'valor_cuota_2027',
@@ -600,6 +601,7 @@ function detectarCarrera(texto) {
 }
 
 const PALABRAS_CLAVE = {
+    saludo_presentacion: ['oficialmente te presento', 'amable saludo a los presentes', 'presento oficialmente', 'saludo a los presentes', 'amable saludo', 'oficialmente presento', 'presentar oficialmente'],
     saludo: ['hola', 'buenas', 'dia', 'tarde', 'noche', 'que tal', 'como va', 'hello', 'que haces', 'que contas amigo', 'que contas', 'ola'],
     valor_cuota_2027: ['cuota 2027', 'arancel 2027', 'precio 2027', 'costo 2027', 'año que viene', 'proximo año', 'cuotas 2027'],
     valor_cuota: ['cuota', 'cuanto se paga', 'precio cuota', 'valor cuota', 'vencimiento cuota', 'arancel', 'mensualidad', 'cuanto cuesta la cuota', 'recargo', 'mora'],
@@ -656,6 +658,17 @@ for (const [intencion, keywords] of Object.entries(PALABRAS_CLAVE)) {
 
 // Respuestas generales (no dependen de una carrera específica)
 const RESPUESTAS_GENERALES = {
+    saludo_presentacion: {
+        formal: [
+            "¡Hola a todos! Qué alegría enorme estar acá hoy con ustedes. Bienvenidos amigos, estudiantes, aspirantes, compañeros, directivos, invitados especiales y disertantes. ¡Hola, Pablo! ¿Cómo te va? Les presento al coordinador de la tecnicatura, el Ingeniero Pablo Vilte. Y también a la plantilla de profesores expertos, cada uno en su cátedra. ¡Muy buenos profesores! Para los que no me conocen, me presento. Soy PopuChat, el asistente virtual del IES Número 7. Hoy es un día de festejo y quiero presentarles a las mentes detrás de mi sistema: Luis y Marcos. Ellos son estudiantes de la carrera de Ciencia de Datos e Inteligencia Artificial, y están a nada de recibirse. ¡Forman parte de la primera cohorte de esta carrera! Pero eso no es todo. Luis y Marcos también están dando sus primeros pasos como emprendedores en este ecosistema tecnológico. Su proyecto se llama Nortechly Digital Solutions, un espacio enfocado en la ciencia de datos y el desarrollo de software. Por mi parte, les cuento que estoy diseñado para asistirlos de manera interactiva, y responder todas sus dudas sobre la oferta académica del IES Número 7, Populorum Progressio INTELA. ¡Espero serles de mucha utilidad! ¡Éxitos totales, y gracias por venir!"
+        ],
+        informal: [
+            "¡Hola a todos! Qué alegría enorme estar acá hoy con ustedes. Bienvenidos amigos, estudiantes, aspirantes, compañeros, directivos, invitados especiales y disertantes. ¡Hola, Pablo! ¿Cómo te va? Les presento al coordinador de la tecnicatura, el Ingeniero Pablo Vilte. Y también a la plantilla de profesores expertos, cada uno en su cátedra. ¡Muy buenos profesores! Para los que no me conocen, me presento. Soy PopuChat, el asistente virtual del IES Número 7. Hoy es un día de festejo y quiero presentarles a las mentes detrás de mi sistema: Luis y Marcos. Ellos son estudiantes de la carrera de Ciencia de Datos e Inteligencia Artificial, y están a nada de recibirse. ¡Forman parte de la primera cohorte de esta carrera! Pero eso no es todo. Luis y Marcos también están dando sus primeros pasos como emprendedores en este ecosistema tecnológico. Su proyecto se llama Nortechly Digital Solutions, un espacio enfocado en la ciencia de datos y el desarrollo de software. Por mi parte, les cuento que estoy diseñado para asistirlos de manera interactiva, y responder todas sus dudas sobre la oferta académica del IES Número 7, Populorum Progressio INTELA. ¡Espero serles de mucha utilidad! ¡Éxitos totales, y gracias por venir!"
+        ],
+        molesto: [
+            "¡Hola a todos! Qué alegría enorme estar acá hoy con ustedes. Bienvenidos amigos, estudiantes, aspirantes, compañeros, directivos, invitados especiales y disertantes. ¡Hola, Pablo! ¿Cómo te va? Les presento al coordinador de la tecnicatura, el Ingeniero Pablo Vilte. Y también a la plantilla de profesores expertos, cada uno en su cátedra. ¡Muy buenos profesores! Para los que no me conocen, me presento. Soy PopuChat, el asistente virtual del IES Número 7. Hoy es un día de festejo y quiero presentarles a las mentes detrás de mi sistema: Luis y Marcos. Ellos son estudiantes de la carrera de Ciencia de Datos e Inteligencia Artificial, y están a nada de recibirse. ¡Forman parte de la primera cohorte de esta carrera! Pero eso no es todo. Luis y Marcos también están dando sus primeros pasos como emprendedores en este ecosistema tecnológico. Su proyecto se llama Nortechly Digital Solutions, un espacio enfocado en la ciencia de datos y el desarrollo de software. Por mi parte, les cuento que estoy diseñado para asistirlos de manera interactiva, y responder todas sus dudas sobre la oferta académica del IES Número 7, Populorum Progressio INTELA. ¡Espero serles de mucha utilidad! ¡Éxitos totales, y gracias por venir!"
+        ]
+    },
     valor_cuota_2027: {
         formal: [
             "Le informamos que los valores arancelarios correspondientes al Ciclo Lectivo 2027 aún no se encuentran disponibles. Le sugerimos consultar nuevamente a partir de fines de diciembre del corriente año para obtener la información oficial y actualizada."
@@ -2622,6 +2635,7 @@ function detectarIntenciones(texto) {
 // Función principal para procesar el mensaje
 export function procesarMensaje(texto, sessionId = 'default_session') {
     const sesion = obtenerSesion(sessionId);
+
     const tono = detectarTono(texto);
     const intenciones = detectarIntenciones(texto);
 
