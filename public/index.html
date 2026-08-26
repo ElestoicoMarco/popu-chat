@@ -268,8 +268,15 @@
     <!-- Modal de Bloqueo de Testing / Nortechly Software -->
     <div id="testingModal" class="modal-overlay hidden">
         <div class="modal-card">
-            <h2 class="modal-title">NORTECHLY SOFTWARE</h2>
-            <p class="modal-subtitle">Soluciones globales en el ecosistema digital del norte Argentino</p>
+            <div class="modal-header-tag">PRUEBAS FINALIZADAS EXITOSAMENTE</div>
+            <div class="modal-header-subtag">Gracias por tu participación en la validación de esta aplicación.</div>
+
+            <div class="modal-logo-wrapper">
+                <img src="/img/nortechly_logo.png" alt="NORTECHLY" class="modal-logo-img" onerror="this.style.display='none'; document.getElementById('modal-logo-text').style.display='block';">
+                <div id="modal-logo-text" class="modal-logo-fallback" style="display:none;">NORTECHLY</div>
+                <div class="modal-company-title">DIGITAL SOLUTIONS</div>
+                <div class="modal-company-tagline">Data Science & Software Development</div>
+            </div>
             
             <div class="modal-divider"></div>
             
@@ -283,17 +290,26 @@
                 <li><span>•</span> Consultoría de Innovación</li>
             </ul>
 
-            <div class="modal-divider"></div>
-            
-            <h3 class="modal-section-title">CONTACTO</h3>
-            <div class="modal-contact-info">
-                <p>📱 +54 388 5064757 / 388 5726574</p>
-                <p>📧 nortechly.service@gmail.com</p>
-                <p>🌐 <a href="https://www.nortechly.com" target="_blank">www.nortechly.com</a></p>
-                <p>🔗 <a href="https://nortechly-exp.web.app/" target="_blank">nortechly-exp.web.app</a></p>
+            <div class="modal-footer-grid">
+                <!-- Columna Izquierda: Contacto -->
+                <div class="modal-contact-box">
+                    <h4 class="modal-box-title">CONSULTAS, MEJORAS Y NUEVAS IMPLEMENTACIONES</h4>
+                    <div class="modal-contact-details">
+                        <p>📱 +54 388 5064757 / 388 5726574</p>
+                        <p>📧 nortechly.service@gmail.com</p>
+                        <p>🌐 <a href="https://www.nortechly.com" target="_blank">www.nortechly.com</a></p>
+                        <p>🔗 <a href="https://nortechly-exp.web.app/" target="_blank">nortechly-exp.web.app</a></p>
+                    </div>
+                </div>
+                
+                <!-- Columna Derecha: QR Code -->
+                <div class="modal-qr-box">
+                    <img src="/img/qr_nortechly.png" alt="QR Code" class="modal-qr-img">
+                    <p class="modal-qr-text">Scan WebSite</p>
+                </div>
             </div>
             
-            <button id="closeModalBtn" class="modal-btn">Aceptar</button>
+            <button id="closeModalBtn" class="modal-btn-finalizar">FINALIZAR</button>
         </div>
     </div>
 </body>

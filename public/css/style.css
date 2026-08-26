@@ -945,46 +945,88 @@ details.aula-card[open] summary {
     background: rgba(255, 255, 255, 0.03); /* Glassmorphism */
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--radius);
-    padding: 30px 25px;
-    width: 90%;
-    max-width: 420px;
+    padding: 25px 20px;
+    width: 92%;
+    max-width: 480px;
     text-align: center;
-    box-shadow: 0 0 30px rgba(245, 206, 91, 0.15), 0 0 60px rgba(79, 160, 216, 0.10); /* Brillo con colores de PopuChat */
+    box-shadow: 0 0 35px rgba(245, 206, 91, 0.12), 0 0 70px rgba(79, 160, 216, 0.08); /* Brillo con colores de PopuChat */
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
 }
 
-.modal-title {
-    color: var(--primary); /* Oro */
-    font-size: 1.6rem;
+.modal-header-tag {
+    color: var(--secondary); /* Azul */
+    font-size: 0.9rem;
     font-weight: 800;
     letter-spacing: 1px;
-    text-shadow: 0 0 10px rgba(245, 206, 91, 0.3);
 }
 
-.modal-subtitle {
-    color: var(--text);
-    font-size: 0.95rem;
-    line-height: 1.4;
-    opacity: 0.9;
+.modal-header-subtag {
+    color: var(--primary); /* Oro */
+    font-size: 0.78rem;
+    font-weight: 500;
+    opacity: 0.95;
+    margin-top: -2px;
+}
+
+.modal-logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px 0;
+    width: 100%;
+}
+
+.modal-logo-img {
+    max-height: 48px;
+    object-fit: contain;
+    margin-bottom: 6px;
+    background: #ffffff;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.modal-logo-fallback {
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #ffffff;
+    font-family: sans-serif;
+    margin-bottom: 2px;
+}
+
+.modal-company-title {
+    color: var(--primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+.modal-company-tagline {
+    color: var(--text-dim);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 .modal-divider {
-    width: 80%;
+    width: 90%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-    margin: 5px 0;
+    background: linear-gradient(90deg, transparent, rgba(245, 206, 91, 0.25), transparent);
+    margin: 3px 0;
 }
 
 .modal-section-title {
     color: var(--secondary); /* Azul cielo */
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 700;
     letter-spacing: 0.5px;
+    margin-bottom: 2px;
 }
 
 .modal-services-list {
@@ -992,13 +1034,13 @@ details.aula-card[open] summary {
     text-align: left;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     width: 100%;
-    padding-left: 20px;
+    padding-left: 15px;
 }
 
 .modal-services-list li {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-dim);
     display: flex;
     align-items: center;
@@ -1010,46 +1052,141 @@ details.aula-card[open] summary {
     font-weight: bold;
 }
 
-.modal-contact-info {
+/* Grilla inferior para contactos y QR */
+.modal-footer-grid {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    margin-top: 5px;
+}
+
+.modal-contact-box {
+    flex: 1.25;
+    border: 1px solid rgba(79, 160, 216, 0.25);
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: rgba(79, 160, 216, 0.03);
+    text-align: left;
     display: flex;
     flex-direction: column;
     gap: 6px;
-    font-size: 0.9rem;
-    color: var(--text-dim);
 }
 
-.modal-contact-info a {
+.modal-box-title {
+    font-size: 0.62rem;
+    font-weight: 800;
+    color: var(--secondary);
+    text-align: center;
+    border-bottom: 1px solid rgba(79, 160, 216, 0.15);
+    padding-bottom: 5px;
+    line-height: 1.35;
+    letter-spacing: 0.3px;
+}
+
+.modal-contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    margin-top: 2px;
+}
+
+.modal-contact-details p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.modal-contact-details a {
     color: var(--secondary);
     text-decoration: none;
+    font-weight: 600;
     transition: color 0.2s ease;
 }
 
-.modal-contact-info a:hover {
+.modal-contact-details a:hover {
     color: var(--primary);
     text-decoration: underline;
 }
 
-.modal-btn {
-    margin-top: 10px;
+.modal-qr-box {
+    flex: 0.75;
+    border: 1px solid rgba(245, 206, 91, 0.25);
+    border-radius: 12px;
+    padding: 10px;
+    background: rgba(245, 206, 91, 0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.modal-qr-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 4px;
+    background: #ffffff;
+    padding: 3px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.modal-qr-text {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.modal-btn-finalizar {
+    margin-top: 5px;
     background: var(--primary);
     color: #000000;
     border: none;
-    border-radius: var(--radius);
-    padding: 12px 35px;
-    font-size: 1rem;
-    font-weight: 700;
+    border-radius: 50px;
+    padding: 11px 0;
+    font-size: 0.95rem;
+    font-weight: 800;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(245, 206, 91, 0.3);
+    width: 100%;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(245, 206, 91, 0.25);
     transition: all 0.3s ease;
-    width: 80%;
 }
 
-.modal-btn:hover {
+.modal-btn-finalizar:hover {
     background: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(245, 206, 91, 0.4);
+    box-shadow: 0 6px 20px rgba(245, 206, 91, 0.35);
 }
 
-.modal-btn:active {
+.modal-btn-finalizar:active {
     transform: translateY(0);
+}
+
+/* Responsivo para móviles */
+@media (max-width: 480px) {
+    .modal-footer-grid {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .modal-card {
+        padding: 20px 15px;
+        gap: 10px;
+    }
+    
+    .modal-qr-box {
+        padding: 8px;
+    }
+    
+    .modal-qr-img {
+        width: 70px;
+        height: 70px;
+    }
 }
