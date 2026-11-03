@@ -1,101 +1,29 @@
 import { procesarMensaje } from './rules.js';
 
-// Lógica de Bloqueo de Testing (Opción Híbrida)
-const testingParams = new URLSearchParams(window.location.search);
-const testingCode = testingParams.get('codigo');
-const testingExpireDate = new Date("2026-08-28T23:59:59");
-const isTestingExpired = new Date() > testingExpireDate;
-const isLocked = testingCode !== 'TEST2026' || isTestingExpired;
-
-// Función para bloquear la UI de forma dinámica
-function bloquearInterfaz() {
-    const chatInput = document.getElementById('chatInput');
-    const sendBtn = document.getElementById('sendBtn');
-    const micBtn = document.getElementById('micBtn');
-    
-    if (chatInput) {
-        chatInput.disabled = true;
-        chatInput.placeholder = "El período de testing ha finalizado. Pronto estaremos online.";
-    }
-    if (sendBtn) sendBtn.disabled = true;
-    if (micBtn) micBtn.disabled = true;
-    
-    // Bloquear todos los botones rápidos existentes
-    document.querySelectorAll('.quick-btn, .chat-accordion summary').forEach(el => {
-        el.style.pointerEvents = 'none';
-        el.style.opacity = '0.6';
-    });
-
-    // Mostrar el modal de bloqueo de Nortechly
-    const testingModal = document.getElementById('testingModal');
-    if (testingModal) {
-        testingModal.classList.remove('hidden');
-    }
-}
-
-// Función para controlar y mostrar la cuenta regresiva en vivo
-function iniciarCuentaRegresiva() {
-    const banner = document.getElementById('countdownBanner');
-    const timerText = document.getElementById('countdownTimer');
-    if (!banner || !timerText) return;
-
-    banner.classList.remove('hidden');
-
-    function actualizarReloj() {
-        const ahora = new Date();
-        const diferencia = testingExpireDate - ahora;
-
-        if (diferencia <= 0) {
-            clearInterval(timerInterval);
-            banner.classList.add('hidden');
-            bloquearInterfaz();
-            return;
-        }
-
-        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-        const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-        const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-        timerText.textContent = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
-    }
-
-    actualizarReloj();
-    const timerInterval = setInterval(actualizarReloj, 1000);
-}
+// Modo Producción Oficial (Acceso Público Abierto)
+const isLocked = false;
 
 // Splash Screen Logic
 window.addEventListener('load', () => {
-    // Configurar listener para cerrar el modal de Nortechly
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    if (closeModalBtn) {
-        closeModalBtn.addEventListener('click', () => {
-            const testingModal = document.getElementById('testingModal');
-            if (testingModal) {
-                testingModal.classList.add('hidden');
-            }
-        });
-    }
+    const chatInput = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const micBtn = document.getElementById('micBtn');
 
-    if (isLocked) {
-        bloquearInterfaz();
-        // Ajustar placeholder específico según el tipo de bloqueo
-        const chatInput = document.getElementById('chatInput');
-        if (chatInput) {
-            chatInput.placeholder = isTestingExpired 
-                ? "El período de testing ha finalizado. Pronto estaremos online."
-                : "El asistente se encuentra en fase de pruebas cerradas.";
-        }
-    } else {
-        iniciarCuentaRegresiva();
+    if (chatInput) {
+        chatInput.disabled = false;
+        chatInput.placeholder = "Escribí tu consulta...";
     }
+    if (sendBtn) sendBtn.disabled = false;
+    if (micBtn) micBtn.disabled = false;
 
     setTimeout(() => {
         const splash = document.getElementById('splash-screen');
         if (splash) {
             splash.classList.add('hidden');
-            // Quitarlo del DOM después de la transición
             setTimeout(() => splash.remove(), 800);
+        }
+        if (chatInput) {
+            chatInput.focus();
         }
     }, 1800);
 });

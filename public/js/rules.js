@@ -32,6 +32,8 @@ const ORDEN_LOGICO_INTENCIONES = [
     'campo_laboral',
     'coordinador',
     'requisitos_inscripcion',
+    'curso_ingreso',
+    'becas',
     'horario_atencion',
     'ubicacion',
     'contacto',
@@ -601,24 +603,26 @@ function detectarCarrera(texto) {
 
 const PALABRAS_CLAVE = {
     saludo: ['hola', 'buenas', 'dia', 'tarde', 'noche', 'que tal', 'como va', 'hello', 'que haces', 'que contas amigo', 'que contas', 'ola'],
-    valor_cuota_2027: ['cuota 2027', 'arancel 2027', 'precio 2027', 'costo 2027', 'año que viene', 'proximo año', 'cuotas 2027'],
-    valor_cuota: ['cuota', 'cuanto se paga', 'precio cuota', 'valor cuota', 'vencimiento cuota', 'arancel', 'mensualidad', 'cuanto cuesta la cuota', 'recargo', 'mora'],
-    valor_inscripcion: ['valor inscripcion', 'precio inscripcion', 'cuanto cuesta la inscripcion', 'costo inscripcion', 'precio matricula', 'costo matricula', 'pagar inscripcion'],
+    valor_cuota_2027: ['cuota 2027', 'arancel 2027', 'precio 2027', 'costo 2027', 'año que viene', 'proximo año', 'cuotas 2027', 'matricula 2027', 'inscripcion 2027'],
+    valor_cuota: ['cuota', 'cuanto se paga', 'precio cuota', 'valor cuota', 'vencimiento cuota', 'arancel', 'mensualidad', 'cuanto cuesta la cuota', 'recargo', 'mora', 'cuotas', 'cuantas cuotas'],
+    valor_inscripcion: ['valor inscripcion', 'precio inscripcion', 'cuanto cuesta la inscripcion', 'costo inscripcion', 'precio matricula', 'costo matricula', 'pagar inscripcion', 'matricula', 'costo de matricula'],
     tramites_tesoreria: ['constancia', 'autenticacion', 'libreta', 'analitico', 'documentacion junta', 'duplicado titulo', 'biblioteca', 'tramite', 'precios tesoreria', 'aranceles tesoreria', 'tramites tesoreria'],
     horario_tesoreria: ['horario tesoreria', 'horarios tesoreria', 'horario de tesoreria', 'horarios de tesoreria', 'tesoreria'],
     distribucion_aulas: ['aula', 'aulas', 'espacios', 'donde curso', 'que aula', 'turno mañana', 'turno tarde', 'turno noche', 'donde nos toca'],
     requisitos_duplicado: ['requisitos duplicado', 'otro ejemplar', 'extravio titulo', 'perdi el titulo', 'duplicado de titulo', 'perdi mi titulo', 'deterioro titulo'],
-    carreras: ['carrera', 'carreras', 'oferta academica', 'estudiar', 'que tienen', 'que puedo cursar', 'que se dicta', 'dictan', 'oferta', 'ofertas', 'oferta educativa', 'me decis que carrera hay'],
+    carreras: ['carrera', 'carreras', 'oferta academica', 'estudiar', 'que carreras tienen', 'que puedo cursar', 'que se dicta', 'dictan', 'oferta', 'ofertas', 'oferta educativa', 'me decis que carrera hay'],
     tecnicaturas: ['tecnicatura', 'tecnicaturas', 'tecnica', 'tecnicas', 'carreras tecnicas', 'carrera tecnica'],
     profesorados: ['profesorado', 'profesorados', 'profesor', 'profesores', 'docente', 'docentes', 'carreras docentes'],
     descripcion_carrera: ['de que trata', 'descripcion', 'que hace', 'para que sirve', 'perfil', 'que aprendo'],
     plan_estudios_completo: ['materias', 'plan de estudio', 'asignaturas', 'materias de primero', 'que curso', 'materias de segundo', 'materias de tercero', 'primer año', 'segundo año', 'tercer año', 'cuarto año', 'plan de estudios'],
     campo_laboral: ['salida laboral', 'donde trabajar', 'trabajo', 'empleo', 'mercado laboral', 'de que puedo trabajar', 'empresas', 'litio', 'campo laboral', 'campo profesional', 'trabaja', 'salida'],
-    coordinador: ['coordinador', 'coordinadora', 'coordinadores', 'silvia', 'cichello', 'jimena', 'cabrera', 'susana', 'villa', 'valverde', 'mariela', 'garcia', 'canil', 'galarza', 'santillan', 'aranibar', 'romano', 'pablo', 'vilte', 'consulta', 'horarios de consulta', 'horario de consulta', 'contacto del coordinador'],
+    coordinador: ['coordinador', 'coordinadora', 'coordinadores', 'silvia', 'cichello', 'jimena', 'cabrera', 'susana', 'villa', 'valverde', 'mariela', 'garcia', 'canil', 'galarza', 'santillan', 'aranibar', 'romano', 'pablo', 'vilte', 'horarios de consulta', 'horario de consulta', 'contacto del coordinador', 'consultar al coordinador'],
     horario_atencion: ['horario', 'a que hora', 'atienden', 'abren', 'cierran', 'atencion', 'hasta que hora', 'cuando ir', 'horarios', 'turno', 'cursado', 'se cursa', 'cursa'],
     ubicacion: ['ubicacion', 'donde queda', 'direccion', 'donde estan', 'como llego', 'mapa', 'san salvador', 'sarmiento', 'sarmiento 268'],
     contacto: ['contacto', 'telefono', 'mail', 'correo', 'llamar', 'email', 'comunicarme', 'comunicar', 'numero', 'tel', 'fijo', 'llamada'],
-    requisitos_inscripcion: ['inscribirme', 'anotarme', 'requisitos', 'papeles', 'que necesito', 'titulo secundario', 'inscripcion', 'matricula', 'fecha de inscripcion', 'fechas de inscripcion', 'cuando me inscribo', 'periodo de inscripcion', 'cuando son las inscripciones'],
+    requisitos_inscripcion: ['inscribirme', 'anotarme', 'requisitos', 'papeles', 'que necesito', 'titulo secundario', 'inscripcion', 'fecha de inscripcion', 'fechas de inscripcion', 'cuando me inscribo', 'periodo de inscripcion', 'cuando son las inscripciones'],
+    curso_ingreso: ['curso de ingreso', 'cursillo', 'ingreso 2027', 'ambientacion', 'nivelacion', 'curso ingreso', 'cuando empieza el curso de ingreso', 'cuando es el curso de ingreso', 'cronograma comision', 'cronograma comisiones', 'cronograma curso de ingreso', 'cronograma ingreso', 'cuando empieza el ingreso', 'cursillo de ingreso'],
+    becas: ['beca', 'becas', 'ayuda economica', 'progresar', 'beca progresar', 'postular beca', 'requisitos beca', 'acceder a beca', 'pedir beca', 'como tener beca', 'solicitar beca', 'beca estudiantil'],
     sede_perico: ['sede_perico', 'perico', 'anexo perico'],
     sede_san_pedro: ['sede_san_pedro', 'san pedro', 'san pedrito'],
     sede_libertador: ['sede_libertador', 'libertador', 'ledesma', 'ledezma', 'gral san martin', 'general san martin'],
@@ -658,24 +662,24 @@ for (const [intencion, keywords] of Object.entries(PALABRAS_CLAVE)) {
 const RESPUESTAS_GENERALES = {
     valor_cuota_2027: {
         formal: [
-            "Le informamos que los valores arancelarios correspondientes al Ciclo Lectivo 2027 aún no se encuentran disponibles. Le sugerimos consultar nuevamente a partir de fines de diciembre del corriente año para obtener la información oficial y actualizada."
+            "Le informamos que los valores arancelarios y de matrícula correspondientes al Ciclo Lectivo 2027 aún no se encuentran establecidos. Los mismos se definirán formalmente durante el mes de diciembre del corriente año."
         ],
         informal: [
-            "Te cuento que los valores de las cuotas para el 2027 todavía no están definidos. Porfa, volvé a consultarnos a fines de diciembre que ya vamos a tener la info actualizada."
+            "Te cuento que los valores de las cuotas y de la matrícula para el ciclo 2027 todavía no están establecidos. Se van a definir recién en diciembre, así que a fin de año ya vamos a tener los montos confirmados."
         ],
         molesto: [
-            "Lamentamos no poder brindarle esa información ahora. Los aranceles para 2027 no están disponibles en este momento. Le pedimos por favor consultar a fin de diciembre."
+            "Lamentamos no poder brindarle ese monto en este momento. Los aranceles y la matrícula para el Ciclo 2027 no están fijados aún; le solicitamos consultar en el mes de diciembre cuando queden formalmente definidos."
         ]
     },
     valor_cuota: {
         formal: [
-            "Tesorería Informa - Valores de Cuota 2026:\nEl valor de la cuota mensual para todas las carreras es de 55.000. pesos-, a excepción de las Carreras Especiales (Laboratorio clínico, hemoterapia, acompañamiento terapéutico y ciencia de datos) cuyo valor es de 60.000. pesos-\n\nVencimientos: Las cuotas de todas las carreras vencen el último día de cada mes. Transcurrido ese plazo, se aplicará un recargo por cada mes de mora.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
+            "Tesorería Informa - Valores de Cuota Vigentes:\nEl valor de la cuota mensual para todas las carreras es de 70.000 pesos. Se abonan 10 cuotas mensuales en todas las carreras.\n\nVencimientos: Las cuotas vencen el último día de cada mes. Transcurrido ese plazo, se aplicará un recargo por cada mes de mora.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
         ],
         informal: [
-            "Para el año 2026, el valor de la cuota para casi todas las carreras es de 55.000 pesos (las Carreras Especiales están en 60.000 pesos; las carreras especiales son: Laboratorio clínico, hemoterapia, acompañamiento terapéutico y ciencia de datos).\nAcordate que las cuotas vencen el último día de cada mes; si te pasás de esa fecha, se cobra un recargo por cada mes de atraso.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
+            "El valor de la cuota vigente es de 70.000 pesos. Tené en cuenta que se abonan 10 cuotas mensuales en todas las carreras.\nAcordate que las cuotas vencen el último día de cada mes; si te pasás de esa fecha, se cobra un recargo por cada mes de atraso.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
         ],
         molesto: [
-            "Le informamos los valores vigentes para 2026: la cuota es de 55.000 pesos para todas las carreras y 60.000 pesos para las especiales (Laboratorio clínico, hemoterapia, acompañamiento terapéutico y ciencia de datos). Vencen el último día de cada mes, sin excepción, y el atraso genera recargos.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
+            "Le informamos los valores arancelarios vigentes: la cuota mensual es de 70.000 pesos y se abonan 10 cuotas mensuales en todas las carreras. Vencen el último día de cada mes, sin excepción, y el atraso genera recargos.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
         ]
     },
     experto_bot: {
@@ -702,13 +706,35 @@ const RESPUESTAS_GENERALES = {
     },
     valor_inscripcion: {
         formal: [
-            "Tesorería Informa: El valor de inscripción para el Ciclo Lectivo 2026 es de 60.000. pesos-"
+            "Tesorería Informa: El costo de la matrícula de inscripción para el Ciclo Lectivo 2027 se definirá formalmente en el mes de diciembre. Le sugerimos consultar a fin de año para conocer el valor oficial."
         ],
         informal: [
-            "Te comento que el valor de la inscripción para el ciclo 2026 está fijado en 60.000. pesos"
+            "Te comento que el valor de la matrícula de inscripción para el ciclo 2027 no está establecido todavía; se define recién en diciembre."
         ],
         molesto: [
-            "Le informamos que el arancel de inscripción correspondiente al ciclo 2026 es de 60.000. pesos"
+            "Le informamos que el arancel de matrícula para el ciclo 2027 aún no se encuentra establecido y será fijado en el mes de diciembre."
+        ]
+    },
+    curso_ingreso: {
+        formal: [
+            "Le informamos que el Curso de Ingreso correspondiente al Ciclo Lectivo 2027 se llevará a cabo del 01 al 19 de marzo de 2027.<br><br>📌 <b>Publicación de cronogramas:</b> La publicación de los cronogramas de cada comisión para el curso de ingreso se realizará en la página web oficial de Populorum Casa Central a partir del 26 de febrero de 2027 desde horas 21:30."
+        ],
+        informal: [
+            "¡Te paso la data del Curso de Ingreso 2027! Las clases del curso de ingreso serán del 01 al 19 de marzo de 2027.<br><br>📌 <b>Cronogramas por comisión:</b> La publicación de los cronogramas de cada comisión se va a realizar en la página web oficial de Populorum Casa Central a partir del 26 de febrero de 2027 desde las 21:30 hs."
+        ],
+        molesto: [
+            "Le detallamos rigurosamente la información del Curso de Ingreso 2027: las clases se desarrollarán del 01 al 19 de marzo de 2027. La publicación oficial de los cronogramas de cada comisión se realizará en la página web de Populorum Casa Central a partir del 26 de febrero de 2027 desde horas 21:30."
+        ]
+    },
+    becas: {
+        formal: [
+            "Respecto al régimen de becas institucionales y estudiantiles, le informamos que el acceso y postulación a las mismas se encuentra habilitado únicamente a partir del 2° año de cursado. Los ingresantes de primer año no pueden acceder a este beneficio."
+        ],
+        informal: [
+            "¡Te cuento sobre las becas! El acceso a las becas rige únicamente a partir del segundo año de la carrera. Los ingresantes de primer año todavía no pueden postularse."
+        ],
+        molesto: [
+            "Le informamos con precisión la normativa institucional: el acceso a becas está habilitado única y exclusivamente a partir del segundo año de cursado. Los alumnos ingresantes de primer año no tienen acceso a becas."
         ]
     },
     tramites_tesoreria: {
@@ -1353,19 +1379,19 @@ sede_perico: {
     },
     requisitos_inscripcion: {
         formal: [
-            "Para formalizar su inscripción definitiva en cualquier tecnicatura o profesorado, la normativa ministerial requiere la presentación de la siguiente documentación obligatoria: Título Secundario original autenticado (o constancia de título en trámite), fotocopia de Documento Nacional de Identidad (DNI), Partida de Nacimiento actualizada, constancia de CUIL y fotos tipo carnet.<br><br>📆 <b>Fecha de Inscripción Año 2027:</b> Diciembre del 14 al 30 y Febrero del 15 al 26.",
-            "Los requisitos oficiales de ingreso del IES 7 constan de la entrega física en carpeta de: analítico del secundario completo, DNI, CUIL, partida de nacimiento y certificado de aptitud médica.<br><br>📆 <b>Fecha de Inscripción Año 2027:</b> Diciembre del 14 al 30 y Febrero del 15 al 26.",
-            "Le recordamos que para formalizar su inscripción definitiva en cualquier tecnicatura o profesorado, la normativa ministerial requiere la presentación de la siguiente documentación obligatoria: Título Secundario original autenticado (o constancia de título en trámite), fotocopia de Documento Nacional de Identidad (DNI), Partida de Nacimiento actualizada, constancia de CUIL y fotos tipo carnet.<br><br>📆 <b>Fecha de Inscripción Año 2027:</b> Diciembre del 14 al 30 y Febrero del 15 al 26. Quedamos a su disposición para cualquier aclaración."
+            "Para formalizar su inscripción definitiva en cualquier tecnicatura o profesorado, la normativa ministerial requiere la presentación de la siguiente documentación obligatoria: Título Secundario original autenticado (o constancia de título en trámite), fotocopia de Documento Nacional de Identidad (DNI), Partida de Nacimiento actualizada, constancia de CUIL y fotos tipo carnet.<br><br>📆 <b>Fechas de inscripción Ciclo 2027:</b> Diciembre 2026 (del 14 al 30) y Febrero 2027 (del 15 al 26).",
+            "Los requisitos oficiales de ingreso del IES 7 constan de la entrega física en carpeta de: analítico del secundario completo, DNI, CUIL, partida de nacimiento y certificado de aptitud médica.<br><br>📆 <b>Fechas de inscripción Ciclo 2027:</b> Diciembre 2026 (del 14 al 30) y Febrero 2027 (del 15 al 26).",
+            "Le recordamos que para formalizar su inscripción definitiva en cualquier tecnicatura o profesorado, la normativa ministerial requiere la presentación de la siguiente documentación obligatoria: Título Secundario original autenticado (o constancia de título en trámite), fotocopia de Documento Nacional de Identidad (DNI), Partida de Nacimiento actualizada, constancia de CUIL y fotos tipo carnet.<br><br>📆 <b>Fechas de inscripción Ciclo 2027:</b> Diciembre 2026 (del 14 al 30) y Febrero 2027 (del 15 al 26). Quedamos a su disposición para cualquier aclaración."
         ],
         informal: [
-            "Para inscribirte tenés que presentar los papeles típicos: fotocopia de tu DNI, la constancia de CUIL, partida de nacimiento actualizada, fotos tipo carnet y el analítico del secundario (o la constancia de título en trámite).<br><br>📆 <b>Fechas de inscripción Año 2027:</b> Diciembre del 14 al 30 y Febrero del 15 al 26.",
-            "Anotarte es fácil, tenés que llevar una carpeta con: fotocopia de DNI, CUIL, partida de nacimiento, fotos carnet y el título secundario completo.<br><br>📆 <b>Fechas de inscripción Año 2027:</b> Diciembre del 14 al 30 y Febrero del 15 al 26.",
-            "¡Te paso este dato! Para inscribirte tenés que presentar los papeles típicos: fotocopia de tu DNI, la constancia de CUIL, partida de nacimiento actualizada, fotos tipo carnet y el analítico del secundario (o la constancia de título en trámite).<br><br>📆 <b>Fechas de inscripción Año 2027:</b> Diciembre del 14 al 30 y Febrero del 15 al 26. Escribime cualquier otra consulta que tengas."
+            "Para inscribirte tenés que presentar los papeles típicos: fotocopia de tu DNI, la constancia de CUIL, partida de nacimiento actualizada, fotos tipo carnet y el analítico del secundario (o la constancia de título en trámite).<br><br>📆 <b>Fechas de inscripción Ciclo 2027:</b> Diciembre 2026 (del 14 al 30) y Febrero 2027 (del 15 al 26).",
+            "Anotarte es fácil, tenés que llevar una carpeta con: fotocopia de DNI, CUIL, partida de nacimiento, fotos carnet y el título secundario completo.<br><br>📆 <b>Fechas de inscripción Ciclo 2027:</b> Diciembre 2026 (del 14 al 30) y Febrero 2027 (del 15 al 26).",
+            "¡Te paso este dato! Para inscribirte tenés que presentar los papeles típicos: fotocopia de tu DNI, la constancia de CUIL, partida de nacimiento actualizada, fotos tipo carnet y el analítico del secundario (o la constancia de título en trámite).<br><br>📆 <b>Fechas de inscripción Ciclo 2027:</b> Diciembre 2026 (del 14 al 30) y Febrero 2027 (del 15 al 26). Escribime cualquier otra consulta que tengas."
         ],
         molesto: [
-            "Lamentamos sinceramente la demora. Le detallamos rigurosamente los requisitos obligatorios de inscripción: título secundario autenticado o en trámite, fotocopia de DNI, constancia de CUIL, partida de nacimiento actualizada y fotos carnet.<br><br>📆 <b>Fecha de Inscripción Año 2027:</b> Diciembre del 14 al 30 y Febrero del 15 al 26.",
-            "Pedimos disculpas por los inconvenientes. Para evitar contratiempos, debe presentar de manera inmediata: analítico del secundario, fotocopia de DNI, CUIL, partida de nacimiento y certificado de salud.<br><br>📆 <b>Fecha de Inscripción Año 2027:</b> Diciembre del 14 al 30 y Febrero del 15 al 26.",
-            "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos sinceramente la demora. Le detallamos rigurosamente los requisitos obligatorios de inscripción: título secundario autenticado o en trámite, fotocopia de DNI, constancia de CUIL, partida de nacimiento actualizada y fotos carnet.<br><br>📆 <b>Fecha de Inscripción Año 2027:</b> Diciembre del 14 al 30 y Febrero del 15 al 26. Agradecemos su comprensión."
+            "Lamentamos sinceramente la demora. Le detallamos rigurosamente los requisitos obligatorios de inscripción: título secundario autenticado o en trámite, fotocopia de DNI, constancia de CUIL, partida de nacimiento actualizada y fotos carnet.<br><br>📆 <b>Fechas de inscripción Ciclo 2027:</b> Diciembre 2026 (del 14 al 30) y Febrero 2027 (del 15 al 26).",
+            "Pedimos disculpas por los inconvenientes. Para evitar contratiempos, debe presentar de manera inmediata: analítico del secundario, fotocopia de DNI, CUIL, partida de nacimiento y certificado de salud.<br><br>📆 <b>Fechas de inscripción Ciclo 2027:</b> Diciembre 2026 (del 14 al 30) y Febrero 2027 (del 15 al 26).",
+            "Lamentamos las dificultades iniciales. Le informamos de manera prioritaria: Lamentamos sinceramente la demora. Le detallamos rigurosamente los requisitos obligatorios de inscripción: título secundario autenticado o en trámite, fotocopia de DNI, constancia de CUIL, partida de nacimiento actualizada y fotos carnet.<br><br>📆 <b>Fechas de inscripción Ciclo 2027:</b> Diciembre 2026 (del 14 al 30) y Febrero 2027 (del 15 al 26). Agradecemos su comprensión."
         ]
     },
     agradecimiento: {
@@ -2356,19 +2382,19 @@ const RESPUESTAS_CARRERA = {
         },
         valor_cuota: {
             formal: [
-                "Le informamos que la Tecnicatura Superior en Acompañamiento Terapéutico es una Carrera Especial. Para el Ciclo Lectivo 2026, el valor de su cuota mensual está fijado en 60.000 pesos. Las cuotas vencen el último día de cada mes.",
-                "El arancel mensual establecido para Acompañamiento Terapéutico (considerada Carrera Especial) para el Ciclo 2026 es de 60.000 pesos. Recuerde que el vencimiento opera el último día de cada mes.",
-                "Le recordamos que Acompañamiento Terapéutico es una de las carreras especiales y posee un valor de cuota de 60.000 pesos mensuales para el ciclo 2026, con vencimiento el último día de cada mes. Quedamos a su disposición."
+                "Le informamos que para la Tecnicatura Superior en Acompañamiento Terapéutico el valor vigente de la cuota mensual es de 70.000 pesos. Se abonan 10 cuotas mensuales al año y las mismas vencen el último día de cada mes.",
+                "El arancel mensual establecido para Acompañamiento Terapéutico es de 70.000 pesos, en un esquema de 10 cuotas mensuales por año. Recuerde que el vencimiento opera el último día de cada mes.",
+                "Le recordamos que Acompañamiento Terapéutico posee un valor de cuota vigente de 70.000 pesos mensuales (10 cuotas anuales), con vencimiento el último día de cada mes. Quedamos a su disposición."
             ],
             informal: [
-                "Te comento que Acompañamiento Terapéutico es una carrera especial, por lo que el valor de la cuota mensual para el ciclo 2026 es de 60.000 pesos. Acordate que vencen el último día de cada mes.",
-                "Al ser una carrera especial, la cuota de Acompañamiento Terapéutico para el 2026 es de 60.000 pesos al mes. Tratá de pagar antes del último día de cada mes para evitar recargos.",
-                "¡Te paso el dato! Acompañamiento Terapéutico es una carrera especial y su cuota mensual para el 2026 es de 60.000 pesos. El vencimiento es el último día de cada mes."
+                "Te comento que el valor de la cuota mensual para Acompañamiento Terapéutico es de 70.000 pesos. Se abonan 10 cuotas mensuales en el año y acordate que vencen el último día de cada mes.",
+                "La cuota mensual de Acompañamiento Terapéutico es de 70.000 pesos (son 10 cuotas anuales). Tratá de pagar antes del último día de cada mes para evitar recargos.",
+                "¡Te paso el dato! Para Acompañamiento Terapéutico la cuota mensual vigente es de 70.000 pesos, completando 10 cuotas en el año. El vencimiento es el último día de cada mes."
             ],
             molesto: [
-                "Lamentamos la demora. Le informamos que Acompañamiento Terapéutico es una carrera especial y su cuota para 2026 es de 60.000 pesos al mes, venciendo el último día de cada mes.",
-                "Pedimos disculpas por los inconvenientes. Confirmamos que la cuota de Acompañamiento Terapéutico (carrera especial) es de 60.000 pesos al mes para el ciclo 2026 y vence el último día del mes.",
-                "Lamentamos las dificultades iniciales. Le informamos que por ser carrera especial, la cuota de Acompañamiento Terapéutico es de 60.000 pesos mensuales en el ciclo 2026. Agradecemos su comprensión."
+                "Lamentamos la demora. Le informamos que la cuota vigente de Acompañamiento Terapéutico es de 70.000 pesos al mes (10 cuotas anuales), venciendo el último día de cada mes.",
+                "Pedimos disculpas por los inconvenientes. Confirmamos que la cuota de Acompañamiento Terapéutico es de 70.000 pesos al mes, con un esquema de 10 cuotas al año con vencimiento a fin de cada mes.",
+                "Lamentamos las dificultades iniciales. Le informamos que la cuota vigente de Acompañamiento Terapéutico es de 70.000 pesos mensuales (10 cuotas al año). Agradecemos su comprensión."
             ]
         }
     },
@@ -2614,6 +2640,16 @@ function detectarIntenciones(texto) {
     // Si pregunta por el horario de tesorería, ignorar el horario de clases (horario_atencion)
     if (intencionesFinales.includes('horario_tesoreria')) {
         intencionesFinales = intencionesFinales.filter(i => i !== 'horario_atencion');
+    }
+
+    // Si pregunta por curso de ingreso, ignorar colisiones de la palabra "curso" con aulas o plan de estudios
+    if (intencionesFinales.includes('curso_ingreso')) {
+        intencionesFinales = intencionesFinales.filter(i => i !== 'distribucion_aulas' && i !== 'plan_estudios_completo' && i !== 'carreras');
+    }
+
+    // Si pregunta por becas, evitar colisiones con listado de carreras
+    if (intencionesFinales.includes('becas')) {
+        intencionesFinales = intencionesFinales.filter(i => i !== 'carreras');
     }
 
     return intencionesFinales;
