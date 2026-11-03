@@ -40,6 +40,8 @@ Se eliminaron las restricciones de la fase de pruebas cerradas y se cargaron las
   * **Modalidad de pago:** Se incorporó formalmente la regla de que **se abonan 10 cuotas mensuales en todas las carreras**.
   * **Vencimientos y Atención:** Vencimiento el último día de cada mes (con recargo por mora) y atención de tesorería de lunes a viernes de 8:00 a 12:00 y de 15:30 a 20:00 hs.
   * **Excepciones de carrera:** Se ratificó el caso específico de la Tecnicatura en Acompañamiento Terapéutico (carrera especial) a $70.000 (10 cuotas anuales).
+  * **Aclaración de período:** Se especificó expresamente que dichos aranceles rigen para el **Período 2026**, y que los valores de cuotas para el **Período 2027 aún no se encuentran disponibles** (se definirán formalmente en diciembre de 2026).
+  * **Tren de información / Botones de consulta:** Se ajustó la etiqueta en el carrusel a **"Cuotas y Matrícula"** (consultando `¿Cuáles son los valores de cuotas y matrícula?`) para mantener un estilo sobrio y formal.
 
 #### 2.2. Definiciones para el Ciclo Lectivo 2027
 * **Intención:** `valor_inscripcion`

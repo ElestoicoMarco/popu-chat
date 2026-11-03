@@ -675,13 +675,13 @@ const RESPUESTAS_GENERALES = {
     },
     valor_cuota: {
         formal: [
-            "Tesorería Informa - Valores de Cuota Vigentes:\nEl valor de la cuota mensual para todas las carreras es de 60.000 pesos, a excepción de las Carreras Especiales (Laboratorio clínico, hemoterapia, acompañamiento terapéutico y ciencia de datos) cuyo valor es de 70.000 pesos.\n\nModalidad de pago: Se abonan 10 cuotas mensuales en todas las carreras.\nVencimientos: Las cuotas vencen el último día de cada mes. Transcurrido ese plazo, se aplicará un recargo por cada mes de mora.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
+            "Tesorería Informa - Valores de Cuota Vigentes (Período 2026):\nEl valor de la cuota mensual para todas las carreras es de 60.000 pesos, a excepción de las Carreras Especiales (Laboratorio clínico, hemoterapia, acompañamiento terapéutico y ciencia de datos) cuyo valor es de 70.000 pesos.\n\nModalidad de pago: Se abonan 10 cuotas mensuales en todas las carreras.\nVencimientos: Las cuotas vencen el último día de cada mes. Transcurrido ese plazo, se aplicará un recargo por cada mes de mora.\n\n📌 Aclaración importante: Los valores de las cuotas para el Período 2027 aún no se encuentran disponibles (se definirán formalmente en el mes de diciembre).\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
         ],
         informal: [
-            "Para los valores vigentes, la cuota mensual para todas las carreras es de 60.000 pesos, mientras que para las Carreras Especiales (Laboratorio clínico, hemoterapia, acompañamiento terapéutico y ciencia de datos) es de 70.000 pesos.\nTené en cuenta que se abonan 10 cuotas mensuales en todas las carreras y vencen el último día de cada mes (con recargo por mora si te atrasás).\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
+            "Para los valores vigentes correspondientes al Período 2026, la cuota mensual para todas las carreras es de 60.000 pesos, mientras que para las Carreras Especiales (Laboratorio clínico, hemoterapia, acompañamiento terapéutico y ciencia de datos) es de 70.000 pesos.\nTené en cuenta que se abonan 10 cuotas mensuales en todas las carreras y vencen el último día de cada mes (con recargo por mora si te atrasás).\n\n📌 Tené en cuenta: Los valores de cuotas para el Período 2027 todavía no están disponibles; se definen recién en diciembre.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
         ],
         molesto: [
-            "Le informamos los valores arancelarios vigentes: la cuota mensual es de 60.000 pesos para todas las carreras y de 70.000 pesos para las carreras especiales (Laboratorio clínico, hemoterapia, acompañamiento terapéutico y ciencia de datos). Se abonan 10 cuotas mensuales en todas las carreras, vencen el último día de cada mes y el atraso genera recargos.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
+            "Le informamos los valores arancelarios vigentes para el Período 2026: la cuota mensual es de 60.000 pesos para todas las carreras y de 70.000 pesos para las carreras especiales (Laboratorio clínico, hemoterapia, acompañamiento terapéutico y ciencia de datos). Se abonan 10 cuotas mensuales en todas las carreras, vencen el último día de cada mes y el atraso genera recargos.\n\nSe aclara formalmente que los valores de cuotas para el Período 2027 no se encuentran disponibles aún y se fijarán en diciembre.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
         ]
     },
     experto_bot: {
@@ -2395,19 +2395,19 @@ const RESPUESTAS_CARRERA = {
         },
         valor_cuota: {
             formal: [
-                "Le informamos que para la Tecnicatura Superior en Acompañamiento Terapéutico el valor vigente de la cuota mensual es de 70.000 pesos. Se abonan 10 cuotas mensuales al año y las mismas vencen el último día de cada mes.",
-                "El arancel mensual establecido para Acompañamiento Terapéutico es de 70.000 pesos, en un esquema de 10 cuotas mensuales por año. Recuerde que el vencimiento opera el último día de cada mes.",
-                "Le recordamos que Acompañamiento Terapéutico posee un valor de cuota vigente de 70.000 pesos mensuales (10 cuotas anuales), con vencimiento el último día de cada mes. Quedamos a su disposición."
+                "Le informamos que para la Tecnicatura Superior en Acompañamiento Terapéutico el valor vigente de la cuota mensual para el Período 2026 es de 70.000 pesos (10 cuotas mensuales al año, con vencimiento el último día de cada mes). Los valores de cuota para el Período 2027 aún no se encuentran disponibles (se definirán en diciembre).",
+                "El arancel mensual para el Período 2026 en Acompañamiento Terapéutico es de 70.000 pesos, en un esquema de 10 cuotas mensuales por año con vencimiento el último día de cada mes. Las cuotas correspondientes al Período 2027 no están disponibles todavía.",
+                "Le recordamos que Acompañamiento Terapéutico posee un valor de cuota para el Período 2026 de 70.000 pesos mensuales (10 cuotas anuales con vencimiento a fin de mes). Los valores para el Período 2027 aún no están disponibles (se fijan en diciembre). Quedamos a su disposición."
             ],
             informal: [
-                "Te comento que el valor de la cuota mensual para Acompañamiento Terapéutico es de 70.000 pesos. Se abonan 10 cuotas mensuales en el año y acordate que vencen el último día de cada mes.",
-                "La cuota mensual de Acompañamiento Terapéutico es de 70.000 pesos (son 10 cuotas anuales). Tratá de pagar antes del último día de cada mes para evitar recargos.",
-                "¡Te paso el dato! Para Acompañamiento Terapéutico la cuota mensual vigente es de 70.000 pesos, completando 10 cuotas en el año. El vencimiento es el último día de cada mes."
+                "Te comento que para el Período 2026 la cuota mensual de Acompañamiento Terapéutico es de 70.000 pesos (10 cuotas al año y vencen el último día de cada mes). Los valores de las cuotas para el Período 2027 todavía no están disponibles; se definen en diciembre.",
+                "La cuota mensual del Período 2026 para Acompañamiento Terapéutico es de 70.000 pesos (10 cuotas anuales con vencimiento a fin de mes). Tené en cuenta que las cuotas para el Período 2027 no están disponibles aún.",
+                "¡Te paso el dato! Para el Período 2026 la cuota vigente de Acompañamiento Terapéutico es de 70.000 pesos (10 cuotas al año). Acordate que los valores para el Período 2027 aún no se encuentran disponibles; se definirán en diciembre."
             ],
             molesto: [
-                "Lamentamos la demora. Le informamos que la cuota vigente de Acompañamiento Terapéutico es de 70.000 pesos al mes (10 cuotas anuales), venciendo el último día de cada mes.",
-                "Pedimos disculpas por los inconvenientes. Confirmamos que la cuota de Acompañamiento Terapéutico es de 70.000 pesos al mes, con un esquema de 10 cuotas al año con vencimiento a fin de cada mes.",
-                "Lamentamos las dificultades iniciales. Le informamos que la cuota vigente de Acompañamiento Terapéutico es de 70.000 pesos mensuales (10 cuotas al año). Agradecemos su comprensión."
+                "Lamentamos la demora. Le informamos que la cuota del Período 2026 para Acompañamiento Terapéutico es de 70.000 pesos mensuales (10 cuotas al año con vencimiento a fin de mes). Los importes de cuotas para el Período 2027 no están disponibles y se fijarán en diciembre.",
+                "Pedimos disculpas por los inconvenientes. Confirmamos que la cuota del Período 2026 para Acompañamiento Terapéutico es de 70.000 pesos al mes (10 cuotas anuales). Las cuotas para el Período 2027 no están disponibles aún y se definirán en diciembre.",
+                "Lamentamos las dificultades iniciales. Le informamos que la cuota para el Período 2026 de Acompañamiento Terapéutico es de 70.000 pesos mensuales (10 cuotas al año). Los valores del Período 2027 no se encuentran disponibles. Agradecemos su comprensión."
             ]
         }
     },
