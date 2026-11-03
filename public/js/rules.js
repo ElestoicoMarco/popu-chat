@@ -719,24 +719,24 @@ const RESPUESTAS_GENERALES = {
     },
     curso_ingreso: {
         formal: [
-            "Le informamos que el Curso de Ingreso correspondiente al Ciclo Lectivo 2027 se llevará a cabo del 01 al 19 de marzo de 2027.<br><br>📌 <b>Publicación de cronogramas:</b> La publicación de los cronogramas de cada comisión para el curso de ingreso se realizará en la página web oficial de Populorum Casa Central a partir del 26 de febrero de 2027 desde horas 21:30.<br><br>📚 <b>Cartillas de ingreso:</b> Estarán disponibles en la página web y en fotocopiadora a partir del 28 de diciembre de 2026 (Contacto Fotocopiadora: Cel. 3885384866)."
+            "Le informamos que el Curso de Ingreso correspondiente al Ciclo Lectivo 2027 se llevará a cabo del 01 al 19 de marzo de 2027.<br><br>📌 <b>Publicación de cronogramas:</b> La publicación de los cronogramas de cada comisión para el curso de ingreso se realizará en la página web oficial de Populorum Casa Central a partir del 26 de febrero de 2027 desde horas 21:30.<br><br>📚 <b>Cartillas de ingreso:</b> Estarán disponibles en la página web y en la fotocopiadora del Populorum a partir del 28 de diciembre de 2026 (Contacto Fotocopiadora: Cel. 3885384866)."
         ],
         informal: [
-            "¡Te paso la data del Curso de Ingreso 2027! Las clases del curso de ingreso serán del 01 al 19 de marzo de 2027.<br><br>📌 <b>Cronogramas por comisión:</b> La publicación de los cronogramas de cada comisión se va a realizar en la página web oficial de Populorum Casa Central a partir del 26 de febrero de 2027 desde las 21:30 hs.<br><br>📚 <b>Cartillas de ingreso:</b> Van a estar disponibles en la página web y en fotocopiadora a partir del 28 de diciembre de 2026 (Contacto Fotocopiadora: Cel. 3885384866)."
+            "¡Te paso la data del Curso de Ingreso 2027! Las clases del curso de ingreso serán del 01 al 19 de marzo de 2027.<br><br>📌 <b>Cronogramas por comisión:</b> La publicación de los cronogramas de cada comisión se va a realizar en la página web oficial de Populorum Casa Central a partir del 26 de febrero de 2027 desde las 21:30 hs.<br><br>📚 <b>Cartillas de ingreso:</b> Van a estar disponibles en la página web y en la fotocopiadora del Populorum a partir del 28 de diciembre de 2026 (Contacto Fotocopiadora: Cel. 3885384866)."
         ],
         molesto: [
-            "Le detallamos rigurosamente la información del Curso de Ingreso 2027: las clases se desarrollarán del 01 al 19 de marzo de 2027. La publicación oficial de los cronogramas de cada comisión se realizará en la página web de Populorum Casa Central a partir del 26 de febrero de 2027 desde horas 21:30.<br><br>📚 <b>Cartillas de ingreso:</b> Disponibles en la página web y en fotocopiadora a partir del 28 de diciembre de 2026 (Contacto Fotocopiadora: Cel. 3885384866)."
+            "Le detallamos rigurosamente la información del Curso de Ingreso 2027: las clases se desarrollarán del 01 al 19 de marzo de 2027. La publicación oficial de los cronogramas de cada comisión se realizará en la página web de Populorum Casa Central a partir del 26 de febrero de 2027 desde horas 21:30.<br><br>📚 <b>Cartillas de ingreso:</b> Disponibles en la página web y en la fotocopiadora del Populorum a partir del 28 de diciembre de 2026 (Contacto Fotocopiadora: Cel. 3885384866)."
         ]
     },
     cartillas_ingreso: {
         formal: [
-            "Le informamos que las cartillas de ingreso estarán disponibles tanto en la página web oficial como en fotocopiadora a partir del 28 de diciembre de 2026.<br><br>📞 <b>Contacto de Fotocopiadora:</b> Celular 3885384866."
+            "Le informamos que las cartillas de ingreso estarán disponibles tanto en la página web oficial como en la fotocopiadora del Populorum a partir del 28 de diciembre de 2026.<br><br>📞 <b>Contacto de Fotocopiadora:</b> Celular 3885384866."
         ],
         informal: [
-            "¡Te paso la info de las cartillas de ingreso! Van a estar disponibles en la página web y en fotocopiadora a partir del 28 de diciembre de 2026.<br><br>📱 <b>Celular de Fotocopiadora:</b> 3885384866."
+            "¡Te paso la info de las cartillas de ingreso! Van a estar disponibles en la página web y en la fotocopiadora del Populorum a partir del 28 de diciembre de 2026.<br><br>📱 <b>Celular de Fotocopiadora:</b> 3885384866."
         ],
         molesto: [
-            "Le informamos con precisión: las cartillas de ingreso estarán disponibles en la página web y en fotocopiadora a partir del 28 de diciembre de 2026. Para comunicarse con fotocopiadora, el número de celular es 3885384866."
+            "Le informamos con precisión: las cartillas de ingreso estarán disponibles en la página web y en la fotocopiadora del Populorum a partir del 28 de diciembre de 2026. Para comunicarse con la fotocopiadora del Populorum, el número de celular es 3885384866."
         ]
     },
     becas: {

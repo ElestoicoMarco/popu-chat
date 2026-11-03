@@ -63,7 +63,7 @@ Se eliminaron las restricciones de la fase de pruebas cerradas y se cargaron las
 * **Contenido oficial de la respuesta:**
   1. Fechas del cursado: **Del 01 al 19 de marzo de 2027**.
   2. Publicación de cronogramas por comisión: **Se realizará en la página web oficial de Populorum Casa Central a partir del 26 de febrero de 2027 desde horas 21:30**.
-  3. Disponibilidad de cartillas: **Disponibles a partir del 28 de diciembre de 2026** tanto en la web como en fotocopiadora (Cel. 3885384866).
+  3. Disponibilidad de cartillas: **Disponibles a partir del 28 de diciembre de 2026** tanto en la web como en la fotocopiadora del Populorum (Cel. 3885384866).
 
 #### 2.5. Nueva Intención: Régimen de Becas
 * **Intención creada:** `becas`
@@ -74,7 +74,7 @@ Se eliminaron las restricciones de la fase de pruebas cerradas y se cargaron las
 * **Intención creada:** `cartillas_ingreso`
 * **Palabras clave integradas:** `cartilla`, `cartillas`, `cartilla de ingreso`, `cartillas de ingreso`, `fotocopiadora`, `contacto fotocopiadora`, `telefono fotocopiadora`, `celular fotocopiadora`, `material de ingreso`, `donde comprar la cartilla`.
 * **Contenido oficial de la respuesta:**
-  - Disponibilidad: **A partir del 28 de diciembre de 2026** en la página web oficial y en fotocopiadora.
+  - Disponibilidad: **A partir del 28 de diciembre de 2026** en la página web oficial y en la fotocopiadora del Populorum.
   - Contacto directo de fotocopiadora: **Celular 3885384866**.
 
 #### 2.6. Ingeniería Lingüística y Prevención de Colisiones Semánticas
@@ -111,7 +111,7 @@ Se ejecutaron pruebas automatizadas sobre el motor en entorno Node.js, validando
 | `"como hago para pedir una beca?"` | `becas` | Informal | Informa acceso exclusivo a partir de 2° año. ✅ |
 | `"Estimados, quisiera consultar los requisitos para la beca por favor"` | `requisitos_inscripcion` + `becas` | Formal | Combina requisitos y normativa de becas en tono protocolar. ✅ |
 | `"NADIE ME RESPONDE CUANDO EMPIEZA EL CURSO DE INGRESO PESIMO SERVICIO"` | `curso_ingreso` | Molesto | Respuesta de contención formal sin rodeos con fechas oficiales. ✅ |
-| `"donde consigo la cartilla de ingreso?"` | `cartillas_ingreso` | Informal | Retorna disponible el 28/12/2026 en web y fotocopiadora. ✅ |
+| `"donde consigo la cartilla de ingreso?"` | `cartillas_ingreso` | Informal | Retorna disponible el 28/12/2026 en web y en la fotocopiadora del Populorum. ✅ |
 | `"pasame el celular de la fotocopiadora"` | `cartillas_ingreso` | Informal | Retorna número de celular 3885384866. ✅ |
 
 ---
@@ -125,7 +125,7 @@ Se ejecutaron pruebas automatizadas sobre el motor en entorno Node.js, validando
 ---
 
 ## 5. CONSTANCIA Y AUTORIZACIÓN INSTITUCIONAL
-Se deja formal constancia de que toda la información institucional incorporada y actualizada en este pipeline (aranceles y cuota vigente, pautas para el ciclo 2027, fechas de inscripción, cronograma del curso de ingreso, régimen de becas, disponibilidad de cartillas y contacto de fotocopiadora) fue provista y formalmente autorizada por:
+Se deja formal constancia de que toda la información institucional incorporada y actualizada en este pipeline (aranceles y cuota vigente, pautas para el ciclo 2027, fechas de inscripción, cronograma del curso de ingreso, régimen de becas, disponibilidad de cartillas y contacto de la fotocopiadora del Populorum) fue provista y formalmente autorizada por:
 
 **Prof. Silvana R. Pallares**  
 *Coordinadora Dpto. Formación Inicial*  
