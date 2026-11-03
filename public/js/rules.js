@@ -33,6 +33,7 @@ const ORDEN_LOGICO_INTENCIONES = [
     'coordinador',
     'requisitos_inscripcion',
     'curso_ingreso',
+    'cartillas_ingreso',
     'becas',
     'horario_atencion',
     'ubicacion',
@@ -622,6 +623,7 @@ const PALABRAS_CLAVE = {
     contacto: ['contacto', 'telefono', 'mail', 'correo', 'llamar', 'email', 'comunicarme', 'comunicar', 'numero', 'tel', 'fijo', 'llamada'],
     requisitos_inscripcion: ['inscribirme', 'anotarme', 'requisitos', 'papeles', 'que necesito', 'titulo secundario', 'inscripcion', 'fecha de inscripcion', 'fechas de inscripcion', 'cuando me inscribo', 'periodo de inscripcion', 'cuando son las inscripciones'],
     curso_ingreso: ['curso de ingreso', 'cursillo', 'ingreso 2027', 'ambientacion', 'nivelacion', 'curso ingreso', 'cuando empieza el curso de ingreso', 'cuando es el curso de ingreso', 'cronograma comision', 'cronograma comisiones', 'cronograma curso de ingreso', 'cronograma ingreso', 'cuando empieza el ingreso', 'cursillo de ingreso'],
+    cartillas_ingreso: ['cartilla', 'cartillas', 'cartilla de ingreso', 'cartillas de ingreso', 'fotocopiadora', 'contacto fotocopiadora', 'telefono fotocopiadora', 'celular fotocopiadora', 'material de ingreso', 'donde comprar la cartilla', 'donde comprar cartilla', 'donde retirar la cartilla', 'donde conseguir la cartilla', 'precio cartilla'],
     becas: ['beca', 'becas', 'ayuda economica', 'progresar', 'beca progresar', 'postular beca', 'requisitos beca', 'acceder a beca', 'pedir beca', 'como tener beca', 'solicitar beca', 'beca estudiantil'],
     sede_perico: ['sede_perico', 'perico', 'anexo perico'],
     sede_san_pedro: ['sede_san_pedro', 'san pedro', 'san pedrito'],
@@ -717,13 +719,24 @@ const RESPUESTAS_GENERALES = {
     },
     curso_ingreso: {
         formal: [
-            "Le informamos que el Curso de Ingreso correspondiente al Ciclo Lectivo 2027 se llevará a cabo del 01 al 19 de marzo de 2027.<br><br>📌 <b>Publicación de cronogramas:</b> La publicación de los cronogramas de cada comisión para el curso de ingreso se realizará en la página web oficial de Populorum Casa Central a partir del 26 de febrero de 2027 desde horas 21:30."
+            "Le informamos que el Curso de Ingreso correspondiente al Ciclo Lectivo 2027 se llevará a cabo del 01 al 19 de marzo de 2027.<br><br>📌 <b>Publicación de cronogramas:</b> La publicación de los cronogramas de cada comisión para el curso de ingreso se realizará en la página web oficial de Populorum Casa Central a partir del 26 de febrero de 2027 desde horas 21:30.<br><br>📚 <b>Cartillas de ingreso:</b> Estarán disponibles en la página web y en fotocopiadora a partir del 28 de diciembre de 2026 (Contacto Fotocopiadora: Cel. 3885384866)."
         ],
         informal: [
-            "¡Te paso la data del Curso de Ingreso 2027! Las clases del curso de ingreso serán del 01 al 19 de marzo de 2027.<br><br>📌 <b>Cronogramas por comisión:</b> La publicación de los cronogramas de cada comisión se va a realizar en la página web oficial de Populorum Casa Central a partir del 26 de febrero de 2027 desde las 21:30 hs."
+            "¡Te paso la data del Curso de Ingreso 2027! Las clases del curso de ingreso serán del 01 al 19 de marzo de 2027.<br><br>📌 <b>Cronogramas por comisión:</b> La publicación de los cronogramas de cada comisión se va a realizar en la página web oficial de Populorum Casa Central a partir del 26 de febrero de 2027 desde las 21:30 hs.<br><br>📚 <b>Cartillas de ingreso:</b> Van a estar disponibles en la página web y en fotocopiadora a partir del 28 de diciembre de 2026 (Contacto Fotocopiadora: Cel. 3885384866)."
         ],
         molesto: [
-            "Le detallamos rigurosamente la información del Curso de Ingreso 2027: las clases se desarrollarán del 01 al 19 de marzo de 2027. La publicación oficial de los cronogramas de cada comisión se realizará en la página web de Populorum Casa Central a partir del 26 de febrero de 2027 desde horas 21:30."
+            "Le detallamos rigurosamente la información del Curso de Ingreso 2027: las clases se desarrollarán del 01 al 19 de marzo de 2027. La publicación oficial de los cronogramas de cada comisión se realizará en la página web de Populorum Casa Central a partir del 26 de febrero de 2027 desde horas 21:30.<br><br>📚 <b>Cartillas de ingreso:</b> Disponibles en la página web y en fotocopiadora a partir del 28 de diciembre de 2026 (Contacto Fotocopiadora: Cel. 3885384866)."
+        ]
+    },
+    cartillas_ingreso: {
+        formal: [
+            "Le informamos que las cartillas de ingreso estarán disponibles tanto en la página web oficial como en fotocopiadora a partir del 28 de diciembre de 2026.<br><br>📞 <b>Contacto de Fotocopiadora:</b> Celular 3885384866."
+        ],
+        informal: [
+            "¡Te paso la info de las cartillas de ingreso! Van a estar disponibles en la página web y en fotocopiadora a partir del 28 de diciembre de 2026.<br><br>📱 <b>Celular de Fotocopiadora:</b> 3885384866."
+        ],
+        molesto: [
+            "Le informamos con precisión: las cartillas de ingreso estarán disponibles en la página web y en fotocopiadora a partir del 28 de diciembre de 2026. Para comunicarse con fotocopiadora, el número de celular es 3885384866."
         ]
     },
     becas: {
@@ -2650,6 +2663,11 @@ function detectarIntenciones(texto) {
     // Si pregunta por becas, evitar colisiones con listado de carreras
     if (intencionesFinales.includes('becas')) {
         intencionesFinales = intencionesFinales.filter(i => i !== 'carreras');
+    }
+
+    // Si ya incluye curso_ingreso, evitar duplicar con cartillas_ingreso
+    if (intencionesFinales.includes('curso_ingreso') && intencionesFinales.includes('cartillas_ingreso')) {
+        intencionesFinales = intencionesFinales.filter(i => i !== 'cartillas_ingreso');
     }
 
     return intencionesFinales;
