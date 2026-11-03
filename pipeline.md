@@ -42,8 +42,12 @@ Se eliminaron las restricciones de la fase de pruebas cerradas y se cargaron las
   * **Excepciones de carrera:** Se ratificó el caso específico de la Tecnicatura en Acompañamiento Terapéutico (carrera especial) a $70.000 (10 cuotas anuales).
 
 #### 2.2. Definiciones para el Ciclo Lectivo 2027
-* **Intenciones:** `valor_cuota_2027` y `valor_inscripcion`
-  * **Respuesta oficial:** Se unificó la respuesta para ambas intenciones aclarando que **los valores de matrícula de inscripción y cuotas mensuales correspondientes al Ciclo Lectivo 2027 aún no están definidos, y se establecerán formalmente durante el mes de diciembre de 2026**.
+* **Intención:** `valor_inscripcion`
+  * **Valores oficiales confirmados por Tesorería:**
+    * **Abonando en diciembre de 2026:** **$90.000 pesos**.
+    * **Abonando hasta el 31 de marzo de 2027:** **$100.000 pesos**.
+* **Intención:** `valor_cuota_2027`
+  * **Respuesta oficial:** Se aclara que los valores de las **cuotas mensuales para el Ciclo Lectivo 2027 aún no están definidos y se establecerán formalmente durante el mes de diciembre de 2026**, informando a su vez el arancel ya fijado de la matrícula de inscripción ($90.000 en diciembre 2026 / $100.000 hasta marzo 2027).
 
 #### 2.3. Fechas de Inscripción
 * **Intención:** `requisitos_inscripcion`

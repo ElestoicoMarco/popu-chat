@@ -604,9 +604,9 @@ function detectarCarrera(texto) {
 
 const PALABRAS_CLAVE = {
     saludo: ['hola', 'buenas', 'dia', 'tarde', 'noche', 'que tal', 'como va', 'hello', 'que haces', 'que contas amigo', 'que contas', 'ola'],
-    valor_cuota_2027: ['cuota 2027', 'arancel 2027', 'precio 2027', 'costo 2027', 'año que viene', 'proximo año', 'cuotas 2027', 'matricula 2027', 'inscripcion 2027'],
+    valor_cuota_2027: ['cuota 2027', 'arancel 2027', 'precio 2027', 'costo 2027', 'año que viene', 'proximo año', 'cuotas 2027'],
     valor_cuota: ['cuota', 'cuanto se paga', 'precio cuota', 'valor cuota', 'vencimiento cuota', 'arancel', 'mensualidad', 'cuanto cuesta la cuota', 'recargo', 'mora', 'cuotas', 'cuantas cuotas'],
-    valor_inscripcion: ['valor inscripcion', 'precio inscripcion', 'cuanto cuesta la inscripcion', 'costo inscripcion', 'precio matricula', 'costo matricula', 'pagar inscripcion', 'matricula', 'costo de matricula'],
+    valor_inscripcion: ['valor inscripcion', 'precio inscripcion', 'cuanto cuesta la inscripcion', 'costo inscripcion', 'precio matricula', 'costo matricula', 'pagar inscripcion', 'matricula', 'costo de matricula', 'matricula 2027', 'inscripcion 2027', 'cuanto sale la inscripcion', 'cuanto esta la matricula', 'cuanto cuesta la matricula', 'precio inscripcion 2027', 'valor inscripcion 2027'],
     tramites_tesoreria: ['constancia', 'autenticacion', 'libreta', 'analitico', 'documentacion junta', 'duplicado titulo', 'biblioteca', 'tramite', 'precios tesoreria', 'aranceles tesoreria', 'tramites tesoreria'],
     horario_tesoreria: ['horario tesoreria', 'horarios tesoreria', 'horario de tesoreria', 'horarios de tesoreria', 'tesoreria'],
     distribucion_aulas: ['aula', 'aulas', 'espacios', 'donde curso', 'que aula', 'turno mañana', 'turno tarde', 'turno noche', 'donde nos toca'],
@@ -664,13 +664,13 @@ for (const [intencion, keywords] of Object.entries(PALABRAS_CLAVE)) {
 const RESPUESTAS_GENERALES = {
     valor_cuota_2027: {
         formal: [
-            "Le informamos que los valores arancelarios y de matrícula correspondientes al Ciclo Lectivo 2027 aún no se encuentran establecidos. Los mismos se definirán formalmente durante el mes de diciembre del corriente año."
+            "Le informamos que los valores de las cuotas mensuales correspondientes al Ciclo Lectivo 2027 aún no se encuentran establecidos y se definirán formalmente durante el mes de diciembre del corriente año.\n\nRespecto a la matrícula de inscripción para el Ciclo 2027, los valores oficiales fijados por Tesorería son:\n• Abonando en diciembre de 2026: 90.000 pesos.\n• Abonando hasta el 31 de marzo de 2027: 100.000 pesos.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
         ],
         informal: [
-            "Te cuento que los valores de las cuotas y de la matrícula para el ciclo 2027 todavía no están establecidos. Se van a definir recién en diciembre, así que a fin de año ya vamos a tener los montos confirmados."
+            "Te cuento que los valores de las cuotas mensuales para el ciclo 2027 todavía no están definidos (se van a establecer recién en diciembre). Lo que sí ya está fijado es la matrícula de inscripción 2027:\n• Si abonás en diciembre de 2026: 90.000 pesos.\n• Si abonás hasta el 31 de marzo de 2027: 100.000 pesos.\n\nAtención tesorería: lunes a viernes de 8:00 a 12:00 y 15:30 a 20:00 hs."
         ],
         molesto: [
-            "Lamentamos no poder brindarle ese monto en este momento. Los aranceles y la matrícula para el Ciclo 2027 no están fijados aún; le solicitamos consultar en el mes de diciembre cuando queden formalmente definidos."
+            "Le reiteramos que los aranceles de cuotas mensuales para el Ciclo 2027 se fijarán en el mes de diciembre. En cuanto a la matrícula de inscripción para el Ciclo 2027, los importes fijados son:\n• Abonando en diciembre de 2026: 90.000 pesos.\n• Abonando hasta el 31 de marzo de 2027: 100.000 pesos.\n\nAtención tesorería: lunes a viernes de 8:00 a 12:00 y 15:30 a 20:00 hs."
         ]
     },
     valor_cuota: {
@@ -708,13 +708,13 @@ const RESPUESTAS_GENERALES = {
     },
     valor_inscripcion: {
         formal: [
-            "Tesorería Informa: El costo de la matrícula de inscripción para el Ciclo Lectivo 2027 se definirá formalmente en el mes de diciembre. Le sugerimos consultar a fin de año para conocer el valor oficial."
+            "Tesorería Informa - Valor de Matrícula de Inscripción (Ciclo Lectivo 2027):\nEl valor oficial del arancel de inscripción fijado es el siguiente:\n• Abonando en diciembre de 2026: 90.000 pesos.\n• Abonando hasta el 31 de marzo de 2027: 100.000 pesos.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
         ],
         informal: [
-            "Te comento que el valor de la matrícula de inscripción para el ciclo 2027 no está establecido todavía; se define recién en diciembre."
+            "¡Te paso los valores oficiales de la inscripción para el Ciclo Lectivo 2027!\n• Abonando en diciembre de 2026: 90.000 pesos.\n• Abonando hasta el 31 de marzo de 2027: 100.000 pesos.\n\nAtención tesorería: lunes a viernes, de 8:00 a 12:00 y 15:30 a 20:00 hs."
         ],
         molesto: [
-            "Le informamos que el arancel de matrícula para el ciclo 2027 aún no se encuentra establecido y será fijado en el mes de diciembre."
+            "Le informamos los aranceles oficiales fijados para la matrícula de inscripción del Ciclo Lectivo 2027:\n• Abonando en diciembre de 2026: 90.000 pesos.\n• Abonando hasta el 31 de marzo de 2027: 100.000 pesos.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
         ]
     },
     curso_ingreso: {
