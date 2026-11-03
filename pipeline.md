@@ -36,10 +36,10 @@ Se eliminaron las restricciones de la fase de pruebas cerradas y se cargaron las
 
 #### 2.1. Actualización de Aranceles y Cuota Vigente
 * **Intención:** `valor_cuota`
-  * **Monto actualizado:** Se fijó la cuota mensual vigente en **$70.000 pesos** (reemplazando los valores anteriores de $55.000 y $60.000).
+  * **Monto actualizado:** Se fijó la cuota mensual general en **$60.000 pesos** para todas las carreras, y en **$70.000 pesos** para las Carreras Especiales (Laboratorio clínico, hemoterapia, acompañamiento terapéutico y ciencia de datos).
   * **Modalidad de pago:** Se incorporó formalmente la regla de que **se abonan 10 cuotas mensuales en todas las carreras**.
   * **Vencimientos y Atención:** Vencimiento el último día de cada mes (con recargo por mora) y atención de tesorería de lunes a viernes de 8:00 a 12:00 y de 15:30 a 20:00 hs.
-  * **Excepciones de carrera:** Se actualizó el caso específico de la Tecnicatura en Acompañamiento Terapéutico a $70.000 (10 cuotas anuales).
+  * **Excepciones de carrera:** Se ratificó el caso específico de la Tecnicatura en Acompañamiento Terapéutico (carrera especial) a $70.000 (10 cuotas anuales).
 
 #### 2.2. Definiciones para el Ciclo Lectivo 2027
 * **Intenciones:** `valor_cuota_2027` y `valor_inscripcion`
@@ -114,4 +114,13 @@ Se ejecutaron pruebas automatizadas sobre el motor en entorno Node.js, validando
 * **Sintaxis de código:** Validada con `node -c` en `public/js/app.js` y `public/js/rules.js` (cero errores).
 * **Condición de uso:** Producción Abierta (Pública y sin clave).
 * **Rama Git:** `main`.
-* **Próximo paso:** Ejecución de `git commit` y posterior `git push origin main` para despliegue en Render.
+* **Estado:** Desplegado exitosamente en producción (Render).
+
+---
+
+## 5. CONSTANCIA Y AUTORIZACIÓN INSTITUCIONAL
+Se deja formal constancia de que toda la información institucional incorporada y actualizada en este pipeline (aranceles y cuota vigente, pautas para el ciclo 2027, fechas de inscripción, cronograma del curso de ingreso, régimen de becas, disponibilidad de cartillas y contacto de fotocopiadora) fue provista y formalmente autorizada por:
+
+**Prof. Silvana R. Pallares**  
+*Coordinadora Dpto. Formación Inicial*  
+*IES N° 7 "Populorum Progressio" In.Te.La.*

@@ -675,13 +675,13 @@ const RESPUESTAS_GENERALES = {
     },
     valor_cuota: {
         formal: [
-            "Tesorería Informa - Valores de Cuota Vigentes:\nEl valor de la cuota mensual para todas las carreras es de 70.000 pesos. Se abonan 10 cuotas mensuales en todas las carreras.\n\nVencimientos: Las cuotas vencen el último día de cada mes. Transcurrido ese plazo, se aplicará un recargo por cada mes de mora.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
+            "Tesorería Informa - Valores de Cuota Vigentes:\nEl valor de la cuota mensual para todas las carreras es de 60.000 pesos, a excepción de las Carreras Especiales (Laboratorio clínico, hemoterapia, acompañamiento terapéutico y ciencia de datos) cuyo valor es de 70.000 pesos.\n\nModalidad de pago: Se abonan 10 cuotas mensuales en todas las carreras.\nVencimientos: Las cuotas vencen el último día de cada mes. Transcurrido ese plazo, se aplicará un recargo por cada mes de mora.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
         ],
         informal: [
-            "El valor de la cuota vigente es de 70.000 pesos. Tené en cuenta que se abonan 10 cuotas mensuales en todas las carreras.\nAcordate que las cuotas vencen el último día de cada mes; si te pasás de esa fecha, se cobra un recargo por cada mes de atraso.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
+            "Para los valores vigentes, la cuota mensual para todas las carreras es de 60.000 pesos, mientras que para las Carreras Especiales (Laboratorio clínico, hemoterapia, acompañamiento terapéutico y ciencia de datos) es de 70.000 pesos.\nTené en cuenta que se abonan 10 cuotas mensuales en todas las carreras y vencen el último día de cada mes (con recargo por mora si te atrasás).\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
         ],
         molesto: [
-            "Le informamos los valores arancelarios vigentes: la cuota mensual es de 70.000 pesos y se abonan 10 cuotas mensuales en todas las carreras. Vencen el último día de cada mes, sin excepción, y el atraso genera recargos.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
+            "Le informamos los valores arancelarios vigentes: la cuota mensual es de 60.000 pesos para todas las carreras y de 70.000 pesos para las carreras especiales (Laboratorio clínico, hemoterapia, acompañamiento terapéutico y ciencia de datos). Se abonan 10 cuotas mensuales en todas las carreras, vencen el último día de cada mes y el atraso genera recargos.\n\nAtención tesorería: lunes a viernes, horario de 8:00 a 12:00 y 15:30 a 20:00."
         ]
     },
     experto_bot: {
