@@ -1,10 +1,12 @@
 import { procesarMensaje } from './rules.js';
+import { initTelemetry, registrarEvento } from './telemetry.js';
 
 // Modo Producción Oficial (Acceso Público Abierto)
 const isLocked = false;
 
 // Splash Screen Logic
 window.addEventListener('load', () => {
+    initTelemetry();
     const chatInput = document.getElementById('chatInput');
     const sendBtn = document.getElementById('sendBtn');
     const micBtn = document.getElementById('micBtn');
@@ -115,6 +117,7 @@ if (SpeechRecognition) {
 
     recognition.onstart = () => {
         isRecording = true;
+        registrarEvento('uso_microfono');
         micBtn.classList.add('listening');
         chatInput.placeholder = 'Escuchando...';
     };
@@ -248,6 +251,13 @@ async function enviarMensaje(texto, clickedBtn = null) {
     if (isLocked) return;
     if (!texto.trim()) return;
 
+    // Telemetría: registrar consulta
+    const origen = clickedBtn ? 'boton_rapido' : 'entrada_manual';
+    registrarEvento('consulta_chat', {
+        origen: origen,
+        mensaje_preview: texto.trim().slice(0, 90)
+    });
+
     if (clickedBtn) clickedBtn.classList.add('btn-loading');
     else sendBtn.classList.add('btn-loading');
 
@@ -287,6 +297,10 @@ document.body.addEventListener('click', (e) => {
     if (isLocked) return;
     const btn = e.target.closest('.quick-btn');
     if (btn && btn.dataset.msg) {
+        const nombreBoton = btn.textContent ? btn.textContent.trim().replace(/\s+/g, ' ') : '';
+        registrarEvento('click_boton_rapido', {
+            boton: nombreBoton.slice(0, 50)
+        });
         enviarMensaje(btn.dataset.msg, btn);
     }
 });

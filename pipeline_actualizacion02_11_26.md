@@ -77,6 +77,18 @@ Se eliminaron las restricciones de la fase de pruebas cerradas y se cargaron las
   - Disponibilidad: **A partir del 28 de diciembre de 2026** en la página web oficial y en la fotocopiadora del Populorum.
   - Contacto directo de fotocopiadora: **Celular 3885384866**.
 
+#### 2.7. Módulo de Telemetría y Analíticas (Firebase Analytics)
+* **Archivo creado:** `public/js/telemetry.js`
+* **Archivo modificado:** `public/js/app.js`
+* **Configuración del servicio:**
+  * Vinculado con Firebase Analytics (Google Analytics 4 / ID de medición: `G-JKL39KP3GY`).
+  * Carga modular y asíncrona mediante importación dinámica de Google Firebase SDK (`gstatic.com`), con arquitectura desacoplada y tolerante a fallos (no afecta el flujo del chat si hay bloqueadores de publicidad o fallas de red).
+* **Eventos capturados:**
+  1. `visita_popuchat`: Conteo de accesos a la web y tipificación del dispositivo (móvil / escritorio).
+  2. `consulta_chat`: Registro de cada interacción y consulta procesada por el bot.
+  3. `click_boton_rapido`: Estadísticas de uso sobre las opciones sugeridas del tren de información.
+  4. `uso_microfono` / `toggle_voz`: Telemetría sobre la interacción con el reconocimiento y síntesis de voz.
+
 #### 2.6. Ingeniería Lingüística y Prevención de Colisiones Semánticas
 Durante la fase de integración, se realizaron ajustes finos de desambiguación en el pipeline:
 1. **Filtro de colisión para "curso":** Se incorporó una regla estricta en `detectarIntenciones()` para que cuando el usuario pregunte por `curso_ingreso`, el motor suprima falsos positivos hacia `distribucion_aulas` y `plan_estudios_completo` causados por la raíz común *"curso/cursado"*.
