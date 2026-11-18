@@ -13,7 +13,7 @@
 | Fase | Etapa / Módulo | Estado | Archivos Involucrados | Commit Asociado |
 |---|---|---|---|---|
 | **Fase 0** | **Gobernanza, Aislamiento y Especificación** | ✅ **COMPLETADO** | `popuchat2/ESPECIFICACION_Y_PLAN_MAESTRO_POPUCHAT2.md`<br>`popuchat2/GUION_EXPOSICION_POPUCHAT2.docx`<br>`popuchat2/GUION_EXPOSICION_POPUCHAT2.md`<br>`popuchat2/PIPELINE.md` | Commit: `9a071bf` |
-| **Fase 1** | **Capa de Preprocesamiento PLN Híbrido** | ⏳ *Próxima* | `popuchat2/pipeline/text_processor.js`<br>`popuchat2/pipeline/tone_analyzer.js`<br>`popuchat2/pipeline/intent_detector.js`<br>`popuchat2/pipeline/test_pipeline.js` | Pendiente |
+| **Fase 1** | **Capa de Preprocesamiento PLN Híbrido** | ✅ **COMPLETADO (20/20 Tests)** | `popuchat2/pipeline/text_processor.js`<br>`popuchat2/pipeline/tone_analyzer.js`<br>`popuchat2/pipeline/intent_detector.js`<br>`popuchat2/pipeline/test_pipeline.js` | Commit: `726b991` |
 | **Fase 2** | **Capa Documental, Chunking y Motor RAG** | ⏳ *En cola* | `popuchat2/data/fuentes/`<br>`popuchat2/rag/chunker.js`<br>`popuchat2/rag/rag_index.js`<br>`popuchat2/rag/test_rag.js` | Pendiente |
 | **Fase 3** | **Capa Generativa e Inferencia LLM** | ⏳ *En cola* | `popuchat2/engine/system_prompt.js`<br>`popuchat2/engine/memory_manager.js`<br>`popuchat2/engine/llm_connector.js`<br>`popuchat2/engine/mode_router.js` | Pendiente |
 | **Fase 4** | **Capa de Interfaz, Panel y Auditoría CSV** | ⏳ *En cola* | `popuchat2/ui/index.html`<br>`popuchat2/ui/app.js`<br>`popuchat2/ui/style.css`<br>`popuchat2/ui/csv_exporter.js` | Pendiente |
