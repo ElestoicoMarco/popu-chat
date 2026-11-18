@@ -69,6 +69,8 @@ function inicializarMotor() {
     console.log(`[RAG Init]: ${documentos.length} fuentes oficiales indexadas en ${cantidadFragmentos} fragmentos.`);
 
     engine = new PopuChatEngine(indice);
+    const envKey = process.env.GEMINI_API_KEY;
+    console.log(`[Gemini Env Check]: process.env.GEMINI_API_KEY configurada? ${envKey ? "SÍ (" + envKey.substring(0, 6) + "...)" : "NO"}`);
     return engine;
 }
 
@@ -120,6 +122,7 @@ app.post("/api/chat", async (req, res) => {
             engine.gemini.config.maxOutputTokens = parseInt(max_tokens, 10);
         }
 
+        console.log(`[Chat Request]: "${mensaje}" | Modo: ${modo} | Key en Engine: ${engine.gemini.tieneApiKeyValida() ? "SÍ" : "NO"}`);
         const resultado = await engine.procesarConsulta(mensaje, modo);
 
         res.json({

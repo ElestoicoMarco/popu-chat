@@ -1,16 +1,119 @@
 /**
- * PopuChat 2 — Controlador Principal de la Interfaz (Frontend)
- * Vincula la UI de PopuChat 1 con el motor híbrido (PLN + RAG + Gemini),
- * el panel oculto de configuración oficial y la telemetría en tiempo real.
+ * PopuChat 2 — Controlador Principal Adaptado sobre Popu 1
+ * Clona 100% la experiencia visual e interactiva de Popu 1 (Voz, Splash, Acordeones,
+ * Botones Rápidos Marquee, Micrófono y Estética) conectándola con el motor híbrido
+ * de PopuChat 2 (PLN + RAG + Gemini) y el panel oculto oficial de cátedra.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
     // ==========================================
-    // 1. SELECTORES DE ELEMENTOS DEL DOM
+    // 1. SPLASH SCREEN (Auténtico de Popu 1)
     // ==========================================
-    // Drawer (Panel Oculto)
+    const splashScreen = document.getElementById('splash-screen');
+    const chatInput = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const micBtn = document.getElementById('micBtn');
+
+    if (chatInput) {
+        chatInput.disabled = false;
+        chatInput.placeholder = "Escribí tu consulta...";
+    }
+    if (sendBtn) sendBtn.disabled = false;
+    if (micBtn) micBtn.disabled = false;
+
+    if (splashScreen) {
+        setTimeout(() => {
+            splashScreen.classList.add('hidden');
+            setTimeout(() => splashScreen.remove(), 800);
+            if (chatInput) chatInput.focus();
+        }, 1600);
+    }
+
+    // ==========================================
+    // 2. SÍNTESIS DE VOZ (Auténtica de Popu 1)
+    // ==========================================
+    const voiceToggle = document.getElementById('voiceToggle');
+    const voiceIcon = voiceToggle ? voiceToggle.querySelector('.icon') : null;
+    let isVoiceEnabled = false;
+    let botVoice = null;
+
+    function initVoices() {
+        if (!('speechSynthesis' in window)) return;
+        const voces = window.speechSynthesis.getVoices();
+        botVoice = voces.find(v => v.lang === 'es-AR' || v.lang === 'es_AR') ||
+                   voces.find(v => v.lang.startsWith('es')) ||
+                   voces[0];
+    }
+
+    if ('speechSynthesis' in window) {
+        initVoices();
+        window.speechSynthesis.onvoiceschanged = initVoices;
+    }
+
+    if (voiceToggle) {
+        voiceToggle.addEventListener('click', () => {
+            isVoiceEnabled = !isVoiceEnabled;
+            const muteSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>`;
+            const unmuteSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>`;
+            if (voiceIcon) voiceIcon.innerHTML = isVoiceEnabled ? unmuteSvg : muteSvg;
+            if (!isVoiceEnabled && window.speechSynthesis && window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+            }
+        });
+    }
+
+    function speakText(text) {
+        if (!isVoiceEnabled || !('speechSynthesis' in window)) return;
+        window.speechSynthesis.cancel();
+
+        const cleanText = text
+            .replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '')
+            .replace(/<[^>]*>?/gm, '')
+            .replace(/Fuentes:.*$/i, '');
+
+        const utterance = new SpeechSynthesisUtterance(cleanText);
+        if (botVoice) utterance.voice = botVoice;
+        utterance.rate = 1.05;
+        utterance.pitch = 1.05;
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // ==========================================
+    // 3. RECONOCIMIENTO DE VOZ (MICRÓFONO)
+    // ==========================================
+    if (micBtn && ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+        const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognizer = new SpeechRec();
+        recognizer.lang = 'es-AR';
+        recognizer.interimResults = false;
+
+        micBtn.addEventListener('click', () => {
+            micBtn.style.color = '#ef4444';
+            recognizer.start();
+        });
+
+        recognizer.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            if (chatInput) {
+                chatInput.value = transcript;
+                handleSend();
+            }
+        };
+
+        recognizer.onend = () => {
+            micBtn.style.color = '';
+        };
+
+        recognizer.onerror = () => {
+            micBtn.style.color = '';
+        };
+    }
+
+    // ==========================================
+    // 4. PANEL OCULTO (DRAWER OFICIAL DE CÁTEDRA)
+    // ==========================================
     const configToggle = document.getElementById('configToggle');
     const closeDrawerBtn = document.getElementById('closeDrawerBtn');
     const drawerBackdrop = document.getElementById('drawerBackdrop');
@@ -32,26 +135,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const diagIntents = document.getElementById('diagIntents');
     const ragItemsContainer = document.getElementById('ragItemsContainer');
 
-    // Chat y Mensajería
-    const chatForm = document.getElementById('chatForm');
-    const userInput = document.getElementById('userInput');
-    const sendBtn = document.getElementById('sendBtn');
+    // Chat y Acciones
     const chatMessages = document.getElementById('chatMessages');
-    const typingIndicator = document.getElementById('typingIndicator');
-    const suggestionChips = document.querySelectorAll('.suggestion-chip');
-
-    // Acciones y Credenciales
     const btnDownloadCsv = document.getElementById('btnDownloadCsv');
     const btnResetMemory = document.getElementById('btnResetMemory');
     const geminiApiKeyInput = document.getElementById('geminiApiKeyInput');
     const btnSaveApiKey = document.getElementById('btnSaveApiKey');
 
-    // Estado Local de la Sesión
     let currentMode = 'Solo base de conocimiento';
 
-    // ==========================================
-    // 2. GESTIÓN DEL PANEL OCULTO (DRAWER)
-    // ==========================================
     function openDrawer() {
         if (configDrawer) configDrawer.classList.add('active');
         if (drawerBackdrop) drawerBackdrop.classList.add('active');
@@ -72,88 +164,65 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ==========================================
-    // 3. SINCRONIZACIÓN DE SLIDERS Y SELECTORES
-    // ==========================================
-    // Selector de Modo de Inferencia
+    // Sincronización de Modo
     modePills.forEach(pill => {
         pill.addEventListener('click', () => {
             modePills.forEach(p => p.classList.remove('active'));
             pill.classList.add('active');
             currentMode = pill.getAttribute('data-mode') || 'Solo base de conocimiento';
-            console.log('[PopuChat2] Modo seleccionado:', currentMode);
         });
     });
 
-    // Slider top_k
+    // Sincronización de Sliders
     if (topKSlider && topKVal) {
-        topKSlider.addEventListener('input', () => {
-            topKVal.textContent = topKSlider.value;
-        });
+        topKSlider.addEventListener('input', () => { topKVal.textContent = topKSlider.value; });
     }
-
-    // Slider temperatura
     if (tempSlider && tempVal) {
-        tempSlider.addEventListener('input', () => {
-            tempVal.textContent = parseFloat(tempSlider.value).toFixed(1);
-        });
+        tempSlider.addEventListener('input', () => { tempVal.textContent = parseFloat(tempSlider.value).toFixed(1); });
     }
-
-    // Slider max_tokens
     if (maxTokensSlider && maxTokensVal) {
-        maxTokensSlider.addEventListener('input', () => {
-            maxTokensVal.textContent = maxTokensSlider.value;
-        });
+        maxTokensSlider.addEventListener('input', () => { maxTokensVal.textContent = maxTokensSlider.value; });
     }
 
-    // Chips de Sugerencias Rápidas
-    suggestionChips.forEach(chip => {
-        chip.addEventListener('click', (e) => {
-            const msg = chip.getAttribute('data-msg');
-            if (msg && userInput) {
-                userInput.value = msg;
-                userInput.focus();
-                // Enviar inmediatamente para agilidad en la demostración
-                sendMessage(msg);
-            }
-        });
-    });
-
-    // ==========================================
-    // 4. GESTIÓN DE API KEY EN NAVEGADOR
-    // ==========================================
+    // API Key de Gemini en Navegador
     function getStoredApiKey() {
         return localStorage.getItem('gemini_api_key') || '';
     }
 
     if (geminiApiKeyInput) {
-        const stored = getStoredApiKey();
-        if (stored) {
-            geminiApiKeyInput.value = stored;
-        }
+        geminiApiKeyInput.value = getStoredApiKey();
     }
 
     if (btnSaveApiKey && geminiApiKeyInput) {
         btnSaveApiKey.addEventListener('click', () => {
-            const keyVal = geminiApiKeyInput.value.trim();
-            if (keyVal) {
-                localStorage.setItem('gemini_api_key', keyVal);
-                btnSaveApiKey.textContent = '✓ Guardada';
-                setTimeout(() => {
-                    btnSaveApiKey.textContent = 'Guardar';
-                }, 2000);
+            const val = geminiApiKeyInput.value.trim();
+            if (val) {
+                localStorage.setItem('gemini_api_key', val);
+                btnSaveApiKey.textContent = '✓';
             } else {
                 localStorage.removeItem('gemini_api_key');
                 btnSaveApiKey.textContent = 'Borrada';
-                setTimeout(() => {
-                    btnSaveApiKey.textContent = 'Guardar';
-                }, 2000);
             }
+            setTimeout(() => { btnSaveApiKey.textContent = 'Guardar'; }, 2000);
         });
     }
 
     // ==========================================
-    // 5. RENDERIZADO DE MENSAJES Y CHAT
+    // 5. BOTONES RÁPIDOS Y ACORDEONES
+    // ==========================================
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.quick-btn');
+        if (btn) {
+            const msg = btn.getAttribute('data-msg');
+            if (msg) {
+                if (chatInput) chatInput.value = msg;
+                handleSend();
+            }
+        }
+    });
+
+    // ==========================================
+    // 6. MENSAJERÍA Y CHAT
     // ==========================================
     function scrollToBottom() {
         if (chatMessages) {
@@ -164,9 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function appendUserMessage(text) {
         const msgDiv = document.createElement('div');
         msgDiv.className = 'message user';
-        msgDiv.innerHTML = `
-            <div class="bubble">${escapeHtml(text)}</div>
-        `;
+        msgDiv.innerHTML = `<div class="bubble">${escapeHtml(text)}</div>`;
         chatMessages.appendChild(msgDiv);
         scrollToBottom();
     }
@@ -175,16 +242,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const msgDiv = document.createElement('div');
         msgDiv.className = 'message bot';
 
-        // Procesar formato institucional para citas de fuentes
         let formattedText = formatBotResponse(text);
-
         let metaHtml = '';
         if (meta && meta.modo) {
             metaHtml = `<div class="msg-meta-tag">Modo: ${escapeHtml(meta.modo)}</div>`;
         }
 
         msgDiv.innerHTML = `
-            <div class="avatar"><img src="/img/mascot.png" alt="PopuBot"></div>
+            <div class="avatar"><img src="/img/mascot.png" alt="Bot"></div>
             <div class="bubble">
                 ${formattedText}
                 ${metaHtml}
@@ -192,107 +257,96 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         chatMessages.appendChild(msgDiv);
         scrollToBottom();
+        speakText(text);
     }
 
     function formatBotResponse(raw) {
         if (!raw) return '';
         let escaped = escapeHtml(raw);
 
-        // Convertir saltos de línea a <br>
+        // Saltos de línea
         let html = escaped.replace(/\n/g, '<br>');
 
-        // Resaltar negritas tipo **texto**
+        // Negritas
         html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
-        // Resaltar formalmente el bloque "Fuentes: ..." al pie
+        // Fuentes citadas
         const fuentesRegex = /Fuentes:\s*(.+)$/i;
         html = html.replace(fuentesRegex, (match, p1) => {
-            return `<div class="bubble-footer-sources"><span style="font-weight: 700;">📚 Documentación Oficial Citada:</span> ${p1}</div>`;
+            return `<div class="bubble-footer-sources"><span style="font-weight:700;">📚 Documentación Oficial Citada:</span> ${p1}</div>`;
         });
 
         return html;
     }
 
-    function escapeHtml(string) {
-        if (!string) return '';
-        const entityMap = {
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#39;'
-        };
-        return String(string).replace(/[&<>"']/g, s => entityMap[s]);
+    function escapeHtml(str) {
+        if (!str) return '';
+        const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+        return String(str).replace(/[&<>"']/g, s => map[s]);
     }
 
+    let typingEl = null;
     function showTyping(show) {
-        if (!typingIndicator) return;
         if (show) {
-            typingIndicator.style.display = 'flex';
+            if (!typingEl) {
+                typingEl = document.createElement('div');
+                typingEl.className = 'message bot typing-wrapper';
+                typingEl.innerHTML = `
+                    <div class="avatar"><img src="/img/mascot.png" alt="Bot"></div>
+                    <div class="bubble" style="display:flex; align-items:center; gap:6px; padding:10px 14px;">
+                        <span class="typing-dot" style="width:7px; height:7px; background:var(--primary); border-radius:50%; display:inline-block; animation:bounce 1.2s infinite ease-in-out;"></span>
+                        <span class="typing-dot" style="width:7px; height:7px; background:var(--secondary); border-radius:50%; display:inline-block; animation:bounce 1.2s infinite ease-in-out 0.2s;"></span>
+                        <span class="typing-dot" style="width:7px; height:7px; background:var(--primary); border-radius:50%; display:inline-block; animation:bounce 1.2s infinite ease-in-out 0.4s;"></span>
+                        <span style="font-size:0.75rem; color:var(--text-dim); margin-left:6px;">PopuChat 2 está redactando...</span>
+                    </div>
+                `;
+            }
+            chatMessages.appendChild(typingEl);
             scrollToBottom();
-        } else {
-            typingIndicator.style.display = 'none';
+        } else if (typingEl && typingEl.parentNode) {
+            typingEl.parentNode.removeChild(typingEl);
         }
     }
 
     // ==========================================
-    // 6. ACTUALIZACIÓN DEL DIAGNÓSTICO EN TIEMPO REAL
+    // 7. TELEMETRÍA Y DIAGNÓSTICO EN VIVO
     // ==========================================
     function updateLiveDiagnostic(telemetry, pln, rag) {
-        if (!telemetry && !pln) return;
-
         const tono = (telemetry && telemetry.tono) || (pln && pln.tono) || 'neutral';
         const saludo = (telemetry && telemetry.saludo) || (pln && pln.saludo) || 'Ninguno';
         const normalizado = (telemetry && telemetry.normalizado) || (pln && pln.normalizado) || '-';
         const intenciones = (telemetry && telemetry.intenciones) || (pln && pln.intenciones) || [];
         const fragmentos = (rag && rag.fragmentos) || (telemetry && telemetry.fragmentos) || [];
 
-        // 1. Tono emocional
         if (diagTone) {
             diagTone.textContent = tono;
             diagTone.className = 'tone-badge ' + getToneBadgeClass(tono);
         }
-
-        // 2. Saludo
-        if (diagGreeting) {
-            diagGreeting.textContent = saludo;
-        }
-
-        // 3. Texto normalizado
-        if (diagNormalized) {
-            diagNormalized.textContent = normalizado;
-        }
-
-        // 4. Intenciones detectadas
+        if (diagGreeting) diagGreeting.textContent = saludo;
+        if (diagNormalized) diagNormalized.textContent = normalizado;
         if (diagIntents) {
-            if (Array.isArray(intenciones) && intenciones.length > 0) {
-                diagIntents.textContent = intenciones.map(i => typeof i === 'object' ? `${i.intent || i.nombre}` : i).join(', ');
-            } else {
-                diagIntents.textContent = 'Ninguna identificada';
-            }
+            diagIntents.textContent = Array.isArray(intenciones) && intenciones.length > 0 ? intenciones.join(', ') : 'Ninguna';
         }
 
-        // 5. Evidencia RAG recuperada
         if (ragItemsContainer) {
             if (!fragmentos || fragmentos.length === 0) {
                 ragItemsContainer.innerHTML = `
-                    <div style="font-size: 0.75rem; color: var(--text-dim); font-style: italic; padding: 6px;">
-                        Sin fragmentos recuperados para esta consulta (o umbral no alcanzado &lt; 0.35).
+                    <div style="font-size:0.75rem; color:var(--text-dim); font-style:italic; padding:6px;">
+                        Sin fragmentos para esta consulta (umbral &lt; 0.35 o chitchat).
                     </div>
                 `;
             } else {
                 ragItemsContainer.innerHTML = fragmentos.map(frag => {
-                    const score = frag.score ? Number(frag.score).toFixed(2) : '0.00';
+                    const score = frag.score || frag.similitud ? Number(frag.score || frag.similitud).toFixed(2) : '0.00';
                     const fuente = frag.fuente || frag.fuente_id || 'Documento Oficial';
-                    const textoPreview = frag.texto ? escapeHtml(frag.texto.substring(0, 160)) + '...' : '';
-
+                    const snippet = frag.texto ? escapeHtml(frag.texto.substring(0, 160)) + '...' : '';
                     return `
                         <div class="rag-card">
                             <div class="rag-card-header">
                                 <span class="rag-source">${escapeHtml(fuente)}</span>
                                 <span class="rag-score">Score: ${score}</span>
                             </div>
-                            <div class="rag-snippet">${textoPreview}</div>
+                            <div class="rag-snippet">${snippet}</div>
                         </div>
                     `;
                 }).join('');
@@ -301,7 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getToneBadgeClass(tone) {
-        switch (tone.toLowerCase()) {
+        switch ((tone || '').toLowerCase()) {
             case 'molesto': return 'tone-molesto';
             case 'agradecido': return 'tone-agradecido';
             case 'formal': return 'tone-formal';
@@ -311,34 +365,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 7. ENVÍO DE CONSULTA AL BACKEND
+    // 8. ENVÍO DE CONSULTA AL BACKEND
     // ==========================================
-    async function sendMessage(text) {
-        const queryText = (text || '').trim();
-        if (!queryText) return;
+    async function handleSend() {
+        if (!chatInput) return;
+        const text = chatInput.value.trim();
+        if (!text) return;
 
-        // Limpiar input
-        if (userInput) userInput.value = '';
-
-        // Agregar mensaje de usuario en UI
-        appendUserMessage(queryText);
+        chatInput.value = '';
+        appendUserMessage(text);
         showTyping(true);
 
         const payload = {
-            mensaje: queryText,
+            mensaje: text,
             modo: currentMode,
             top_k: topKSlider ? parseInt(topKSlider.value, 10) : 4,
             temperatura: tempSlider ? parseFloat(tempSlider.value) : 0.3,
-            max_tokens: maxTokensSlider ? parseInt(maxTokensSlider.value, 10) : 350,
+            max_tokens: maxTokensSlider ? parseInt(maxTokensSlider.value, 10) : 450,
             apiKey: getStoredApiKey() || undefined
         };
 
         try {
             const response = await fetch('/api/chat', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             });
 
@@ -350,52 +400,49 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             showTyping(false);
 
-            // Renderizar respuesta del bot
             appendBotMessage(data.respuesta, {
                 modo: data.modo || currentMode,
                 fuentes: data.fuentes
             });
 
-            // Actualizar diagnóstico y telemetría en el panel de control
-            updateLiveDiagnostic(data.telemetria, data.pln, data.rag);
+            updateLiveDiagnostic(data.telemetria, data.pln, data.rag || { fragmentos: data.resultadosRAG });
 
-            // Registrar en el motor de auditoría del cliente
             if (window.CsvExporter) {
-                const rowData = {
-                    pregunta: queryText,
-                    normalizado: (data.pln && data.pln.normalizado) || (data.telemetria && data.telemetria.normalizado) || queryText,
+                window.CsvExporter.addRecord({
+                    pregunta: text,
+                    normalizado: (data.pln && data.pln.normalizado) || (data.telemetria && data.telemetria.normalizado) || text,
                     tono: (data.pln && data.pln.tono) || (data.telemetria && data.telemetria.tono) || 'neutral',
                     intenciones: (data.pln && data.pln.intenciones) || (data.telemetria && data.telemetria.intenciones) || [],
                     modo: data.modo || currentMode,
                     fuentes: data.fuentes || [],
                     respuesta: data.respuesta
-                };
-                window.CsvExporter.addRecord(rowData);
+                });
             }
-
         } catch (error) {
             showTyping(false);
-            console.error('[PopuChat2] Error al procesar mensaje:', error);
-            appendBotMessage(`⚠️ Disculpas, ocurrió un problema al conectar con el servidor: ${error.message}. Por favor verifica la conexión o vuelve a intentar.`);
+            console.error('[PopuChat2 Error]:', error);
+            appendBotMessage(`⚠️ Disculpas, ocurrió un inconveniente de conexión con el servidor: ${error.message}. Por favor reintentá en unos segundos.`);
         }
     }
 
-    if (chatForm) {
-        chatForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            if (userInput) {
-                sendMessage(userInput.value);
+    if (sendBtn) {
+        sendBtn.addEventListener('click', handleSend);
+    }
+    if (chatInput) {
+        chatInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleSend();
             }
         });
     }
 
     // ==========================================
-    // 8. AUDITORÍA DOCENTE Y DESCARGA CSV
+    // 9. AUDITORÍA Y RESET
     // ==========================================
     if (btnDownloadCsv) {
         btnDownloadCsv.addEventListener('click', async () => {
             try {
-                // Primero intentamos la descarga directa desde el endpoint de servidor
                 const res = await fetch('/api/auditoria/csv');
                 if (res.ok) {
                     const blob = await res.blob();
@@ -409,64 +456,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     setTimeout(() => URL.revokeObjectURL(url), 1000);
                     return;
                 }
-            } catch (err) {
-                console.warn('[PopuChat2] Fallback a exportador CSV cliente:', err);
+            } catch (e) {
+                console.warn('[PopuChat2] Fallback CSV local:', e);
             }
-
-            // Fallback a exportador local del navegador
-            if (window.CsvExporter) {
-                const ok = window.CsvExporter.download();
-                if (!ok) {
-                    alert('Todavía no se han registrado consultas en la sesión para exportar.');
-                }
-            }
+            if (window.CsvExporter) window.CsvExporter.download();
         });
     }
 
-    // ==========================================
-    // 9. REINICIO DE CONVERSACIÓN (MEMORIA)
-    // ==========================================
     if (btnResetMemory) {
         btnResetMemory.addEventListener('click', async () => {
-            if (!confirm('¿Deseas reiniciar la memoria contextual de la conversación?')) {
-                return;
-            }
-
+            if (!confirm('¿Deseas reiniciar la memoria contextual de la conversación?')) return;
             try {
                 await fetch('/api/reiniciar', { method: 'POST' });
-            } catch (e) {
-                console.warn('[PopuChat2] No se pudo reiniciar en el servidor:', e);
-            }
-
-            // Limpiar mensajes excepto el mensaje inicial de bienvenida
-            if (chatMessages) {
-                chatMessages.innerHTML = `
-                    <div class="message bot">
-                        <div class="avatar"><img src="/img/mascot.png" alt="PopuBot"></div>
-                        <div class="bubble">
-                            ¡Memoria reiniciada con éxito! Estoy listo para una nueva consulta académica sobre el <strong>IES N° 7 "Populorum Progressio" - INTELA</strong>.
-                        </div>
-                    </div>
-                `;
-            }
-
-            // Resetear diagnósticos
-            if (diagTone) {
-                diagTone.textContent = 'neutral';
-                diagTone.className = 'tone-badge tone-neutral';
-            }
-            if (diagGreeting) diagGreeting.textContent = 'Ninguno';
-            if (diagNormalized) diagNormalized.textContent = '-';
-            if (diagIntents) diagIntents.textContent = '-';
-            if (ragItemsContainer) {
-                ragItemsContainer.innerHTML = `
-                    <div style="font-size: 0.75rem; color: var(--text-dim); font-style: italic;">
-                        Memoria contextual vacía. Listo para nueva consulta.
-                    </div>
-                `;
-            }
+            } catch (e) {}
+            location.reload();
         });
     }
 
-    console.log('[PopuChat2] Frontend y controlador inicializados correctamente.');
+    console.log('[PopuChat 2] Interfaz Popu 1 clonada y motor híbrido conectados con éxito.');
 });
