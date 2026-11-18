@@ -678,3 +678,11 @@ body {
 .btn-reset:hover {
     background: rgba(239, 68, 68, 0.15);
 }
+
+.msg-meta-tag {
+    margin-top: 6px;
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    font-style: italic;
+    opacity: 0.8;
+}

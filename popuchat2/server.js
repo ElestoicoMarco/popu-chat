@@ -32,7 +32,14 @@ app.use(express.json({ limit: "2mb" }));
 app.use(express.static(path.join(__dirname, "ui")));
 
 // Middleware 4: Servir recursos visuales y logos originales de Popu 1 (mascot.png, etc.)
-app.use("/img", express.static(path.join(__dirname, "../public/img")));
+const localImg = path.join(__dirname, "ui/img");
+const rootImg = path.join(__dirname, "../public/img");
+if (fs.existsSync(localImg)) {
+    app.use("/img", express.static(localImg));
+}
+if (fs.existsSync(rootImg)) {
+    app.use("/img", express.static(rootImg));
+}
 app.use("/css", express.static(path.join(__dirname, "../public/css")));
 
 // Inicialización de la base de conocimiento y el motor de IA

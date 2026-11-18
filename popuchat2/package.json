@@ -1,0 +1,27 @@
+{
+  "name": "popuchat2",
+  "version": "2.0.0",
+  "description": "PopuChat 2 - Asistente Académico Inteligente Híbrido (PLN + RAG + IA Gemini) para el IES N° 7 Populorum Progressio INTELA",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test_server.js",
+    "test:ui": "node test_ui_markup.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "nlp",
+    "rag",
+    "gemini",
+    "popuchat",
+    "render",
+    "ies7"
+  ],
+  "author": "Equipo PopuChat / IES N° 7 INTELA",
+  "license": "ISC"
+}

@@ -1,0 +1,19 @@
+# Blueprint oficial de Render para PopuChat 2
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: popuchat2-academico
+    runtime: node
+    plan: free
+    region: oregon
+    branch: popu-chat2
+    rootDir: popuchat2
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 18.20.0
+      - key: GEMINI_API_KEY
+        sync: false # Configurar secretamente en el panel de variables de entorno de Render

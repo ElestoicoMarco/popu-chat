@@ -61,9 +61,9 @@
 
 ---
 
-### ⏳ FASE 4: CAPA DE INTERFAZ (FIEL A POPU 1), PANEL OCULTO Y DESPLIEGUE RENDER (`popuchat2/ui/` y `popuchat2/server.js`)
+### ✅ FASE 4: CAPA DE INTERFAZ (FIEL A POPU 1), PANEL OCULTO Y DESPLIEGUE RENDER (`popuchat2/ui/` y `popuchat2/server.js`)
 * **Filosofía Visual:** Conservar 100% la estética original de PopuChat 1 (glassmorphism, orbes, colores `#F5CE5B` / `#4FA0D8` y mascota original `mascot.png`). No se utiliza interfaz tipo Gradio.
-* **Micro-Avance 4.1: Servidor Express y API REST para Render (`popuchat2/server.js`)** ✅ **COMPLETADO (15/15 Tests)**
+* **Micro-Avance 4.1: Servidor Express y API REST para Render (`popuchat2/server.js`)** ✅ **COMPLETADO (15/15 Tests - Commit `bad0b29`)**
   - Servidor backend autónomo preparado para Render (`process.env.PORT || 3000`).
   - Endpoints probados y verificados:
     - `POST /api/chat`: Recibe `{ mensaje, modo, top_k, temperatura, max_tokens, apiKey? }` y procesa la inferencia en caliente.
@@ -71,7 +71,7 @@
     - `POST /api/reiniciar`: Resetea la memoria de contexto (los 6 turnos).
     - `GET /api/health`: Endpoint de diagnóstico y healthcheck de Render.
   - Servicio de archivos estáticos desde `popuchat2/ui/` y recursos gráficos originales desde `/img`.
-* **Micro-Avance 4.2: Frontend Fiel a Popu 1 con Panel Oculto de Niveles Oficiales (`popuchat2/ui/index.html` y `style.css`)** ✅ **COMPLETADO (18/18 Tests - Commit `02089de`)**
+* **Micro-Avance 4.2: Frontend Fiel a Popu 1 con Panel Oculto de Niveles Oficiales (`popuchat2/ui/index.html` y `style.css`)** ✅ **COMPLETADO (18/18 Tests - Commit `15605fb`)**
   - Estructura visual exacta de PopuChat 1 con su mascota original (`mascot.png`) y cabecera institucional.
   - Incorporación en el header del icono sutil de engranaje (`⚙️`).
   - Maquetado del **Panel Oculto Desplegable (Cajón Lateral de Configuración y Diagnóstico)**:
@@ -89,24 +89,21 @@
        - Botón destacado `[📥 Descargar Registro CSV]`.
     5. **Credenciales:**
        - Campo opcional para ingresar/actualizar la `GEMINI_API_KEY` directamente en el navegador.
-* **Micro-Avance 4.3: Controlador de Cliente y Telemetría en Vivo (`popuchat2/ui/app.js`)**
+* **Micro-Avance 4.3: Controlador de Cliente y Telemetría en Vivo (`popuchat2/ui/app.js`)** ✅ **COMPLETADO (33/33 Tests)**
   - Manejo de chat interactivo con citas de fuentes formales al pie (`Fuentes: ...`).
-  - Apertura/cierre fluido del panel lateral al tocar el engranaje `⚙️` o la tecla `Esc`.
+  - Apertura/cierre fluido del panel lateral al tocar el engranaje `⚙️` o la tecla `Esc` (clase `.active`).
   - Sincronización en tiempo real de los sliders (`top_k`, `temperatura`, `max_tokens`, `modo`) con las peticiones al backend.
-  - Actualización reactiva de las tarjetas de diagnóstico tras cada mensaje.
-* **Micro-Avance 4.4: Motor de Auditoría y Descarga CSV (`popuchat2/ui/csv_exporter.js`)**
-  - Generador de CSV en el cliente con codificación UTF-8 BOM para apertura perfecta en Excel.
+  - Actualización reactiva de las tarjetas de diagnóstico y fragmentos RAG tras cada mensaje.
+* **Micro-Avance 4.4: Motor de Auditoría y Descarga CSV (`popuchat2/ui/csv_exporter.js`)** ✅ **COMPLETADO**
+  - Generador de CSV en el cliente con codificación UTF-8 BOM (`\uFEFF`) para apertura perfecta en Excel.
   - Esquema oficial de 8 columnas: `fecha_hora`, `pregunta`, `normalizado`, `tono`, `intenciones`, `modo`, `fuentes`, `respuesta`.
-* **Micro-Avance 4.5: Configuración Completa de Despliegue en Render (`popuchat2/package.json` y `render.yaml`)**
-  - Archivo `package.json` autónomo con dependencias (`express`, `cors`).
-  - Especificación formal para Render Web Service:
-    - **Build Command:** `npm install`
-    - **Start Command:** `node server.js`
-    - **Root Directory:** `popuchat2`
-    - **Branch:** `popu-chat2` (main protegida)
-    - **Environment Variable:** `GEMINI_API_KEY` (configurada en el panel privado de Render).
-    - Asignación dinámica del puerto asignado por Render vía `process.env.PORT`.
-* **Commit previsto:** `feat(ui): implementar interfaz fiel a Popu 1, panel oculto con sliders oficiales y backend Render`
+  - Fallback automático entre endpoint backend y generación directa en navegador.
+* **Micro-Avance 4.5: Configuración Completa de Despliegue en Render (`popuchat2/package.json`, `render.yaml` y `DESPLIEGUE_RENDER.md`)** ✅ **COMPLETADO**
+  - Archivo `package.json` autónomo con dependencias (`express`) y scripts listos para producción.
+  - Especificación formal `render.yaml` para Render Web Service (`runtime: node`, `rootDir: popuchat2`, `branch: popu-chat2`).
+  - Copia de seguridad de `mascot.png` en `popuchat2/ui/img/mascot.png` para autonomía completa en la nube.
+  - Guía detallada en `popuchat2/DESPLIEGUE_RENDER.md`.
+* **Commits Fase 4:** `bad0b29`, `15605fb`, y commit de cierre de integración.
 
 ---
 
