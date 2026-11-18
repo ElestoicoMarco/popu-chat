@@ -12,11 +12,11 @@
 
 | Fase | Etapa / Módulo | Estado | Archivos Involucrados | Commit Asociado |
 |---|---|---|---|---|
-| **Fase 0** | **Gobernanza, Aislamiento y Especificación** | ✅ **COMPLETADO** | `popuchat2/ESPECIFICACION_Y_PLAN_MAESTRO_POPUCHAT2.md`<br>`popuchat2/GUION_EXPOSICION_POPUCHAT2.docx`<br>`popuchat2/GUION_EXPOSICION_POPUCHAT2.md`<br>`popuchat2/PIPELINE.md` | Commit: `9a071bf` |
-| **Fase 1** | **Capa de Preprocesamiento PLN Híbrido** | ✅ **COMPLETADO (20/20 Tests)** | `popuchat2/pipeline/text_processor.js`<br>`popuchat2/pipeline/tone_analyzer.js`<br>`popuchat2/pipeline/intent_detector.js`<br>`popuchat2/pipeline/test_pipeline.js` | Commit: `726b991` |
-| **Fase 2** | **Capa Documental, Chunking y Motor RAG** | ✅ **COMPLETADO (18/18 Tests)** | `popuchat2/data/fuentes/`<br>`popuchat2/rag/chunker.js`<br>`popuchat2/rag/rag_engine.js`<br>`popuchat2/rag/test_rag.js` | Commit: `b6e493d` |
-| **Fase 3** | **Capa Generativa e Inferencia LLM** | ✅ **COMPLETADO (22/22 Tests)** | `popuchat2/engine/system_prompt.js`<br>`popuchat2/engine/memory_manager.js`<br>`popuchat2/engine/gemini_client.js`<br>`popuchat2/engine/mode_router.js`<br>`popuchat2/engine/test_engine.js` | Commit: `4598565` |
-| **Fase 4** | **Capa de Interfaz, Panel y Auditoría CSV** | ⏳ *En cola* | `popuchat2/ui/index.html`<br>`popuchat2/ui/app.js`<br>`popuchat2/ui/style.css`<br>`popuchat2/ui/csv_exporter.js` | Pendiente |
+| **Fase 0** | **Gobernanza, Aislamiento y Especificación** | ✅ **COMPLETADO** | `popuchat2/ESPECIFICACION_Y_PLAN_MAESTRO_POPUCHAT2.md`<br>`popuchat2/GUION_EXPOSICION_POPUCHAT2.docx`<br>`popuchat2/GUION_EXPOSICION_POPUCHAT2.md`<br>`popuchat2/PIPELINE.md` | Commit: `3585f33` |
+| **Fase 1** | **Capa de Preprocesamiento PLN Híbrido** | ✅ **COMPLETADO (20/20 Tests)** | `popuchat2/pipeline/text_processor.js`<br>`popuchat2/pipeline/tone_analyzer.js`<br>`popuchat2/pipeline/intent_detector.js`<br>`popuchat2/pipeline/test_pipeline.js` | Commit: `08c149e` |
+| **Fase 2** | **Capa Documental, Chunking y Motor RAG** | ✅ **COMPLETADO (18/18 Tests)** | `popuchat2/data/fuentes/`<br>`popuchat2/rag/chunker.js`<br>`popuchat2/rag/rag_engine.js`<br>`popuchat2/rag/test_rag.js` | Commit: `0abcbd8` |
+| **Fase 3** | **Capa Generativa e Inferencia LLM** | ✅ **COMPLETADO (22/22 Tests)** | `popuchat2/engine/system_prompt.js`<br>`popuchat2/engine/memory_manager.js`<br>`popuchat2/engine/gemini_client.js`<br>`popuchat2/engine/mode_router.js`<br>`popuchat2/engine/test_engine.js` | Commit: `99d2051` |
+| **Fase 4** | **Capa de Interfaz (Fiel a Popu 1), Panel Oculto y Despliegue Render** | ⏳ *Próxima* | `popuchat2/server.js`<br>`popuchat2/ui/index.html`<br>`popuchat2/ui/style.css`<br>`popuchat2/ui/app.js`<br>`popuchat2/ui/csv_exporter.js`<br>`popuchat2/package.json` | Pendiente |
 | **Fase 5** | **Batería de Pruebas Evaluativas (Clase 14)** | ⏳ *En cola* | `popuchat2/tests/evaluacion_suite.js`<br>`popuchat2/tests/reporte_certificacion.md` | Pendiente |
 
 ---
@@ -61,11 +61,52 @@
 
 ---
 
-### ⏳ FASE 4: INTERFAZ DE USUARIO, PANEL Y AUDITORÍA CSV (`popuchat2/ui/`)
-* **Paso 4.1:** Construcción de la interfaz web tipo chat moderna.
-* **Paso 4.2:** Panel de diagnóstico técnico en tiempo real (muestra texto normalizado, tono, intenciones y fragmentos recuperados con score).
-* **Paso 4.3:** Módulo de registro de auditoría y descarga de archivo CSV con el esquema oficial docente.
-* **Commit previsto:** `feat(ui): implementar interfaz de usuario con panel tecnico y descarga CSV`
+### ⏳ FASE 4: CAPA DE INTERFAZ (FIEL A POPU 1), PANEL OCULTO Y DESPLIEGUE RENDER (`popuchat2/ui/` y `popuchat2/server.js`)
+* **Filosofía Visual:** Conservar 100% la estética original de PopuChat 1 (glassmorphism, orbes, colores `#F5CE5B` / `#4FA0D8` y mascota original `mascot.png`). No se utiliza interfaz tipo Gradio.
+* **Micro-Avance 4.1: Servidor Express y API REST para Render (`popuchat2/server.js`)** ✅ **COMPLETADO (15/15 Tests)**
+  - Servidor backend autónomo preparado para Render (`process.env.PORT || 3000`).
+  - Endpoints probados y verificados:
+    - `POST /api/chat`: Recibe `{ mensaje, modo, top_k, temperatura, max_tokens, apiKey? }` y procesa la inferencia en caliente.
+    - `GET /api/auditoria/csv`: Genera y descarga el archivo CSV de auditoría acumulado con UTF-8 BOM.
+    - `POST /api/reiniciar`: Resetea la memoria de contexto (los 6 turnos).
+    - `GET /api/health`: Endpoint de diagnóstico y healthcheck de Render.
+  - Servicio de archivos estáticos desde `popuchat2/ui/` y recursos gráficos originales desde `/img`.
+* **Micro-Avance 4.2: Frontend Fiel a Popu 1 con Panel Oculto de Niveles Oficiales (`popuchat2/ui/index.html` y `style.css`)**
+  - Estructura visual exacta de PopuChat 1 con su mascota y cabecera institucional.
+  - Incorporación en el header del icono sutil de engranaje (`⚙️`).
+  - Maquetado del **Panel Oculto Desplegable (Cajón Lateral de Configuración y Diagnóstico)**:
+    1. **Los 4 Controles de Inferencia de Cátedra (Originales del Notebook):**
+       - **Selector de Modo:** Radio/píldoras (`Solo base de conocimiento` [def] / `Base + conocimiento general` / `Solo IA general`).
+       - **Slider `top_k` (Fragmentos a recuperar):** Rango de 1 a 8 (Default: `4`, paso: `1`).
+       - **Slider `temperatura` (Creatividad):** Rango de 0.0 a 1.0 (Default: `0.3`, paso: `0.1`).
+       - **Slider `max_tokens` (Extensión máxima):** Rango de 100 a 700 tokens (Default: `350`, paso: `50`).
+    2. **Bloque de Diagnóstico PLN en Vivo:**
+       - Tono detectado con badge de color (rojo: Molesto, verde: Agradecido, azul: Formal, gris: Neutral).
+       - Saludo contextual detectado e Intenciones identificadas.
+    3. **Bloque de Evidencia RAG:**
+       - Tabla interactiva de fragmentos recuperados con nombre de fuente y puntuación de similitud coseno ($\ge 0.35$).
+    4. **Auditoría de Cátedra:**
+       - Botón destacado `[📥 Descargar Registro CSV]`.
+    5. **Credenciales:**
+       - Campo opcional para ingresar/actualizar la `GEMINI_API_KEY` directamente en el navegador.
+* **Micro-Avance 4.3: Controlador de Cliente y Telemetría en Vivo (`popuchat2/ui/app.js`)**
+  - Manejo de chat interactivo con citas de fuentes formales al pie (`Fuentes: ...`).
+  - Apertura/cierre fluido del panel lateral al tocar el engranaje `⚙️` o la tecla `Esc`.
+  - Sincronización en tiempo real de los sliders (`top_k`, `temperatura`, `max_tokens`, `modo`) con las peticiones al backend.
+  - Actualización reactiva de las tarjetas de diagnóstico tras cada mensaje.
+* **Micro-Avance 4.4: Motor de Auditoría y Descarga CSV (`popuchat2/ui/csv_exporter.js`)**
+  - Generador de CSV en el cliente con codificación UTF-8 BOM para apertura perfecta en Excel.
+  - Esquema oficial de 8 columnas: `fecha_hora`, `pregunta`, `normalizado`, `tono`, `intenciones`, `modo`, `fuentes`, `respuesta`.
+* **Micro-Avance 4.5: Configuración Completa de Despliegue en Render (`popuchat2/package.json` y `render.yaml`)**
+  - Archivo `package.json` autónomo con dependencias (`express`, `cors`).
+  - Especificación formal para Render Web Service:
+    - **Build Command:** `npm install`
+    - **Start Command:** `node server.js`
+    - **Root Directory:** `popuchat2`
+    - **Branch:** `popu-chat2` (main protegida)
+    - **Environment Variable:** `GEMINI_API_KEY` (configurada en el panel privado de Render).
+    - Asignación dinámica del puerto asignado por Render vía `process.env.PORT`.
+* **Commit previsto:** `feat(ui): implementar interfaz fiel a Popu 1, panel oculto con sliders oficiales y backend Render`
 
 ---
 
