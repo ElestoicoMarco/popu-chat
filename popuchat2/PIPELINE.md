@@ -71,8 +71,8 @@
     - `POST /api/reiniciar`: Resetea la memoria de contexto (los 6 turnos).
     - `GET /api/health`: Endpoint de diagnóstico y healthcheck de Render.
   - Servicio de archivos estáticos desde `popuchat2/ui/` y recursos gráficos originales desde `/img`.
-* **Micro-Avance 4.2: Frontend Fiel a Popu 1 con Panel Oculto de Niveles Oficiales (`popuchat2/ui/index.html` y `style.css`)**
-  - Estructura visual exacta de PopuChat 1 con su mascota y cabecera institucional.
+* **Micro-Avance 4.2: Frontend Fiel a Popu 1 con Panel Oculto de Niveles Oficiales (`popuchat2/ui/index.html` y `style.css`)** ✅ **COMPLETADO (18/18 Tests - Commit `02089de`)**
+  - Estructura visual exacta de PopuChat 1 con su mascota original (`mascot.png`) y cabecera institucional.
   - Incorporación en el header del icono sutil de engranaje (`⚙️`).
   - Maquetado del **Panel Oculto Desplegable (Cajón Lateral de Configuración y Diagnóstico)**:
     1. **Los 4 Controles de Inferencia de Cátedra (Originales del Notebook):**

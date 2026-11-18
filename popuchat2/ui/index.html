@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popu Chat 2 — Asistente Híbrido Académico (PLN + RAG + IA)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER INSTITUCIONAL AUTÉNTICO -->
+        <header class="header">
+            <div class="logo">
+                <img src="/img/mascot.png" alt="Popu Chat Mascot" class="logo-icon">
+                <div>
+                    <h1>Popu Chat <span class="version-badge">V2 (IA + RAG)</span></h1>
+                    <p class="subtitle">Asistente Virtual — IES N° 7 "Populorum Progressio" In.Te.La</p>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+                <!-- Botón de Engranaje (Abre Panel Oculto de Diagnóstico y Cátedra) -->
+                <button id="configToggle" class="icon-btn config-btn" aria-label="Configuración y Diagnóstico RAG" title="Configuración de Inferencia y Diagnóstico RAG">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- ÁREA PRINCIPAL DE CHAT CONVERSACIONAL -->
+        <main class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <!-- Mensaje Inicial de Bienvenida -->
+                <div class="message bot">
+                    <div class="avatar"><img src="/img/mascot.png" alt="PopuBot"></div>
+                    <div class="bubble">
+                        ¡Hola! Soy <strong>PopuChat 2</strong>, el asistente académico inteligente del <strong>IES N° 7 "Populorum Progressio" - INTELA</strong>.
+                        <br><br>
+                        Cuento con un motor híbrido de <strong>PLN + RAG + IA (Gemini)</strong> respaldado por los reglamentos y planes de estudio oficiales. ¿En qué puedo orientarte hoy?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Indicador Animado de "Escribiendo..." -->
+            <div id="typingIndicator" class="typing-indicator">
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span style="font-size: 0.75rem; color: var(--text-dim); margin-left: 6px;">PopuChat 2 está redactando...</span>
+            </div>
+
+            <!-- Chips de Preguntas Frecuentes y Casos Evaluativos de Cátedra -->
+            <div class="suggestions-bar">
+                <button class="suggestion-chip" data-msg="¿Qué carreras tienen y cuánto duran?">🎓 Carreras y duración</button>
+                <button class="suggestion-chip" data-msg="¿En qué momento del día puedo hablar con Secretaría?">🕒 Paráfrasis: Horarios</button>
+                <button class="suggestion-chip" data-msg="¿Cuánto sale la cuota mensual y la inscripción?">💳 Cuotas y Aranceles</button>
+                <button class="suggestion-chip" data-msg="¿Hasta cuándo puedo anotarme a un examen final?">📝 Reglamento: Exámenes</button>
+                <button class="suggestion-chip" data-msg="HACE RATO PREGUNTO Y NADIE ME DICE CUÁNDO ATIENDEN!!!">😡 Tono Molesto (Empatía)</button>
+            </div>
+
+            <!-- Formulario de Entrada de Mensajes -->
+            <div class="input-container">
+                <form id="chatForm" class="input-form">
+                    <input type="text" id="userInput" class="input-field" placeholder="Escribe tu consulta académica aquí..." autocomplete="off">
+                    <button type="submit" id="sendBtn" class="send-btn" aria-label="Enviar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </main>
+
+        <!-- BACKDROP PARA CERRAR EL PANEL OCULTO -->
+        <div id="drawerBackdrop" class="drawer-backdrop"></div>
+
+        <!-- =========================================================
+             PANEL OCULTO DESPLEGABLE (CONFIGURACIÓN, SLIDERS Y AUDITORÍA)
+             ========================================================= -->
+        <aside id="configDrawer" class="drawer">
+            <div class="drawer-header">
+                <h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    Panel Técnico y Diagnóstico
+                </h3>
+                <button id="closeDrawerBtn" class="close-btn" aria-label="Cerrar panel">&times;</button>
+            </div>
+
+            <div class="drawer-content">
+                <!-- 1. SELECTOR DE MODO DE INFERENCIA -->
+                <div class="control-section">
+                    <div class="control-section-title">Modo de Inferencia (Cátedra)</div>
+                    <div class="mode-pills" id="modeSelector">
+                        <button class="mode-pill active" data-mode="Solo base de conocimiento">
+                            🔒 Solo base de conocimiento (Estricto)
+                        </button>
+                        <button class="mode-pill" data-mode="Base + conocimiento general">
+                            ⚖️ Base + conocimiento general (Mixto)
+                        </button>
+                        <button class="mode-pill" data-mode="Solo IA general">
+                            🌐 Solo IA general (Abierto)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2. LOS 3 SLIDERS DE PARÁMETROS OFICIALES DE CÁTEDRA -->
+                <div class="control-section">
+                    <div class="control-section-title">Parámetros de Generación</div>
+                    <div class="slider-group">
+                        <!-- Slider Top-K -->
+                        <div class="slider-item">
+                            <div class="slider-header">
+                                <span>Fragmentos a recuperar (top_k)</span>
+                                <span class="slider-val" id="topKVal">4</span>
+                            </div>
+                            <input type="range" id="topKSlider" class="custom-range" min="1" max="8" step="1" value="4">
+                        </div>
+
+                        <!-- Slider Temperatura -->
+                        <div class="slider-item">
+                            <div class="slider-header">
+                                <span>Creatividad (temperatura)</span>
+                                <span class="slider-val" id="tempVal">0.3</span>
+                            </div>
+                            <input type="range" id="tempSlider" class="custom-range" min="0" max="1" step="0.1" value="0.3">
+                        </div>
+
+                        <!-- Slider Max Tokens -->
+                        <div class="slider-item">
+                            <div class="slider-header">
+                                <span>Extensión máxima (max_tokens)</span>
+                                <span class="slider-val" id="maxTokensVal">350</span>
+                            </div>
+                            <input type="range" id="maxTokensSlider" class="custom-range" min="100" max="700" step="50" value="350">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. DIAGNÓSTICO PLN EN TIEMPO REAL -->
+                <div class="control-section">
+                    <div class="control-section-title">Diagnóstico PLN (Última Consulta)</div>
+                    <div class="diag-grid">
+                        <div class="diag-card">
+                            <div class="diag-label">Tono Emocional</div>
+                            <div class="diag-value"><span id="diagTone" class="tone-badge tone-neutral">neutral</span></div>
+                        </div>
+                        <div class="diag-card">
+                            <div class="diag-label">Saludo Contextual</div>
+                            <div class="diag-value" id="diagGreeting">Ninguno</div>
+                        </div>
+                        <div class="diag-card" style="grid-column: span 2;">
+                            <div class="diag-label">Texto Normalizado</div>
+                            <div class="diag-value" id="diagNormalized" style="font-size: 0.74rem; font-family: monospace; color: var(--text-dim);">-</div>
+                        </div>
+                        <div class="diag-card" style="grid-column: span 2;">
+                            <div class="diag-label">Intenciones Detectadas</div>
+                            <div class="diag-value" id="diagIntents" style="color: var(--secondary);">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. EVIDENCIA DOCUMENTAL RECUPERADA (RAG) -->
+                <div class="control-section">
+                    <div class="control-section-title">Evidencia RAG (Corte &ge; 0.35)</div>
+                    <div id="ragItemsContainer" class="rag-items">
+                        <div style="font-size: 0.75rem; color: var(--text-dim); font-style: italic;">
+                            Todavía no se ha procesado ninguna consulta.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. AUDITORÍA DOCENTE Y DESCARGA CSV -->
+                <div class="control-section">
+                    <div class="control-section-title">Auditoría de Cátedra</div>
+                    <button id="btnDownloadCsv" class="btn-audit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Descargar Registro CSV (Auditoría)
+                    </button>
+                    <button id="btnResetMemory" class="btn-reset">
+                        🔄 Reiniciar Conversación (Memoria)
+                    </button>
+                </div>
+
+                <!-- 6. CREDENCIALES GEMINI EN NAVEGADOR -->
+                <div class="control-section">
+                    <div class="control-section-title">Credencial Gemini API (Render)</div>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="password" id="geminiApiKeyInput" class="input-field" placeholder="Pega tu API Key de Gemini..." style="background: rgba(0,0,0,0.3); padding: 8px; border-radius: 8px; border: 1px solid var(--glass-border); font-size: 0.8rem;">
+                        <button id="btnSaveApiKey" class="suggestion-chip" style="color: var(--primary);">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Scripts de la Interfaz -->
+    <script src="csv_exporter.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
