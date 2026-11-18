@@ -37,33 +37,41 @@ function dividirEnFragmentos(texto, tamano = 700, solapamiento = 120) {
         if (fin < limpio.length) {
             const sub = limpio.substring(inicio, fin);
             
-            // Buscar cortes preferenciales: punto y espacio, punto y coma, o espacio simple
+            // Prioridad 1: Punto y espacio (oración completa)
             const cortePunto = sub.lastIndexOf(". ");
             const cortePuntoYComa = sub.lastIndexOf("; ");
             const corteEspacio = sub.lastIndexOf(" ");
 
-            // Seleccionar el corte más tardío
-            const cortes = [cortePunto, cortePuntoYComa, corteEspacio].filter(pos => pos !== -1);
-            if (cortes.length > 0) {
-                const maxCorte = Math.max(...cortes);
-                // Solo cortar si el punto natural supera la mitad del tamaño del fragmento
-                if (maxCorte > Math.floor(tamano / 2)) {
-                    fin = inicio + maxCorte + 1;
-                }
+            if (cortePunto !== -1 && cortePunto > Math.floor(tamano * 0.45)) {
+                fin = inicio + cortePunto + 1; // Incluye el punto
+            } else if (cortePuntoYComa !== -1 && cortePuntoYComa > Math.floor(tamano * 0.5)) {
+                fin = inicio + cortePuntoYComa + 1;
+            } else if (corteEspacio !== -1 && corteEspacio > Math.floor(tamano * 0.6)) {
+                fin = inicio + corteEspacio;
             }
         }
 
         const fragmento = limpio.substring(inicio, fin).trim();
         if (fragmento) {
-            fragmentos.append ? fragmentos.append(fragmento) : fragmentos.push(fragmento);
+            fragmentos.push(fragmento);
         }
 
         if (fin >= limpio.length) {
             break;
         }
 
-        // El nuevo inicio retrocede según el solapamiento para no perder contexto
-        inicio = Math.max(fin - solapamiento, inicio + 1);
+        // El nuevo inicio retrocede según el solapamiento, pero respetando límites de palabras
+        let siguienteInicio = Math.max(fin - solapamiento, inicio + 1);
+        if (siguienteInicio < fin) {
+            // Avanzar si quedó partido en el medio de una palabra
+            while (siguienteInicio < fin && limpio[siguienteInicio - 1] !== " " && limpio[siguienteInicio] !== " ") {
+                siguienteInicio++;
+            }
+            if (siguienteInicio < fin && limpio[siguienteInicio] === " ") {
+                siguienteInicio++;
+            }
+        }
+        inicio = siguienteInicio;
     }
 
     return fragmentos;

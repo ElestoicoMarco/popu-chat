@@ -1,12 +1,23 @@
-# REGLAMENTO ACADÉMICO Y SISTEMA DE EVALUACIÓN - IES N° 7
+# REGLAMENTO ACADÉMICO, EXÁMENES FINALES Y CORRELATIVIDADES - IES N° 7
 
-El régimen de cursado, acreditación y evaluación del IES N° 7 "Populorum Progressio" - INTELA se rige por el Reglamento Académico Institucional (RAI) aprobado por el Ministerio de Educación.
+El régimen académico del IES N° 7 "Populorum Progressio" - INTELA establece los deberes, derechos y normativas de evaluación de los estudiantes de tecnicaturas y profesorados.
 
-## Condiciones de Cursado y Regularidad
-1. Regularidad: Para obtener la regularidad en una unidad curricular o materia, el estudiante debe registrar al menos un 80% de asistencia a clases presenciales (o 70% en caso de razones laborales o de salud debidamente justificadas) y aprobar la totalidad de las evaluaciones parciales o trabajos prácticos obligatorios con nota mínima de 6 (seis) puntos.
-2. Vigencia de la Regularidad: La condición de alumno regular tiene una vigencia de dos (2) años académicos consecutivos, computados a partir del turno de examen siguiente a la finalización del cursado. Si transcurrido ese plazo el estudiante no aprueba el examen final, pierde la regularidad y debe recursar la materia o rendir en condición de libre.
+## 1. Inscripción a Mesas de Exámenes Finales
+- La inscripción a las mesas de exámenes finales es de carácter personal y obligatorio.
+- **Plazo reglamentario estricto:** La inscripción debe realizarse a través del Campus Virtual de autogestión hasta 48 horas hábiles antes de la fecha y hora fijada para la mesa evaluadora.
+- Pasado dicho límite temporal, el sistema informático se cierra automáticamente y no se admiten inscripciones fuera de término por secretaría, sin excepción alguna.
+- En caso de no poder presentarse a rendir, el estudiante debe darse de baja en el sistema hasta 24 horas antes para evitar penalizaciones en turnos posteriores.
 
-## Mesas de Exámenes Finales
-1. Inscripción a Exámenes: La inscripción a las mesas de exámenes finales es obligatoria y se realiza a través de la autogestión del campus virtual hasta 48 horas hábiles antes de la fecha y hora fijada para la mesa evaluadora. Pasado ese límite estricto de 48 horas, el sistema se cierra automáticamente.
-2. Escala de Calificaciones: La aprobación de un examen final requiere una calificación mínima de 4 (cuatro) puntos en la escala del 1 al 10.
-3. Libreta y Trámites: La libreta del estudiante o constancia de examen debe presentarse al momento de rendir. En caso de extravío de la libreta, se debe tramitar el duplicado en Secretaría Académica abonando el arancel administrativo correspondiente.
+## 2. Vigencia de la Condición de Alumno Regular
+- La condición de regularidad en una unidad curricular tiene una vigencia de dos (2) años académicos consecutivos, computados a partir del primer turno de examen siguiente a la finalización del cursado.
+- Si transcurren los dos años reglamentarios y el estudiante no aprueba el examen final, pierde la regularidad y debe recursar la materia o rendir en condición de alumno libre (si el plan de estudios lo contempla).
+
+## 3. Requisitos para Regularizar y Aprobar Materias
+- Asistencia mínima: 75% a las clases teórico-prácticas (o 60% para estudiantes con certificado laboral o familiar debidamente justificado).
+- Trabajos prácticos y parciales: 100% de trabajos prácticos aprobados con nota mínima de 6 (seis) puntos.
+- Instancias de recuperación: El estudiante tiene derecho a un examen recuperatorio por cada examen parcial reprobado o no rendido por causa justificada.
+- Escala de calificaciones: La nota mínima de aprobación en exámenes finales es de 4 (cuatro) o 6 (seis) según la escala reglamentaria ministerial (mínimo 6 puntos en el régimen vigente).
+
+## 4. Distribución de Aulas, Trámites de Equivalencias y Bedelía
+- La distribución de aulas para cursados y mesas de exámenes se publica diariamente en las carteleras informativas de planta baja de Sede Central y en el portal del Campus Virtual.
+- Trámites de equivalencias por materias aprobadas en otras instituciones terciarias o universitarias: Se presentan en Secretaría Académica durante el mes de marzo con programa autenticado de la institución de origen.

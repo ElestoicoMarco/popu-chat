@@ -83,8 +83,20 @@ class PopuChatEngine {
         const fuentes = obtenerFuentesUnicas(resultadosRAG);
         let respuestaFinal = "";
 
-        // 6. CONTROL FÁCTICO DE MODO ESTRICTO (Regla 4: Cero Alucinaciones)
-        if (modo === "Solo base de conocimiento" && resultadosRAG.length === 0) {
+        // 6. CONTROL CONVERSACIONAL Y FÁCTICO DE MODO ESTRICTO
+        const tieneIntencionInformativa = intenciones.some(i => 
+            ["inscripcion", "requisitos", "carreras", "horarios", "ubicacion", "aranceles", "becas", "contacto"].includes(i)
+        );
+
+        if (!tieneIntencionInformativa && intenciones.includes("saludo")) {
+            respuestaFinal = `¡Hola! 👋 Soy PopuChat 2, el asistente virtual del IES N° 7 "Populorum Progressio" - INTELA. Cuento con IA híbrida y base documental oficial. ¿En qué puedo orientarte hoy? Podés consultarme sobre carreras, cuotas, sedes, horarios o inscripciones.`;
+        } else if (!tieneIntencionInformativa && intenciones.includes("agradecimiento")) {
+            respuestaFinal = `¡De nada! Es un verdadero placer orientarte. Si tenés alguna otra consulta sobre el IES N° 7, acá estoy a tu entera disposición. ¡Muchos éxitos en tu camino académico! 🎓`;
+        } else if (!tieneIntencionInformativa && intenciones.includes("identidad")) {
+            respuestaFinal = `Soy PopuChat 2, el asistente virtual del IES N° 7 "Populorum Progressio" - INTELA. Estoy programado con tecnología de Procesamiento de Lenguaje Natural, motor RAG y modelos generativos de IA para brindarte información verídica y actualizada sobre nuestra institución.`;
+        } else if (!tieneIntencionInformativa && intenciones.includes("despedida")) {
+            respuestaFinal = `¡Hasta luego! Que tengas un excelente día. Cualquier otra consulta que tengas sobre el IES N° 7, aquí estaré para ayudarte. 👋`;
+        } else if (modo === "Solo base de conocimiento" && resultadosRAG.length === 0) {
             respuestaFinal = "No encontré información suficiente sobre esa consulta en la base de conocimiento institucional. Podés reformular la pregunta o comunicarte directamente con Secretaría Académica del IES N° 7.";
             if (tono === "molesto") {
                 respuestaFinal = "Lamento sinceramente el inconveniente. " + respuestaFinal;

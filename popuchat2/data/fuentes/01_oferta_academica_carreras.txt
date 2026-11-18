@@ -1,21 +1,70 @@
-# OFERTA ACADÉMICA - IES N° 7 "POPULORUM PROGRESSIO" - INTELA
+# OFERTA ACADÉMICA Y CARRERAS - IES N° 7 "POPULORUM PROGRESSIO" INTELA
 
-El Instituto de Educación Superior N° 7 "Populorum Progressio" - INTELA ofrece una amplia propuesta formativa orientada a la inserción laboral en la provincia de Jujuy.
+El Instituto de Educación Superior N° 7 "Populorum Progressio" - In.Te.La ofrece carreras de nivel superior técnico y docente de validez nacional, aprobadas por el Ministerio de Educación de la Provincia de Jujuy y de la Nación.
 
-## Tecnicaturas Superiores (Sede Central - Turno Mañana)
-Todas las tecnicaturas superiores tienen una duración estimada de 3 años, con cursado de lunes a viernes en el Turno Mañana (08:00 a 12:30 hs) y modalidad presencial con apoyo en campus virtual:
-1. Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial: Formación integral en programación, análisis estadístico, machine learning, procesamiento de lenguaje natural y visualización de datos.
-2. Tecnicatura Superior en Gestión Jurídica: Capacitación en procedimientos legales, gestión documental judicial, derecho administrativo y asistencia en estudios jurídicos.
-3. Tecnicatura Superior en Gestión Ambiental: Diagnóstico ambiental, formulación de planes de desarrollo sustentable, evaluación de impacto y normativa ecológica.
-4. Tecnicatura Superior en Niñez, Adolescencia y Familia: Intervención comunitaria, promoción de derechos, mediación familiar y políticas públicas de protección social.
-5. Tecnicatura Superior en Laboratorio de Análisis Clínicos: Técnicas bioquímicas, procesamiento de muestras biológicas, bioseguridad y control de calidad en laboratorios.
-6. Tecnicatura Superior en Hemoterapia: Procedimientos de extracción, fraccionamiento, inmunohematología, hemodonación y transfusión sanguínea.
-7. Tecnicatura Superior en Acompañamiento Terapéutico: Dispositivos clínicos de salud mental, contención cotidiana, rehabilitación psicosocial y trabajo interdisciplinario.
-8. Tecnicatura Superior en Administración de Empresas: Gestión contable, finanzas corporativas, recursos humanos, planificación estratégica y marketing operativo.
-9. Tecnicatura Superior en Administración Pública: Modernización del Estado, presupuesto público, auditoría gubernamental y gestión de trámites oficiales.
+## 1. Tecnicaturas Superiores (Duración: 3 años)
+Modalidad presencial, con prácticas profesionalizantes desde el primer año:
 
-## Profesorados (Sede Central)
-Los profesorados tienen una duración estimada de 4 años, modalidad presencial:
-1. Profesorado de Educación Secundaria en Ciencia Política.
-2. Profesorado de Educación Especial con orientación en Sordos e Hipoacúsicos o Discapacidad Intelectual.
-3. Profesorado en Ciencias Sagradas.
+- **Tecnicatura Superior en Desarrollo de Software:**
+  - Duración: 3 años.
+  - Sede: Sede Central (San Salvador de Jujuy).
+  - Perfil del Egresado: Desarrollo, análisis, diseño e implementación de software de escritorio, web y móvil; gestión de bases de datos relacionales y no relacionales; arquitecturas de microservicios, seguridad informática y metodologías ágiles (Scrum, DevOps).
+  - Campo laboral: Empresas de tecnología, fintech, software factories, organismos públicos y consultoría freelance internacional.
+
+- **Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial:**
+  - Duración: 3 años.
+  - Sede: Sede Central (San Salvador de Jujuy).
+  - Perfil del Egresado: Análisis exploratorio de datos, pipelines de machine learning y deep learning, procesamiento de lenguaje natural (PLN), business intelligence, visualización avanzada y gobernanza de datos.
+  - Campo laboral: Científico de datos, analista de business intelligence, consultor de IA, especialista en automatización predictiva en banca, salud, retail y sector público.
+
+- **Tecnicatura Superior en Mecatrónica:**
+  - Duración: 3 años.
+  - Sede: Sede Perico (Av. Malvinas Argentinas N° 199).
+  - Perfil del Egresado: Diseño, programación, mantenimiento e integración de sistemas automatizados con componentes mecánicos, neumáticos, hidráulicos, electrónicos e informáticos. Controladores lógicos programables (PLC), robótica y normas de calidad.
+  - Campo laboral: Industrias manufactureras, automotrices, ingenios azucareros, minería, plantas agroindustriales y metalmecánica.
+
+- **Tecnicatura Superior en Automatización y Robótica:**
+  - Duración: 3 años.
+  - Sede: Sede Perico y Sede San Pedro.
+  - Perfil del Egresado: Programación y calibración de brazos robóticos industriales, células de manufactura flexible, instrumentación electrónica y monitoreo SCADA.
+  - Campo laboral: Automatización de líneas de producción, plantas industriales, mantenimiento electromecánico y consultoría técnica.
+
+- **Tecnicatura Superior en Acompañamiento Terapéutico:**
+  - Duración: 3 años.
+  - Sede: Sede Central y Sedes del interior.
+  - Perfil del Egresado: Intervención clínica, comunitaria e institucional como agente de salud en equipos interdisciplinarios; abordaje de consumos problemáticos, salud mental, tercera edad, niñez y discapacidad.
+  - Campo laboral: Hospitales públicos, clínicas privadas, centros de rehabilitación, escuelas integradoras y atención domiciliaria.
+
+- **Tecnicatura Superior en Laboratorio Clínico y Hemoterapia:**
+  - Duración: 3 años.
+  - Sede: Sede Central.
+  - Perfil del Egresado: Extracción, preparación y análisis de muestras biológicas; procesos de inmunohematología, hemodonación, bancos de sangre y bioseguridad clínica bajo normas ISO.
+  - Campo laboral: Laboratorios de análisis clínicos, hospitales, centros de transfusión y bancos de sangre.
+
+## 2. Profesorados de Educación Secundaria y Especial (Duración: 4 años)
+Modalidad presencial, formación pedagógica y disciplinar con residencias docentes en escuelas asociadas:
+
+- **Profesorado de Educación Secundaria en Lengua y Literatura:**
+  - Duración: 4 años.
+  - Sede: Sede Central (Sarmiento 268).
+  - Perfil del Egresado: Docencia en educación secundaria, diseño curricular, crítica literaria, semiótica, producción escrita, talleres de oratoria y gestión editorial.
+
+- **Profesorado de Educación Secundaria en Historia:**
+  - Duración: 4 años.
+  - Sede: Sede Central.
+  - Perfil del Egresado: Enseñanza de procesos históricos locales, latinoamericanos y universales, investigación historiográfica, patrimonio cultural y docencia superior.
+
+- **Profesorado de Educación Secundaria en Psicología:**
+  - Duración: 4 años.
+  - Sede: Sede Central.
+  - Perfil del Egresado: Docencia en materias vinculadas a la psicología, tutorías académicas, orientación vocacional y equipos de orientación escolar en nivel secundario.
+
+- **Profesorado de Educación Especial (Orientación Discapacidad Intelectual):**
+  - Duración: 4 años.
+  - Sede: Sede Central.
+  - Perfil del Egresado: Abordaje pedagógico de estudiantes con discapacidad intelectual, diseño de configuraciones prácticas de apoyo y proyectos pedagógicos individuales para la inclusión (PPI).
+
+- **Profesorado de Educación Especial (Orientación Sordos e Hipoacúsicos):**
+  - Duración: 4 años.
+  - Sede: Sede Central.
+  - Perfil del Egresado: Enseñanza y mediación pedagógica en Lengua de Señas Argentina (LSA), estimulación del lenguaje, cultura sorda y modelos bilingües interculturales.

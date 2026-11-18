@@ -103,7 +103,12 @@
   - Especificación formal `render.yaml` para Render Web Service (`runtime: node`, `rootDir: popuchat2`, `branch: popu-chat2`).
   - Copia de seguridad de `mascot.png` en `popuchat2/ui/img/mascot.png` para autonomía completa en la nube.
   - Guía detallada en `popuchat2/DESPLIEGUE_RENDER.md`.
-* **Commits Fase 4:** `bad0b29`, `15605fb`, y commit de cierre de integración.
+* **Commits Fase 4:** `bad0b29`, `15605fb`, `154b5bb` y commit de optimización quirúrgica:
+  - **Ocultamiento absoluto del panel:** Fijado a la ventana con `position: fixed`, `visibility: hidden` y `pointer-events: none` hasta presionar `⚙️`.
+  - **Gemini 1.5 Flash:** Corrección del modelo oficial a `gemini-1.5-flash` (con fallback dinámico a `gemini-2.0-flash`).
+  - **Enriquecimiento RAG con Popu 1:** Incorporación de las 9 carreras, sedes completas, aranceles 2026/2027 y reglamentos desde `rules.js` de Popu 1.
+  - **Saludos y Chitchat:** Manejo conversacional auténtico para "HOLA" y agradecimientos.
+  - **Chunking oracional:** Prevención estricta de palabras u oraciones truncas.
 
 ---
 

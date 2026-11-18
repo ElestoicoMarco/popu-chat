@@ -28,11 +28,11 @@ function cargarClaveDesdeEnv() {
 }
 
 const GEMINI_CONFIG_DEFAULT = {
-    model: "gemini-2.5-flash",
+    model: "gemini-1.5-flash",
     temperature: 0.2,
     topP: 0.85,
     topK: 20,
-    maxOutputTokens: 450
+    maxOutputTokens: 600
 };
 
 /**
@@ -103,7 +103,14 @@ class GeminiClient {
             }
 
             if (fragmentoElegido) {
-                respuesta += fragmentoElegido;
+                // Limpiar símbolos de encabezados markdown si quedaron en el fragmento
+                let limpio = fragmentoElegido.replace(/^#+\s*/g, "").replace(/\s*#+\s*/g, " - ").trim();
+                // Asegurar que no termine en frase cortada
+                const lastPeriod = limpio.lastIndexOf(".");
+                if (lastPeriod > 100 && lastPeriod < limpio.length - 1) {
+                    limpio = limpio.substring(0, lastPeriod + 1);
+                }
+                respuesta += limpio;
             } else {
                 respuesta += "Respecto a tu consulta sobre el IES N° 7, la información oficial indica que los trámites y cursados se realizan según los reglamentos vigentes.";
             }
@@ -136,8 +143,6 @@ class GeminiClient {
             });
         }
 
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${this.config.model}:generateContent?key=${this.apiKey}`;
-
         const contents = [
             ...historialGemini,
             {
@@ -159,61 +164,53 @@ class GeminiClient {
             }
         };
 
-        try {
-            const response = await fetch(url, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload)
-            });
+        const modelosAConsultar = Array.from(new Set([
+            this.config.model,
+            "gemini-1.5-flash",
+            "gemini-2.0-flash",
+            "gemini-1.5-pro"
+        ])).filter(Boolean);
 
-            if (!response.ok) {
-                const errorText = await response.text();
-                console.warn(`[Gemini API Warning]: Error HTTP ${response.status} - utilizando motor de respaldo. Detalle: ${errorText}`);
-                return this.generarRespuestaContingencia({
-                    promptUsuario,
-                    systemPrompt,
-                    contextoDocumental,
-                    tono,
-                    saludo,
-                    fuentes
+        for (const modeloActual of modelosAConsultar) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${modeloActual}:generateContent?key=${this.apiKey}`;
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
                 });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const candidate = data.candidates && data.candidates[0];
+                    const textResponse = candidate && candidate.content && candidate.content.parts && candidate.content.parts[0] && candidate.content.parts[0].text;
+
+                    if (textResponse) {
+                        let respuestaFinal = textResponse.trim();
+                        // Refuerzo fáctico: Si hay fuentes y el modelo omitió la cita al pie, anexarla (Regla 5)
+                        if (fuentes && fuentes.length > 0 && !respuestaFinal.toLowerCase().includes("fuentes:")) {
+                            respuestaFinal += `\n\nFuentes: ${fuentes.join("; ")}`;
+                        }
+                        return respuestaFinal;
+                    }
+                } else {
+                    const errorText = await response.text();
+                    console.warn(`[Gemini API Warning] Modelo ${modeloActual} devolvió ${response.status}: ${errorText.substring(0, 120)}... Probando siguiente opción.`);
+                }
+            } catch (err) {
+                console.warn(`[Gemini Network Error] Con modelo ${modeloActual}: ${err.message}`);
             }
-
-            const data = await response.json();
-            const candidate = data.candidates && data.candidates[0];
-            const textResponse = candidate && candidate.content && candidate.content.parts && candidate.content.parts[0] && candidate.content.parts[0].text;
-
-            if (!textResponse) {
-                return this.generarRespuestaContingencia({
-                    promptUsuario,
-                    systemPrompt,
-                    contextoDocumental,
-                    tono,
-                    saludo,
-                    fuentes
-                });
-            }
-
-            let respuestaFinal = textResponse.trim();
-
-            // Refuerzo fáctico: Si hay fuentes y el modelo omitió la cita al pie, anexarla (Regla 5)
-            if (fuentes && fuentes.length > 0 && !respuestaFinal.toLowerCase().includes("fuentes:")) {
-                respuestaFinal += `\n\nFuentes: ${fuentes.join("; ")}`;
-            }
-
-            return respuestaFinal;
-
-        } catch (err) {
-            console.warn(`[Gemini Network Error]: ${err.message} - utilizando motor fáctico local.`);
-            return this.generarRespuestaContingencia({
-                promptUsuario,
-                systemPrompt,
-                contextoDocumental,
-                tono,
-                saludo,
-                fuentes
-            });
         }
+
+        // Si fallaron todos los modelos remotos, recurrir al motor fáctico local
+        return this.generarRespuestaContingencia({
+            promptUsuario,
+            systemPrompt,
+            contextoDocumental,
+            tono,
+            saludo,
+            fuentes
+        });
     }
 }
 

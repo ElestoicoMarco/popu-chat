@@ -45,6 +45,14 @@ const PATRONES_INTENCIONES = {
         /\btelefono\b/i, /\bcorreo\b/i, /\bemail\b/i,
         /\bwhatsapp\b/i, /\bcontact/i
     ],
+    agradecimiento: [
+        /\bgracias\b/i, /\bmuchas gracias\b/i, /\bagradezc/i,
+        /\bte agradezco\b/i, /\bmil gracias\b/i
+    ],
+    identidad: [
+        /\bquien sos\b/i, /\bque sos\b/i, /\bcomo te llamas\b/i,
+        /\btu nombre\b/i, /\bque haces\b/i
+    ],
     despedida: [
         /\bchau\b/i, /\badios\b/i, /\bhasta luego\b/i,
         /\bnos vemos\b/i

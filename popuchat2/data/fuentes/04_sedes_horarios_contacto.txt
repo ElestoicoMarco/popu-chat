@@ -1,14 +1,30 @@
-# SEDES, HORARIOS DE ATENCIÓN Y CONTACTO INSTITUCIONAL - IES N° 7
+# SEDES INSTITUCIONALES, HORARIOS DE ATENCIÓN Y CONTACTO - IES N° 7
 
-El IES N° 7 "Populorum Progressio" - INTELA cuenta con sede central en San Salvador de Jujuy y extensiones áulicas en el interior de la provincia.
+El IES N° 7 "Populorum Progressio" - INTELA cuenta con presencia en diferentes puntos estratégicos de la Provincia de Jujuy para garantizar el acceso a la educación superior.
 
-## Sede Central (San Salvador de Jujuy)
-- Dirección: Calle Sarmiento 268, San Salvador de Jujuy, Provincia de Jujuy.
-- Teléfono fijo: (0388) 4224514.
-- Correo electrónico oficial: campus@populorumjujuy.ar o informes@populorumjujuy.ar.
-- Horario de Cursado y Atención Administrativa: Secretaría Académica, Alumnos y Tesorería atienden de lunes a viernes en el Turno Mañana de 08:00 a 12:30 horas.
+## 1. Sede Central (San Salvador de Jujuy)
+- **Dirección:** Calle Sarmiento N° 268 y Belgrano N° 435, San Salvador de Jujuy.
+- **Teléfono institucional:** (0388) 4224514
+- **Correo electrónico:** campusvirtual@ies7.edu.ar / informes@ies7.edu.ar
+- **Horarios de atención administrativa (Secretaría y Tesorería):** Lunes a viernes, en turno mañana de 08:00 a 12:30 hs y turno tarde de 15:30 a 20:30 hs.
+- **Turnos de cursado:** Turno tarde (14:00 a 18:30) y Turno vespertino/noche (18:30 a 22:45).
+- **Oferta académica:** Sede donde se dictan la totalidad de las Tecnicaturas y Profesorados de la oferta general.
 
-## Sedes del Interior
-1. Sede San Pedro de Jujuy: Calle Mitre N° 257. Teléfono: (03888) 422744. Correo: ies7sanpedro@gmail.com. Carreras: Profesorado en Educación Especial, Profesorado en Historia y Tecnicatura en Desarrollo de Software.
-2. Sede Libertador General San Martín: Funciona temporalmente en Colegio FASTA Secundario (sobre Ruta Nacional 34), de lunes a viernes de 18:30 a 22:00 horas (próximamente en nueva sede de calle Jacarandá S/N). Correo: populibertador@gmail.com. Carreras: Profesorado en Psicología, Automatización y Robótica, Acompañamiento Terapéutico.
-3. Sede Perico: Calle Mariano Moreno esquina Lavalle. Carreras: Profesorado en Lengua y Literatura, Administración de Empresas, Mecatrónica.
+## 2. Sede Perico
+- **Dirección:** Av. Malvinas Argentinas N° 199, Ciudad de Perico, Jujuy.
+- **Carreras específicas:** Tecnicatura Superior en Mecatrónica, Tecnicatura Superior en Automatización y Robótica, profesorados e informática.
+- **Horario de atención:** Lunes a viernes de 18:00 a 22:00 hs.
+
+## 3. Sede San Pedro
+- **Dirección:** Calle Mitre N° 257, San Pedro de Jujuy.
+- **Oferta de carreras:** Tecnicaturas en Informática, Automatización y Profesorados de Educación Secundaria y Especial.
+- **Horario de atención:** Lunes a viernes de 18:30 a 22:30 hs.
+
+## 4. Sede Libertador General San Martín
+- **Dirección:** Colegio FASTA Secundario, Libertador Gral. San Martín, Jujuy.
+- **Oferta de carreras:** Extensiones áulicas de profesorados y tecnicaturas humanísticas.
+- **Horario de atención:** Lunes a viernes de 18:00 a 22:00 hs.
+
+## 5. Canales Digitales y Soporte
+- Portal Web y Campus Virtual: Plataforma moodle institucional para cursado, consulta de correlatividades e inscripción a mesas.
+- Consultas y Soporte Técnico: campusvirtual@ies7.edu.ar
