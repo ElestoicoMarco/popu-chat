@@ -34,8 +34,8 @@ const PATRONES_INTENCIONES = {
         /\bdonde queda\b/i, /\bcomo llego\b/i, /\bsede\b/i
     ],
     aranceles: [
-        /\bprecio\b/i, /\bcuota\b/i, /\barancel/i,
-        /\bcosto\b/i, /\bcuanto sale\b/i, /\bes gratis\b/i
+        /\bprecios?\b/i, /\bcuotas?\b/i, /\barancel/i, /\bmatricul/i,
+        /\bcostos?\b/i, /\bcuanto sale\b/i, /\bes gratis\b/i
     ],
     becas: [
         /\bbecas?\b/i, /\bayuda economica\b/i,

@@ -1,7 +1,7 @@
 /**
  * popuchat2/server.js
  * Servidor Autónomo en Node.js/Express para PopuChat 2
- * Preparado para despliegue en Render (PORT dinámico, CORS nativo, API REST y Archivos Estáticos).
+ * Sincronizado 1:1 con PopuChat_2_RAG_PLN_OFICIAL.ipynb (Colab 20:22) y preparado para Render.
  */
 
 const express = require("express");
@@ -14,7 +14,16 @@ const { PopuChatEngine } = require("./engine/mode_router");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware 1: CORS nativo (Sin dependencias externas)
+// Mapeo oficial de nombres de fuentes (Idéntico a Celda 10 e Imagen 2 de Gradio)
+const NOMBRES_FUENTES_OFICIALES = {
+    "01_oferta_academica_carreras.txt": "Oferta académica y carreras - IES N° 7",
+    "02_inscripciones_requisitos.txt": "Inscripciones y requisitos 2027 - IES N° 7",
+    "03_aranceles_cuotas_becas.txt": "Aranceles, cuotas y becas - IES N° 7",
+    "04_sedes_horarios_contacto.txt": "Sedes, horarios y contacto - IES N° 7",
+    "05_reglamento_academico_examenes.txt": "Reglamento académico y exámenes finales - IES N° 7"
+};
+
+// Middleware 1: CORS nativo
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
@@ -25,8 +34,8 @@ app.use((req, res, next) => {
     next();
 });
 
-// Middleware 2: Parser JSON
-app.use(express.json({ limit: "2mb" }));
+// Middleware 2: Parser JSON (ampliado a 10mb para carga de documentos en Base de Conocimiento)
+app.use(express.json({ limit: "10mb" }));
 
 // Middleware 3: Servir archivos estáticos de UI de PopuChat 2
 app.use(express.static(path.join(__dirname, "ui")));
@@ -42,8 +51,17 @@ if (fs.existsSync(rootImg)) {
 }
 app.use("/css", express.static(path.join(__dirname, "../public/css")));
 
-// Inicialización de la base de conocimiento y el motor de IA
+// Estado en memoria de la base documental y del motor
 let engine = null;
+let DOCUMENTOS_BASE = [];
+let DOCUMENTOS_ACTIVOS = [];
+
+function obtenerResumenDocumentos(docs) {
+    return docs.map(d => ({
+        Fuente: d.fuente,
+        Caracteres: d.texto.replace(/\r\n/g, "\n").trim().length
+    }));
+}
 
 function inicializarMotor() {
     const fuentesDir = path.join(__dirname, "data/fuentes");
@@ -52,11 +70,12 @@ function inicializarMotor() {
         return null;
     }
 
-    const archivos = fs.readdirSync(fuentesDir).filter(f => f.endsWith(".txt"));
-    const documentos = archivos.map(f => ({
-        fuente: f.replace(/^\d+_/, "").replace(/\.txt$/, ""),
-        texto: fs.readFileSync(path.join(fuentesDir, f), "utf-8")
+    const archivos = fs.readdirSync(fuentesDir).filter(f => f.endsWith(".txt")).sort();
+    DOCUMENTOS_BASE = archivos.map(f => ({
+        fuente: NOMBRES_FUENTES_OFICIALES[f] || f.replace(/^\d+_/, "").replace(/\.txt$/, ""),
+        texto: fs.readFileSync(path.join(fuentesDir, f), "utf-8").replace(/\r\n/g, "\n").trim()
     }));
+    DOCUMENTOS_ACTIVOS = DOCUMENTOS_BASE.map(d => ({ ...d }));
 
     const indice = new IndiceRAG({
         tamano_fragmento: 700,
@@ -65,8 +84,8 @@ function inicializarMotor() {
         umbral_similitud: 0.35
     });
 
-    const cantidadFragmentos = indice.construir(documentos);
-    console.log(`[RAG Init]: ${documentos.length} fuentes oficiales indexadas en ${cantidadFragmentos} fragmentos.`);
+    const cantidadFragmentos = indice.construir(DOCUMENTOS_ACTIVOS);
+    console.log(`[RAG Init]: ${DOCUMENTOS_ACTIVOS.length} fuentes oficiales indexadas en ${cantidadFragmentos} fragmentos.`);
 
     engine = new PopuChatEngine(indice);
     const envKey = process.env.GEMINI_API_KEY;
@@ -88,6 +107,8 @@ app.get("/api/health", (req, res) => {
         version: "2.0.0",
         port: PORT,
         isRender: Boolean(process.env.RENDER),
+        documentos: DOCUMENTOS_ACTIVOS.length,
+        fragmentos: engine && engine.indiceRAG ? engine.indiceRAG.fragmentos.length : 0,
         timestamp: new Date().toISOString()
     });
 });
@@ -108,7 +129,6 @@ app.post("/api/chat", async (req, res) => {
             inicializarMotor();
         }
 
-        // Actualizar parámetros dinámicos si provienen de los controles del engranaje
         if (apiKey) {
             engine.gemini.setApiKey(apiKey);
         }
@@ -122,11 +142,12 @@ app.post("/api/chat", async (req, res) => {
             engine.gemini.config.maxOutputTokens = parseInt(max_tokens, 10);
         }
 
-        console.log(`[Chat Request]: "${mensaje}" | Modo: ${modo} | Key en Engine: ${engine.gemini.tieneApiKeyValida() ? "SÍ" : "NO"}`);
+        console.log(`[Chat Request]: "${mensaje}" | Modo: ${modo} | top_k: ${engine.indiceRAG.config.top_k} | temp: ${engine.gemini.config.temperature} | Key: ${engine.gemini.tieneApiKeyValida() ? "SÍ" : "NO"}`);
         const resultado = await engine.procesarConsulta(mensaje, modo);
 
         res.json({
             ok: true,
+            modo,
             ...resultado
         });
     } catch (error) {
@@ -150,36 +171,119 @@ app.post("/api/reiniciar", (req, res) => {
     });
 });
 
-// 4. Descarga de Registro de Auditoría en formato CSV oficial
-app.get("/api/auditoria/csv", (req, res) => {
+// 4. Administración de la Base de Conocimiento (Sección 12 / Imagen 2 de Gradio)
+app.get("/api/documentos", (req, res) => {
+    if (!engine) inicializarMotor();
+    res.json({
+        ok: true,
+        estado: "La base oficial de PopuChat está activa.",
+        totalDocumentos: DOCUMENTOS_ACTIVOS.length,
+        totalFragmentos: engine && engine.indiceRAG ? engine.indiceRAG.fragmentos.length : 0,
+        documentosActivos: obtenerResumenDocumentos(DOCUMENTOS_ACTIVOS)
+    });
+});
+
+app.post("/api/documentos/procesar", (req, res) => {
     try {
-        const registros = engine ? engine.obtenerRegistroAuditoria() : [];
-        const columnas = [
-            "fecha_hora",
-            "pregunta",
-            "normalizado",
-            "tono",
-            "intenciones",
-            "modo",
-            "fuentes",
-            "respuesta"
-        ];
+        if (!engine) inicializarMotor();
+        const { archivos = [], conservar_popu = true } = req.body;
 
-        let csv = "\uFEFF"; // Byte Order Mark para compatibilidad con Excel (acentos y eñes)
-        csv += columnas.join(",") + "\n";
+        const documentosNuevos = (Array.isArray(archivos) ? archivos : [])
+            .filter(a => a && a.nombre && typeof a.texto === "string" && a.texto.trim().length > 0)
+            .map(a => ({
+                fuente: a.nombre.trim(),
+                texto: a.texto.replace(/\r\n/g, "\n").trim()
+            }));
 
-        for (const reg of registros) {
-            const fila = columnas.map(col => {
-                let valor = (reg[col] || "").toString();
-                // Escapar comillas dobles y saltos de línea para formato CSV estándar
-                valor = valor.replace(/"/g, '""');
-                return `"${valor}"`;
+        const nuevaLista = conservar_popu
+            ? [...DOCUMENTOS_BASE.map(d => ({ ...d })), ...documentosNuevos]
+            : documentosNuevos;
+
+        if (nuevaLista.length === 0) {
+            return res.json({
+                ok: false,
+                mensaje: "No se cargaron documentos. La base no fue modificada.",
+                totalDocumentos: DOCUMENTOS_ACTIVOS.length,
+                totalFragmentos: engine.indiceRAG.fragmentos.length,
+                documentosActivos: obtenerResumenDocumentos(DOCUMENTOS_ACTIVOS)
             });
-            csv += fila.join(",") + "\n";
         }
 
+        DOCUMENTOS_ACTIVOS = nuevaLista;
+        const cantFrag = engine.indiceRAG.construir(DOCUMENTOS_ACTIVOS);
+        const mensaje = `Base actualizada correctamente: ${DOCUMENTOS_ACTIVOS.length} documentos y ${cantFrag} fragmentos.`;
+
+        res.json({
+            ok: true,
+            mensaje,
+            totalDocumentos: DOCUMENTOS_ACTIVOS.length,
+            totalFragmentos: cantFrag,
+            documentosActivos: obtenerResumenDocumentos(DOCUMENTOS_ACTIVOS)
+        });
+    } catch (error) {
+        console.error("[Error /api/documentos/procesar]:", error);
+        res.status(500).json({
+            ok: false,
+            mensaje: `Error al procesar los documentos: ${error.message}`
+        });
+    }
+});
+
+app.post("/api/documentos/restaurar", (req, res) => {
+    try {
+        if (!engine) inicializarMotor();
+        DOCUMENTOS_ACTIVOS = DOCUMENTOS_BASE.map(d => ({ ...d }));
+        const cantFrag = engine.indiceRAG.construir(DOCUMENTOS_ACTIVOS);
+
+        res.json({
+            ok: true,
+            mensaje: "Base oficial de PopuChat restaurada.",
+            totalDocumentos: DOCUMENTOS_ACTIVOS.length,
+            totalFragmentos: cantFrag,
+            documentosActivos: obtenerResumenDocumentos(DOCUMENTOS_ACTIVOS)
+        });
+    } catch (error) {
+        console.error("[Error /api/documentos/restaurar]:", error);
+        res.status(500).json({
+            ok: false,
+            mensaje: `Error al restaurar la base: ${error.message}`
+        });
+    }
+});
+
+// 5. Descarga de Registro de Auditoría en formato CSV oficial (Sección 13 / Imagen 3 de Gradio)
+function construirCsvString() {
+    const registros = engine ? engine.obtenerRegistroAuditoria() : [];
+    const columnas = [
+        "fecha_hora",
+        "pregunta",
+        "normalizado",
+        "tono",
+        "intenciones",
+        "modo",
+        "fuentes",
+        "respuesta"
+    ];
+
+    let csv = "\uFEFF"; // Byte Order Mark para compatibilidad con Excel (utf-8-sig)
+    csv += columnas.join(",") + "\n";
+
+    for (const reg of registros) {
+        const fila = columnas.map(col => {
+            let valor = (reg[col] || "").toString();
+            valor = valor.replace(/"/g, '""');
+            return `"${valor}"`;
+        });
+        csv += fila.join(",") + "\n";
+    }
+    return csv;
+}
+
+app.get("/api/auditoria/csv", (req, res) => {
+    try {
+        const csv = construirCsvString();
         res.setHeader("Content-Type", "text/csv; charset=utf-8");
-        res.setHeader("Content-Disposition", 'attachment; filename="registro_consultas_popuchat2.csv"');
+        res.setHeader("Content-Disposition", 'attachment; filename="registro_consultas_chatbot_rag.csv"');
         res.send(csv);
     } catch (error) {
         console.error("[Error /api/auditoria/csv]:", error);
@@ -190,13 +294,13 @@ app.get("/api/auditoria/csv", (req, res) => {
     }
 });
 
-// 5. Fallback para servir el Frontend
+// 6. Fallback para servir el Frontend
 app.get("*", (req, res) => {
     const indexPath = path.join(__dirname, "ui/index.html");
     if (fs.existsSync(indexPath)) {
         res.sendFile(indexPath);
     } else {
-        res.send("PopuChat 2 Backend API está activo. La interfaz se cargará en el Micro-Avance 4.2.");
+        res.send("PopuChat 2 Backend API está activo.");
     }
 });
 

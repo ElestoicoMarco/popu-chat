@@ -1,0 +1,100 @@
+﻿fecha_hora,pregunta,normalizado,tono,intenciones,modo,fuentes,respuesta
+2026-11-18T22:57:15,"Buenas tardes, ¿hasta cuándo puedo inscribirme y qué documentos necesito?",buenas tardes hasta cuando puedo inscribirme y que documentos necesito,formal,"saludo, requisitos",Solo base de conocimiento,Inscripciones y requisitos 2027 - IES N° 7,"No figura en la base de conocimiento la fecha hasta la cual se puede inscribir. Solo se menciona que el Curso de Ingreso Obligatorio se lleva a cabo del 01 al 19 de marzo de 2027, pero no se especifica el plazo final de inscripción.  
+
+Sin embargo, sí figuran los documentos necesarios para la inscripción definitiva:
+
+- Fotocopia autenticada del Título Secundario o Constancia original de Título en Trámite (sin adeudar materias previas al inicio del cursado).
+- Fotocopia legible del Documento Nacional de Identidad (frente y dorso).
+- Partida de Nacimiento actualizada y debidamente legalizada.
+- Constancia oficial de CUIL emitida por ANSES.
+- Dos (2) fotografías carnet actualizadas (tamaño 4x4, fondo blanco o celeste).
+- Certificado de Aptitud Psicofísica emitido por organismo público de salud o ficha médica institucional completa.
+- Planilla prontuarial o certificado de antecedentes policiales emitido por la Policía
+
+**Fuentes:** Inscripciones y requisitos 2027 - IES N° 7"
+2026-11-18T23:00:10,"HOLA
+",hola,informal,saludo,Solo base de conocimiento,"Oferta académica y carreras - IES N° 7; Sedes, horarios y contacto - IES N° 7; Reglamento académico y exámenes finales - IES N° 7","¡Hola!  
+
+Fuentes: No aplica (la pregunta es un saludo y no solicita información específica)."
+2026-11-18T23:00:29,"HOLA
+",hola,informal,saludo,Solo IA general,,"¡Hola! ¿En qué puedo ayudarte hoy?  
+
+Fuentes: none (modo general sin contexto documental)"
+2026-11-18T23:01:14,"HOLA
+",hola,informal,saludo,Base + conocimiento general,"Oferta académica y carreras - IES N° 7; Sedes, horarios y contacto - IES N° 7; Reglamento académico y exámenes finales - IES N° 7","¡Hola! ¿En qué puedo ayudarte?  
+
+Fuentes: Oferta académica y carreras - IES N° 7"
+2026-11-18T23:04:00,¿Qué carreras técnicas y profesorados ofrece el Populorum y cuánto duran?,que carreras tecnicas y profesorados ofrece el populorum y cuanto duran,neutral,carreras,Solo IA general,,"No encontré esa información en la base de conocimiento.  
+
+Fuentes: ninguna."
+2026-11-18T23:04:56,¿Qué carreras técnicas y profesorados ofrece el Populorum y cuánto duran?,que carreras tecnicas y profesorados ofrece el populorum y cuanto duran,neutral,carreras,Solo base de conocimiento,Oferta académica y carreras - IES N° 7; Reglamento académico y exámenes finales - IES N° 7,"El IES N° 7 ""Populorum Progressio"" ofrece las siguientes carreras técnicas y profesorados, con sus respectivas duraciones:
+
+- **Tecnicatura Superior en Desarrollo de Software**: 3 años  
+- **Tecnicatura Superior en Acompañamiento Terapéutico**: 3 años  
+- **Tecnicatura Superior en Laboratorio Clínico y Hemoterapia**: 3 años  
+- **Profesorado de Educación Secundaria en Lengua y Literatura**: 4 años  
+- **Profesorado de Educación Secundaria en Historia**: 4 años  
+- **Profesorado de Educación Secundaria en Psicología**: 4 años  
+
+Fuentes: Oferta académica y carreras - IES N° 7"
+2026-11-18T23:05:39,¿Qué carreras técnicas y profesorados ofrece el Populorum y cuánto duran?,que carreras tecnicas y profesorados ofrece el populorum y cuanto duran,neutral,carreras,Base + conocimiento general,Oferta académica y carreras - IES N° 7; Reglamento académico y exámenes finales - IES N° 7,"El Instituto de Educación Superior N° 7 ""Populorum Progressio"" - In.Te.La ofrece las siguientes carreras técnicas y profesorados, con sus respectivas duraciones:
+
+**Carreras técnicas (duración: 3 años):**
+- Tecnicatura Superior en Desarrollo de Software  
+- Tecnicatura Superior en Acompañamiento Terapéutico  
+- Tecnicatura Superior en Laboratorio Clínico y Hemoterapia  
+
+**Profesorados (duración: 4 años):**
+- Profesorado de Educación Secundaria en Lengua y Literatura  
+- Profesorado de Educación Secundaria en Historia  
+- Profesorado de Educación Secundaria en Psicología  
+
+Todos estos programas son de nivel superior, tienen validez nacional y están aprobados por el Ministerio de Educación de la Provincia de Jujuy y de la Nación.
+
+Fuentes: Oferta académica y carreras - IES N° 7"
+2026-11-18T23:10:46,"¿Qué hace un técnico en Ciencia de Datos e Inteligencia Artificial?""",que hace un tecnico en ciencia de datos e inteligencia artificial,neutral,,Solo IA general,,"Un técnico en Ciencia de Datos e Inteligencia Artificial se encarga de recopilar, procesar y analizar grandes volúmenes de datos para extraer patrones, tendencias y conocimientos útiles. Utiliza herramientas y técnicas estadísticas, matemáticas y de programación para transformar los datos en información significativa. Además, desarrolla modelos de aprendizaje automático y machine learning para que las máquinas puedan tomar decisiones basadas en datos. Este profesional puede trabajar en áreas como predicción de comportamientos, optimización de procesos, detección de fraudes o personalización de servicios, entre otros.
+
+Fuentes: conocimiento general del modelo."
+2026-11-18T23:11:41,"""Dame consejos para estudiar para un examen oral""",dame consejos para estudiar para un examen oral,neutral,,Solo IA general,,"Para prepararte para un examen oral, te recomiendo los siguientes consejos:
+
+1. **Revisa el temario con anticipación**: Organiza el contenido que debes saber y divide el tema en partes manejables. Así evitas el estrés al último momento.
+
+2. **Practica explicaciones claras y concisas**: El examen oral valora tu capacidad de comunicar ideas de forma clara, sin tecnicismos innecesarios. Entrena a decirlo como si estuvieras explicando a un amigo.
+
+3. **Habla en voz alta y en silencio**: Practica en voz alta para mejorar tu fluidez, y también anota tus respuestas en papel o en un cuaderno para reforzar el aprendizaje.
+
+4. **Simula el examen**: Elige temas aleatorios del temario y practica explicándolos frente al espejo o con un compañero. Esto te ayuda a adaptarte al formato oral.
+
+5. **Prepara respuestas a preguntas posibles**: Anticipa las preguntas que podrían hacerle y prepárate con ejemplos breves y bien estructurados (por ejemplo: “¿Por qué es importante el agua en la vida?”).
+
+6. **Controla el tiempo**: En un examen oral, es clave responder con precisión y sin exceder el tiempo asignado. Entrena a responder en bloques cortos.
+
+7. **Mantén la calma y el contacto visual**: Durante el examen, respira profundamente, mantén el contacto visual con el evaluador y muestra confianza.
+
+Estos pas"
+2026-11-18T23:13:34,¿Cuáles son los valores de cuotas mensuales y matrícula?,cuales son los valores de cuotas mensuales y matricula,neutral,,Solo base de conocimiento,"Aranceles, cuotas y becas - IES N° 7","Los valores de cuotas mensuales y matrícula son:
+
+- **Cuota mensual para carreras generales**: $60.000 por mes.  
+- **Cuota mensual para carreras especiales**: $70.000 por mes.  
+- **Matrícula de inscripción (para el ciclo 2027)**:  
+  - $90.000 si se abona durante diciembre de 2026.  
+  - $100.000 si se abona hasta el 31 de marzo de 2027.
+
+Fuentes: Aranceles, cuotas y becas - IES N° 7."
+2026-11-18T23:14:16,¿Cuáles son los valores de cuotas mensuales y matrícula?,cuales son los valores de cuotas mensuales y matricula,neutral,,Base + conocimiento general,"Aranceles, cuotas y becas - IES N° 7","Los valores de cuotas mensuales y matrícula para el IES N° 7 ""Populorum Progressio"" - INTELA, según el contexto documental, son los siguientes:
+
+- **Cuota mensual para carreras generales**: $60.000 por mes.  
+  Aplica a tecnicaturas administrativas, humanísticas, profesorados y carreras de ciencias sociales.
+
+- **Cuota mensual para carreras especiales**: $70.000 por mes.  
+  Aplica a carreras con talleres y prácticas de laboratorio intensivas, como: Ciencia de Datos e Inteligencia Artificial, Laboratorio Clínico y Hemoterapia, Acompañamiento Terapéutico, Mecatrónica y Automatización.
+
+El régimen de pago contempla 10 cuotas mensuales consecutivas, desde marzo hasta diciembre, con vencimientos el último día de cada mes. En caso de atraso, se aplica un recargo administrativo acumulativo por mes.
+
+Para la **matrícula de inscripción**, los valores promocionales para el ciclo lectivo 2027 son:
+- **Si se abona en diciembre de 2026**: $90.000.
+- **Hasta el 31 de marzo de 2027**: $100.000.
+
+Es importante destacar que estos valores corresponden al período 2026 y están vigentes mientras se definen los nuevos aranceles para el ciclo 2027, que serán oficialmente
+
+**Fuentes:** Aranceles, cuotas y becas - IES N° 7"

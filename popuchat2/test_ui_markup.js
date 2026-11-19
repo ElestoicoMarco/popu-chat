@@ -58,10 +58,20 @@ assert(html.includes('id="diagNormalized"'), "Elemento para texto normalizado");
 assert(html.includes('id="diagIntents"'), "Elemento para intenciones detectadas");
 assert(html.includes('id="ragItemsContainer"'), "Contenedor de tarjetas de fragmentos RAG con similitud");
 
-// 5. Verificación de Auditoría CSV
-console.log("\n5. Auditoría Docente:");
+// 5. Verificación de Auditoría CSV y las 5 Vistas de Gradio (Colab 20:22)
+console.log("\n5. Auditoría Docente y Vistas Completas de Cátedra (5 Capturas):");
 assert(html.includes('id="btnDownloadCsv"'), "Botón #btnDownloadCsv para descarga directa");
 assert(html.includes('id="btnResetMemory"'), "Botón #btnResetMemory para nueva conversación");
+assert(html.includes('id="tabConversacion"'), "Pestaña 1: Conversación y Configuración (Imagen 1)");
+assert(html.includes('id="tablaFragmentos"'), "Tabla de 4 columnas Fuente | Fragmento | Similitud | Contenido (Imagen 5)");
+assert(html.includes('id="tabBaseConocimiento"'), "Pestaña 2: Base de conocimiento (Imagen 2)");
+assert(html.includes('id="tablaDocumentosActivos"'), "Tabla Documentos activos Fuente | Caracteres (Imagen 2)");
+assert(html.includes('id="btnProcesarDocs"'), "Botón Procesar documentos (Imagen 2)");
+assert(html.includes('id="btnRestaurarDocs"'), "Botón Restaurar base PopuChat (Imagen 2)");
+assert(html.includes('id="tabRegistroEvaluacion"'), "Pestaña 3: Registro y evaluación (Imagen 3)");
+assert(html.includes('id="btnGenerarCsv"'), "Botón Generar CSV del registro (Imagen 3)");
+assert(html.includes('id="tabConfiguracion"'), "Pestaña 4: Configuración Visual y Screen Studio (Imagen 4)");
+assert(html.includes('id="btnStartRecording"'), "Botón Start Recording de Screen Studio (Imagen 4)");
 
 console.log("\n=================================================");
 console.log(`RESULTADO FINAL: ${passedTests}/${totalTests} pruebas superadas.`);

@@ -127,7 +127,8 @@ class PopuChatEngine {
                 contextoDocumental,
                 tono,
                 saludo,
-                fuentes
+                fuentes,
+                modo
             });
         }
 

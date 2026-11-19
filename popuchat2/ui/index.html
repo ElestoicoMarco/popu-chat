@@ -284,116 +284,362 @@
     <!-- BACKDROP PARA CERRAR EL PANEL OCULTO -->
     <div id="drawerBackdrop" class="drawer-backdrop"></div>
 
-    <!-- PANEL OCULTO DESPLEGABLE (CONFIGURACIÓN DE CÁTEDRA Y DIAGNÓSTICO RAG) -->
+        <!-- PANEL OCULTO DESPLEGABLE (CLON FUNCIONAL COMPLETO DE LAS 5 VISTAS DE CÁTEDRA CON PALETA POPU 1) -->
     <aside id="configDrawer" class="drawer">
-        <div class="drawer-header">
-            <h3>
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-                Panel Técnico y Diagnóstico
-            </h3>
-            <button id="closeDrawerBtn" class="close-btn" aria-label="Cerrar panel">&times;</button>
+        <!-- Hero Institucional (Imágenes 1, 2 y 3 con paleta Popu 1) -->
+        <div class="drawer-hero">
+            <div class="drawer-hero-top">
+                <span class="drawer-hero-chip">IA generativa + PLN + RAG</span>
+                <div class="drawer-hero-actions">
+                    <button type="button" id="btnOpenSettingsTab" class="drawer-settings-link" title="Configuración">
+                        ⚙️ Configuración
+                    </button>
+                    <button type="button" id="closeDrawerBtn" class="close-btn" aria-label="Cerrar panel">&times;</button>
+                </div>
+            </div>
+            <h2 class="drawer-hero-title">PopuChat 2</h2>
+            <p class="drawer-hero-subtitle">
+                Asistente Académico Inteligente del IES N° 7 "Populorum Progressio" - In.Te.La. Motor híbrido de PLN + RAG + IA Generativa respaldado en reglamentos oficiales.
+            </p>
         </div>
 
+        <!-- Barra de Pestañas (Conversación | Base de conocimiento | Registro y evaluación | Configuración) -->
+        <nav class="drawer-tabs" id="drawerTabs">
+            <button type="button" class="drawer-tab active" data-tab="tabConversacion">Conversación</button>
+            <button type="button" class="drawer-tab" data-tab="tabBaseConocimiento">Base de conocimiento</button>
+            <button type="button" class="drawer-tab" data-tab="tabRegistroEvaluacion">Registro y evaluación</button>
+            <button type="button" class="drawer-tab" data-tab="tabConfiguracion">⚙️ Configuración</button>
+        </nav>
+
         <div class="drawer-content">
-            <!-- 1. SELECTOR DE MODO DE INFERENCIA -->
-            <div class="control-section">
-                <div class="control-section-title">Modo de Inferencia (Cátedra)</div>
-                <div class="mode-pills" id="modeSelector">
-                    <button class="mode-pill active" data-mode="Solo base de conocimiento">
-                        🔒 Solo base de conocimiento (Estricto)
-                    </button>
-                    <button class="mode-pill" data-mode="Base + conocimiento general">
-                        ⚖️ Base + conocimiento general (Mixto)
-                    </button>
-                    <button class="mode-pill" data-mode="Solo IA general">
-                        🌐 Solo IA general (Abierto)
-                    </button>
-                </div>
-            </div>
+            <!-- =================================================================
+                 PESTAÑA 1: CONVERSACIÓN, CONFIGURACIÓN Y ANÁLISIS PLN/RAG (Imágenes 1 y 5)
+                 ================================================================= -->
+            <div id="tabConversacion" class="drawer-tab-pane active">
+                <div class="gradio-grid-conv">
+                    <!-- Columna Izquierda: Configuración + Preguntas Sugeridas (Imagen 1) -->
+                    <div class="gradio-card">
+                        <h4 class="gradio-card-title">Configuración</h4>
+                        <p class="gradio-card-desc">Elegí cómo debe responder el modelo.</p>
 
-            <!-- 2. LOS 3 SLIDERS DE PARÁMETROS OFICIALES DE CÁTEDRA -->
-            <div class="control-section">
-                <div class="control-section-title">Parámetros de Generación</div>
-                <div class="slider-group">
-                    <div class="slider-item">
-                        <div class="slider-header">
-                            <span>Fragmentos a recuperar (top_k)</span>
-                            <span class="slider-val" id="topKVal">4</span>
+                        <!-- Modo de respuesta -->
+                        <div class="gradio-field">
+                            <span class="gradio-badge-label">Modo de respuesta</span>
+                            <div class="mode-pills" id="modeSelector">
+                                <button type="button" class="mode-pill active" data-mode="Solo base de conocimiento">
+                                    <span class="radio-dot"></span> Solo base de conocimiento
+                                </button>
+                                <button type="button" class="mode-pill" data-mode="Base + conocimiento general">
+                                    <span class="radio-dot"></span> Base + conocimiento general
+                                </button>
+                                <button type="button" class="mode-pill" data-mode="Solo IA general">
+                                    <span class="radio-dot"></span> Solo IA general
+                                </button>
+                            </div>
                         </div>
-                        <input type="range" id="topKSlider" class="custom-range" min="1" max="8" step="1" value="4">
-                    </div>
 
-                    <div class="slider-item">
-                        <div class="slider-header">
-                            <span>Creatividad (temperatura)</span>
-                            <span class="slider-val" id="tempVal">0.3</span>
+                        <!-- Sliders de parámetros -->
+                        <div class="slider-group">
+                            <div class="slider-item">
+                                <div class="slider-header">
+                                    <span class="gradio-badge-label">Fragmentos a recuperar</span>
+                                    <div class="slider-num-box">
+                                        <span class="slider-val" id="topKVal">4</span>
+                                        <button type="button" class="slider-reset-btn" data-target="topKSlider" data-default="4" title="Restaurar valor">↺</button>
+                                    </div>
+                                </div>
+                                <input type="range" id="topKSlider" class="custom-range" min="1" max="8" step="1" value="4">
+                                <div class="slider-minmax"><span>1</span><span>8</span></div>
+                            </div>
+
+                            <div class="slider-item">
+                                <div class="slider-header">
+                                    <span class="gradio-badge-label">Creatividad</span>
+                                    <div class="slider-num-box">
+                                        <span class="slider-val" id="tempVal">0.3</span>
+                                        <button type="button" class="slider-reset-btn" data-target="tempSlider" data-default="0.3" title="Restaurar valor">↺</button>
+                                    </div>
+                                </div>
+                                <input type="range" id="tempSlider" class="custom-range" min="0" max="1" step="0.1" value="0.3">
+                                <div class="slider-minmax"><span>0</span><span>1</span></div>
+                            </div>
+
+                            <div class="slider-item">
+                                <div class="slider-header">
+                                    <span class="gradio-badge-label">Extensión máxima</span>
+                                    <div class="slider-num-box">
+                                        <span class="slider-val" id="maxTokensVal">350</span>
+                                        <button type="button" class="slider-reset-btn" data-target="maxTokensSlider" data-default="350" title="Restaurar valor">↺</button>
+                                    </div>
+                                </div>
+                                <input type="range" id="maxTokensSlider" class="custom-range" min="100" max="700" step="50" value="350">
+                                <div class="slider-minmax"><span>100</span><span>700</span></div>
+                            </div>
                         </div>
-                        <input type="range" id="tempSlider" class="custom-range" min="0" max="1" step="0.1" value="0.3">
-                    </div>
 
-                    <div class="slider-item">
-                        <div class="slider-header">
-                            <span>Extensión máxima (max_tokens)</span>
-                            <span class="slider-val" id="maxTokensVal">450</span>
+                        <!-- Preguntas sugeridas oficiales (Imagen 1) -->
+                        <div class="gradio-suggestions">
+                            <h5 class="gradio-sub-heading">Preguntas sugeridas</h5>
+                            <button type="button" class="gradio-suggestion-btn" data-suggest="¿Qué carreras técnicas y profesorados ofrece el Populorum y cuánto duran?">
+                                ¿Qué carreras técnicas y profesorados ofrece el Populorum y cuánto duran?
+                            </button>
+                            <button type="button" class="gradio-suggestion-btn" data-suggest="Buenas tardes, ¿qué requisitos y papeles necesito para inscribirme en el IES 7?">
+                                Buenas tardes, ¿qué requisitos y papeles necesito para inscribirme en el IES 7?
+                            </button>
+                            <button type="button" class="gradio-suggestion-btn" data-suggest="¿Cuáles son los valores de cuotas mensuales y matrícula?">
+                                ¿Cuáles son los valores de cuotas mensuales y matrícula?
+                            </button>
+                            <button type="button" class="gradio-suggestion-btn" data-suggest="HACE RATO QUIERO SABER HASTA CUÁNDO PUEDO ANOTARME A LA MESA DE EXAMEN FINAL!!!">
+                                HACE RATO QUIERO SABER HASTA CUÁNDO PUEDO ANOTARME A LA MESA DE EXAMEN FINAL!!!
+                            </button>
+                            <p class="gradio-small-note">
+                                En modo estricto, el chatbot evita responder información institucional que no figure en los documentos.
+                            </p>
                         </div>
-                        <input type="range" id="maxTokensSlider" class="custom-range" min="100" max="700" step="50" value="450">
+                    </div>
+
+                    <!-- Columna Derecha: Vista de Chat + Acordeón Ver cómo procesó la consulta (Imágenes 1 y 5) -->
+                    <div class="gradio-right-col">
+                        <div class="gradio-card">
+                            <div id="drawerChatMirror" class="drawer-chat-mirror">
+                                <div class="drawer-chat-placeholder" id="drawerChatPlaceholder">
+                                    <div style="font-size: 46px; margin-bottom: 8px;">🎓</div>
+                                    <h4>Consultá la base académica</h4>
+                                    <p>Podés escribir una pregunta o usar un ejemplo.</p>
+                                </div>
+                            </div>
+                            <div class="drawer-input-box">
+                                <textarea id="drawerQueryInput" rows="2" placeholder="Escribí tu consulta..."></textarea>
+                            </div>
+                            <div class="drawer-action-row">
+                                <button type="button" id="btnResetMemory" class="gradio-btn-secondary">
+                                    Nueva conversación
+                                </button>
+                                <button type="button" id="btnDrawerSend" class="gradio-btn-primary">
+                                    Enviar ➜
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Acordeón: Ver cómo procesó la consulta (Imagen 5) -->
+                <details class="gradio-process-accordion" id="processAccordion" open>
+                    <summary>Ver cómo procesó la consulta</summary>
+                    <div class="gradio-process-body">
+                        <h4 class="gradio-analysis-title">Análisis de la consulta</h4>
+                        <div class="gradio-analysis-inline">
+                            <span><strong>Texto normalizado:</strong> <code id="diagNormalized">-</code></span>
+                            <span><strong>Tono:</strong> <code id="diagTone" class="tone-badge tone-neutral">neutral</code></span>
+                            <span><strong>Saludo detectado:</strong> <code id="diagGreeting">ninguno</code></span>
+                            <span><strong>Intenciones:</strong> <span id="diagIntents">No detectadas</span></span>
+                            <span><strong>Fuentes usadas:</strong> <span id="diagSources">Ninguna</span></span>
+                        </div>
+
+                        <!-- Tabla de 4 Columnas Exacta de la Imagen 5 -->
+                        <div class="gradio-table-wrapper">
+                            <table class="gradio-dataframe" id="tablaFragmentos">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 22%;">Fuente</th>
+                                        <th style="width: 10%;">Fragmento</th>
+                                        <th style="width: 10%;">Similitud</th>
+                                        <th style="width: 58%;">Contenido</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="fragmentosTablaBody">
+                                    <tr>
+                                        <td colspan="4" class="empty-table-cell">Todavía no se procesó ningún mensaje.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Contenedor de tarjetas RAG sincronizado para compatibilidad con tests -->
+                        <div id="ragItemsContainer" class="rag-items" style="display:none;"></div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- =================================================================
+                 PESTAÑA 2: BASE DE CONOCIMIENTO (Imagen 2)
+                 ================================================================= -->
+            <div id="tabBaseConocimiento" class="drawer-tab-pane">
+                <div class="gradio-grid-kb">
+                    <!-- Columna Izquierda: Agregar documentos -->
+                    <div class="gradio-card">
+                        <h4 class="gradio-card-title">Agregar documentos</h4>
+                        <p class="gradio-card-desc">Formatos admitidos: PDF, TXT, MD y DOCX.</p>
+                        <p class="gradio-card-desc">Los PDF deben contener texto seleccionable. Los documentos escaneados necesitarían OCR.</p>
+
+                        <div class="gradio-upload-wrapper">
+                            <span class="gradio-badge-label">📄 Documentos</span>
+                            <label for="kbFileInput" class="gradio-dropzone" id="kbDropzone">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                <span>Coloque el archivo aquí</span>
+                                <small>- o -</small>
+                                <span>Haga clic para cargar</span>
+                                <input type="file" id="kbFileInput" multiple accept=".txt,.md,.pdf,.docx" style="display:none;">
+                            </label>
+                            <div id="kbSelectedFilesList" class="kb-files-staged"></div>
+                        </div>
+
+                        <label class="gradio-checkbox-row">
+                            <input type="checkbox" id="chkConservarPopu" checked>
+                            <span>Conservar la base oficial de PopuChat</span>
+                        </label>
+
+                        <div class="drawer-action-row" style="margin-top: 12px;">
+                            <button type="button" id="btnProcesarDocs" class="gradio-btn-primary">
+                                Procesar documentos
+                            </button>
+                            <button type="button" id="btnRestaurarDocs" class="gradio-btn-secondary">
+                                Restaurar base PopuChat
+                            </button>
+                        </div>
+
+                        <p id="estadoBaseMsg" class="gradio-kb-status">La base oficial de PopuChat está activa.</p>
+                    </div>
+
+                    <!-- Columna Derecha: Documentos activos -->
+                    <div class="gradio-card">
+                        <h4 class="gradio-card-title">Documentos activos</h4>
+                        <div class="gradio-table-wrapper">
+                            <table class="gradio-dataframe" id="tablaDocumentosActivos">
+                                <thead>
+                                    <tr>
+                                        <th>Fuente</th>
+                                        <th style="width: 130px;">Caracteres</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablaDocumentosBody">
+                                    <tr>
+                                        <td>Oferta académica y carreras - IES N° 7</td>
+                                        <td>5546</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Inscripciones y requisitos 2027 - IES N° 7</td>
+                                        <td>2301</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Aranceles, cuotas y becas - IES N° 7</td>
+                                        <td>2881</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sedes, horarios y contacto - IES N° 7</td>
+                                        <td>1917</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Reglamento académico y exámenes finales - IES N° 7</td>
+                                        <td>2477</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 3. DIAGNÓSTICO PLN EN TIEMPO REAL -->
-            <div class="control-section">
-                <div class="control-section-title">Diagnóstico PLN (Última Consulta)</div>
-                <div class="diag-grid">
-                    <div class="diag-card">
-                        <div class="diag-label">Tono Emocional</div>
-                        <div class="diag-value"><span id="diagTone" class="tone-badge tone-neutral">neutral</span></div>
-                    </div>
-                    <div class="diag-card">
-                        <div class="diag-label">Saludo Contextual</div>
-                        <div class="diag-value" id="diagGreeting">Ninguno</div>
-                    </div>
-                    <div class="diag-card" style="grid-column: span 2;">
-                        <div class="diag-label">Texto Normalizado</div>
-                        <div class="diag-value" id="diagNormalized" style="font-size: 0.74rem; font-family: monospace; color: var(--text-dim);">-</div>
-                    </div>
-                    <div class="diag-card" style="grid-column: span 2;">
-                        <div class="diag-label">Intenciones Detectadas</div>
-                        <div class="diag-value" id="diagIntents" style="color: var(--secondary);">-</div>
+            <!-- =================================================================
+                 PESTAÑA 3: REGISTRO Y EVALUACIÓN (Imagen 3)
+                 ================================================================= -->
+            <div id="tabRegistroEvaluacion" class="drawer-tab-pane">
+                <div class="gradio-card">
+                    <h4 class="gradio-card-title">Registro de uso</h4>
+                    <p class="gradio-card-desc">Cada pregunta conserva:</p>
+                    <ul class="gradio-audit-list">
+                        <li>fecha y hora;</li>
+                        <li>texto original y normalizado;</li>
+                        <li>tono e intenciones;</li>
+                        <li>modo utilizado;</li>
+                        <li>fuentes;</li>
+                        <li>respuesta.</li>
+                    </ul>
+                    <p class="gradio-card-desc">Esto permite evaluar errores y mejorar el sistema.</p>
+
+                    <button type="button" id="btnGenerarCsv" class="gradio-btn-primary gradio-btn-full">
+                        Generar CSV del registro
+                    </button>
+
+                    <div class="gradio-download-box">
+                        <span class="gradio-badge-label">📄 Descargar registro</span>
+                        <div class="gradio-file-row">
+                            <span id="csvFileNameLabel">registro_consultas_chatbot_rag.csv</span>
+                            <button type="button" id="btnDownloadCsv" class="gradio-file-download-link">
+                                <span id="csvFileSizeLabel">0.1 KB ↓</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 4. EVIDENCIA DOCUMENTAL RECUPERADA (RAG) -->
-            <div class="control-section">
-                <div class="control-section-title">Evidencia RAG (Corte &ge; 0.35)</div>
-                <div id="ragItemsContainer" class="rag-items">
-                    <div style="font-size: 0.75rem; color: var(--text-dim); font-style: italic;">
-                        Todavía no se ha procesado ninguna consulta.
+            <!-- =================================================================
+                 PESTAÑA 4: CONFIGURACIÓN VISUAL, SCREEN STUDIO Y API KEY (Imagen 4)
+                 ================================================================= -->
+            <div id="tabConfiguracion" class="drawer-tab-pane">
+                <div class="gradio-card">
+                    <h4 class="gradio-card-title">⚙️ Configuración</h4>
+
+                    <div class="settings-block">
+                        <h5>Tema de visualización</h5>
+                        <div class="theme-btn-group" id="themeSelectorGroup">
+                            <button type="button" class="theme-btn" data-theme="light">☀️ Light</button>
+                            <button type="button" class="theme-btn active" data-theme="dark">🌙 Dark</button>
+                            <button type="button" class="theme-btn" data-theme="system">🖥️ System</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-block">
+                        <h5>Idioma</h5>
+                        <select id="langSelector" class="gradio-select">
+                            <option value="es" selected>Español</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+
+                    <div class="settings-block">
+                        <h5>Aplicación web progresiva</h5>
+                        <p class="gradio-card-desc">PopuChat 2 Progressive Web App se encuentra habilitada en este entorno.</p>
+                    </div>
+
+                    <div class="settings-block">
+                        <h5>Screen Studio <span class="beta-pill">BETA</span></h5>
+                        <p class="gradio-card-desc">
+                            Screen Studio allows you to record your screen and generates a video of your app with automatically adding zoom in and zoom out effects as well as trimming the video to remove the prediction time.
+                        </p>
+                        <label class="gradio-checkbox-row">
+                            <input type="checkbox" checked>
+                            <span>Include automatic zoom in/out</span>
+                        </label>
+                        <label class="gradio-checkbox-row">
+                            <input type="checkbox" checked>
+                            <span>Include automatic video trimming</span>
+                        </label>
+                        <div style="margin-top: 10px;">
+                            <button type="button" id="btnStartRecording" class="gradio-btn-secondary">
+                                ⊙ Start Recording
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="settings-block">
+                        <h5>Credencial Gemini API (Opcional / Render)</h5>
+                        <p class="gradio-card-desc">Si deseas usar una API Key de Google AI Studio personalizada desde tu navegador:</p>
+                        <div style="display: flex; gap: 8px; margin-top: 8px;">
+                            <input type="password" id="geminiApiKeyInput" class="gradio-input" placeholder="Pega tu API Key de Gemini (AIzaSy...)">
+                            <button type="button" id="btnSaveApiKey" class="gradio-btn-primary" style="padding: 8px 18px;">Guardar</button>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- 5. AUDITORÍA DOCENTE Y DESCARGA CSV -->
-            <div class="control-section">
-                <div class="control-section-title">Auditoría de Cátedra</div>
-                <button id="btnDownloadCsv" class="btn-audit">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    Descargar Registro CSV (Auditoría)
-                </button>
-                <button id="btnResetMemory" class="btn-reset">
-                    🔄 Reiniciar Conversación (Memoria)
-                </button>
-            </div>
-
-            <!-- 6. CREDENCIALES GEMINI EN NAVEGADOR -->
-            <div class="control-section">
-                <div class="control-section-title">Credencial Gemini API (Render)</div>
-                <div style="display: flex; gap: 8px;">
-                    <input type="password" id="geminiApiKeyInput" class="input-field" placeholder="Pega tu API Key de Gemini..." style="background: rgba(0,0,0,0.3); padding: 8px; border-radius: 8px; border: 1px solid var(--glass-border); font-size: 0.8rem; color: #fff; width: 100%;">
-                    <button id="btnSaveApiKey" class="quick-btn" style="color: var(--primary); padding: 6px 12px;">Guardar</button>
-                </div>
-            </div>
+        <div class="drawer-footer-bar">
+            <span>Usar vía API 🚀</span>
+            <span>•</span>
+            <span>Construido con PopuChat 2 🎓</span>
+            <span>•</span>
+            <button type="button" id="btnFooterSettings" class="drawer-footer-link">Configuración ⚙️</button>
         </div>
     </aside>
 
