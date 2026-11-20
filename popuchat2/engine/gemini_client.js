@@ -163,7 +163,49 @@ class GeminiClient {
     }
 
     /**
-     * Llama a Groq API usando Qwen (ultra rápido ~0.8 - 1.5s) con timeout estricto.
+     * Descubre dinámicamente en Groq qué modelos de chat (Qwen, Llama, etc.) están activos hoy para esta API Key.
+     */
+    async descubrirModelosGroq() {
+        if (!this.tieneGroqKeyValida()) return [];
+        try {
+            const res = await fetchConTimeout(
+                "https://api.groq.com/openai/v1/models",
+                {
+                    headers: { "Authorization": `Bearer ${this.groqApiKey}` }
+                },
+                3500
+            );
+            if (!res.ok) return [];
+            const data = await res.json();
+            if (!data || !Array.isArray(data.data)) return [];
+
+            const excluidos = ["whisper", "tts", "guard", "safeguard", "embed", "moderation", "audio", "speech", "vision-preview", "orpheus", "playai", "compound"];
+            const modelos = data.data
+                .filter(m => m && m.id && m.active !== false)
+                .map(m => m.id)
+                .filter(id => !excluidos.some(ex => id.toLowerCase().includes(ex)));
+
+            // Priorizar modelos Qwen primero, luego Llama / otros modelos instruct rápidos
+            modelos.sort((a, b) => {
+                const score = (id) => {
+                    const low = id.toLowerCase();
+                    if (low.includes("qwen")) return 100;
+                    if (low.includes("llama") && low.includes("instant")) return 85;
+                    if (low.includes("llama")) return 80;
+                    if (low.includes("gemma") || low.includes("gpt") || low.includes("deepseek") || low.includes("kimi")) return 70;
+                    return 50;
+                };
+                return score(b) - score(a);
+            });
+
+            return modelos;
+        } catch (e) {
+            return [];
+        }
+    }
+
+    /**
+     * Llama a Groq API usando Qwen (ultra rápido ~0.8 - 1.5s) con auto-descubrimiento y timeout estricto.
      */
     async llamarGroqQwen({ systemPrompt, promptUsuario, historialGemini, fuentes }) {
         if (!this.tieneGroqKeyValida()) return { ok: false };
@@ -174,13 +216,15 @@ class GeminiClient {
             { role: "user", content: promptUsuario }
         ];
 
+        const descubiertos = this.cachedWorkingGroqModel ? [] : await this.descubrirModelosGroq();
         const candidatosGroq = Array.from(new Set([
             this.cachedWorkingGroqModel,
+            ...descubiertos,
             this.config.groqModel,
             "qwen/qwen3-32b",
             "llama-3.3-70b-versatile",
             "llama-3.1-8b-instant"
-        ])).filter(Boolean);
+        ])).filter(Boolean).slice(0, 6);
 
         const maxTok = Math.max(this.config.maxOutputTokens || 550, 450);
 
