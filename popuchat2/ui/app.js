@@ -90,6 +90,12 @@ document.addEventListener('DOMContentLoaded', () => {
         window.speechSynthesis.speak(utterance);
     }
 
+    function stopSpeaking() {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+    }
+
     // ==========================================
     // 3. RECONOCIMIENTO DE VOZ (MICRÓFONO)
     // ==========================================
@@ -98,10 +104,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const recognizer = new SpeechRec();
         recognizer.lang = 'es-AR';
         recognizer.interimResults = false;
+        let isListening = false;
 
         micBtn.addEventListener('click', () => {
-            micBtn.style.color = '#ef4444';
-            recognizer.start();
+            // Detener inmediatamente el relato de voz del bot al presionar el micrófono
+            stopSpeaking();
+
+            if (isListening) {
+                try { recognizer.stop(); } catch (e) {}
+                return;
+            }
+
+            try {
+                isListening = true;
+                micBtn.classList.add('listening');
+                micBtn.style.color = '#ef4444';
+                recognizer.start();
+            } catch (e) {
+                isListening = false;
+                micBtn.classList.remove('listening');
+                micBtn.style.color = '';
+            }
         });
 
         recognizer.onresult = (event) => {
@@ -112,8 +135,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        recognizer.onend = () => { micBtn.style.color = ''; };
-        recognizer.onerror = () => { micBtn.style.color = ''; };
+        recognizer.onend = () => {
+            isListening = false;
+            micBtn.classList.remove('listening');
+            micBtn.style.color = '';
+        };
+        recognizer.onerror = () => {
+            isListening = false;
+            micBtn.classList.remove('listening');
+            micBtn.style.color = '';
+        };
     }
 
     // ==========================================
@@ -563,6 +594,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const text = rawText.trim();
         if (!text) return;
 
+        stopSpeaking();
         if (chatInput) chatInput.value = '';
         if (drawerQueryInput) {
             drawerQueryInput.value = '';
