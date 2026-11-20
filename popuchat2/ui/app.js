@@ -70,8 +70,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const cleanText = text
             .replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '')
             .replace(/<[^>]*>?/gm, '')
-            .replace(/\*\*Fuentes:\*\*.*$/i, '')
-            .replace(/Fuentes:.*$/i, '');
+            .replace(/\*\*Fuentes:\*\*[\s\S]*$/i, '')
+            .replace(/📚?\s*Fuentes:[\s\S]*$/i, '')
+            .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+            .replace(/https?:\/\/\S+/g, '')
+            .replace(/^\s*#{1,6}\s*/gm, '')
+            .replace(/^\s*[-*•]\s+/gm, '')
+            .replace(/^\s*>\s?/gm, '')
+            .replace(/[*_~`#|]+/g, '')
+            .replace(/\s*\n+\s*/g, '. ')
+            .replace(/([.!?:;,])\s*\.\s*/g, '$1 ')
+            .replace(/\s{2,}/g, ' ')
+            .trim();
 
         const utterance = new SpeechSynthesisUtterance(cleanText);
         if (botVoice) utterance.voice = botVoice;
@@ -193,6 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (configToggle) configToggle.addEventListener('click', openDrawer);
     if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeDrawer);
     if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeDrawer);
+    setTimeout(openDrawer, 0);
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && configDrawer && configDrawer.classList.contains('active')) {
@@ -233,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Preguntas Sugeridas del Panel de Cátedra (Imagen 1)
-    document.querySelectorAll('.gradio-suggestion-btn').forEach(btn => {
+    document.querySelectorAll('.suggestion-chip').forEach(btn => {
         btn.addEventListener('click', () => {
             const texto = btn.getAttribute('data-suggest');
             if (texto) {
@@ -305,8 +316,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const placeholder = document.getElementById('drawerChatPlaceholder');
             if (placeholder) placeholder.style.display = 'none';
             const mUser = document.createElement('div');
-            mUser.className = 'mirror-msg-user';
-            mUser.textContent = text;
+            mUser.className = 'chat-row user';
+            mUser.innerHTML = `<div class="chat-bubble">${escapeHtml(text)}</div>`;
             drawerChatMirror.appendChild(mUser);
         }
         scrollToBottom();
@@ -334,8 +345,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (drawerChatMirror) {
             const mBot = document.createElement('div');
-            mBot.className = 'mirror-msg-bot';
-            mBot.innerHTML = `${formattedText}${metaHtml}`;
+            mBot.className = 'chat-row bot';
+            mBot.innerHTML = `<div class="msg-avatar"><img src="/img/mascot.png" alt="PopuChat"></div><div class="chat-bubble">${formattedText}${metaHtml}</div>`;
             drawerChatMirror.appendChild(mBot);
         }
 
@@ -345,9 +356,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function formatBotResponse(raw) {
         if (!raw) return '';
-        let escaped = escapeHtml(raw);
-        let html = escaped.replace(/\n/g, '<br>');
+        const lineas = escapeHtml(raw).split('\n');
+        let html = '';
+        let enLista = false;
+        lineas.forEach(linea => {
+            const item = linea.match(/^\s*(?:[-*•]|\d+[.)])\s+(.*)$/);
+            if (item) {
+                if (!enLista) { html += '<ul>'; enLista = true; }
+                html += `<li>${item[1]}</li>`;
+                return;
+            }
+            if (enLista) { html += '</ul>'; enLista = false; }
+            const titulo = linea.match(/^\s*#{1,6}\s+(.*)$/);
+            html += titulo ? `<strong>${titulo[1]}</strong><br>` : `${linea}<br>`;
+        });
+        if (enLista) html += '</ul>';
+        html = html.replace(/(<br>)+$/, '').replace(/<br><ul>/g, '<ul>');
         html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        html = html.replace(/(^|[\s>])\*([^*\n<]+)\*/g, '$1<em>$2</em>');
 
         const fuentesRegex = /(?:\*\*Fuentes:\*\*|Fuentes:)\s*(.+)$/i;
         html = html.replace(fuentesRegex, (match, p1) => {
@@ -364,6 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let typingEl = null;
+    let mirrorTypingEl = null;
     function showTyping(show) {
         if (show) {
             if (!typingEl && chatMessages) {
@@ -380,9 +407,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             }
             if (chatMessages && typingEl) chatMessages.appendChild(typingEl);
+            if (drawerChatMirror) {
+                if (!mirrorTypingEl) {
+                    mirrorTypingEl = document.createElement('div');
+                    mirrorTypingEl.className = 'chat-row bot';
+                    mirrorTypingEl.innerHTML = `<div class="msg-avatar"><img src="/img/mascot.png" alt="PopuChat"></div><div class="chat-bubble"><span class="typing-dots"><span></span><span></span><span></span></span></div>`;
+                }
+                drawerChatMirror.appendChild(mirrorTypingEl);
+            }
             scrollToBottom();
-        } else if (typingEl && typingEl.parentNode) {
-            typingEl.parentNode.removeChild(typingEl);
+        } else {
+            if (typingEl && typingEl.parentNode) typingEl.parentNode.removeChild(typingEl);
+            if (mirrorTypingEl && mirrorTypingEl.parentNode) mirrorTypingEl.parentNode.removeChild(mirrorTypingEl);
         }
     }
 
@@ -422,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!fragmentos || fragmentos.length === 0) {
                 fragmentosTablaBody.innerHTML = `
                     <tr>
-                        <td colspan="4" class="empty-table-cell">Sin fragmentos recuperados para esta consulta (modo Solo IA general o similitud &lt; 0.35).</td>
+                        <td colspan="4" class="empty-table-cell">Sin fragmentos recuperados para esta consulta (similitud &lt; 0.35).</td>
                     </tr>
                 `;
             } else {
@@ -480,7 +516,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!text) return;
 
         if (chatInput) chatInput.value = '';
-        if (drawerQueryInput) drawerQueryInput.value = '';
+        if (drawerQueryInput) {
+            drawerQueryInput.value = '';
+            drawerQueryInput.style.height = 'auto';
+        }
 
         appendUserMessage(text);
         showTyping(true);
@@ -554,6 +593,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     if (drawerQueryInput) {
+        const ajustarAltura = () => {
+            drawerQueryInput.style.height = 'auto';
+            drawerQueryInput.style.height = Math.min(drawerQueryInput.scrollHeight, 160) + 'px';
+        };
+        drawerQueryInput.addEventListener('input', ajustarAltura);
         drawerQueryInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
@@ -739,9 +783,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (drawerChatMirror) {
                 drawerChatMirror.innerHTML = `
                     <div class="drawer-chat-placeholder" id="drawerChatPlaceholder">
-                        <div style="font-size: 46px; margin-bottom: 8px;">🎓</div>
-                        <h4>Consultá la base académica</h4>
-                        <p>Podés escribir una pregunta o usar un ejemplo.</p>
+                        <div class="welcome-avatar"><img src="/img/mascot.png" alt="PopuChat"></div>
+                        <h4>¡Hola! Soy PopuChat 2</h4>
+                        <p>Preguntame lo que necesites sobre carreras, inscripciones, cuotas, sedes u horarios. Podemos charlar: recuerdo lo que me contaste.</p>
                     </div>
                 `;
             }

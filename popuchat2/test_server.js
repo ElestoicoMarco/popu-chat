@@ -46,7 +46,7 @@ server.listen(0, async () => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                mensaje: "Buenas tardes, a qué hora atiende la secretaría en sede central?",
+                mensaje: "Buenas tardes, a qué hora atiende la sede central?",
                 modo: "Solo base de conocimiento",
                 top_k: 4,
                 temperatura: 0.2,

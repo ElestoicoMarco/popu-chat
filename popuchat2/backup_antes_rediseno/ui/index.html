@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popu Chat - IES N° 7 "Populorum Progressio"</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <img src="/img/mascot.png" alt="Popu Chat" class="splash-logo">
+            <h2 class="splash-text">ACTIVANDO POPU-CHAT<span class="dots">...</span></h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <img src="/img/mascot.png" alt="Popu Chat Mascot" class="logo-icon">
+                <div>
+                    <h1>Popu Chat</h1>
+                    <p class="subtitle">Asistente Virtual de Carreras - IES N° 7 "Populorum Progressio" In.Te.La</p>
+                </div>
+            </div>
+            
+            <div class="header-buttons">
+                <!-- Botón de Engranaje (Abre Panel Oculto Oficial de Diagnóstico y Cátedra) -->
+                <button id="configToggle" class="config-toggle" aria-label="Configuración y Diagnóstico RAG" title="Configuración de Inferencia y Diagnóstico RAG">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </button>
+                <button id="voiceToggle" class="voice-toggle" aria-label="Activar Voz" title="Activar Voz">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <line x1="23" y1="9" x2="17" y2="15"></line>
+                            <line x1="17" y1="9" x2="23" y2="15"></line>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </header>
+
+        <main class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    <div class="avatar"><img src="/img/mascot.png" alt="Bot"></div>
+                    <div class="bubble initial-message">
+                        <p>¡Hola! Soy el asistente virtual del <strong>IES N° 7 "Populorum Progressio"</strong>.</p>
+                        
+                        <details class="chat-accordion">
+                            <summary>
+                                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                                Guía de Uso
+                            </summary>
+                            <div class="accordion-content" style="font-size: 0.9em; color: var(--text-color); line-height: 1.5;">
+                                <p style="margin-bottom: 8px;"><strong>Podés hacerme preguntas en lenguaje natural sobre:</strong></p>
+                                <ul style="padding-left: 20px; margin-bottom: 10px;">
+                                    <li style="margin-bottom: 4px;"><strong>1. Oferta Académica y Carreras:</strong> <i>"¿Qué carreras tienen?", "Info de Mecatrónica"</i></li>
+                                    <li style="margin-bottom: 4px;"><strong>2. Sedes y Anexos:</strong> <i>"¿Dónde queda la sede San Pedro?", "Info de Sede Central"</i></li>
+                                    <li style="margin-bottom: 4px;"><strong>3. Tesorería, Cuotas y Aranceles:</strong> <i>"¿A qué hora atiende tesorería?", "¿Valor de la cuota?"</i></li>
+                                    <li style="margin-bottom: 4px;"><strong>4. Trámites e Inscripciones:</strong> <i>"¿Cuáles son los requisitos de ingreso?"</i></li>
+                                    <li style="margin-bottom: 4px;"><strong>5. Cursado y Aulas:</strong> <i>"¿Cómo están distribuidas las aulas?"</i></li>
+                                    <li style="margin-bottom: 4px;"><strong>6. Contacto, Ubicación y Horarios:</strong> <i>"Pasame el teléfono", "¿A qué hora abren?"</i></li>
+                                    <li><strong>7. Interacciones Conversacionales:</strong> <i>"¡Hola!", "Muchas gracias", etc.</i></li>
+                                </ul>
+                                <p>Simplemente escribí tu consulta en la caja de texto de abajo o usá el micrófono.</p>
+                            </div>
+                        </details>
+
+                        <details class="chat-accordion">
+                            <summary>
+                                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                                Oferta Académica
+                            </summary>
+                            <div class="accordion-content">
+                                <div class="career-category" style="margin-bottom: 15px;">
+                                    <h3 style="color: var(--primary); margin: 0 0 5px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 8px; font-size: 1.1em; display: flex; align-items: center; gap: 8px;">
+                                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                        Sede Casa Central
+                                    </h3>
+                                </div>
+                                
+                                <div class="career-category">
+                                    <h4><svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg> Salud y Cuidado</h4>
+                                    <ul>
+                                        <li>Laboratorio en Análisis Clínicos (3 años)</li>
+                                        <li>Hemoterapia (3 años)</li>
+                                        <li>Acompañamiento Terapéutico (3 años)</li>
+                                        <li>Niñez, Adolescencia y Familia (3 años)</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="career-category">
+                                    <h4><svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><line x1="3" x2="21" y1="9" y2="9"></line><line x1="9" x2="9" y1="21" y2="9"></line></svg> Tecnología y Gestión</h4>
+                                    <ul>
+                                        <li>Ciencia de Datos e Inteligencia Artificial (3 años)</li>
+                                        <li>Administración de Empresas (3 años)</li>
+                                        <li>Administración Pública (3 años)</li>
+                                        <li>Gestión Jurídica (3 años)</li>
+                                        <li>Gestión Ambiental (3 años)</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="career-category">
+                                     <h4><svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg> Educación (4 años)</h4>
+                                     <ul>
+                                         <li>Prof. en Ciencia Política</li>
+                                         <li>Prof. de Educación Especial<br><small style="opacity: 0.8; font-size: 0.85em;">(Orientación en Discapacidad Intelectual)</small></li>
+                                         <li>Prof. en Ciencias Sagradas</li>
+                                     </ul>
+                                 </div>
+
+                                 <div class="career-category">
+                                     <h4><svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Sede Perico</h4>
+                                     <ul>
+                                         <li>Prof. en Lengua y Literatura (4 años)</li>
+                                         <li>Administración de Empresas - PyME (3 años)</li>
+                                         <li>Tecnicatura en Mecatrónica (3 años)</li>
+                                     </ul>
+                                 </div>
+                                 
+                                 <div class="career-category">
+                                     <h4><svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Sede San Pedro</h4>
+                                     <ul>
+                                         <li>Prof. de Educación Especial (4 años)<br><small style="opacity: 0.8; font-size: 0.85em;">(Orientación en Sordos e Hipoacúsicos)</small></li>
+                                         <li>Profesorado en Historia (4 años)</li>
+                                         <li>Desarrollo de Software (3 años)</li>
+                                     </ul>
+                                 </div>
+                                
+                                <div class="career-category">
+                                    <h4><svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Sede Libertador</h4>
+                                    <ul>
+                                        <li>Profesorado en Psicología (4 años)</li>
+                                        <li>Automatización y Robótica (3 años)</li>
+                                        <li>Acompañamiento Terapéutico (3 años)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="chat-accordion">
+                            <summary>
+                                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+                                Consultas Frecuentes
+                            </summary>
+                            <div class="accordion-content btn-list">
+                                <button class="quick-btn inline-quick-btn" data-msg="¿De qué trata cada carrera?">Perfil profesional de carreras</button>
+                                <button class="quick-btn inline-quick-btn" data-msg="¿Qué sedes y anexos tienen?">Información de Sedes</button>
+
+                                <button class="quick-btn inline-quick-btn" data-msg="¿Qué materias tiene cada carrera?">Materias y planes de estudio</button>
+                                <button class="quick-btn inline-quick-btn" data-msg="¿Cuál es la salida laboral de cada carrera?">Salida laboral en Jujuy</button>
+                                <button class="quick-btn inline-quick-btn" data-msg="¿Cuáles son los horarios de atención y dónde quedan?">Horarios y ubicación de la Sede</button>
+                                <button class="quick-btn inline-quick-btn" data-msg="Requisitos de inscripción">Requisitos de inscripción</button>
+                                <button class="quick-btn inline-quick-btn" data-msg="¿Cuándo empieza el curso de ingreso?">Curso de Ingreso 2027</button>
+                                <button class="quick-btn inline-quick-btn" data-msg="¿Cómo funciona el acceso a becas?">Información de Becas</button>
+                                <button class="quick-btn inline-quick-btn" data-msg="¿Cuál es el valor de la cuota?">Valores de Cuota y Matrícula</button>
+                                <button class="quick-btn inline-quick-btn" data-msg="¿Cuál es la distribución general de aulas?">Distribución de Aulas</button>
+                                <button class="quick-btn inline-quick-btn" data-msg="¿Cuáles son los aranceles de trámites en Tesorería?">Trámites y Aranceles</button>
+                                <button class="quick-btn inline-quick-btn" data-msg="¿Cuáles son los requisitos para un duplicado de título?">Duplicado de Título</button>
+                            </div>
+                        </details>
+                        
+                        <p class="bot-prompt">¿En qué te puedo asesorar hoy?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-actions" id="quickActions">
+                <div class="quick-actions-track">
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Qué tecnicaturas dictan?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg> Tecnicaturas
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Qué profesorados dictan?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg> Profesorados
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿De qué trata Ciencia de Datos?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg> Ciencia de Datos
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Qué materias tiene Niñez, Adolescencia y Familia?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> Niñez y Familia
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Cuál es la salida laboral de Laboratorio de Análisis Clínicos?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2v4l-6 11a2 2 0 0 0 1.7 3h14.6a2 2 0 0 0 1.7-3L15 6V2"></path><path d="M9 22v-4h6v4"></path><path d="M9 7h6"></path><path d="M12 12v.01"></path></svg> Laboratorio
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿De qué trata Hemoterapia?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"></path></svg> Hemoterapia
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿De qué trata Acompañamiento Terapéutico?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"></path></svg> Acompañamiento
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Qué materias tiene Administración de Empresas?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg> Administración
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿De qué trata Administración Pública?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg> Adm. Pública
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Cuáles son los valores de cuotas y matrícula?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> Cuotas y Matrícula
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Cuándo empieza el curso de ingreso?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Ingreso 2027
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Cómo funciona el acceso a becas?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg> Becas
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Cuál es la distribución de aulas?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Aulas
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Cuáles son los aranceles de tesorería?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Trámites
+                    </button>
+                    
+                    <!-- Duplicado para efecto Marquee / Tren infinito -->
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Qué tecnicaturas dictan?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg> Tecnicaturas
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Qué profesorados dictan?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg> Profesorados
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿De qué trata Ciencia de Datos?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg> Ciencia de Datos
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Qué materias tiene Niñez, Adolescencia y Familia?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> Niñez y Familia
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Cuál es la salida laboral de Laboratorio de Análisis Clínicos?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2v4l-6 11a2 2 0 0 0 1.7 3h14.6a2 2 0 0 0 1.7-3L15 6V2"></path><path d="M9 22v-4h6v4"></path><path d="M9 7h6"></path><path d="M12 12v.01"></path></svg> Laboratorio
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿De qué trata Hemoterapia?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"></path></svg> Hemoterapia
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿De qué trata Acompañamiento Terapéutico?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"></path></svg> Acompañamiento
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Qué materias tiene Administración de Empresas?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg> Administración
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿De qué trata Administración Pública?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg> Adm. Pública
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Cuáles son los valores de cuotas y matrícula?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> Cuotas y Matrícula
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Cuándo empieza el curso de ingreso?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Ingreso 2027
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Cómo funciona el acceso a becas?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg> Becas
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Cuál es la distribución de aulas?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Aulas
+                    </button>
+                    <button class="quick-btn" style="display:flex; align-items:center; gap:6px;" data-msg="¿Cuáles son los aranceles de tesorería?">
+                        <svg class="svg-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Trámites
+                    </button>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" class="chat-input" placeholder="Escribí tu consulta..." autofocus>
+                <button id="micBtn" class="mic-btn" title="Hablar" aria-label="Hablar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon-small">
+                        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                        <line x1="12" y1="19" x2="12" y2="22"></line>
+                    </svg>
+                </button>
+                <button id="sendBtn" class="send-btn">➤</button>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026-2027 IES N° 7 "Populorum Progressio" - INTELA | Desarrollado por Nortechly Software. All rights reserved.</p>
+        </footer>
+    </div>
+
+    
+    <!-- BACKDROP PARA CERRAR EL PANEL OCULTO -->
+    <div id="drawerBackdrop" class="drawer-backdrop"></div>
+
+        <!-- PANEL OCULTO DESPLEGABLE (CLON FUNCIONAL COMPLETO DE LAS 5 VISTAS DE CÁTEDRA CON PALETA POPU 1) -->
+    <aside id="configDrawer" class="drawer">
+        <!-- Hero Institucional (Imágenes 1, 2 y 3 con paleta Popu 1) -->
+        <div class="drawer-hero">
+            <div class="drawer-hero-top">
+                <span class="drawer-hero-chip">IA generativa + PLN + RAG</span>
+                <div class="drawer-hero-actions">
+                    <button type="button" id="btnOpenSettingsTab" class="drawer-settings-link" title="Configuración">
+                        ⚙️ Configuración
+                    </button>
+                    <button type="button" id="closeDrawerBtn" class="close-btn" aria-label="Cerrar panel">&times;</button>
+                </div>
+            </div>
+            <h2 class="drawer-hero-title">PopuChat 2</h2>
+            <p class="drawer-hero-subtitle">
+                Asistente Académico Inteligente del IES N° 7 "Populorum Progressio" - In.Te.La. Motor híbrido de PLN + RAG + IA Generativa respaldado en reglamentos oficiales.
+            </p>
+        </div>
+
+        <!-- Barra de Pestañas (Conversación | Base de conocimiento | Registro y evaluación | Configuración) -->
+        <nav class="drawer-tabs" id="drawerTabs">
+            <button type="button" class="drawer-tab active" data-tab="tabConversacion">Conversación</button>
+            <button type="button" class="drawer-tab" data-tab="tabBaseConocimiento">Base de conocimiento</button>
+            <button type="button" class="drawer-tab" data-tab="tabRegistroEvaluacion">Registro y evaluación</button>
+            <button type="button" class="drawer-tab" data-tab="tabConfiguracion">⚙️ Configuración</button>
+        </nav>
+
+        <div class="drawer-content">
+            <!-- =================================================================
+                 PESTAÑA 1: CONVERSACIÓN, CONFIGURACIÓN Y ANÁLISIS PLN/RAG (Imágenes 1 y 5)
+                 ================================================================= -->
+            <div id="tabConversacion" class="drawer-tab-pane active">
+                <div class="gradio-grid-conv">
+                    <!-- Columna Izquierda: Configuración + Preguntas Sugeridas (Imagen 1) -->
+                    <div class="gradio-card">
+                        <h4 class="gradio-card-title">Configuración</h4>
+                        <p class="gradio-card-desc">Elegí cómo debe responder el modelo.</p>
+
+                        <!-- Modo de respuesta -->
+                        <div class="gradio-field">
+                            <span class="gradio-badge-label">Modo de respuesta</span>
+                            <div class="mode-pills" id="modeSelector">
+                                <button type="button" class="mode-pill active" data-mode="Solo base de conocimiento">
+                                    <span class="radio-dot"></span> Solo base de conocimiento
+                                </button>
+                                <button type="button" class="mode-pill" data-mode="Base + conocimiento general">
+                                    <span class="radio-dot"></span> Base + conocimiento general
+                                </button>
+                                <button type="button" class="mode-pill" data-mode="Solo IA general">
+                                    <span class="radio-dot"></span> Solo IA general
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Sliders de parámetros -->
+                        <div class="slider-group">
+                            <div class="slider-item">
+                                <div class="slider-header">
+                                    <span class="gradio-badge-label">Fragmentos a recuperar</span>
+                                    <div class="slider-num-box">
+                                        <span class="slider-val" id="topKVal">4</span>
+                                        <button type="button" class="slider-reset-btn" data-target="topKSlider" data-default="4" title="Restaurar valor">↺</button>
+                                    </div>
+                                </div>
+                                <input type="range" id="topKSlider" class="custom-range" min="1" max="8" step="1" value="4">
+                                <div class="slider-minmax"><span>1</span><span>8</span></div>
+                            </div>
+
+                            <div class="slider-item">
+                                <div class="slider-header">
+                                    <span class="gradio-badge-label">Creatividad</span>
+                                    <div class="slider-num-box">
+                                        <span class="slider-val" id="tempVal">0.3</span>
+                                        <button type="button" class="slider-reset-btn" data-target="tempSlider" data-default="0.3" title="Restaurar valor">↺</button>
+                                    </div>
+                                </div>
+                                <input type="range" id="tempSlider" class="custom-range" min="0" max="1" step="0.1" value="0.3">
+                                <div class="slider-minmax"><span>0</span><span>1</span></div>
+                            </div>
+
+                            <div class="slider-item">
+                                <div class="slider-header">
+                                    <span class="gradio-badge-label">Extensión máxima</span>
+                                    <div class="slider-num-box">
+                                        <span class="slider-val" id="maxTokensVal">350</span>
+                                        <button type="button" class="slider-reset-btn" data-target="maxTokensSlider" data-default="350" title="Restaurar valor">↺</button>
+                                    </div>
+                                </div>
+                                <input type="range" id="maxTokensSlider" class="custom-range" min="100" max="700" step="50" value="350">
+                                <div class="slider-minmax"><span>100</span><span>700</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Preguntas sugeridas oficiales (Imagen 1) -->
+                        <div class="gradio-suggestions">
+                            <h5 class="gradio-sub-heading">Preguntas sugeridas</h5>
+                            <button type="button" class="gradio-suggestion-btn" data-suggest="¿Qué carreras técnicas y profesorados ofrece el Populorum y cuánto duran?">
+                                ¿Qué carreras técnicas y profesorados ofrece el Populorum y cuánto duran?
+                            </button>
+                            <button type="button" class="gradio-suggestion-btn" data-suggest="Buenas tardes, ¿qué requisitos y papeles necesito para inscribirme en el IES 7?">
+                                Buenas tardes, ¿qué requisitos y papeles necesito para inscribirme en el IES 7?
+                            </button>
+                            <button type="button" class="gradio-suggestion-btn" data-suggest="¿Cuáles son los valores de cuotas mensuales y matrícula?">
+                                ¿Cuáles son los valores de cuotas mensuales y matrícula?
+                            </button>
+                            <button type="button" class="gradio-suggestion-btn" data-suggest="HACE RATO QUIERO SABER HASTA CUÁNDO PUEDO ANOTARME A LA MESA DE EXAMEN FINAL!!!">
+                                HACE RATO QUIERO SABER HASTA CUÁNDO PUEDO ANOTARME A LA MESA DE EXAMEN FINAL!!!
+                            </button>
+                            <p class="gradio-small-note">
+                                En modo estricto, el chatbot evita responder información institucional que no figure en los documentos.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha: Vista de Chat + Acordeón Ver cómo procesó la consulta (Imágenes 1 y 5) -->
+                    <div class="gradio-right-col">
+                        <div class="gradio-card">
+                            <div id="drawerChatMirror" class="drawer-chat-mirror">
+                                <div class="drawer-chat-placeholder" id="drawerChatPlaceholder">
+                                    <div style="font-size: 46px; margin-bottom: 8px;">🎓</div>
+                                    <h4>Consultá la base académica</h4>
+                                    <p>Podés escribir una pregunta o usar un ejemplo.</p>
+                                </div>
+                            </div>
+                            <div class="drawer-input-box">
+                                <textarea id="drawerQueryInput" rows="2" placeholder="Escribí tu consulta..."></textarea>
+                            </div>
+                            <div class="drawer-action-row">
+                                <button type="button" id="btnResetMemory" class="gradio-btn-secondary">
+                                    Nueva conversación
+                                </button>
+                                <button type="button" id="btnDrawerSend" class="gradio-btn-primary">
+                                    Enviar ➜
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Acordeón: Ver cómo procesó la consulta (Imagen 5) -->
+                <details class="gradio-process-accordion" id="processAccordion" open>
+                    <summary>Ver cómo procesó la consulta</summary>
+                    <div class="gradio-process-body">
+                        <h4 class="gradio-analysis-title">Análisis de la consulta</h4>
+                        <div class="gradio-analysis-inline">
+                            <span><strong>Texto normalizado:</strong> <code id="diagNormalized">-</code></span>
+                            <span><strong>Tono:</strong> <code id="diagTone" class="tone-badge tone-neutral">neutral</code></span>
+                            <span><strong>Saludo detectado:</strong> <code id="diagGreeting">ninguno</code></span>
+                            <span><strong>Intenciones:</strong> <span id="diagIntents">No detectadas</span></span>
+                            <span><strong>Fuentes usadas:</strong> <span id="diagSources">Ninguna</span></span>
+                        </div>
+
+                        <!-- Tabla de 4 Columnas Exacta de la Imagen 5 -->
+                        <div class="gradio-table-wrapper">
+                            <table class="gradio-dataframe" id="tablaFragmentos">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 22%;">Fuente</th>
+                                        <th style="width: 10%;">Fragmento</th>
+                                        <th style="width: 10%;">Similitud</th>
+                                        <th style="width: 58%;">Contenido</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="fragmentosTablaBody">
+                                    <tr>
+                                        <td colspan="4" class="empty-table-cell">Todavía no se procesó ningún mensaje.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Contenedor de tarjetas RAG sincronizado para compatibilidad con tests -->
+                        <div id="ragItemsContainer" class="rag-items" style="display:none;"></div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- =================================================================
+                 PESTAÑA 2: BASE DE CONOCIMIENTO (Imagen 2)
+                 ================================================================= -->
+            <div id="tabBaseConocimiento" class="drawer-tab-pane">
+                <div class="gradio-grid-kb">
+                    <!-- Columna Izquierda: Agregar documentos -->
+                    <div class="gradio-card">
+                        <h4 class="gradio-card-title">Agregar documentos</h4>
+                        <p class="gradio-card-desc">Formatos admitidos: PDF, TXT, MD y DOCX.</p>
+                        <p class="gradio-card-desc">Los PDF deben contener texto seleccionable. Los documentos escaneados necesitarían OCR.</p>
+
+                        <div class="gradio-upload-wrapper">
+                            <span class="gradio-badge-label">📄 Documentos</span>
+                            <label for="kbFileInput" class="gradio-dropzone" id="kbDropzone">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                <span>Coloque el archivo aquí</span>
+                                <small>- o -</small>
+                                <span>Haga clic para cargar</span>
+                                <input type="file" id="kbFileInput" multiple accept=".txt,.md,.pdf,.docx" style="display:none;">
+                            </label>
+                            <div id="kbSelectedFilesList" class="kb-files-staged"></div>
+                        </div>
+
+                        <label class="gradio-checkbox-row">
+                            <input type="checkbox" id="chkConservarPopu" checked>
+                            <span>Conservar la base oficial de PopuChat</span>
+                        </label>
+
+                        <div class="drawer-action-row" style="margin-top: 12px;">
+                            <button type="button" id="btnProcesarDocs" class="gradio-btn-primary">
+                                Procesar documentos
+                            </button>
+                            <button type="button" id="btnRestaurarDocs" class="gradio-btn-secondary">
+                                Restaurar base PopuChat
+                            </button>
+                        </div>
+
+                        <p id="estadoBaseMsg" class="gradio-kb-status">La base oficial de PopuChat está activa.</p>
+                    </div>
+
+                    <!-- Columna Derecha: Documentos activos -->
+                    <div class="gradio-card">
+                        <h4 class="gradio-card-title">Documentos activos</h4>
+                        <div class="gradio-table-wrapper">
+                            <table class="gradio-dataframe" id="tablaDocumentosActivos">
+                                <thead>
+                                    <tr>
+                                        <th>Fuente</th>
+                                        <th style="width: 130px;">Caracteres</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablaDocumentosBody">
+                                    <tr>
+                                        <td>Oferta académica y carreras - IES N° 7</td>
+                                        <td>5546</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Inscripciones y requisitos 2027 - IES N° 7</td>
+                                        <td>2301</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Aranceles, cuotas y becas - IES N° 7</td>
+                                        <td>2881</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sedes, horarios y contacto - IES N° 7</td>
+                                        <td>1917</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Reglamento académico y exámenes finales - IES N° 7</td>
+                                        <td>2477</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =================================================================
+                 PESTAÑA 3: REGISTRO Y EVALUACIÓN (Imagen 3)
+                 ================================================================= -->
+            <div id="tabRegistroEvaluacion" class="drawer-tab-pane">
+                <div class="gradio-card">
+                    <h4 class="gradio-card-title">Registro de uso</h4>
+                    <p class="gradio-card-desc">Cada pregunta conserva:</p>
+                    <ul class="gradio-audit-list">
+                        <li>fecha y hora;</li>
+                        <li>texto original y normalizado;</li>
+                        <li>tono e intenciones;</li>
+                        <li>modo utilizado;</li>
+                        <li>fuentes;</li>
+                        <li>respuesta.</li>
+                    </ul>
+                    <p class="gradio-card-desc">Esto permite evaluar errores y mejorar el sistema.</p>
+
+                    <button type="button" id="btnGenerarCsv" class="gradio-btn-primary gradio-btn-full">
+                        Generar CSV del registro
+                    </button>
+
+                    <div class="gradio-download-box">
+                        <span class="gradio-badge-label">📄 Descargar registro</span>
+                        <div class="gradio-file-row">
+                            <span id="csvFileNameLabel">registro_consultas_chatbot_rag.csv</span>
+                            <button type="button" id="btnDownloadCsv" class="gradio-file-download-link">
+                                <span id="csvFileSizeLabel">0.1 KB ↓</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =================================================================
+                 PESTAÑA 4: CONFIGURACIÓN VISUAL, SCREEN STUDIO Y API KEY (Imagen 4)
+                 ================================================================= -->
+            <div id="tabConfiguracion" class="drawer-tab-pane">
+                <div class="gradio-card">
+                    <h4 class="gradio-card-title">⚙️ Configuración</h4>
+
+                    <div class="settings-block">
+                        <h5>Tema de visualización</h5>
+                        <div class="theme-btn-group" id="themeSelectorGroup">
+                            <button type="button" class="theme-btn" data-theme="light">☀️ Light</button>
+                            <button type="button" class="theme-btn active" data-theme="dark">🌙 Dark</button>
+                            <button type="button" class="theme-btn" data-theme="system">🖥️ System</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-block">
+                        <h5>Idioma</h5>
+                        <select id="langSelector" class="gradio-select">
+                            <option value="es" selected>Español</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+
+                    <div class="settings-block">
+                        <h5>Aplicación web progresiva</h5>
+                        <p class="gradio-card-desc">PopuChat 2 Progressive Web App se encuentra habilitada en este entorno.</p>
+                    </div>
+
+                    <div class="settings-block">
+                        <h5>Screen Studio <span class="beta-pill">BETA</span></h5>
+                        <p class="gradio-card-desc">
+                            Screen Studio allows you to record your screen and generates a video of your app with automatically adding zoom in and zoom out effects as well as trimming the video to remove the prediction time.
+                        </p>
+                        <label class="gradio-checkbox-row">
+                            <input type="checkbox" checked>
+                            <span>Include automatic zoom in/out</span>
+                        </label>
+                        <label class="gradio-checkbox-row">
+                            <input type="checkbox" checked>
+                            <span>Include automatic video trimming</span>
+                        </label>
+                        <div style="margin-top: 10px;">
+                            <button type="button" id="btnStartRecording" class="gradio-btn-secondary">
+                                ⊙ Start Recording
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="settings-block">
+                        <h5>Credencial Gemini API (Opcional / Render)</h5>
+                        <p class="gradio-card-desc">Si deseas usar una API Key de Google AI Studio personalizada desde tu navegador:</p>
+                        <div style="display: flex; gap: 8px; margin-top: 8px;">
+                            <input type="password" id="geminiApiKeyInput" class="gradio-input" placeholder="Pega tu API Key de Gemini (AIzaSy...)">
+                            <button type="button" id="btnSaveApiKey" class="gradio-btn-primary" style="padding: 8px 18px;">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="drawer-footer-bar">
+            <span>Usar vía API 🚀</span>
+            <span>•</span>
+            <span>Construido con PopuChat 2 🎓</span>
+            <span>•</span>
+            <button type="button" id="btnFooterSettings" class="drawer-footer-link">Configuración ⚙️</button>
+        </div>
+    </aside>
+
+    <script src="csv_exporter.js"></script>
+    <script src="app.js"></script>
+
+
+    <!-- Modal de Bloqueo de Testing / Nortechly Software -->
+    <div id="testingModal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="modal-header-tag">PRUEBAS FINALIZADAS EXITOSAMENTE</div>
+            <div class="modal-header-subtag">Gracias por tu participación en la validación de esta aplicación.</div>
+
+            <div class="modal-logo-wrapper">
+                <img src="/img/nortechly_logo.png" alt="NORTECHLY" class="modal-logo-img" onerror="this.style.display='none'; document.getElementById('modal-logo-text').style.display='block';">
+                <div id="modal-logo-text" class="modal-logo-fallback" style="display:none;">NORTECHLY</div>
+                <div class="modal-company-title">DIGITAL SOLUTIONS</div>
+                <div class="modal-company-tagline">Data Science & Software Development</div>
+            </div>
+            
+            <div class="modal-divider"></div>
+            
+            <h3 class="modal-section-title">NUESTROS SERVICIOS INTEGRALES</h3>
+            <ul class="modal-services-list">
+                <li><span>•</span> Implementamos Páginas Web</li>
+                <li><span>•</span> E-commerce</li>
+                <li><span>•</span> Menú Digital con QR</li>
+                <li><span>•</span> Sistemas de Gestión con Base de Datos</li>
+                <li><span>•</span> Chatbot con inteligencia por reglas</li>
+                <li><span>•</span> Consultoría de Innovación</li>
+            </ul>
+
+            <div class="modal-footer-grid">
+                <!-- Columna Izquierda: Contacto -->
+                <div class="modal-contact-box">
+                    <h4 class="modal-box-title">CONSULTAS, MEJORAS Y NUEVAS IMPLEMENTACIONES</h4>
+                    <div class="modal-contact-details">
+                        <p>📱 +54 388 5064757 / 388 5726574</p>
+                        <p>📧 nortechly.service@gmail.com</p>
+                        <p>🌐 <a href="https://www.nortechly.com" target="_blank">www.nortechly.com</a></p>
+                        <p>🔗 <a href="https://nortechly-exp.web.app/" target="_blank">nortechly-exp.web.app</a></p>
+                    </div>
+                </div>
+                
+                <!-- Columna Derecha: QR Code -->
+                <div class="modal-qr-box">
+                    <img src="/img/qr_nortechly.png" alt="QR Code" class="modal-qr-img">
+                    <p class="modal-qr-text">Scan WebSite</p>
+                </div>
+            </div>
+            
+            <button id="closeModalBtn" class="modal-btn-finalizar">FINALIZAR</button>
+        </div>
+    </div>
+</body>
+</html>

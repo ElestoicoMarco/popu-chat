@@ -52,6 +52,14 @@ class MemoryManager {
     }
 
     /**
+     * Retorna la última pregunta del usuario (para resolver preguntas de seguimiento).
+     */
+    ultimaPreguntaUsuario() {
+        const previos = this.historial.filter(m => m.role === "user");
+        return previos.length > 0 ? previos[previos.length - 1].content : null;
+    }
+
+    /**
      * Indica si ya se emitió un saludo previo en la sesión actual.
      */
     yaSaludado() {

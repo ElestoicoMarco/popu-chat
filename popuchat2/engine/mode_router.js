@@ -32,6 +32,16 @@ const { GeminiClient } = typeof module !== "undefined" && module.exports
     ? require("./gemini_client")
     : window.GeminiClientModule;
 
+const CONTEXTO_SOCIAL = "Mensaje de cortesía (saludo, agradecimiento, presentación o despedida). No hace falta información " +
+    "institucional: respondé breve, cálido y natural, presentate como PopuChat 2 si corresponde y ofrecé ayuda sobre carreras, " +
+    "inscripciones, cuotas, sedes u horarios. No des datos institucionales ni cites fuentes.";
+
+function esPreguntaDeSeguimiento(normalizado) {
+    const palabras = normalizado.split(/\s+/).filter(Boolean);
+    return palabras.length <= 7 &&
+        /^(y|tambien)\b|\b(eso|esa|ese|esta|este|ahi|alli|dura|duracion|cuesta|sale|cuota|queda|horario|turno|requisitos|materias|coordinador)\b/.test(normalizado);
+}
+
 class PopuChatEngine {
     constructor(indiceRAG, apiKey = null) {
         this.indiceRAG = indiceRAG;
@@ -75,9 +85,12 @@ class PopuChatEngine {
         const intenciones = IntentDetector.detectarIntenciones(pregunta);
 
         // 5. CAPA RAG: Búsqueda Semántica en Documentos
-        let resultadosRAG = [];
-        if (modo !== "Solo IA general") {
-            resultadosRAG = this.indiceRAG.buscar(normalizado);
+        // Todos los modos se basan en la base institucional (datos de PopuChat 1)
+        let resultadosRAG = this.indiceRAG.buscar(normalizado);
+        const previa = this.memoria.ultimaPreguntaUsuario();
+        if (previa && esPreguntaDeSeguimiento(normalizado)) {
+            const conContexto = this.indiceRAG.buscar(TextProcessor.normalizarTexto(`${previa} ${pregunta}`));
+            if (conContexto.length > 0) resultadosRAG = conContexto;
         }
 
         const fuentes = obtenerFuentesUnicas(resultadosRAG);
@@ -96,16 +109,14 @@ class PopuChatEngine {
             respuestaFinal = `Soy PopuChat 2, el asistente virtual del IES N° 7 "Populorum Progressio" - INTELA. Estoy programado con tecnología de Procesamiento de Lenguaje Natural, motor RAG y modelos generativos de IA para brindarte información verídica y actualizada sobre nuestra institución.`;
         } else if (!tieneIntencionInformativa && intenciones.includes("despedida")) {
             respuestaFinal = `¡Hasta luego! Que tengas un excelente día. Cualquier otra consulta que tengas sobre el IES N° 7, aquí estaré para ayudarte. 👋`;
-        } else if (modo === "Solo base de conocimiento" && resultadosRAG.length === 0) {
+        } else if ((modo === "Solo base de conocimiento" || modo === "Solo IA general") && resultadosRAG.length === 0) {
             respuestaFinal = "No encontré información suficiente sobre esa consulta en la base de conocimiento institucional. Podés reformular la pregunta o comunicarte directamente con Secretaría Académica del IES N° 7.";
             if (tono === "molesto") {
                 respuestaFinal = "Lamento sinceramente el inconveniente. " + respuestaFinal;
             }
         } else {
             // 7. CAPA GENERATIVA: Ensamblado de Prompt y Ejecución con Gemini
-            const contextoDocumental = modo === "Solo IA general"
-                ? "El modo actual no utiliza documentos institucionales."
-                : formatearContexto(resultadosRAG);
+            const contextoDocumental = formatearContexto(resultadosRAG);
 
             const systemPrompt = SystemPrompt.obtenerSystemPrompt();
             const promptUsuario = SystemPrompt.construirPromptUsuario({
@@ -129,6 +140,31 @@ class PopuChatEngine {
                 saludo,
                 fuentes,
                 modo
+            });
+        }
+
+        const esMensajeSocial = !tieneIntencionInformativa &&
+            ["saludo", "agradecimiento", "identidad", "despedida"].some(i => intenciones.includes(i));
+        if (esMensajeSocial && this.gemini.tieneApiKeyValida()) {
+            const promptSocial = SystemPrompt.construirPromptUsuario({
+                preguntaOriginal: pregunta,
+                preguntaNormalizada: normalizado,
+                tono,
+                saludo,
+                intenciones,
+                contextoDocumental: CONTEXTO_SOCIAL,
+                modo
+            });
+            respuestaFinal = await this.gemini.generar({
+                systemPrompt: SystemPrompt.obtenerSystemPrompt(),
+                promptUsuario: promptSocial,
+                historialGemini: this.memoria.obtenerHistorialGemini(),
+                contextoDocumental: CONTEXTO_SOCIAL,
+                tono,
+                saludo,
+                fuentes: [],
+                modo,
+                respaldo: respuestaFinal
             });
         }
 

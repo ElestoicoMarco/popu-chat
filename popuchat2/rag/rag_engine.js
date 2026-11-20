@@ -31,13 +31,39 @@ const CLUSTER_SEMANTICO = {
     carrera: ["estudiar", "oferta", "tecnicatura", "profesorado", "titulo", "duracion", "anos", "plan"]
 };
 
+// Palabras funcionales que no aportan contenido a la búsqueda
+const PALABRAS_VACIAS = new Set([
+    "que", "cual", "cuales", "como", "para", "por", "una", "uno", "unos", "unas", "los", "las", "del",
+    "con", "son", "sus", "hay", "tiene", "tienen", "esta", "estan", "este", "esto", "ese", "esa", "eso",
+    "donde", "quien", "quienes", "cuanto", "cuanta", "cuantos", "cuantas", "hago", "puedo", "podes",
+    "quiero", "saber", "decime", "pasame", "dame", "necesito", "hace", "rato", "nadie", "dice", "pregunto",
+    "cuando", "hola", "buenas", "tardes", "noches", "mas", "muy", "sobre", "entre", "ser", "fue", "era", "sin", "pero", "les", "nos", "mis", "tus"
+]);
+
+/**
+ * Reduce plurales simples del español ("inscripciones" -> "inscripcion", "becas" -> "beca").
+ */
+function singularizar(token) {
+    if (token.length <= 4) return token;
+    if (token.endsWith("iones")) return token.slice(0, -2);
+    if (token.endsWith("ces")) return token.slice(0, -3) + "z";
+    if (/[^aeiou]es$/.test(token) && token.length > 5) return token.slice(0, -2);
+    if (token.endsWith("s")) return token.slice(0, -1);
+    if (token.length > 6 && /[ae]n$/.test(token)) return token.slice(0, -1);
+    return token;
+}
+
 /**
  * Tokeniza y expande la representación de términos del texto.
  */
 function extraerTerminos(texto) {
     const limpio = normalizarTexto(texto.replace(/^(passage|query):\s*/i, ""));
-    const tokens = limpio.split(/\s+/).filter(t => t.length > 2);
+    const tokens = limpio.split(/\s+/).filter(t => t.length > 2 && !PALABRAS_VACIAS.has(t));
     const conjunto = new Set(tokens);
+    for (const token of tokens) {
+        conjunto.add(singularizar(token));
+    }
+    const base = new Set(conjunto);
 
     // Expansión semántica para capturar paráfrasis
     for (const token of tokens) {
@@ -51,7 +77,7 @@ function extraerTerminos(texto) {
         }
     }
 
-    return { tokens, conjunto };
+    return { tokens, conjunto, base };
 }
 
 /**
@@ -67,7 +93,7 @@ function calcularSimilitudSemantica(queryTexto, fragmentoTexto) {
     // 1. Coincidencia directa de tokens originales de la pregunta
     let directMatches = 0;
     for (const token of queryInfo.tokens) {
-        if (fragInfo.conjunto.has(token)) {
+        if (fragInfo.conjunto.has(token) || fragInfo.conjunto.has(singularizar(token))) {
             directMatches++;
         }
     }
@@ -95,6 +121,14 @@ function calcularSimilitudSemantica(queryTexto, fragmentoTexto) {
     return Math.min(Math.max(score, 0.0), 1.0);
 }
 
+/**
+ * Texto usado para puntuar un fragmento: su contenido más las palabras clave de su sección
+ * (las mismas que usa PopuChat 1 para detectar la intención). Las palabras clave no se envían al modelo.
+ */
+function textoIndexable(fragmento) {
+    return fragmento.palabras_clave ? `${fragmento.texto} ${fragmento.palabras_clave}` : fragmento.texto;
+}
+
 class IndiceRAG {
     constructor(config = RAG_CONFIG) {
         this.config = { ...RAG_CONFIG, ...config };
@@ -111,7 +145,37 @@ class IndiceRAG {
             this.config.tamano_fragmento,
             this.config.solapamiento
         );
+        this.frecuenciaDocumental = new Map();
+        for (const frag of this.fragmentos) {
+            for (const termino of extraerTerminos(textoIndexable(frag)).base) {
+                this.frecuenciaDocumental.set(termino, (this.frecuenciaDocumental.get(termino) || 0) + 1);
+            }
+        }
         return this.fragmentos.length;
+    }
+
+    /**
+     * Cobertura de la consulta ponderada por IDF: prioriza los términos poco frecuentes
+     * (ej. "fotocopiadora", "coordinador") sobre los que aparecen en casi todos los fragmentos.
+     * Solo se usa para ordenar resultados que ya superaron el umbral.
+     */
+    calcularRelevanciaIDF(queryTokens, fragmentoTexto, titulo = "") {
+        const total = this.fragmentos.length;
+        const frag = extraerTerminos(fragmentoTexto).base;
+        const encabezado = titulo ? extraerTerminos(titulo).base : new Set();
+        let peso = 0;
+        let pesoCoincidente = 0;
+        let pesoEncabezado = 0;
+        for (const token of new Set(queryTokens)) {
+            const singular = singularizar(token);
+            const df = Math.max(this.frecuenciaDocumental.get(token) || 0, this.frecuenciaDocumental.get(singular) || 0);
+            if (df === 0) continue;
+            const idf = Math.log((total + 1) / (df + 1)) + 1;
+            peso += idf;
+            if (frag.has(token) || frag.has(singular)) pesoCoincidente += idf;
+            if (encabezado.has(token) || encabezado.has(singular)) pesoEncabezado += idf;
+        }
+        return peso > 0 ? (pesoCoincidente + 0.5 * pesoEncabezado) / peso : 0;
     }
 
     /**
@@ -128,19 +192,21 @@ class IndiceRAG {
         const resultados = [];
 
         for (let i = 0; i < this.fragmentos.length; i++) {
-            const similitud = calcularSimilitudSemantica(pregunta, this.fragmentos[i].texto);
+            const similitud = calcularSimilitudSemantica(pregunta, textoIndexable(this.fragmentos[i]));
             resultados.push({
                 ...this.fragmentos[i],
                 similitud: Math.round(similitud * 1000) / 1000
             });
         }
 
-        // Ordenar descendentemente por similitud
-        resultados.sort((a, b) => b.similitud - a.similitud);
+        const queryTokens = extraerTerminos(pregunta).tokens;
 
-        // Filtrar por umbral mínimo y acotar a topK
+        // Filtrar por umbral mínimo, ordenar por relevancia IDF y acotar a topK
         return resultados
             .filter(r => r.similitud >= this.config.umbral_similitud)
+            .map(r => ({ r, relevancia: this.calcularRelevanciaIDF(queryTokens, textoIndexable(r), r.titulo) + 0.5 * r.similitud - (r.continuacion ? 0.1 : 0) }))
+            .sort((a, b) => (b.relevancia - a.relevancia) || (b.r.similitud - a.r.similitud))
+            .map(x => x.r)
             .slice(0, topK);
     }
 }

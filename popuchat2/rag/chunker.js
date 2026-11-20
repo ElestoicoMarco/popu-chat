@@ -78,6 +78,31 @@ function dividirEnFragmentos(texto, tamano = 700, solapamiento = 120) {
 }
 
 /**
+ * Separa un documento en secciones temáticas según sus encabezados "## ".
+ * Cada sección se fragmenta por separado para que ningún fragmento mezcle temas.
+ * @param {string} texto
+ * @returns {Array<{titulo: string, cuerpo: string}>}
+ */
+function dividirEnSecciones(texto) {
+    if (!texto || typeof texto !== "string") return [];
+    const bloques = texto.replace(/\r\n/g, "\n").split(/\n(?=## )/);
+    const secciones = [];
+    for (const bloque of bloques) {
+        const claves = bloque.split("\n")
+            .filter(l => /^Consultas relacionadas:/i.test(l))
+            .map(l => l.replace(/^Consultas relacionadas:\s*/i, ""))
+            .join(" ");
+        const lineas = bloque.split("\n").filter(l => !/^# /.test(l) && !/^Consultas relacionadas:/i.test(l));
+        const contenido = lineas.join("\n").trim();
+        if (!contenido) continue;
+        const titulo = lineas[0].startsWith("## ") ? lineas[0].replace(/^##\s*/, "").trim() : "";
+        if (titulo && contenido.replace(/^##[^\n]*/, "").trim() === "") continue;
+        secciones.push({ titulo, claves, cuerpo: contenido.replace(/^##\s*/, "") });
+    }
+    return secciones;
+}
+
+/**
  * Procesa una lista de documentos y genera la matriz de fragmentos con metadatos.
  * @param {Array<{fuente: string, texto: string}>} documentos 
  * @param {number} tamano 
@@ -88,13 +113,23 @@ function prepararFragmentos(documentos, tamano = 700, solapamiento = 120) {
     const registros = [];
 
     for (const documento of documentos) {
-        const frags = dividirEnFragmentos(documento.texto, tamano, solapamiento);
+        const frags = [];
+        for (const seccion of dividirEnSecciones(documento.texto)) {
+            const prefijo = seccion.titulo ? `${seccion.titulo}: ` : "";
+            const partes = dividirEnFragmentos(seccion.cuerpo, tamano - prefijo.length, solapamiento);
+            partes.forEach((parte, j) => {
+                frags.push({ titulo: seccion.titulo, claves: seccion.claves, continuacion: j > 0, texto: j > 0 ? prefijo + parte : parte });
+            });
+        }
         for (let i = 0; i < frags.length; i++) {
             registros.push({
                 id: registros.length,
                 fuente: documento.fuente,
                 fragmento_numero: i + 1,
-                texto: frags[i]
+                titulo: frags[i].titulo,
+                continuacion: frags[i].continuacion,
+                palabras_clave: frags[i].claves || "",
+                texto: frags[i].texto
             });
         }
     }
@@ -104,6 +139,7 @@ function prepararFragmentos(documentos, tamano = 700, solapamiento = 120) {
 
 const Chunker = {
     limpiarDocumento,
+    dividirEnSecciones,
     dividirEnFragmentos,
     prepararFragmentos
 };

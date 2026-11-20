@@ -1,0 +1,38 @@
+# Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial - IES N° 7
+
+## Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial: Descripción y perfil del egresado
+La Ciencia de Datos ocupa un lugar central en las organizaciones y su uso es cada vez más intensivo en la toma de decisiones en infinidad de sectores profesionales. Dentro de la Ciencia de Datos encontramos diferentes técnicas, incluyendo la Estadística y la Inteligencia Artificial (Aprendizaje Automático o Machine Learning).
+Perfil del Egresado:
+El Técnico Superior en Ciencia de Datos e Inteligencia Artificial estará capacitado para:
+- (Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial) Realizar proyectos de innovación que involucren tanto el uso de datos como de IA.
+- (Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial) Pensar con criterio estadístico situaciones de trabajo que impliquen una amplia cantidad de datos.
+- (Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial) Conocer técnicas específicas para explorar, limpiar y preparar diversas fuentes de datos.
+- (Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial) Construir y optimizar algoritmos de Deep Learning para imitar habilidades humanas básicas (visión, lenguaje, toma de decisiones).
+- (Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial) Construir redes neuronales y liderar proyectos que implementen visión por computadora.
+- (Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial) Aplicar IA para procesar audio y texto (reconocimiento del habla, chatbots, traducción automática, etc.).
+
+## Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial: Plan de estudios (materias por año)
+El plan de estudios oficial de la carrera de Ciencia de Datos se estructura de la siguiente manera:
+- (Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial) 1° Año: se cursan Álgebra, Análisis Matemático, Programación I, Ciencia y TIC, Base de Datos, Redes, Prácticas Profesionalizantes I y EDI I
+- (Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial) 2° Año: se cursan Inglés Técnico, Ciencia de Datos, Estadística y Probabilidad, Programación II, Lógica, Introducción a la Inteligencia Artificial, Machine Learning, Prácticas Profesionalizantes II y EDI II
+- (Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial) 3° Año: se cursan Gestión de Proyectos, Minería de Datos, Reconocimiento Visual, Ciberseguridad, Ética y Deontología Profesional, Analítica Web, Procesamiento del Lenguaje Natural y Prácticas Profesionalizantes III
+
+## Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial: Campo laboral y salida laboral
+Campo Profesional y Laboral:
+El Técnico Superior en Ciencia de Datos e Inteligencia Artificial podrá coordinar equipos de trabajo y dirigir emprendimientos de pequeña y mediana envergadura de servicios propios de su campo.
+Podrá trabajar en:
+- (Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial) Organizaciones tanto de gestión pública como privada en diferentes campos (salud, educación, marketing, comercialización, telefonía, agro, redes sociales, etc.).
+- (Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial) De manera autónoma ofreciendo sus servicios a clientes particulares.
+
+## Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial: Turno y horario de cursado
+El cursado presencial de la Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial se desarrolla de lunes a viernes en el Turno Mañana (08:00 a 12:30 horas).
+
+## Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial: Distribución de aulas
+La distribución de aulas para esta carrera es la siguiente:
+Ciencia de Datos e IA
+1° Año Aula 23
+2° Año Aula 22
+3° Año Aula 10
+
+## Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial: Coordinador/a y horarios de consulta
+El coordinador de la Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial es el Ing. Pablo Vilte. Sus horarios de consulta presencial son los días Martes de 10:00 a 12:00 hs. y Jueves de 08:00 a 10:00 hs.

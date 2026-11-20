@@ -17,10 +17,31 @@ const PORT = process.env.PORT || 3000;
 // Mapeo oficial de nombres de fuentes (Idéntico a Celda 10 e Imagen 2 de Gradio)
 const NOMBRES_FUENTES_OFICIALES = {
     "01_oferta_academica_carreras.txt": "Oferta académica y carreras - IES N° 7",
-    "02_inscripciones_requisitos.txt": "Inscripciones y requisitos 2027 - IES N° 7",
-    "03_aranceles_cuotas_becas.txt": "Aranceles, cuotas y becas - IES N° 7",
+    "02_inscripciones_requisitos.txt": "Inscripciones, curso de ingreso y cartillas 2027 - IES N° 7",
+    "03_aranceles_cuotas_becas.txt": "Aranceles, cuotas, Tesorería y becas - IES N° 7",
     "04_sedes_horarios_contacto.txt": "Sedes, horarios y contacto - IES N° 7",
-    "05_reglamento_academico_examenes.txt": "Reglamento académico y exámenes finales - IES N° 7"
+    "05_reglamento_academico_examenes.txt": "Reglamento académico y exámenes finales - IES N° 7",
+    "06_distribucion_aulas.txt": "Distribución de aulas 2026 - IES N° 7",
+    "10_carrera_mecatronica.txt": "Tecnicatura Superior en Mecatrónica - IES N° 7",
+    "11_carrera_software.txt": "Tecnicatura Superior en Desarrollo de Software - IES N° 7",
+    "12_carrera_automatizacion.txt": "Tecnicatura Superior en Automatización y Robótica - IES N° 7",
+    "13_carrera_lengua.txt": "Profesorado de Educación Secundaria en Lengua y Literatura - IES N° 7",
+    "14_carrera_historia.txt": "Profesorado de Educación Secundaria en Historia - IES N° 7",
+    "15_carrera_psicologia.txt": "Profesorado de Educación Secundaria en Psicología - IES N° 7",
+    "16_carrera_ciencia_datos.txt": "Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial - IES N° 7",
+    "17_carrera_gestion_juridica.txt": "Tecnicatura Superior en Gestión Jurídica - IES N° 7",
+    "18_carrera_ciencia_politica.txt": "Profesorado en Ciencia Política - IES N° 7",
+    "19_carrera_educacion_especial.txt": "Profesorado de Educación Especial (Ambas Orientaciones) - IES N° 7",
+    "20_carrera_especial_intelectual.txt": "Profesorado de Educación Especial con Orientación en Discapacidad Intelectual - IES N° 7",
+    "21_carrera_especial_sordos.txt": "Profesorado de Educación Especial con Orientación en Sordos e Hipoacúsicos - IES N° 7",
+    "22_carrera_ciencias_sagradas.txt": "Profesorado en Ciencias Sagradas - IES N° 7",
+    "23_carrera_gestion_ambiental.txt": "Tecnicatura Superior en Gestión Ambiental - IES N° 7",
+    "24_carrera_ninez_adolescencia_familia.txt": "Tecnicatura Superior en Niñez, Adolescencia y Familia - IES N° 7",
+    "25_carrera_laboratorio_analisis_clinicos.txt": "Tecnicatura Superior en Laboratorio de Análisis Clínicos - IES N° 7",
+    "26_carrera_hemoterapia.txt": "Tecnicatura Superior en Hemoterapia - IES N° 7",
+    "27_carrera_acompanamiento_terapeutico.txt": "Tecnicatura Superior en Acompañamiento Terapéutico - IES N° 7",
+    "28_carrera_administracion_empresas.txt": "Tecnicatura Superior en Administración de Empresas - IES N° 7",
+    "29_carrera_administracion_publica.txt": "Tecnicatura Superior en Administración Pública - IES N° 7"
 };
 
 // Middleware 1: CORS nativo

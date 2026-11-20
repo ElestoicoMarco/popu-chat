@@ -1,0 +1,23 @@
+# Tecnicatura Superior en Desarrollo de Software - IES N° 7
+
+## Tecnicatura Superior en Desarrollo de Software: Descripción y perfil del egresado
+💡 Esta carrera se dicta exclusivamente en la Sede San Pedro.
+Perfil del Egresado:
+- (Tecnicatura Superior en Desarrollo de Software) Producir artefactos de software, abarcando su diseño detallado, construcción, verificación unitaria y mantenimiento.
+- (Tecnicatura Superior en Desarrollo de Software) Participar en proyectos de desarrollo programando módulos, objetos o subsistemas.
+- (Tecnicatura Superior en Desarrollo de Software) Integrar aplicaciones complejas con motores de base de datos, sistemas operativos y navegadores.
+
+## Tecnicatura Superior en Desarrollo de Software: Plan de estudios (materias por año)
+- (Tecnicatura Superior en Desarrollo de Software) 1° Año: Álgebra, Inglés, EDI I, Metodología de la Inv., Informática, Programación I, Arquitectura de computadoras, Administración y organizaciones, Análisis matemático
+- (Tecnicatura Superior en Desarrollo de Software) 2° Año: Inglés técnico, Programación II, Base de datos, Sistemas operativos, Redes, Análisis y diseño, Estructura de datos, Seguridad informática, Prácticas I
+- (Tecnicatura Superior en Desarrollo de Software) 3° Año: Estadística, EDI II, Ética, Programación III, Legislación, Emprendedurismo, Diseño de interface, Ingeniería del software, Prácticas III
+
+## Tecnicatura Superior en Desarrollo de Software: Turno y horario de cursado
+El cursado de la Tecnicatura Superior en Desarrollo de Software se desarrolla en el Turno Tarde, en la Sede San Pedro.
+
+## Tecnicatura Superior en Desarrollo de Software: Campo laboral y salida laboral
+Campo Profesional y Laboral:
+- (Tecnicatura Superior en Desarrollo de Software) Empresas dedicadas al desarrollo de software por encargo o productos propios.
+- (Tecnicatura Superior en Desarrollo de Software) Organizaciones proveedoras de servicios de asesoramiento y consultoría IT.
+- (Tecnicatura Superior en Desarrollo de Software) Departamentos de tecnología en empresas de diversos rubros.
+- (Tecnicatura Superior en Desarrollo de Software) Trabajo autónomo y generación de emprendimientos tecnológicos propios.

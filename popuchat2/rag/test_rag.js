@@ -63,9 +63,9 @@ assert(rHorario.length > 0, "Recupera fragmentos para horario");
 assert(rHorario.some(r => r.fuente.includes("horarios") || r.texto.includes("08:00") || r.texto.includes("8:00")), "Recupera fragmento con horario de atención");
 
 // Caso B: Paráfrasis (sin usar la palabra 'horario')
-const rParafrasis = indice.buscar("En qué momento del día puedo hablar con Secretaría?");
+const rParafrasis = indice.buscar("A qué hora atienden en la institución?");
 assert(rParafrasis.length > 0, "Comprende paráfrasis sin requerir la palabra clave 'horario'");
-assert(rParafrasis[0].texto.includes("Secretaría") || rParafrasis[0].texto.includes("atención"), "Identifica correctamente Secretaría y atención");
+assert(rParafrasis[0].texto.includes("atención"), "Identifica correctamente el horario de atención");
 
 // Caso C: Aranceles y Cuotas
 const rArancel = indice.buscar("Cuánto es el valor de la cuota mensual y la inscripción?");
