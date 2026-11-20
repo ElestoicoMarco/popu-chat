@@ -1,0 +1,25 @@
+{
+  "name": "PopuChat 2 — IES N° 7 Populorum Progressio",
+  "short_name": "PopuChat 2",
+  "description": "Asistente Académico Inteligente con PLN + RAG + IA del IES N° 7 Populorum Progressio",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#08111c",
+  "theme_color": "#08111c",
+  "lang": "es-AR",
+  "icons": [
+    {
+      "src": "/img/mascot.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/img/mascot.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
