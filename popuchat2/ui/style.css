@@ -1723,7 +1723,7 @@ details.aula-card[open] summary {
 .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
 
 .composer { padding: 12px clamp(16px, 4vw, 56px) 18px; border-top: 1px solid var(--st-border); background: rgba(8, 17, 28, 0.6); }
-.suggestion-row { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
+.suggestion-row { display: flex; flex-wrap: wrap; gap: 7px; padding-bottom: 10px; }
 .suggestion-row::-webkit-scrollbar { display: none; }
 .suggestion-chip {
     flex-shrink: 0;
