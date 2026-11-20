@@ -186,6 +186,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnResetMemory = document.getElementById('btnResetMemory');
     const geminiApiKeyInput = document.getElementById('geminiApiKeyInput');
     const btnSaveApiKey = document.getElementById('btnSaveApiKey');
+    const groqApiKeyInput = document.getElementById('groqApiKeyInput');
+    const btnSaveGroqKey = document.getElementById('btnSaveGroqKey');
 
     let currentMode = 'Solo base de conocimiento';
 
@@ -255,29 +257,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // API Key de Groq (Qwen) en Navegador
-    function getStoredGroqApiKey() {
-        return localStorage.getItem('groq_api_key') || '';
-    }
-
-    if (groqApiKeyInput) {
-        groqApiKeyInput.value = getStoredGroqApiKey();
-    }
-
-    if (btnSaveGroqKey && groqApiKeyInput) {
-        btnSaveGroqKey.addEventListener('click', () => {
-            const val = groqApiKeyInput.value.trim();
-            if (val) {
-                localStorage.setItem('groq_api_key', val);
-                btnSaveGroqKey.textContent = '✓ Guardada';
-            } else {
-                localStorage.removeItem('groq_api_key');
-                btnSaveGroqKey.textContent = 'Borrada';
-            }
-            setTimeout(() => { btnSaveGroqKey.textContent = 'Guardar'; }, 2000);
-        });
-    }
-
+    // API Key de Groq (Qwen) en Navegador
+
+    function getStoredGroqApiKey() {
+
+        return localStorage.getItem('groq_api_key') || '';
+
+    }
+
+
+
+    if (groqApiKeyInput) {
+
+        groqApiKeyInput.value = getStoredGroqApiKey();
+
+    }
+
+
+
+    if (btnSaveGroqKey && groqApiKeyInput) {
+
+        btnSaveGroqKey.addEventListener('click', () => {
+
+            const val = groqApiKeyInput.value.trim();
+
+            if (val) {
+
+                localStorage.setItem('groq_api_key', val);
+
+                btnSaveGroqKey.textContent = '✓ Guardada';
+
+            } else {
+
+                localStorage.removeItem('groq_api_key');
+
+                btnSaveGroqKey.textContent = 'Borrada';
+
+            }
+
+            setTimeout(() => { btnSaveGroqKey.textContent = 'Guardar'; }, 2000);
+
+        });
+
+    }
+
+
+
     // API Key de Gemini en Navegador
     function getStoredApiKey() {
         return localStorage.getItem('gemini_api_key') || '';
@@ -553,7 +578,8 @@ document.addEventListener('DOMContentLoaded', () => {
             top_k: topKSlider ? parseInt(topKSlider.value, 10) : 4,
             temperatura: tempSlider ? parseFloat(tempSlider.value) : 0.3,
             max_tokens: maxTokensSlider ? parseInt(maxTokensSlider.value, 10) : 350,
-            apiKey: getStoredApiKey() || undefined
+            apiKey: getStoredApiKey() || undefined,
+            groqApiKey: getStoredGroqApiKey() || undefined
         };
 
         try {

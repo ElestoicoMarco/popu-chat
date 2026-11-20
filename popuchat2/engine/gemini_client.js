@@ -37,7 +37,7 @@ const GEMINI_CONFIG_DEFAULT = {
     topK: 20,
     maxOutputTokens: 550,
     timeoutGroqMs: 5500,
-    timeoutGeminiMs: 7500
+    timeoutGeminiMs: 12000
 };
 
 /**
@@ -73,7 +73,9 @@ class GeminiClient {
             modelo: null,
             latenciaMs: 0,
             tieneGroq: this.tieneGroqKeyValida(),
-            tieneGemini: this.tieneGeminiKeyValida()
+            tieneGemini: this.tieneGeminiKeyValida(),
+            errorGroq: null,
+            errorGemini: null
         };
     }
 
@@ -235,12 +237,14 @@ class GeminiClient {
                     }
                 } else {
                     const errTxt = await response.text();
+                    this.ultimoDiagnostico.errorGroq = `${modelo} HTTP ${response.status}: ${errTxt.substring(0, 100)}`;
                     console.warn(`[Groq API Warning] Modelo ${modelo} devolvió ${response.status}: ${errTxt.substring(0, 120)}`);
                     // Si es 401 (clave inválida) no seguir probando otros modelos de Groq
                     if (response.status === 401) break;
                 }
             } catch (err) {
                 const motivo = err.name === "AbortError" ? `TIMEOUT (> ${this.config.timeoutGroqMs}ms)` : err.message;
+                this.ultimoDiagnostico.errorGroq = `${modelo}: ${motivo}`;
                 console.warn(`[Groq Failover] Modelo ${modelo}: ${motivo} -> conmutando automáticamente.`);
                 // Si hubo timeout en Groq, saltar rápido al proveedor alternativo (Gemini)
                 if (err.name === "AbortError") break;

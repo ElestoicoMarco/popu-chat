@@ -109,8 +109,9 @@ function inicializarMotor() {
     console.log(`[RAG Init]: ${DOCUMENTOS_ACTIVOS.length} fuentes oficiales indexadas en ${cantidadFragmentos} fragmentos.`);
 
     engine = new PopuChatEngine(indice);
-    const envKey = process.env.GEMINI_API_KEY;
-    console.log(`[Gemini Env Check]: process.env.GEMINI_API_KEY configurada? ${envKey ? "SÍ (" + envKey.substring(0, 6) + "...)" : "NO"}`);
+    const envGemini = process.env.GEMINI_API_KEY;
+    const envGroq = process.env.GROQ_API_KEY;
+    console.log(`[IA Env Check]: GROQ_API_KEY (Qwen)? ${envGroq ? "SÍ (" + envGroq.substring(0, 6) + "...)" : "NO"} | GEMINI_API_KEY? ${envGemini ? "SÍ (" + envGemini.substring(0, 6) + "...)" : "NO"}`);
     return engine;
 }
 
@@ -130,6 +131,7 @@ app.get("/api/health", (req, res) => {
         isRender: Boolean(process.env.RENDER),
         documentos: DOCUMENTOS_ACTIVOS.length,
         fragmentos: engine && engine.indiceRAG ? engine.indiceRAG.fragmentos.length : 0,
+        iaDiag: engine && engine.gemini ? engine.gemini.ultimoDiagnostico : null,
         timestamp: new Date().toISOString()
     });
 });
@@ -143,7 +145,8 @@ app.post("/api/chat", async (req, res) => {
             top_k,
             temperatura,
             max_tokens,
-            apiKey
+            apiKey,
+            groqApiKey
         } = req.body;
 
         if (!engine) {
@@ -152,6 +155,9 @@ app.post("/api/chat", async (req, res) => {
 
         if (apiKey) {
             engine.gemini.setApiKey(apiKey);
+        }
+        if (groqApiKey) {
+            engine.gemini.setGroqApiKey(groqApiKey);
         }
         if (top_k !== undefined) {
             engine.indiceRAG.config.top_k = parseInt(top_k, 10);
@@ -169,6 +175,7 @@ app.post("/api/chat", async (req, res) => {
         res.json({
             ok: true,
             modo,
+            iaDiag: engine.gemini.ultimoDiagnostico,
             ...resultado
         });
     } catch (error) {
