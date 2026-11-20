@@ -195,11 +195,6 @@ class GeminiClient {
                     max_tokens: maxTok
                 };
 
-                // Para Qwen3 en Groq desactivamos el razonamiento largo para velocidad instantánea
-                if (modelo.includes("qwen3")) {
-                    bodyObj.reasoning_effort = "none";
-                }
-
                 const response = await fetchConTimeout(
                     "https://api.groq.com/openai/v1/chat/completions",
                     {
@@ -230,23 +225,23 @@ class GeminiClient {
                             modelo,
                             latenciaMs,
                             tieneGroq: true,
-                            tieneGemini: this.tieneGeminiKeyValida()
+                            tieneGemini: this.tieneGeminiKeyValida(),
+                            errorGroq: null,
+                            errorGemini: this.ultimoDiagnostico.errorGemini
                         };
                         console.log(`[IA OK - Groq] Modelo: ${modelo} | Tiempo: ${latenciaMs}ms`);
                         return { ok: true, texto: respuestaFinal };
                     }
                 } else {
                     const errTxt = await response.text();
-                    this.ultimoDiagnostico.errorGroq = `${modelo} HTTP ${response.status}: ${errTxt.substring(0, 100)}`;
+                    this.ultimoDiagnostico.errorGroq = `${modelo} HTTP ${response.status}: ${errTxt.substring(0, 120)}`;
                     console.warn(`[Groq API Warning] Modelo ${modelo} devolvió ${response.status}: ${errTxt.substring(0, 120)}`);
-                    // Si es 401 (clave inválida) no seguir probando otros modelos de Groq
-                    if (response.status === 401) break;
+                    if (response.status === 401 || response.status === 403) break;
                 }
             } catch (err) {
                 const motivo = err.name === "AbortError" ? `TIMEOUT (> ${this.config.timeoutGroqMs}ms)` : err.message;
                 this.ultimoDiagnostico.errorGroq = `${modelo}: ${motivo}`;
                 console.warn(`[Groq Failover] Modelo ${modelo}: ${motivo} -> conmutando automáticamente.`);
-                // Si hubo timeout en Groq, saltar rápido al proveedor alternativo (Gemini)
                 if (err.name === "AbortError") break;
             }
         }
@@ -277,7 +272,7 @@ class GeminiClient {
                 temperature: this.config.temperature,
                 topP: this.config.topP,
                 topK: this.config.topK,
-                maxOutputTokens: Math.max(this.config.maxOutputTokens || 550, 450) + 1024
+                maxOutputTokens: Math.max(this.config.maxOutputTokens || 550, 450) + 2048
             }
         };
 
@@ -286,26 +281,19 @@ class GeminiClient {
             this.config.model,
             "gemini-flash-latest",
             "gemini-2.5-flash",
-            "gemini-2.5-flash-lite",
-            "gemini-2.0-flash"
+            "gemini-2.5-flash-lite"
         ])).filter(Boolean);
 
         const intentarLlamada = async (modeloActual) => {
             const inicio = Date.now();
             const url = `https://generativelanguage.googleapis.com/v1beta/models/${modeloActual}:generateContent?key=${this.apiKey}`;
-            const payloadModelo = JSON.parse(JSON.stringify(basePayload));
-
-            // Desactivar pensamiento prolongado en Gemini 2.5 Flash para bajar latencia a ~2s
-            if (modeloActual.includes("2.5-flash") || modeloActual.includes("flash-latest")) {
-                payloadModelo.generationConfig.thinkingConfig = { thinkingBudget: 0 };
-            }
 
             const response = await fetchConTimeout(
                 url,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(payloadModelo)
+                    body: JSON.stringify(basePayload)
                 },
                 this.config.timeoutGeminiMs
             );
@@ -328,14 +316,20 @@ class GeminiClient {
                         modelo: modeloActual,
                         latenciaMs,
                         tieneGroq: this.tieneGroqKeyValida(),
-                        tieneGemini: true
+                        tieneGemini: true,
+                        errorGroq: this.ultimoDiagnostico.errorGroq,
+                        errorGemini: null
                     };
                     console.log(`[IA OK - Gemini] Modelo: ${modeloActual} | Tiempo: ${latenciaMs}ms`);
                     return { ok: true, texto: respuestaFinal };
                 }
             } else {
                 const errorText = await response.text();
+                this.ultimoDiagnostico.errorGemini = `${modeloActual} HTTP ${response.status}: ${errorText.substring(0, 120)}`;
                 console.warn(`[Gemini API Warning] Modelo ${modeloActual} devolvió ${response.status}: ${errorText.substring(0, 120)}...`);
+                if (response.status === 401 || response.status === 403) {
+                    return { ok: false, fatal: true };
+                }
             }
             return { ok: false };
         };
@@ -344,23 +338,12 @@ class GeminiClient {
             try {
                 const res = await intentarLlamada(modeloActual);
                 if (res.ok) return res;
+                if (res.fatal) break;
             } catch (err) {
                 const motivo = err.name === "AbortError" ? `TIMEOUT (> ${this.config.timeoutGeminiMs}ms)` : err.message;
+                this.ultimoDiagnostico.errorGemini = `${modeloActual}: ${motivo}`;
                 console.warn(`[Gemini Failover] Modelo ${modeloActual}: ${motivo}`);
                 if (err.name === "AbortError") break;
-            }
-        }
-
-        // Auto-descubrimiento si ningún modelo inicial respondió
-        const descubiertos = (await this.descubrirModeloDisponible())
-            .filter(m => !candidatosIniciales.includes(m))
-            .slice(0, 3);
-        for (const modeloDescubierto of descubiertos) {
-            try {
-                const res = await intentarLlamada(modeloDescubierto);
-                if (res.ok) return res;
-            } catch (err) {
-                console.warn(`[Gemini Auto-Discovery Error]: ${err.message}`);
             }
         }
 
@@ -409,7 +392,9 @@ class GeminiClient {
             modelo: "sintetizador-rag-local",
             latenciaMs: 1,
             tieneGroq: this.tieneGroqKeyValida(),
-            tieneGemini: this.tieneGeminiKeyValida()
+            tieneGemini: this.tieneGeminiKeyValida(),
+            errorGroq: this.ultimoDiagnostico.errorGroq,
+            errorGemini: this.ultimoDiagnostico.errorGemini
         };
 
         return respuesta;
