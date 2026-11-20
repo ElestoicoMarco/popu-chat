@@ -163,7 +163,7 @@ app.post("/api/chat", async (req, res) => {
             engine.gemini.config.maxOutputTokens = parseInt(max_tokens, 10);
         }
 
-        console.log(`[Chat Request]: "${mensaje}" | Modo: ${modo} | top_k: ${engine.indiceRAG.config.top_k} | temp: ${engine.gemini.config.temperature} | Key: ${engine.gemini.tieneApiKeyValida() ? "SÍ" : "NO"}`);
+        console.log(`[Chat Request]: "${mensaje}" | Modo: ${modo} | Groq(Qwen): ${engine.gemini.tieneGroqKeyValida() ? "SÍ" : "NO"} | Gemini: ${engine.gemini.tieneGeminiKeyValida() ? "SÍ" : "NO"}`);
         const resultado = await engine.procesarConsulta(mensaje, modo);
 
         res.json({

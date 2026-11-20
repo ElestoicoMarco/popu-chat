@@ -255,6 +255,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // API Key de Groq (Qwen) en Navegador
+    function getStoredGroqApiKey() {
+        return localStorage.getItem('groq_api_key') || '';
+    }
+
+    if (groqApiKeyInput) {
+        groqApiKeyInput.value = getStoredGroqApiKey();
+    }
+
+    if (btnSaveGroqKey && groqApiKeyInput) {
+        btnSaveGroqKey.addEventListener('click', () => {
+            const val = groqApiKeyInput.value.trim();
+            if (val) {
+                localStorage.setItem('groq_api_key', val);
+                btnSaveGroqKey.textContent = '✓ Guardada';
+            } else {
+                localStorage.removeItem('groq_api_key');
+                btnSaveGroqKey.textContent = 'Borrada';
+            }
+            setTimeout(() => { btnSaveGroqKey.textContent = 'Guardar'; }, 2000);
+        });
+    }
+
     // API Key de Gemini en Navegador
     function getStoredApiKey() {
         return localStorage.getItem('gemini_api_key') || '';
