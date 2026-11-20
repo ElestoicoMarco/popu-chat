@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (configToggle) configToggle.addEventListener('click', openDrawer);
     if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeDrawer);
     if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeDrawer);
-    setTimeout(openDrawer, 0);
+    // El panel de estudio permanece oculto al iniciar para mostrar Popu 1 intacto; se abre con el botón ⚙️
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && configDrawer && configDrawer.classList.contains('active')) {
