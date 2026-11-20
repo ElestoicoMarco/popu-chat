@@ -278,6 +278,7 @@ class GeminiClient {
 
         const candidatosIniciales = Array.from(new Set([
             this.cachedWorkingModel,
+            "gemini-3.7-flash",
             this.config.model,
             "gemini-flash-latest",
             "gemini-2.5-flash",
@@ -344,6 +345,19 @@ class GeminiClient {
                 this.ultimoDiagnostico.errorGemini = `${modeloActual}: ${motivo}`;
                 console.warn(`[Gemini Failover] Modelo ${modeloActual}: ${motivo}`);
                 if (err.name === "AbortError") break;
+            }
+        }
+
+        // Auto-descubrimiento dinámico por si cambia el nombre del modelo activo en Google AI Studio
+        const descubiertos = (await this.descubrirModeloDisponible())
+            .filter(m => !candidatosIniciales.includes(m))
+            .slice(0, 3);
+        for (const modeloDescubierto of descubiertos) {
+            try {
+                const res = await intentarLlamada(modeloDescubierto);
+                if (res.ok) return res;
+            } catch (err) {
+                this.ultimoDiagnostico.errorGemini = `${modeloDescubierto}: ${err.message}`;
             }
         }
 
